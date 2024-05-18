@@ -1,0 +1,39 @@
+\chapter{Order}
+\label{ch:order}
+
+\begin{definition}
+    Let $f$ be an entire function. The \emph{order} of $f$ is defined by
+    $$ \rho \coloneqq \limsup_{r \to \infty} \frac{\log \log M(r)}{\log r}, $$
+    where $ M(r) \coloneqq \max_{\vert z \vert = r} \vert f(z) \vert $. Constant functions, by convention, have order 0.
+\end{definition}
+
+\begin{remark}
+    \todo{Initial explanation and intuition of the order. Make sure to note the possible values of the order ($0 \leq \rho \leq \infty$). And that $\rho$ can also be seen as the infimum over all $\rho$ that satisfy $\vert f(z) \vert \leq A e^{B \vert z \vert^\rho}$ for suitable $A, B > 0$.}
+\end{remark}
+
+\begin{theorem}
+    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be an entire function. Then $f$ is of finite order $\rho$ if and only if
+    $$ \mu \coloneqq \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert a_n \vert}} < \infty, $$
+    where we take the quotient to be zero if $a_n = 0$. In either case we have $\rho = \mu$.
+\end{theorem}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+\begin{example}
+    \todo{Some examples for functions of specific order. Specifically order 0 (polynomials, rapidly convering sum), order 1 ($\exp$, $\sin$), arbitrary order $\rho$ and order $\infty$.}
+\end{example}
+
+\begin{proposition}
+    Let $f, g$ be entire functions of respective finite orders $\rho_f, \rho_g$. Then it holds that
+    \begin{enumerate}[i.]
+        \item $f + g$ has order at most $\max \{ \rho_f, \rho_g \}$.
+        \item $fg$ has order at most $\max \{ \rho_f, \rho_g \}$.
+        \item $f'$ has order $\rho_f$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
