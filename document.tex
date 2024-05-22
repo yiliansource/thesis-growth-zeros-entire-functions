@@ -16,6 +16,8 @@
 % links in pdf
 \usepackage[unicode,colorlinks=false,pagebackref=false]{hyperref}
 
+\usepackage{cleveref}
+
 % Zum Druck verwende schwarze Links!
 %\usepackage[unicode,colorlinks=true,linkcolor=black,citecolor=black,urlcolor=black,pagebackref=false]{hyperref} 
 	% colorlinks=false umrahmt Links statt einzufaerben, 
@@ -39,6 +41,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\powerseries}[2][n]{\sum_{#1=0}^\infty {#2}z^{#1}}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]

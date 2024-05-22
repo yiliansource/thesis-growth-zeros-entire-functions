@@ -1,18 +1,52 @@
 \chapter{Order}
 \label{ch:order}
 
-\begin{definition}
+\begin{definition} \label{def:order}
     Let $f$ be an entire function. The \emph{order} of $f$ is defined by
-    $$ \rho \coloneqq \limsup_{r \to \infty} \frac{\log \log M(r)}{\log r}, $$
-    where $ M(r) \coloneqq \max_{\vert z \vert = r} \vert f(z) \vert $. Constant functions, by convention, have order 0.
+    \begin{equation} \label{eq:def-order}
+        \rho_f \coloneqq \limsup_{r \to \infty} \frac{\log \log M_f(r)}{\log r}.
+    \end{equation}
+    Constant functions, by convention, have order 0.
 \end{definition}
 
-\begin{remark}
+\begin{remark} \label{rem:order}
     \todo{Initial explanation and intuition of the order. Make sure to note the possible values of the order ($0 \leq \rho \leq \infty$). And that $\rho$ can also be seen as the infimum over all $\rho$ that satisfy $\vert f(z) \vert \leq A e^{B \vert z \vert^\rho}$ for suitable $A, B > 0$.}
 \end{remark}
 
-\begin{theorem}
-    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be an entire function. Then $f$ is of finite order $\rho$ if and only if
+\begin{proposition} \label{prop:algebraic-properties-order}
+    Let $f, g$ be entire functions of finite order. Then it holds that:
+    \begin{enumerate}[i.]
+        \item $\rho_{f + g} \leq \max \{ \rho_f, \rho_g \}$
+        \item $\rho_{f g} \leq \max \{ \rho_f, \rho_g \}$
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    To prove (i), note that
+    \begin{align*}
+        M_{f+g}(r) &= \max_{\vert z \vert = r} \vert f(z) + g(z) \vert \leq \max_{\vert z \vert = r} \vert f(z) \vert + \vert g(z) \vert \leq \max_{\vert z \vert = r} \vert f(z) \vert + \max_{\vert z \vert = r} \vert g(z) \vert \leq \\
+        &= M_f(r) + M_g(r) \leq 2 \max \{ M_f(r), M_g(r) \}
+    \end{align*}
+    thus
+    $$ \log M_{f+g}(r) \leq \log 2 + \log \max \{ M_f(r), M_g(r) \} = \log 2 + \max \{ \log M_f(r), \log M_g(r) \}. $$
+    If $M_f(r)$ and $M_g(r)$ are bounded, then applying the above in \cref{eq:def-order} implies that $f, g$ and $f+g$ all have order $0$. If either one is not, then $\max \{ \log M_f(r), \log M_g(r) \}$ necessarily outgrows $\log 2$ and we obtain
+    \begin{align*}
+        \rho_{f+g} &= \limsup_{r \to \infty} \frac{\log \log M_{f+g}(r)}{\log r} \leq \limsup_{r \to \infty} \frac{\log (\log 2 + \max \{ \log M_f(r), \log M_g(r) \})}{\log r} = \\
+        &= \limsup_{r \to \infty} \frac{\log \max \{ \log M_f(r), \log M_g(r) \}}{\log r} = \\
+        &= \limsup_{r \to \infty} \max \left\{ \frac{\log \log M_f(r)}{\log r}, \frac{\log \log M_g(r)}{\log r} \right\} = \\
+        &= \max \left\{ \limsup_{r \to \infty} \frac{\log \log M_f(r)}{\log r}, \limsup_{r \to \infty} \frac{\log \log M_g(r)}{\log r} \right\} = \max \{ \rho_f, \rho_g \}.
+    \end{align*}
+    To prove (ii), we similarly note that
+    \begin{align*}
+        \log \log M_{fg}(r) &\leq \log \log ( M_f(r) M_g(r) ) = \log (\log M_f(r) + \log M_g(r)) \leq \\
+        &\leq \log (2 \max \{ \log M_f(r), \log M_g(r) \}) = \\
+        &= \log 2 + \max \{ \log \log M_f(r), \log \log M_g(r) \},
+    \end{align*}
+    from where can proceed as in (i).
+\end{proof}
+
+\begin{theorem} \label{thm:order-power-series}
+    Let $f(z) = \powerseries{a_n}$ be an entire function. Then $f$ is of finite order $\rho$ if and only if
     $$ \mu \coloneqq \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert a_n \vert}} < \infty, $$
     where we take the quotient to be zero if $a_n = 0$. In either case we have $\rho = \mu$.
 \end{theorem}
@@ -21,19 +55,23 @@
     \todo{TODO.}
 \end{proof}
 
-\begin{example}
+\begin{example} \label{exm:examples-orders}
     \todo{Some examples for functions of specific order. Specifically order 0 (polynomials, rapidly convering sum), order 1 ($\exp$, $\sin$), arbitrary order $\rho$ and order $\infty$.}
 \end{example}
 
-\begin{proposition}
-    Let $f, g$ be entire functions of respective finite orders $\rho_f, \rho_g$. Then it holds that
-    \begin{enumerate}[i.]
-        \item $f + g$ has order at most $\max \{ \rho_f, \rho_g \}$.
-        \item $fg$ has order at most $\max \{ \rho_f, \rho_g \}$.
-        \item $f'$ has order $\rho_f$.
-    \end{enumerate}
+
+
+\begin{proposition} \label{prop:order-derivative}
+    Let $f$ be an entire function of finite order with derivative $f'$. Then $\rho_{f'} = \rho_f$.
 \end{proposition}
 
 \begin{proof}
-    \todo{TODO.}
+    Given $f(z) = \powerseries{a_n}$ we have $f'(z) = \powerseries{(n+1)a_{n+1}}$. Since $\rho_f < \infty$, \Cref{thm:order-power-series} implies $ \limsup_{n \to \infty} \frac{\log n}{\log \vert a_{n} \vert} = 0 $, therefore
+    $$ \limsup_{n \to \infty} \frac{\log (n) + \log\vert a_n \vert}{\log \vert a_n \vert} = 1. $$
+    We obtain
+    \begin{align*}
+        \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert (n+1) a_{n+1} \vert}} &= \limsup_{n \to \infty} \frac{n \log n}{-\log (n+1) - \log \vert a_{n+1} \vert} \cdot \limsup_{n \to \infty} \frac{\log (n) + \log\vert a_n \vert}{\log \vert a_n \vert} = \\
+        &= \limsup_{n \to \infty} \frac{n \log n}{- \log \vert a_{n+1} \vert} = \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert a_{n} \vert}}
+    \end{align*}
+    and \Cref{thm:order-power-series} concludes $\rho_{f'} = \rho_f$.
 \end{proof}
