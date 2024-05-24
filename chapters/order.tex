@@ -42,8 +42,15 @@
         &\leq \log (2 \max \{ \log M_f(r), \log M_g(r) \}) = \\
         &= \log 2 + \max \{ \log \log M_f(r), \log \log M_g(r) \},
     \end{align*}
-    from where can proceed as in (i).
+    from where we can proceed as in (i).
 \end{proof}
+
+For entire functions of finite order we can obtain an alternative representation of the order via the power series coefficients.
+
+% \begin{remark}
+% maybe a remark on equality in the above proposition
+% This requires an estimate of the entire function of smaller order from below, which is not trivial. Look in B. Levin, Distribution of zeros of entire functions. American Mathematical Society, Providence, R.I., 1980, Chap. I, § 9, Theorem 12 a).
+% \end{remark}
 
 \begin{theorem} \label{thm:order-power-series}
     Let $f(z) = \powerseries{a_n}$ be an entire function. Then $f$ is of finite order $\rho$ if and only if
@@ -57,6 +64,17 @@
 
 \begin{example} \label{exm:examples-orders}
     \todo{Some examples for functions of specific order. Specifically order 0 (polynomials, rapidly convering sum), order 1 ($\exp$, $\sin$), arbitrary order $\rho$ and order $\infty$.}
+
+    We shall apply \Cref{thm:order-power-series} to provide examples for entire functions of specific order.
+    
+    It is immediately apparent that polynomials have order zero. Non-polynomial functions of zero order do exist, provided their coefficients decrease rapidly enough, for example $ \sum_{n=0}^\infty n^{-(n^2)} z^n $.
+
+    By using Stirling's approximation $ \log n! = n \log n - n + O(\log n) $, we obtain that the exponential function, sine and cosine all have order 1.
+
+    For a given $\rho \in \R$ we can construct an entire function $f$ of that order by defining
+    $$ f(z) \coloneqq \sum_{n=0}^\infty n^{- \rho n} z^n. $$
+
+    $$ \sum_{n=3}^\infty n^{- \frac{n}{\sqrt{\log n}}} z^n $$
 \end{example}
 
 
@@ -66,12 +84,15 @@
 \end{proposition}
 
 \begin{proof}
-    Given $f(z) = \powerseries{a_n}$ we have $f'(z) = \powerseries{(n+1)a_{n+1}}$. Since $\rho_f < \infty$, \Cref{thm:order-power-series} implies $ \limsup_{n \to \infty} \frac{\log n}{\log \vert a_{n} \vert} = 0 $, therefore
-    $$ \limsup_{n \to \infty} \frac{\log (n) + \log\vert a_n \vert}{\log \vert a_n \vert} = 1. $$
-    We obtain
+    Given $f(z) = \powerseries{a_n}$ we have $f'(z) = \powerseries{(n+1)a_{n+1}}$. Since
+    $$ \lim_{n \to \infty} \left( \frac{n \log n}{(n+1) \log(n+1)} \right)^{-1} = 1 $$
+    we have
     \begin{align*}
-        \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert (n+1) a_{n+1} \vert}} &= \limsup_{n \to \infty} \frac{n \log n}{-\log (n+1) - \log \vert a_{n+1} \vert} \cdot \limsup_{n \to \infty} \frac{\log (n) + \log\vert a_n \vert}{\log \vert a_n \vert} = \\
-        &= \limsup_{n \to \infty} \frac{n \log n}{- \log \vert a_{n+1} \vert} = \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert a_{n} \vert}}
+        \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert (n+1) a_{n+1} \vert}} &= \liminf_{n \to \infty} \left( \frac{- \log (n+1) + \log \frac{1}{\vert a_{n+1} \vert}}{n \log n} \right)^{-1} = \\
+        &= \liminf_{n \to \infty} \left( \frac{- \log \vert a_{n+1} \vert}{n \log n} \right)^{-1} \cdot \lim_{m \to \infty} \left( \frac{m \log m}{(m+1) \log(m+1)} \right)^{-1} = \\
+        &= \liminf_{n \to \infty} \left( \frac{- \log \vert a_{n+1} \vert}{n \log n} \cdot \frac{n \log n}{(n+1) \log(n+1)} \right)^{-1} = \\
+        &= \liminf_{n \to \infty} \left( \frac{- \log \vert a_{n+1} \vert}{(n+1) \log(n+1)} \right)^{-1} = \limsup_{n \to \infty} \frac{(n+1) \log (n+1)}{\log \frac{1}{\vert a_{n+1} \vert}} = \\
+        &= \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert a_{n} \vert}}
     \end{align*}
-    and \Cref{thm:order-power-series} concludes $\rho_{f'} = \rho_f$.
+    and since $\rho_f < \infty$ \Cref{thm:order-power-series} concludes $\rho_{f'} = \rho_f$.
 \end{proof}
