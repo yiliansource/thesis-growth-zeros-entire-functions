@@ -1,7 +1,7 @@
 \chapter{Composition}
 \label{ch:composition}
 
-\begin{theorem}[Pólya]
+\begin{theorem}[Pólya] \label{thm:polya}
     Let $g, h$ be entire. For the order of $g \circ h$ to be finite, it must hold that either
     \begin{enumerate}[i.]
         \item $h$ is a polynomial and $g$ of finite order, or
@@ -13,12 +13,22 @@
     \todo{TODO.}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem}[Thron] \label{thm:thron}
     Let $g$ be an entire function of finite order, not a polynomial, which takes some value $w$ only finitely often. Suppose further that there exists $f$ such that $f \circ f = g$. Then $f$ is not entire.
 \end{theorem}
 
 \begin{proof}
-    \todo{TODO.}
+    Seeking contradiction, suppose $f$ were entire. Since $f$ is not a polynomial, \Cref{thm:polya} implies that $f$ is of order $0$ and not a polynomial. Let $(z_j)_{j \in J}$ denote the points where $f$ equals $w$. For each $m \in J$ we additionally denote by $(z_{j,m})_{j \in J_m}$ the points where $f$ equals $z_m$. Thus, for each $m \in J$ and $n \in J_m$ we have
+    $$ g(z_{n,m}) = f(f(z_{n,m})) = f(z_m) = w. $$
+    By our assumption on $g$, there must only be finitely many distinct points among the $(z_{j,m})_{m \in J, j \in J_m}$. Thus, each point in $(z_j)_{j \in J}$ is only taken on by $f$ finitely often.
+
+    \todo{Do I need a citation for Picard's Big Theorem?}
+
+    Since $f$ is entire and not a polynomial, it has an essential singularity at $\infty$. By Picard's Big Theorem, $f$ therefore attains all values in the complex plane infinitely often, with at most one exception. This implies that that there is at most one $z_0$ that is only taken on finitely often.
+
+    If there is no such $z_0$, then $h(z) \coloneqq f(z) - z_0$ is entire, of order $0$ and nowhere $0$. Thus, by Hadamard's Theorem, $h$ must be constant, and therefore $f$ aswell, a contradiction.
+
+    If such a $z_0$ exists, then $h(z) \coloneqq f(z) - z_0$ has a zero of finite order $n \in \N$ at $z_0$. Therefore we can write $h(z) = (z - z_0)^n p(z)$, where $p$ is entire, of order $0$ and nowhere $0$. Again, this implies that $p$ is constant, and therefore $f$ a polynomial, a contradiction.
 \end{proof}
 
 \begin{example}

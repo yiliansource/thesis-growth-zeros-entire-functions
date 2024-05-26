@@ -45,7 +45,9 @@
     from where we can proceed as in (i).
 \end{proof}
 
-For entire functions of finite order we can obtain an alternative representation of the order via the power series coefficients.
+In the above, if we additionally demand $\rho_f \neq \rho_g$, one can actually obtain equality in both cases, as seen in \todo{find citation (the $+$ case is easy enough, the $\cdot$ case is tedious and not worth it)}.
+
+For entire functions of finite order, we can obtain a representation of the order via the coefficients in their power series expansion.
 
 % \begin{remark}
 % maybe a remark on equality in the above proposition
@@ -63,18 +65,14 @@ For entire functions of finite order we can obtain an alternative representation
 \end{proof}
 
 \begin{example} \label{exm:examples-orders}
-    \todo{Some examples for functions of specific order. Specifically order 0 (polynomials, rapidly convering sum), order 1 ($\exp$, $\sin$), arbitrary order $\rho$ and order $\infty$.}
+    We shall apply \Cref{thm:order-power-series} to obtain the order of certain entire functions via their power series expansion $ \powerseries{a_n} $:
 
-    We shall apply \Cref{thm:order-power-series} to provide examples for entire functions of specific order.
-    
-    It is immediately apparent that polynomials have order zero. Non-polynomial functions of zero order do exist, provided their coefficients decrease rapidly enough, for example $ \sum_{n=0}^\infty n^{-(n^2)} z^n $.
-
-    By using Stirling's approximation $ \log n! = n \log n - n + O(\log n) $, we obtain that the exponential function, sine and cosine all have order 1.
-
-    For a given $\rho \in \R$ we can construct an entire function $f$ of that order by defining
-    $$ f(z) \coloneqq \sum_{n=0}^\infty n^{- \rho n} z^n. $$
-
-    $$ \sum_{n=3}^\infty n^{- \frac{n}{\sqrt{\log n}}} z^n $$
+    \begin{enumerate}[i.]
+        \item It is immediately apparent that polynomials have order zero. Non-polynomial functions of zero order do exist, given that their coefficients decrease sufficiently rapidly, as in the example of $a_n \coloneqq n^{-(n^2)} $.
+        \item By Stirling's approximation we have $ \log n! = n \log n + O(n) $, from which we conclude that the exponential function, sine and cosine all have order 1.
+        \item For any given $\rho > 0$ the coefficients $ a_n \coloneqq n^{- \rho n} $ define an entire function of order $\rho$.
+        \item For $n \geq 2$, the coefficients $ a_n \coloneqq n^{- \frac{n}{\sqrt{\log n}}} $ define an entire function of infinite order. Note that by \Cref{rem:order}, we can also conclude that $e^{e^z}$ is of infinite order.
+    \end{enumerate}
 \end{example}
 
 
@@ -89,7 +87,7 @@ For entire functions of finite order we can obtain an alternative representation
     we have
     \begin{align*}
         \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert (n+1) a_{n+1} \vert}} &= \liminf_{n \to \infty} \left( \frac{- \log (n+1) + \log \frac{1}{\vert a_{n+1} \vert}}{n \log n} \right)^{-1} = \\
-        &= \liminf_{n \to \infty} \left( \frac{- \log \vert a_{n+1} \vert}{n \log n} \right)^{-1} \cdot \lim_{m \to \infty} \left( \frac{m \log m}{(m+1) \log(m+1)} \right)^{-1} = \\
+        &= \liminf_{n \to \infty} \left( \frac{\frac{1}{\vert (n+1) a_{n+1} \vert}}{n \log n} \right)^{-1} \cdot \lim_{m \to \infty} \left( \frac{m \log m}{(m+1) \log(m+1)} \right)^{-1} = \\
         &= \liminf_{n \to \infty} \left( \frac{- \log \vert a_{n+1} \vert}{n \log n} \cdot \frac{n \log n}{(n+1) \log(n+1)} \right)^{-1} = \\
         &= \liminf_{n \to \infty} \left( \frac{- \log \vert a_{n+1} \vert}{(n+1) \log(n+1)} \right)^{-1} = \limsup_{n \to \infty} \frac{(n+1) \log (n+1)}{\log \frac{1}{\vert a_{n+1} \vert}} = \\
         &= \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert a_{n} \vert}}

@@ -5,16 +5,16 @@
 
 \todo{Do I need a citation for this?}
 
-\begin{theorem} [Weierstrass]
-    Let $(z_j)_{j \in \N}$ be a sequence in $\C$ without accumulation points. Then there exists an entire function $P$ (called the \emph{Weierstrass canonical product} formed from said sequence) that has zeros precisely at $z_j, j \in \N$, with multiplicities equal to how often $z_j$ occurs in the sequence.
+\begin{theorem} [Weierstrass] \label{thm:weierstrass}
+    Let $(z_j)_{j \in \N}$ be a sequence in $\C$ without accumulation points. Then there exists an entire function $E$ (called the \emph{Weierstrass canonical product} formed from said sequence) that has zeros precisely at $(z_j)_{j \in \N}$, with multiplicities equal to how often $z_j$ occurs in the sequence.
 
     Furthermore, if $f$ is any other entire function satisfying the above, then there exists an entire function $g$ such that
-    $$ f = e^g P. $$
+    $$ f = e^g E. $$
 \end{theorem}
 
 \todo{Short remark on how Hadamard refines Weierstrass (for functions of finite order).}
 
-\begin{lemma}[Borel-Carathéodory]
+\begin{lemma}[Borel-Carathéodory] \label{lem:borel-caratheodory}
     Let $f$ be analytic in $\cl{B(0, R)}$ and let
     $$ M(r) = \max_{\vert z \vert = r} \vert f(z) \vert, \quad A(r) = \max_{\vert z \vert = r} \Re f(z). $$
     Then, for $0 < r < R$,
@@ -27,10 +27,10 @@
     \todo{TODO.}
 \end{proof}
 
-\begin{theorem}[Hadamard]
-    Let $f$ be an entire function of finite order $\rho$ with zeros $(z_j)_{j \in \N}$ and $f(0) \neq 0$. Then there exists a polynomial $Q$ with $\deg Q \leq \rho$, such that
-    $$ f = e^Q P, $$
-    where $P$ is the Weierstrass canonical product formed from the zeros of $f$.
+\begin{theorem}[Hadamard] \label{thm:hadamard}
+    Let $f$ be an entire function of finite order with zeros $(z_j)_{j \in \N}$ and $f(0) \neq 0$. Then there exists a polynomial $Q$ with $\deg Q \leq \rho_f$, such that
+    $$ f = e^Q E, $$
+    where $E$ is the Weierstrass canonical product formed from the zeros of $f$.
 \end{theorem}
 
 \begin{proof}
