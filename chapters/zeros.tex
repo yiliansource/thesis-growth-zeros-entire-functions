@@ -3,32 +3,38 @@
 
 We recall a rather explicit connection between the moduli of the zeros of an analytic function and the modulus of the function itself:
 
-\begin{theorem}[Jensen]
-    Let $f$ be analytic on $B(0, R)$ with $f(0) \neq 0$ and let $(r_j)_{j=1}^n$ denote the moduli of the zeros of $f$ in $B(0, R)$ arranged in a non-decreasing sequence. Then, for $r_m < r < r_{m+1}$, we have
-    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_m}. $$
+\begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
+    Let $f$ be analytic on $B(0, R)$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B(0, R)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
+    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}. $$
 \end{theorem}
 
 \begin{definition}
-    Let $f$ be analytic on $B(0, R)$. Then for $0 < r < R$ we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B(0,r)}$.
+    Let $f$ be analytic on $B(0, R)$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B(0,r)}$.
 \end{definition}
 
 \begin{corollary}
-    Let $f$ be analytic on $B(0, R)$ with $f(0) \neq 0$. Then for $0 < r < R$ we have
+    Let $f$ be analytic on $B(0, R)$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
     $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s $$
 \end{corollary}
 
 \begin{proof}
-    \todo{TODO.}
+    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B(0, R)$ arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
+    \begin{align*}
+        \log \frac{r^n}{r_1 \hdots r_n} &= \sum_{k=1}^n \log \frac{r}{r_k} = \sum_{k=1}^n \int_{r_k}^r \frac{1}{s} \diff s = \\
+        &= \sum_{k=1}^n \int_0^r \1_{(r_k, \infty)}(s) \frac{1}{s} \diff s = \int_0^r \left( \sum_{k=1}^n \1_{(r_k, \infty)}(s) \right) \frac{1}{s} \diff s = \\
+        &= \int_0^r \frac{n_f(s)}{s} \diff s
+    \end{align*}
+    and \Cref{thm:jensen} concludes the claim.
 \end{proof}
 
-In particular, we observe that the more zeros a function $f(z)$ has, the faster its modulus must grow as $\vert z \vert \to \infty$. The converse is naturally false, as seen by iterated exponentials.
+In particular, we observe that the more zeros a function $f(z)$ has, the faster its modulus must grow as $\vert z \vert \to \infty$. The converse is naturally false, as seen by iterated exponentials~\cite{segal-complex-analysis}.
 
 \begin{definition}
     Let $f$ be an entire function satisfying $f(0) \neq 0$. Let $(r_j)_{j \in \N}$ denote the moduli of the zeros of $f$ (if any) arranged in non-decreasing order. Then
     $$ \lambda_f \coloneqq \inf \left\{ \lambda > 0 : \sum_{n=1}^\infty \frac{1}{r^\lambda_n} < \infty \right\} $$
-    is called the \emph{exponent of convergence of the zeros of f}. If $f$ has finitely many zeros, then we set $\lambda_f = 0$ by convention. \todo{I am not sure about this -- the paper only establishes this convention if $f$ has no zeros at all.}
+    is called the \emph{exponent of convergence of the zeros of f}. If $f$ has finitely many zeros, then we set $\lambda_f = 0$ by convention.
 
-    Furthermore, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of $f(z) - a$.
+    Furthermore, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of zeros of $f(z) - a$.
 \end{definition}
 
 \begin{theorem} \label{thm:inequality-order-exponent-of-convergence}
@@ -40,7 +46,7 @@ In particular, we observe that the more zeros a function $f(z)$ has, the faster 
 \end{proof}
 
 \begin{example} \label{exm:exponent-of-convergence}
-    \todo{An example of a series where we see some convergence for some appropriate function using the above.}
+    \todo{An example of a series where we obtain convergence for some appropriate function using the above.}
 \end{example}
 
 \begin{theorem} \label{thm:exponent-of-convergence-weierstrass-product}
