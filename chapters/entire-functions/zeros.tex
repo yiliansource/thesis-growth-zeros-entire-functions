@@ -4,21 +4,21 @@
 We recall a rather explicit connection between the moduli of the zeros of an analytic function and the modulus of the function itself:
 
 \begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
-    Let $f$ be analytic on $B(0, R)$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B(0, R)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
+    Let $f$ be analytic on $B_{R}(0)$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
     $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}. $$
 \end{theorem}
 
 \begin{definition}
-    Let $f$ be analytic on $B(0, R)$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B(0,r)}$.
+    Let $f$ be analytic on $B_{R}(0)$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B_{r}(0)}$.
 \end{definition}
 
 \begin{corollary}
-    Let $f$ be analytic on $B(0, R)$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
+    Let $f$ be analytic on $B_{R}(0)$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
     $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s $$
 \end{corollary}
 
 \begin{proof}
-    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B(0, R)$ arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
+    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
     \begin{align*}
         \log \frac{r^n}{r_1 \hdots r_n} &= \sum_{k=1}^n \log \frac{r}{r_k} = \sum_{k=1}^n \int_{r_k}^r \frac{1}{s} \diff s = \\
         &= \sum_{k=1}^n \int_0^r \1_{(r_k, \infty)}(s) \frac{1}{s} \diff s = \int_0^r \left( \sum_{k=1}^n \1_{(r_k, \infty)}(s) \right) \frac{1}{s} \diff s = \\

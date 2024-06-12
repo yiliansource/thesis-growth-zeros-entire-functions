@@ -1,13 +1,70 @@
 \section{Schottky's Theorem}
 \label{sec:schottkys-theorem}
 
+\begin{lemma} \label{lem:schottky-1}
+    It holds that:
+    \begin{enumerate}[i.]
+        \item If $\cos \pi a = \cos \pi b$, then $b = \pm a + 2n, n \in \Z$.
+        \item For every $w \in \C$ there exists a $v \in \C$ such that $\cos \pi v = w$ and $\vert v \vert \leq 1 + \vert w \vert$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{proof}
+    For the first part, is suffices to notice that
+    $$ 0 = \cos \pi a - \cos \pi b = \textstyle -2 \sin \frac{\pi}{2} ( a + b ) \sin \frac{\pi}{2} ( a - b ). $$
+    Since the complex cosine function is surjective and $\R$-periodic, we can choose $v = \alpha + i \beta$ with $w = \cos \pi v$ and $\vert \alpha \vert \leq 1$. Now we have
+    \begin{align*}
+        \vert w \vert^2 &= \vert \cos (\pi \alpha + i \pi \beta) \vert^2 = \vert \cos \pi \alpha \cosh \pi \beta - i \sin \pi \alpha \sinh \pi \beta \vert^2 = \\
+        &= \cos^2 \pi \alpha \cosh^2 \pi \beta + \sin^2 \pi \alpha \sinh^2 \pi \beta = \\
+        &= \cos^2 \pi \alpha + \cos^2 \pi \alpha \sinh^2 \pi \beta + \sin^2 \pi \alpha \sinh^2 \pi \beta = \\
+        &= \cos^2 \pi \alpha + \sinh^2 \pi \beta \geq \sinh^2 \pi \beta \geq \pi^2 \beta^2,
+    \end{align*}
+    where the last inequality holds since $\sinh x \geq x$ for $x \geq 0$. We conclude
+    \begin{equation*}
+        \vert v \vert = \sqrt{\alpha^2 + \beta^2} \leq \sqrt{1 + \vert w \vert^2 / \pi^2} \leq 1 + \vert w \vert
+    \end{equation*}
+\end{proof}
+
+\begin{lemma} \label{lem:schottky-2}
+    Let $G \subset \C$ be a simply connected domain and $f \in H(G)$ such that $f$ does not assume $-1$ or $1$ as values in $G$. Then there exists an $F \in H(G)$ such that $f = \cos F$.
+\end{lemma}
+
+\begin{proof}
+    Since $1 - f^2$ vanishes nowhere in $G$ it has a square root $g \in H(G)$. It follows that
+    $$ 1 = f^2 + g^2 = (f + ig)(f - ig). $$
+    Thus $f + ig$ vanishes nowhere and there exists an $F \in H(G)$ with $f + ig = e^{iF}$. Additionally we have $f - ig = e^{-iF}$ and therefore
+    $$ f = {\textstyle \frac{1}{2}} (e^{iF} + e^{-iF}) = \cos F. $$
+\end{proof}
+
+\begin{proposition} \label{prop:schottky-3}
+    Let $G \subset \C$ be a simply connected domain and $f \in H(G)$ such that $f$ does not assume $0$ or $1$ as values in $G$. Then there exists a $g \in H(G)$ such that:
+    \begin{enumerate}[i.]
+        \item $f = \frac{1}{2} ( 1 + \cos \pi (\cos \pi g))$, and $\vert g(0) \vert \leq 3 + 2 \vert f(0) \vert$.
+        \item $\vert g(z) \vert \leq \vert g(0) \vert + \theta / \beta (1 - \theta)$, for all $\vert z \vert \leq \theta$ where $0 < \theta < 1$ and $\beta \geq \frac{1}{12}$ is a constant.
+        \item If $h \in H(G)$ is any function satisfying (i), then $h(G)$ contains no disk of radius $1$.
+    \end{enumerate}
+\end{proposition}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
 \begin{theorem}[Schottky] \label{thm:schottky}
-    Let $f$ be analytic on $\cl{\D}$ such that it does not attain $0$ or $1$ as values in $\cl{\D}$. Then there is a function $\psi(\omega, \theta) : \C \times (0, 1) \to \R_{\geq 0}$ such that if $\vert f(0) \vert \leq \omega$, then
+    Let $f \in H(\cl{\D})$ such that $f$ does not assume $0$ or $1$ as values in $\cl{\D}$. Then there is a function $\psi(\theta, \omega) : (0, 1) \times (0, \infty) \to \R_{>0}$ such that if $\vert f(0) \vert \leq \omega$, then
     \begin{equation}
-        \vert f(z) \vert \leq \psi(\omega, \theta), \quad \vert z \vert \leq \theta.
+        \vert f(z) \vert \leq \psi(\theta, \omega), \quad \vert z \vert \leq \theta.
     \end{equation}
 \end{theorem}
 
 \begin{proof}
-    \todo{Ref: Classical Topics p237.}
+    Select the constant $\beta$ from \Cref{prop:schottky-3} and set
+    \begin{equation*}
+        \psi(\theta, \omega) \coloneqq \exp \left( \pi \exp \pi \left( 3 + 2 \omega + \frac{\theta}{\beta (1 - \theta)} \right) \right).
+    \end{equation*}
+    Note that for all $w \in \C$ we have $\vert \cos w \vert \leq e^{\vert w \vert}$ and $\frac{1}{2} \vert 1 + \cos w \vert \leq e^{\vert w \vert}$. Hence, from \Cref{prop:schottky-3}, we conclude
+    \begin{align*}
+        \vert f(z) \vert &= \vert {\textstyle \frac{1}{2}} ( 1 + \cos \pi ( \cos \pi g(z) ) ) \vert \leq \exp \pi \vert \cos \pi g(z) \vert \leq \\
+        &\leq \exp ( \pi \exp \pi \vert g(z) \vert ) \leq \exp (\pi \exp \pi (\vert g(0) \vert + \theta / \beta(1 - \theta))) \leq \\
+        &\leq \exp ( \pi \exp \pi ( 3 + 2 \omega + \theta / \beta(1 - \theta) ) ) = \psi(\theta, \omega).
+    \end{align*}
 \end{proof}

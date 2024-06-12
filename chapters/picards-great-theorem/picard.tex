@@ -1,16 +1,30 @@
 \section{Picard's Great Theorem}
 \label{sec:picards-great-theorem}
 
+\begin{theorem}[Montel]
+    Let $D \subset \C$ be open. Then a family $\mathscr{F} \subset H(D)$ is normal if and only if it is locally uniformly bounded.
+\end{theorem}
+
+\begin{lemma} \label{lem:great-picard-bounded}
+    Let $f \in H(\D^\times)$ with $0, 1 \notin f(\D^\times)$. Then $f$ or $1/f$ is bounded in a punctured neighborhood of $0$.
+\end{lemma}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
 \begin{theorem}[Picard's Great Theorem] \label{thm:picards-great-theorem}
-    Let $c \in \C$ be an isolated singularity of $f$. Then, in every punctured neighbourhood of $c$, $f$ assumes every complex number as a value infinitely many times, with at most one exception.
+    Let $G \subset \C$ be open, $w \in G$ and suppose $f \in H(G \setminus \{ w \})$, such that $f$ has an essential singularity at $w$. Then $f$ takes on all values in $\C$, with at most one exception, on any punctured neighborhood of $w$.
 \end{theorem}
 
 \begin{proof}
-    \todo{Ref: Classical Topics p240.}
+    Aiming for contradiction, assume that $f$ only takes on $z_0, z_1 \in \C$ finitely often in some punctured neighborhood $W$ of $w$. Then $W$ contains a punctured disk of radius $\varepsilon > 0$ around $w$, on which $f$ does not assume $z_0, z_1$. The function
+    $$ g(z) \coloneqq \frac{f(\varepsilon z + w) - z_0}{z_1 - z_0} \in H(\D^\times) $$
+    has an essential singularity at zero and satisfies $0, 1 \notin g(\D^\times)$. By \Cref{lem:great-picard-bounded}, we have that either $g$ or $1/g$ must be bounded in a neighborhood of zero. In the former case the singularity must therefore be removable, whereas in the latter case it must be a pole, yielding a contradiction.
 \end{proof}
 
 \begin{corollary} \label{cor:transcendental-every-value-inf}
-    Let $f$ be a transcendental entire function. Then $f$ attains every value in $\C$ infinitely often, with at most one exception.
+    Let $f \in H(\C)$ be transcendental. Then $f$ attains every value in $\C$ infinitely often, with at most one exception.
 \end{corollary}
 
 \begin{proof}
