@@ -2,7 +2,7 @@
 \label{sec:blochs-theorem}
 
 \begin{lemma} \label{lem:bloch-lemma-1}
-    Let $G \subset \C$ be a bounded domain, $f : \cl{G} \to \C$ continuous and $\restr{f}{G} : G \to \C$ open. If there is a point $a \in G$ such that $s \coloneqq \min_{z \in \partial G} \vert f(z) - f(a) \vert > 0$, then $B_{s}(f(a)) \subseteq f(G)$.
+    Let $G \subset \C$ be a bounded domain, $f : \cl{G} \to \C$ continuous and $\restr{f}{G} : G \to \C$ open. If there exists $a \in G$ such that $s \coloneqq \min_{z \in \partial G} \vert f(z) - f(a) \vert > 0$, then $B_{s}(f(a)) \subseteq f(G)$.
 \end{lemma}
 
 \begin{proof}
@@ -23,14 +23,14 @@
     $$ \mapping{\alpha_f}{B_{r}(0) & \to & \C,}{z & \mapsto & f(z) - f'(0) z,} $$
     which satifies, for the line $\gamma$ connecting $0$ to $z \in \C$,
     \begin{equation} \label{eq:bloch-lemma-2:estimate-1}
-        \vert \alpha_f(z) \vert = \left\vert \int_\gamma f'(\zeta) - f'(0) \diff \zeta \right\vert \leq \int_0^1 \vert f'(t z) - f'(0) \vert \vert z \vert \diff t.
+        \vert \alpha_f(z) \vert = \left\vert \int_\gamma f'(\zeta) - f'(0) \diff \zeta \right\vert \leq \int_0^1 \vert f'(t z) - f'(0) \vert \vert z \vert \diff t. \tag{\textasteriskcentered}
     \end{equation}
     Let $w \in B$, then Cauchy's integral formula gives
     \begin{align*}
         \vert f'(w) - f'(0) \vert &= \frac{1}{2\pi} \left\vert \int_{\partial B} \frac{f'(\zeta)}{\zeta - w} - \frac{f'(\zeta)}{\zeta} \diff \zeta \right\vert = \frac{1}{2\pi} \left\vert \int_{\partial B} \frac{w f'(\zeta)}{\zeta (\zeta - w)} \diff \zeta \right\vert \leq \\
         &\leq \frac{1}{2\pi} \int_{\partial B} \frac{\vert w \vert \Vert f' \Vert_B}{r(r - \vert w \vert)} \diff \zeta = \frac{\vert w \vert}{r - \vert w \vert} \Vert f' \Vert_B.
     \end{align*}
-    Combining the above with \cref{eq:bloch-lemma-2:estimate-1} and our estimate on $\Vert f' \Vert_B$ yields
+    Combining the above with \eqref{eq:bloch-lemma-2:estimate-1} and our estimate on $\Vert f' \Vert_B$ yields
     \begin{align*}
         \vert \alpha_f(z) \vert &\leq \int_0^1 \frac{\vert z t \vert \Vert f' \Vert_B}{r - \vert z t \vert} \vert z \vert \diff t \leq \frac{\vert z \vert^2}{r - \vert z \vert} \Vert f' \Vert_B \int_0^1 t \diff t \leq \frac{\vert z \vert^2}{r - \vert z \vert} \vert f'(0) \vert.
     \end{align*}
@@ -39,7 +39,7 @@
         \vert f'(0) \vert \rho - \vert f(z) \vert &\leq \vert \alpha_f(z) \vert \leq \frac{\rho^2}{r - \rho} \vert f'(0) \vert \\
         \Longleftrightarrow \quad \vert f(z) \vert &\geq \left( \rho - \frac{\rho^2}{r - \rho} \right) \vert f'(0) \vert.
     \end{align*}
-    Considering $\rho - \rho^2 / (r - \rho)$ as a function of $\rho$, it attains its maximum value, $(3 - 2 \sqrt{2}) r$, at $\rho_* \coloneqq (1 - \sqrt{2} / 2)r < r$. Therefore,
+    Considering $\rho - \rho^2 / (r - \rho)$ as a function of $\rho$, it attains its maximum value, $(3 - 2 \sqrt{2}) r$, at $\rho_* \coloneqq (1 - \sqrt{2} / 2)r \in (0, r)$. Therefore,
     \begin{equation*}
         \vert f(z) \vert \geq (3 - 2 \sqrt{2}) r \vert f'(0) \vert = R, \quad \textrm{for all} \quad \vert z \vert = \rho_*.
     \end{equation*}
@@ -61,16 +61,14 @@
     concluding the claim.
 \end{proof}
 
+Since $C_f \geq \vert f'(0) \vert$, we immediately have:    
+
 \begin{theorem}[Bloch] \label{thm:bloch}
     Let $f \in H(\cl{\D})$ with $f'(0) = 1$. Then $f(\D)$ contains a disk of radius $R \coloneqq \frac{3}{2} - \sqrt{2} > \frac{1}{12}$.
 \end{theorem}
 
-\begin{proof}
-    Realizing $C_f = \vert f'(p) \vert (1 - \vert p \vert) \geq \vert f'(0) \vert = 1$ in the proof of \Cref{thm:bloch-stronger} immediately yields the claim.
-\end{proof}
-
 \begin{corollary} \label{cor:bloch-domain}
-    Let $G \subset C$ be a domain and $f \in H(G)$ with $f'(c) \neq 0$ for some $c \in G$. Then $f(G)$ contains a disk of every radius $\frac{1}{12} s \vert f'(c) \vert, 0 < s < d(c, \partial G)$.
+    Let $G \subset C$ be a domain and $f \in H(G)$ with $f'(c) \neq 0$ for some $c \in G$. Then $f(G)$ contains a disk of every radius $\frac{1}{12} s \vert f'(c) \vert$, where $0 < s < d(c, \partial G)$.
 \end{corollary}
 
 \begin{proof}
