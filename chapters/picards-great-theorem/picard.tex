@@ -1,0 +1,28 @@
+\section{Picard's Great Theorem}
+\label{sec:picards-great-theorem}
+
+\begin{theorem}[Picard's Great Theorem] \label{thm:picards-great-theorem}
+    Let $c \in \C$ be an isolated singularity of $f$. Then, in every punctured neighbourhood of $c$, $f$ assumes every complex number as a value infinitely many times, with at most one exception.
+\end{theorem}
+
+\begin{proof}
+    \todo{Ref: Classical Topics p240.}
+\end{proof}
+
+\begin{corollary} \label{cor:transcendental-every-value-inf}
+    Let $f$ be a transcendental entire function. Then $f$ attains every value in $\C$ infinitely often, with at most one exception.
+\end{corollary}
+
+\begin{proof}
+    If $f(z) = \sum_{n \in \Z_{\geq 0}} a_n z^n$, then $f(z^{-1}) = \sum_{n \in \Z_{\leq 0}} a_{-n} z^{n}$, thus $f$ has an essential singularity at $\infty$ and Picard's Great Theorem (\ref{thm:picards-great-theorem}) concludes the claim.
+\end{proof}
+
+\begin{corollary}[Picard's Little Theorem] \label{thm:picards-little-theorem}
+    Every nonconstant entire function omits at most one value.
+\end{corollary}
+
+\begin{proof}
+    A non-constant entire function $f$ is either a non-constant polynomial or a transcendental function. In the latter case, the claim follows from \Cref{cor:transcendental-every-value-inf}.
+    
+    Otherwise let $w \in \C$, then $f(z) - w$ is a non-constant polynomial. By the Fundamental Theorem of Algebra it has a zero at some $z_0 \in \C$. Therefore $f(z_0) = w$ and $f$ attains all values.
+\end{proof}

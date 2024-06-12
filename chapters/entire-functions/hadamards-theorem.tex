@@ -1,0 +1,49 @@
+\section{Hadamard's Theorem}
+\label{sec:hadamards-theorem}
+
+\begin{theorem}[Weierstrass \cite{bluemlinger-complex-analysis,stein-shakarchi-princeton}] \label{thm:weierstrass}
+    Let $(z_j)_{j \in \N}$ be a sequence in $\C$ without accumulation points. Then there exists an entire function $E$ (called the \emph{Weierstrass canonical product} formed from said sequence) that has zeros precisely at $(z_j)_{j \in \N}$, with multiplicities equal to how often $z_j$ occurs in the sequence.
+\end{theorem}
+
+In particular, we have
+\begin{equation} \label{eq:weierstrass-canonical-product}
+    E(z) = z^k \prod_{n=1}^\infty \left( 1 - \frac{z}{z_n} \right) e^{R_n(z / z_n)},
+\end{equation}
+where $k$ is the order of the zero at $z = 0$ and $R_n$ is a polynomial, namely a truncation of the power series for $-\log(1 - \frac{z}{z_n})$ chosen of smallest degree to ensure convergence of the product~\cite{segal-complex-analysis}.
+
+Weierstrass' Theorem (\ref{thm:weierstrass}) is also known as the \emph{Weierstrass Factorization Theorem}, due to the following corollary:
+
+\begin{corollary} \label{cor:weierstrass-factorization}
+    Let $f$ be an entire function with zeros $(z_j)_{j \in \N}$. Then there exists an entire function $g$, such that
+    $$ f(z) = e^{g(z)} E(z), $$
+    where $E$ is a Weierstrass canonical product formed from the zeros of $f$.
+\end{corollary}
+
+\begin{proof}
+    Since $f / E$ has removable singularities at all $(z_j)_{j \in \N}$, we have that $f / E$ is entire and nowhere $0$. Thus there exists an entire function $g$ with $f / E = e^g$, which yields $f = e^g E$.
+\end{proof}
+
+Hadamard's Theorem will show that, for functions of finite order $\rho$, the function $g$ in \Cref{cor:weierstrass-factorization} can be taken to be a polynomial of degree less than $\rho$ and the degree of the polynomials $R_n$ in \cref{eq:weierstrass-canonical-product} can be taken to be independant of $n$. To prove this we require the following lemma, which can be interpreted as a version of the maximum modulus theorem applied to the real part of an analytic function.
+
+\begin{lemma}[Borel-Carathéodory] \label{lem:borel-caratheodory}
+    Let $f$ be analytic in $\cl{\D}$ and let
+    $$ A_f(r) = \max_{\vert z \vert = r} \Re f(z). $$
+    Then, for $0 < r < R$,
+    $$ M_f(r) \leq \frac{2r}{R - r} A_f(R) + \frac{R + r}{R - r} \vert f(0) \vert $$
+    and, if additionally $A_f(R) \geq 0$, then for $n \in \N$
+    $$ \max_{\vert z \vert = r} \vert f^{(n)}(z) \vert \leq \frac{2^{n+2} n! R}{(R - r)^{n+1}} (A_f(R) + \vert f(0) \vert). $$
+\end{lemma}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+\begin{theorem}[Hadamard] \label{thm:hadamard}
+    Let $f$ be an entire function of finite order with zeros $(z_j)_{j \in \N}$. Then there exists a polynomial $Q$ with $\deg Q \leq \rho_f$, such that
+    $$ f(z) = e^{Q(z)} E(z), $$
+    where $E$ is a Weierstrass canonical product formed from the zeros of $f$.
+\end{theorem}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}

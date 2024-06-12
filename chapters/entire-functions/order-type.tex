@@ -1,0 +1,66 @@
+\section{Order \& Type}
+\label{sec:order-type}
+
+\begin{definition} \label{def:order}
+    Let $f$ be an entire function. The \emph{order} of $f$ is defined by
+    \begin{equation} \label{eq:def-order}
+        \rho_f \coloneqq \limsup_{r \to \infty} \frac{\log \log M_f(r)}{\log r}.
+    \end{equation}
+    Constant functions, by convention, have order 0.
+\end{definition}
+
+Note that, for any entire function $f$, we have $0 \leq \rho_f \leq \infty$. Furthermore, $\rho_f < \infty$ if and only if $M_f(r) = O(\exp(r^{\rho_f + \varepsilon}))$ for every $\varepsilon > 0$ and no $\varepsilon < 0$, as $r \to \infty$~\cite{segal-complex-analysis}.
+
+An elementary fact regarding the order of the sum or product of two entire functions of finite order can immediately be obtained by naively estimating their respective maximum modulus:
+
+\begin{proposition} \label{prop:algebraic-properties-order}
+    Let $f, g$ be entire functions of finite order. Then it holds that:
+    \begin{enumerate}[i.]
+        \item $\rho_{f + g} \leq \max \{ \rho_f, \rho_g \}$
+        \item $\rho_{f g} \leq \max \{ \rho_f, \rho_g \}$
+    \end{enumerate}
+\end{proposition}
+
+\todo{I could remark that if $\rho_f \neq \rho_g$ we can actually achieve equality in the above, but the proof for the multiplication case is tedious.}
+
+% \begin{remark}
+% maybe a remark on equality in the above proposition
+% This requires an estimate of the entire function of smaller order from below, which is not trivial. Look in B. Levin, Distribution of zeros of entire functions. American Mathematical Society, Providence, R.I., 1980, Chap. I, § 9, Theorem 12 a).
+% \end{remark}
+
+\begin{proposition} \label{prop:order-derivative}
+    Let $f$ be an entire function of finite order, then $\rho_{f'} = \rho_f$.
+\end{proposition}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+For functions of finite and positive order, we can obtain a natural refinement of the concept of order:
+
+\begin{definition}
+    Let $f$ be an entire function of finite and positive order. The \emph{type} of $f$ is defined by
+    \begin{equation} \label{eq:def-type}
+        \tau_f \coloneqq \limsup_{r \to \infty} \frac{\log M_f(r)}{r^{\rho_f}}
+    \end{equation}
+\end{definition}
+
+For any entire function $f$ with $0 < \rho_f < \infty$, we have $0 < \tau_f \leq \infty$. Additionally, we have $0 < \rho_f < \infty$ and $\tau_f < \infty$ if and only if $M_f(r) = O(\exp((\tau_f + \varepsilon) r^{\rho_f}))$ for every $\varepsilon > 0$ and no $\varepsilon < 0$, as $r \to \infty$~\cite{segal-complex-analysis}.
+
+Imitating the proof of \Cref{prop:order-derivative}, we immediately get:
+
+\begin{proposition} \label{prop:type-derivative}
+    Let $f$ be an entire function of finite type, then $\tau_{f'} = \tau_f$.
+\end{proposition}
+
+\begin{definition}
+    Let $f$ be an entire function. Then $f$ is said to be of \emph{growth} $(a, b)$ if
+    \begin{itemize}
+        \item $\rho_f < a$, or
+        \item $\rho_f = a$ and $\tau_f \leq b$.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    \todo{Maybe give some functions together with their order and type?}
+\end{example}

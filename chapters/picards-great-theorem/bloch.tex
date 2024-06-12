@@ -1,0 +1,71 @@
+\section{Bloch's Theorem}
+\label{sec:blochs-theorem}
+
+\begin{lemma} \label{lem:bloch-lemma-1}
+    Let $G \subset \C$ be a bounded domain, $f : \cl{G} \to \C$ continuous and $\restr{f}{G} : G \to \C$ open. If there is a point $a \in G$ such that $s \coloneqq \min_{z \in \partial G} \vert f(z) - f(a) \vert > 0$, then $B(f(a), s) \subseteq f(G)$.
+\end{lemma}
+
+\begin{proof}
+    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it attains its minimum $m$ at some $w_* \in \partial f(G)$. Let $(z_n)_{n \in \N}$ be a sequence in $G$, such that $\lim_{n \to \infty} f(z_n) = w_*$. Since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$. Since $f$ is continuous, we have $f(z_*) = w_* \in \partial f(G)$.
+
+    Assuming $z_* \in G$, since $\restr{f}{G}$ is open, the image of any open set in $G$ containing $z_*$ under $f$ must be an open set in $f(G)$ containing $w_*$, which is impossible since $w_* \in \partial G$.
+
+    Therefore $z_* \in \partial G$ and we have $m = \vert w_* - f(a) \vert = \vert f(z_*) - f(a) \vert \geq s$, from which it follows that $B(f(a), s) \subseteq f(G)$.
+\end{proof}
+
+\begin{lemma} \label{lem:bloch-lemma-2}
+    Let $a \in \C, r > 0$ and $B \coloneqq B(a, r)$. Suppose further that $f$ is analytic on $\cl{B}$ such that $\Vert f' \Vert_B \leq 2 \vert f'(a) \vert$. Then
+    $$ B(f(a), R) \subseteq f(B), \quad \textrm{where} \quad R \coloneqq (3 - 2 \sqrt{2}) r \vert f'(a) \vert. \quad (3 - 2 \sqrt{2} > {\textstyle\frac{1}{6}}) $$
+\end{lemma}
+
+\begin{proof}
+    Without loss of generality we can assume $a = f(a) = 0$. Consider the function
+    $$ \mapping{\alpha_f}{B(0, r) & \to & \C}{z & \mapsto & f(z) - f'(0) z}, $$
+    which satifies, for the line $\gamma$ connecting $0$ to $z \in \C$,
+    \begin{equation} \label{eq:bloch-lemma-2:estimate-1}
+        \vert \alpha_f(z) \vert = \left\vert \int_\gamma f'(\zeta) - f'(0) \diff \zeta \right\vert \leq \int_0^1 \vert f'(t z) - f'(0) \vert \vert z \vert \diff t.
+    \end{equation}
+    Let $w \in B$, then Cauchy's integral formula gives
+    \begin{align*}
+        \vert f'(w) - f'(0) \vert &= \frac{1}{2\pi} \left\vert \int_{\partial B} \frac{f'(\zeta)}{\zeta - w} - \frac{f'(\zeta)}{\zeta} \diff \zeta \right\vert = \frac{1}{2\pi} \left\vert \int_{\partial B} \frac{w f'(\zeta)}{\zeta (\zeta - w)} \diff \zeta \right\vert \leq \\
+        &\leq \frac{1}{2\pi} \int_{\partial B} \frac{\vert w \vert \Vert f' \Vert_B}{r(r - \vert w \vert)} \diff \zeta = \frac{\vert w \vert}{r - \vert w \vert} \Vert f' \Vert_B.
+    \end{align*}
+    Combining the above with \cref{eq:bloch-lemma-2:estimate-1} and our estimate on $\Vert f' \Vert_B$ yields
+    \begin{align*}
+        \vert \alpha_f(z) \vert &\leq \int_0^1 \frac{\vert z t \vert \Vert f' \Vert_B}{r - \vert z t \vert} \vert z \vert \diff t \leq \frac{\vert z \vert^2}{r - \vert z \vert} \Vert f' \Vert_B \int_0^1 t \diff t \leq \frac{\vert z \vert^2}{r - \vert z \vert} \vert f'(0) \vert.
+    \end{align*}
+    Let $0 < \rho < r$, then for $\vert z \vert = \rho$ we have
+    \begin{align*}
+        \vert f'(0) \vert \rho - \vert f(z) \vert &\leq \vert \alpha_f(z) \vert \leq \frac{\rho^2}{r - \rho} \vert f'(0) \vert \\
+        \Longleftrightarrow \quad \vert f(z) \vert &\geq \left( \rho - \frac{\rho^2}{r - \rho} \right) \vert f'(0) \vert.
+    \end{align*}
+    Considering $\rho - \rho^2 / (r - \rho)$ as a function of $\rho$, it attains its maximum value, $(3 - 2 \sqrt{2}) r$, at $\rho_* \coloneqq (1 - \sqrt{2} / 2)r < r$. Therefore,
+    \begin{equation*}
+        \vert f(z) \vert \geq (3 - 2 \sqrt{2}) r \vert f'(0) \vert = R, \quad \textrm{for all} \quad \vert z \vert = \rho_*.
+    \end{equation*}
+    Invoking \Cref{lem:bloch-lemma-1} with $G \coloneqq B(0, \rho_*)$ thus yields $B(0, R) \subseteq f(G) \subseteq f(B)$.
+\end{proof}
+
+\begin{theorem} \label{thm:bloch-stronger}
+    Let $f$ be non-constant and analytic on $\cl{\D}$. Then there is a point $p \in \D$ and a constant $C_f > 0$ such that $B(f(p), R) \subseteq f(\D)$, where $R \coloneqq (\frac{3}{2} - \sqrt{2}) C_f > \frac{1}{12} \vert f'(p) \vert$.
+\end{theorem}
+
+\begin{proof}
+    The function
+    $$ \mapping{\alpha_f}{\D & \to & \R}{z & \mapsto & \vert f'(z) \vert (1 - \vert z \vert)} $$
+    is continuous and attains its maximum $C_f > 0$ at some point $p \in \D$.
+    
+    Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then for $z \in B(p, t)$ we have $B(p, t) \subseteq \D$ and $1 - \vert z \vert \geq t$. Since $\vert f'(z) \vert (1 - \vert z \vert) \leq M = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$. By \Cref{lem:bloch-lemma-2}, we obtain
+    $$ B(f(p), R) \subseteq f(\D), \quad \textrm{where} \quad R \coloneqq (3 - 2 \sqrt{2}) t \vert f'(p) \vert = ({\textstyle \frac{3}{2}} - \sqrt{2}) C_f, $$
+    concluding the claim.
+\end{proof}
+
+
+
+\begin{theorem}[Bloch] \label{thm:bloch}
+    Let $f$ be analytic on $\cl{\D}$ with $f'(0) = 1$. Then there is a point $p \in \C$ such that $B(f(p), R) \subseteq f(\D)$ where $R \coloneqq \frac{3}{2} - \sqrt{2} > \frac{1}{12}$.
+\end{theorem}
+
+\begin{proof}
+    \todo{Need to figure out how to properly modify $f$ to apply \Cref{thm:bloch-stronger}.}
+\end{proof}

@@ -37,14 +37,33 @@
 
 \newcommand{\todo}[1]{{\color{todo} #1}}
 \renewcommand{\qedsymbol}{$\blacksquare$}
-\newcommand{\cl}[1]{\operatorname{cl}(#1)}
+% \newcommand{\cl}[1]{\operatorname{cl}(#1)}
+\newcommand{\cl}[1]{\overline{#1}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\D}{\mathbb{D}}
 \newcommand{\powerseries}[2][n]{\sum_{#1=0}^\infty {#2}z^{#1}}
 \newcommand{\diff}{\mathop{}\!\mathrm{d}}
 \newcommand{\1}{\mathbbm{1}}
+\newcommand{\restr}[2]{{% we make the whole thing an ordinary symbol
+  \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
+  #1 % the function
+  \vphantom{\big|} % pretend it's a little taller at normal size
+  \right|_{#2} % this is the delimiter
+}}
+\newcommand{\mapping}[3]{
+  \ensuremath{
+    #1 : \left\{
+    \begin{array}{@{\;}c@{\;}c@{\;}l@{}}
+      #2 \\
+      #3
+    \end{array}
+    \right.
+  }
+}
 
 \theoremstyle{plain}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -120,18 +139,9 @@
 \tableofcontents
 
 \cleardoublepage
-\pagenumbering{arabic} 
+\pagenumbering{arabic}
 
-% \chapter{Introduction}
-% \label{chapter:introduction}
-
-% We will use \cite{MR2376066}.
-
-\include{chapters/introduction.tex}
-\include{chapters/order.tex}
-\include{chapters/factorization.tex}
-\include{chapters/zeros.tex}
-\include{chapters/composition.tex}
+\include{chapters/index.tex}
 
 \bibliography{literature.bib}
 \bibliographystyle{abbrv}

@@ -1,0 +1,91 @@
+\section{Zeros}
+\label{sec:zeros}
+
+We recall a rather explicit connection between the moduli of the zeros of an analytic function and the modulus of the function itself:
+
+\begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
+    Let $f$ be analytic on $B(0, R)$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B(0, R)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
+    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}. $$
+\end{theorem}
+
+\begin{definition}
+    Let $f$ be analytic on $B(0, R)$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B(0,r)}$.
+\end{definition}
+
+\begin{corollary}
+    Let $f$ be analytic on $B(0, R)$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
+    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s $$
+\end{corollary}
+
+\begin{proof}
+    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B(0, R)$ arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
+    \begin{align*}
+        \log \frac{r^n}{r_1 \hdots r_n} &= \sum_{k=1}^n \log \frac{r}{r_k} = \sum_{k=1}^n \int_{r_k}^r \frac{1}{s} \diff s = \\
+        &= \sum_{k=1}^n \int_0^r \1_{(r_k, \infty)}(s) \frac{1}{s} \diff s = \int_0^r \left( \sum_{k=1}^n \1_{(r_k, \infty)}(s) \right) \frac{1}{s} \diff s = \\
+        &= \int_0^r \frac{n_f(s)}{s} \diff s
+    \end{align*}
+    and \Cref{thm:jensen} concludes the claim.
+\end{proof}
+
+In particular, we observe that the more zeros a function $f(z)$ has, the faster its modulus must grow as $\vert z \vert \to \infty$. The converse is naturally false, as seen by iterated exponentials~\cite{segal-complex-analysis}.
+
+\begin{definition}
+    Let $f$ be an entire function and let $(r_j)_{j \in \N}$ denote the non-zero moduli of its zeros (if any) arranged in non-decreasing order. Then
+    $$ \lambda_f \coloneqq \inf \left\{ \lambda > 0 : \sum_{n=1}^\infty \frac{1}{r^\lambda_n} < \infty \right\} $$
+    is called the \emph{exponent of convergence of the zeros of f}. If $f$ has finitely many zeros, then we set $\lambda_f = 0$ by convention.
+
+    Furthermore, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of zeros of $f(z) - a$.
+\end{definition}
+
+\begin{theorem} \label{thm:inequality-order-exponent-of-convergence}
+    Let $f$ be an entire function of finite order. Then $\lambda_f \leq \rho_f$.
+\end{theorem}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+\begin{example} \label{exm:exponent-of-convergence}
+    Consider the entire function $f(z) \coloneqq \sin(z)$, which has zeros at $(n \pi)_{n \in \Z}$, and let $\lambda > 0$. Since
+    $$ \sum_{n \in \Z \setminus \{0\}} \frac{1}{\vert n \pi \vert^\lambda} = \frac{2}{\pi^\lambda} \sum_{n=1}^\infty \frac{1}{\vert n \vert^\lambda} $$
+    is finite if and only if $\lambda > 1$, we obtain $\lambda_f = 1$. Furthermore, we have $\vert \sin(z) \vert \leq e^{\vert \Im z \vert}$
+    and therefore
+    $$ M_f(r) \leq \max_{\vert z \vert = r} \vert e^z \vert. $$
+    Since $e^z$ is of order $1$, this implies $\rho_f \leq 1$. Finally, \Cref{thm:inequality-order-exponent-of-convergence} concludes $\rho_f = 1$.
+\end{example}
+
+\begin{theorem} \label{thm:exponent-of-convergence-weierstrass-product}
+    Let $E$ be a Weierstrass canonical product of finite order. Then $\lambda_E = \rho_E$.
+\end{theorem}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+\begin{theorem} \label{thm:finite-non-integer-order-equals-exponent-of-convergence}
+    Let $f$ be an entire function of finite, non-integer order. Then $\rho_f = \lambda_f$.
+\end{theorem}
+
+\begin{proof}
+    By \Cref{thm:inequality-order-exponent-of-convergence} we have $\lambda_f \leq \rho_f$. Invoking Hadamard's Theorem we can write $f = e^Q E$ for a polynomial $Q$ with $\deg Q \leq \rho_f$. Since $\rho_f$ is not an integer, this implies $\deg Q \leq \lfloor \rho_f \rfloor < \rho_f$. Now, again by Hadamard's Theorem, $e^Q$ has order $\deg Q$ and by \Cref{thm:exponent-of-convergence-weierstrass-product} $E$ has order $\lambda_f$. Using \Cref{prop:algebraic-properties-order} we obtain
+    $$ \rho_f \leq \max \{ \deg Q, \lambda_f \} = \lambda_f \leq \rho_f, $$
+    implying $\rho_f = \lambda_f$.
+\end{proof}
+
+\begin{theorem} \label{thm:finite-non-integer-order-infinite-zeros}
+    Let $f$ be an entire function of finite, non-integer order. Then $f$ has infinitely many zeros.
+\end{theorem}
+
+\begin{proof}
+    By \Cref{thm:finite-non-integer-order-equals-exponent-of-convergence} we have $\rho_f = \lambda_f$. Since $\rho_f$ is not an integer, $\lambda_f > 0$, which implies that $f$ has infinitely many zeros.
+\end{proof}
+
+\todo{Maybe introduce Borel exceptional values as a definition? But then again, I will never need them again. Maybe also add a remark on the relation to lacunary values (Picard).}
+
+\begin{theorem}[Borel] \label{thm:existence-borel-exceptional-values}
+    \todo{Existence of Borel exceptional values.}
+\end{theorem}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
