@@ -52,10 +52,10 @@
 
 \begin{proof}
     The function
-    $$ \mapping{\alpha_f}{\D & \to & \R}{z & \mapsto & \vert f'(z) \vert (1 - \vert z \vert)} $$
+    $$ \mapping{\alpha_f}{\cl{\D} & \to & \R}{z & \mapsto & \vert f'(z) \vert (1 - \vert z \vert)} $$
     is continuous and attains its maximum $C_f > 0$ at some point $p \in \D$.
     
-    Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then for $z \in B_{t}(p)$ we have $B_{t}(p) \subseteq \D$ and $1 - \vert z \vert \geq t$. Since $\vert f'(z) \vert (1 - \vert z \vert) \leq M = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$. By \Cref{lem:bloch-lemma-2}, we obtain
+    Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then for $z \in B_{t}(p)$ we have $B_{t}(p) \subseteq \D$ and $1 - \vert z \vert \geq t$. Since $\vert f'(z) \vert (1 - \vert z \vert) \leq C_f = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$. By \Cref{lem:bloch-lemma-2}, we obtain
     $ B_{R}(f(p)) \subseteq f(\D) $, where 
     $$ R \coloneqq (3 - 2 \sqrt{2}) t \vert f'(p) \vert = ({\textstyle \frac{3}{2}} - \sqrt{2}) \vert f'(p) \vert (1 - \vert p \vert) > {\textstyle \frac{1}{12}} \vert f'(0) \vert, $$
     concluding the claim.
@@ -67,17 +67,19 @@ Since $C_f \geq \vert f'(0) \vert$, we immediately have:
     Let $f \in H(\cl{\D})$ with $f'(0) = 1$. Then $f(\D)$ contains a disk of radius $R \coloneqq \frac{3}{2} - \sqrt{2} > \frac{1}{12}$.
 \end{theorem}
 
+In the following we will denote by $\beta > 0$ any constant satisfying Bloch's Theorem (\ref{thm:bloch}), for example $\beta = \frac{1}{12}$.
+
 \begin{corollary} \label{cor:bloch-domain}
-    Let $G \subset C$ be a domain and $f \in H(G)$ with $f'(c) \neq 0$ for some $c \in G$. Then $f(G)$ contains a disk of every radius $\frac{1}{12} s \vert f'(c) \vert$, where $0 < s < d(c, \partial G)$.
+    Let $G \subset \C$ be a domain and $f \in H(G)$ with $f'(c) \neq 0$ for some $c \in G$. Then $f(G)$ contains a disk of every radius $\beta s \vert f'(c) \vert$, where $0 < s < d(c, \partial G)$.
 \end{corollary}
 
 \begin{proof}
-    Without loss of generality we may assume $c = 0$. Since $f$ is analytic on $\cl{B_s(0)} \subseteq G$, we have $g(z) \coloneqq f(sz) / sf'(0) \in H(\cl{\D})$. Since $g'(0) = 1$, Bloch's Theorem (\ref{thm:bloch}) yields a disk $B$ of radius $\frac{1}{12}$ such that $B \subseteq g(\D)$. It follows that
+    Without loss of generality we may assume $c = 0$. Since $f$ is analytic on $\cl{B_s(0)} \subseteq G$, we have $g(z) \coloneqq f(sz) / sf'(0) \in H(\cl{\D})$. Since $g'(0) = 1$, Bloch's Theorem (\ref{thm:bloch}) yields a disk $B$ of radius $\beta$ such that $B \subseteq g(\D)$. It follows that
     \begin{equation*}
-        s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(\D).
+        s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(G).
     \end{equation*}
 \end{proof}
 
 \begin{corollary} \label{cor:bloch-entire}
-    If $f \in H(\C)$ is non-constant, then $f(\C)$ contains disks of every radius.
+    If $f \in H(\C)$ is non-constant, then $f(\C)$ contains a disk of every radius.
 \end{corollary}

@@ -1,32 +1,35 @@
 \section{Schottky's Theorem}
 \label{sec:schottkys-theorem}
 
+For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ such that $f(G) \subseteq E$.
+
 \begin{lemma} \label{lem:schottky-1}
     It holds that:
     \begin{enumerate}[i.]
-        \item If $\cos \pi a = \cos \pi b$, then $b = \pm a + 2n, n \in \Z$.
+        \item If $a, b \in \R$ with $\cos \pi a = \cos \pi b$, then $b = \pm a + 2n$ for some $n \in \Z$.
         \item For every $w \in \C$ there exists a $v \in \C$ such that $\cos \pi v = w$ and $\vert v \vert \leq 1 + \vert w \vert$.
     \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-    For the first part, is suffices to notice that
+    For the first part, it suffices to notice that
     $$ 0 = \cos \pi a - \cos \pi b = \textstyle -2 \sin \frac{\pi}{2} ( a + b ) \sin \frac{\pi}{2} ( a - b ). $$
-    Since the complex cosine function is surjective and $\R$-periodic, we can choose $v = \alpha + i \beta$ with $w = \cos \pi v$ and $\vert \alpha \vert \leq 1$. Now we have
+    Since the complex cosine function is surjective and $\R$-periodic, we can choose $v = a + i b$ with $w = \cos \pi v$ and $\vert a \vert \leq 1$. Now we have
     \begin{align*}
-        \vert w \vert^2 &= \vert \cos (\pi \alpha + i \pi \beta) \vert^2 = \vert \cos \pi \alpha \cosh \pi \beta - i \sin \pi \alpha \sinh \pi \beta \vert^2 = \\
-        &= \cos^2 \pi \alpha \cosh^2 \pi \beta + \sin^2 \pi \alpha \sinh^2 \pi \beta = \\
-        &= \cos^2 \pi \alpha + \cos^2 \pi \alpha \sinh^2 \pi \beta + \sin^2 \pi \alpha \sinh^2 \pi \beta = \\
-        &= \cos^2 \pi \alpha + \sinh^2 \pi \beta \geq \sinh^2 \pi \beta \geq \pi^2 \beta^2,
+        \vert w \vert^2 &= \vert \cos (\pi a + i \pi b) \vert^2 = \vert \cos \pi a \cos i \pi b + \sin \pi a \sin i \pi b \vert^2 = \\
+        &= \vert \cos \pi a \cosh \pi b - i \sin \pi a \sinh \pi b \vert^2 = \\
+        &= \cos^2 \pi a \cosh^2 \pi b + \sin^2 \pi a \sinh^2 \pi b = \\
+        &= \cos^2 \pi a + \cos^2 \pi a \sinh^2 \pi b + \sin^2 \pi a \sinh^2 \pi b = \\
+        &= \cos^2 \pi a + \sinh^2 \pi b \geq \sinh^2 \pi b \geq \pi^2 b^2,
     \end{align*}
     where the last inequality holds since $\sinh x \geq x$ for $x \geq 0$. We conclude
     \begin{equation*}
-        \vert v \vert = \sqrt{\alpha^2 + \beta^2} \leq \sqrt{1 + \vert w \vert^2 / \pi^2} \leq 1 + \vert w \vert
+        \vert v \vert = \sqrt{a^2 + b^2} \leq \sqrt{1 + \vert w \vert^2 / \pi^2} \leq 1 + \vert w \vert
     \end{equation*}
 \end{proof}
 
 \begin{lemma} \label{lem:schottky-2}
-    Let $G \subset \C$ be a simply connected domain and $f \in H(G)$ such that $f$ does not assume $-1$ or $1$ as values in $G$. Then there exists an $F \in H(G)$ such that $f = \cos F$.
+    Let $G \subseteq \C$ be a simply connected domain and $f \in H(G; \C \setminus \{ -1, 1 \})$. Then there exists an $F \in H(G)$ such that $f = \cos F$.
 \end{lemma}
 
 \begin{proof}
@@ -36,32 +39,53 @@
     $$ f = {\textstyle \frac{1}{2}} (e^{iF} + e^{-iF}) = \cos F. $$
 \end{proof}
 
-\begin{proposition} \label{prop:schottky-3}
-    Let $G \subset \C$ be a simply connected domain and $f \in H(G)$ such that $f$ does not assume $0$ or $1$ as values in $G$. Then there exists a $g \in H(G)$ such that:
+\begin{lemma} \label{lem:schottky-3}
+    Let $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$. Then there exists a $g \in H(G)$ such that:
     \begin{enumerate}[i.]
         \item $f = \frac{1}{2} ( 1 + \cos \pi (\cos \pi g))$, and $\vert g(0) \vert \leq 3 + 2 \vert f(0) \vert$.
-        \item $\vert g(z) \vert \leq \vert g(0) \vert + \theta / \beta (1 - \theta)$, for all $\vert z \vert \leq \theta$ where $0 < \theta < 1$ and $\beta \geq \frac{1}{12}$ is a constant.
-        \item If $h \in H(G)$ is any function satisfying (i), then $h(G)$ contains no disk of radius $1$.
+        \item $g(G)$ contains no disk of radius $1$.
+        \item $\vert g(z) \vert \leq \vert g(0) \vert + \theta / b (1 - \theta)$, for all $\vert z \vert \leq \theta$ where $0 < \theta < 1$.
     \end{enumerate}
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
-    \todo{TODO.}
+    By \Cref{lem:schottky-2} there exists a $\widetilde{F} \in H(\cl{\D})$ such that $2f - 1 = \cos \pi \widetilde{F}$. By \Cref{lem:schottky-1} there is a $b \in \C$ such that $\cos \pi b = 2f(0) - 1$ and $\vert b \vert \leq 1 + \vert 2 f(0) - 1 \vert \leq 2 + 2 \vert f(0) \vert$. Additionally we have that $b = \pm \widetilde{F}(0) + 2k$ for some $k \in \Z$. Then $F \coloneqq \pm \widetilde{F} + 2k \in H(\cl{\D})$ satifies $F(0) = b$. Since $F$ must omit all integers, there exists a $\widetilde{g} \in H(\cl{\D})$ such that $F = \cos \pi \widetilde{g}$. Again, there is an $a \in \C$ such that $\cos \pi a = b$ and $\vert a \vert \leq 1 + \vert b \vert \leq 3 + 2 \vert f(0) \vert$. Like above, we have $a = \pm \widetilde{g}(0) + 2\ell$ for some $\ell \in \Z$, thus $g \coloneqq \pm \widetilde{g}(0) + 2\ell \in H(\cl{\D})$ satisfies $g(0) = a$. Ultimately, we obtain
+    $$ \textstyle f = \frac{1}{2} (1 + \cos \pi (\cos \pi g)), \quad \textrm{and} \quad \vert g(0) \vert = \vert a \vert \leq 3 + 2 \vert f(0) \vert. $$
+
+    To show (ii) we consider the set
+    $$ A \coloneqq \{ m \pm i \pi^{-1} \log (n + \sqrt{n^2 - 1}) : m \in \Z, n \in \N \setminus \{ 0 \} \}, $$
+    the points of which can be considered the vertices of a rectangular grid in $\C$. The width of said rectangles is $1$, and since
+    \begin{align*}
+        \log ((n+1) &+ \sqrt{(n+1)^2 - 1}) - \log (n + \sqrt{n^2 - 1}) = \\
+        &= \log \frac{1 + \frac{1}{n} + \sqrt{1 + \frac{2}{n}}}{1 + \sqrt{1 - \frac{1}{n^2}}} \leq \log (2 + \sqrt{3}) < \pi
+    \end{align*}
+    their height is strictly bounded above by $1$. Let $a = p + i \pi^{-1} \log(q + \sqrt{q^2 - 1}) \in A$, then
+    \begin{align*}
+        \cos \pi a &= {\textstyle\frac{1}{2}}( e^{i \pi a} + e^{-i \pi a}) = {\textstyle\frac{1}{2}} (-1)^p ((q + \sqrt{q^2 - 1})^{-1} + (q + \sqrt{q^2 - 1})) = \\
+        &= (-1)^p \frac{1}{2} \frac{1 + q^2 + 2q \sqrt{q^2 - 1} + q^2 - 1}{q + \sqrt{q^2 - 1}} = (-1)^p q.
+    \end{align*}
+    Thus $\cos \pi (\cos \pi a) = \pm 1$. But $0, 1 \notin f(G)$, therefore $g(G) \cap A = \emptyset$ and $g(G)$ cannot contain a disk of radius $1$.
+
+    For (iii), let $0 < \theta < 1$, then for $\vert z \vert \leq \theta$ we have $d(z, \partial \D) \leq 1 - \theta$. By (ii) and \Cref{cor:bloch-domain} it follows that $\beta (1 - \theta) \vert g'(z) \vert \leq 1$. Let $\gamma$ denote the line connecting $0$ and $z$, then
+    \begin{align*}
+        \vert g(z) \vert &\leq \vert g(0) \vert + \vert g(z) - g(0) \vert \leq \vert g(0) \vert + \int_\gamma \vert g'(\zeta) \vert \diff \zeta \leq \vert g(0) \vert + \frac{\theta}{\beta (1 - \theta)}
+    \end{align*}
+    yields our desired estimate.
 \end{proof}
 
 \begin{theorem}[Schottky] \label{thm:schottky}
-    Let $f \in H(\cl{\D})$ such that $f$ does not assume $0$ or $1$ as values in $\cl{\D}$. Then there is a function $\psi(\theta, \omega) : (0, 1) \times (0, \infty) \to \R_{>0}$ such that if $\vert f(0) \vert \leq \omega$, then
+    There exists a function ${\psi(\theta, \omega) : (0, 1) \times (0, \infty) \to \R_{>0}}$ such that for any $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$ with $\vert f(0) \vert \leq \omega$ it holds that
     \begin{equation}
         \vert f(z) \vert \leq \psi(\theta, \omega), \quad \vert z \vert \leq \theta.
     \end{equation}
 \end{theorem}
 
 \begin{proof}
-    Select the constant $\beta$ from \Cref{prop:schottky-3} and set
+    Set
     \begin{equation*}
         \psi(\theta, \omega) \coloneqq \exp \left( \pi \exp \pi \left( 3 + 2 \omega + \frac{\theta}{\beta (1 - \theta)} \right) \right).
     \end{equation*}
-    Note that for all $w \in \C$ we have $\vert \cos w \vert \leq e^{\vert w \vert}$ and $\frac{1}{2} \vert 1 + \cos w \vert \leq e^{\vert w \vert}$. Hence, from \Cref{prop:schottky-3}, we conclude
+    Note that for all $w \in \C$ we have $\vert \cos w \vert \leq e^{\vert w \vert}$ and $\frac{1}{2} \vert 1 + \cos w \vert \leq e^{\vert w \vert}$. Hence, from \Cref{lem:schottky-3}, we conclude
     \begin{align*}
         \vert f(z) \vert &= \vert {\textstyle \frac{1}{2}} ( 1 + \cos \pi ( \cos \pi g(z) ) ) \vert \leq \exp \pi \vert \cos \pi g(z) \vert \leq \\
         &\leq \exp ( \pi \exp \pi \vert g(z) \vert ) \leq \exp (\pi \exp \pi (\vert g(0) \vert + \theta / \beta(1 - \theta))) \leq \\
