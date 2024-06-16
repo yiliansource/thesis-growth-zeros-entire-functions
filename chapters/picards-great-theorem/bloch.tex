@@ -6,7 +6,7 @@
 \end{lemma}
 
 \begin{proof}
-    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it attains its minimum $m$ at some $w_* \in \partial f(G)$. Let $(z_n)_{n \in \N}$ be a sequence in $G$, such that $\lim_{n \to \infty} f(z_n) = w_*$. Since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$. Since $f$ is continuous, we have $f(z_*) = w_* \in \partial f(G)$.
+    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it attains its minimum $m$ at some $w_* \in \partial f(G)$. Let $(z_n)_{n \in \N}$ be a sequence in $G$, such that $\lim_{n \to \infty} f(z_n) = w_*$. Since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$ and by continuity of $f$ we have $f(z_*) = w_*$.
 
     Assuming $z_* \in G$, since $\restr{f}{G}$ is open, the image of any open set in $G$ containing $z_*$ under $f$ must be an open set in $f(G)$ containing $w_*$, which is impossible since $w_* \in \partial G$.
 
@@ -20,7 +20,7 @@
 
 \begin{proof}
     Without loss of generality we can assume $a = f(a) = 0$. Consider the function
-    $$ \mapping{\alpha_f}{B_{r}(0) & \to & \C,}{z & \mapsto & f(z) - f'(0) z,} $$
+    $$ \mapping{\alpha_f}{B & \to & \C,}{z & \mapsto & f(z) - f'(0) z,} $$
     which satifies, for the line $\gamma$ connecting $0$ to $z \in \C$,
     \begin{equation} \label{eq:bloch-lemma-2:estimate-1}
         \vert \alpha_f(z) \vert = \left\vert \int_\gamma f'(\zeta) - f'(0) \diff \zeta \right\vert \leq \int_0^1 \vert f'(t z) - f'(0) \vert \vert z \vert \diff t. \tag{\textasteriskcentered}
@@ -55,7 +55,7 @@
     $$ \mapping{\alpha_f}{\cl{\D} & \to & \R}{z & \mapsto & \vert f'(z) \vert (1 - \vert z \vert)} $$
     is continuous and attains its maximum $C_f > 0$ at some point $p \in \D$.
     
-    Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then for $z \in B_{t}(p)$ we have $B_{t}(p) \subseteq \D$ and $1 - \vert z \vert \geq t$. Since $\vert f'(z) \vert (1 - \vert z \vert) \leq C_f = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$. By \Cref{lem:bloch-lemma-2}, we obtain
+    Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then we have $B_{t}(p) \subseteq \D$ and $1 - \vert z \vert \geq t$ for $z \in B_{t}(p)$. Since $\vert f'(z) \vert (1 - \vert z \vert) \leq C_f = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$. By \Cref{lem:bloch-lemma-2}, we obtain
     $ B_{R}(f(p)) \subseteq f(\D) $, where 
     $$ R \coloneqq (3 - 2 \sqrt{2}) t \vert f'(p) \vert = ({\textstyle \frac{3}{2}} - \sqrt{2}) \vert f'(p) \vert (1 - \vert p \vert) > {\textstyle \frac{1}{12}} \vert f'(0) \vert, $$
     concluding the claim.
