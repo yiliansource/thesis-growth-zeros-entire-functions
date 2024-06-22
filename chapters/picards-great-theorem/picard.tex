@@ -28,7 +28,7 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \begin{proof}
     We shall give the proof in three steps:
     \begin{enumerate}
-        \item Let $w \in G$, $c > 0$ and $\F_*$ be a subfamily of $\F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is a neighborhood of $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $\cl{B_t(w)} \subset G$. Without loss of generality we may assume $w = 0$ and $t = 1$. By the maximum principle and Schottky's Theorem (\ref{thm:schottky}) we obtain
+        \item Let $w \in G$, $c > 0$ and $\F_*$ be a subfamily of $\F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is a neighborhood of $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $\cl{B_t(w)} \subset G$. Without loss of generality we may assume $w = 0$ and $t = 1$. By the maximum modulus principle and Schottky's Theorem (\ref{thm:schottky}) we obtain
         $$ \sup \{ \Vert f \Vert_{B_{1/2}(0)} : f \in \F_* \} \leq \psi(1/2, c) < \infty. $$
 
         \item Fix some $w_* \in G$ and set $\F_1 \coloneqq \{ f \in \F : \vert f(w_*) \vert \leq 1 \}$. We aim to show that $\F_1$ is locally bounded (and by Montel's Theorem (\ref{thm:montel}) therefore normal) in $G$. Consider the set
@@ -50,13 +50,13 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \begin{proof}
     Set $f_n(z) \coloneqq f(z / n) \in H(\D^\times; \C \setminus \{ 0, 1 \})$. By \Cref{lem:montel-sharpened} there exists a subsequence $(f_{n_k})_{k \in \N}$ such that $(f_{n_k})_{k \in \N}$ or $(1 / f_{n_k})_{k \in \N}$ is bounded on $\partial B_{1/2}(0)$.
 
-    In the first case, we have $\vert f(z / n_k) \vert \leq M$ for some $M > 0$ and all $\vert z \vert = \frac{1}{2}$, $k \in \N$. Thus $f$ is bounded on every circle of radius $1 / (2 n_k)$. By the maximum principle, $f$ must therefore be bounded on every annulus $1 / (2 n_{k + 1}) \leq \vert z \vert \leq 1 / (2 n_k)$. This yields that $f$ is bounded in a punctured neighborhood of zero.
+    In the first case, we have $\vert f(z / n_k) \vert \leq M$ for some $M > 0$ and all $\vert z \vert = \frac{1}{2}$, $k \in \N$. Thus $f$ is bounded on every circle of radius $1 / (2 n_k)$. By the maximum modulus principle, $f$ must therefore be bounded on every annulus $1 / (2 n_{k + 1}) \leq \vert z \vert \leq 1 / (2 n_k)$. This yields that $f$ is bounded in a punctured neighborhood of zero.
 
     In the second case, the same argument shows that $1 / f$ is bounded in a punctured neighborhood of zero.
 \end{proof}
 
 \begin{theorem}[Picard's Great Theorem] \label{thm:picards-great-theorem}
-    Let $G \subseteq \C$ be open, $w \in G$ and suppose $f \in H(G \setminus \{ w \})$ such that $f$ has an essential singularity at $w$. Then $f$ takes on all values in $\C$, with at most one exception, infinitely often in any punctured neighborhood of $w$.
+    Let $G \subseteq \C$ be open, $w \in G$ and suppose $f \in H(G \setminus \{ w \})$ such that $f$ has an essential singularity at $w$. Then $f$ assumes all values in $\C$, with at most one exception, infinitely often in any punctured neighborhood of $w$.
 \end{theorem}
 
 \begin{proof}
@@ -70,11 +70,11 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \end{corollary}
 
 \begin{proof}
-    If $f(z) = \sum_{n=0}^\infty a_n z^n$, then $f(z^{-1}) = \sum_{n=-\infty}^0 a_{-n} z^{n}$, thus $f$ has an essential singularity at $\infty$ and Picard's Great Theorem establishes the assertion.
+    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be transcendental and entire, and consider $g(z) \coloneqq f(1 / z)$. Then $g$ has an essential singularity at zero, thus by Picard's Great Theorem $g$ assumes all values in $\C$ on $B_1(0) \setminus \{ 0 \}$, except at most one. Thus $f$ does the same on $\C \setminus B_1(0)$.
 \end{proof}
 
 \begin{corollary}[Picard's Little Theorem] \label{thm:picards-little-theorem}
-    Every nonconstant entire function omits at most one value.
+    Every non-constant entire function omits at most one value.
 \end{corollary}
 
 \begin{proof}

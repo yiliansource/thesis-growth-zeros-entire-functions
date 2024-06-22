@@ -1,46 +1,74 @@
-\section{Composition}
-\label{seq:composition}
+\section{Pólya's Theorem}
+\label{sec:polyas-theorem}
 
-As seen by \Cref{prop:algebraic-properties-order}, the order of the sum or product of two entire functions is reasonably bounded by the order of the functions involved. This is not the case when composition is involved. Indeed, consider $e^{e^z}$, which has infinite order, yet is the composition of two functions of order $1$. Necessary conditions for the order of a composition to be finite will be illustrated by Pòlya's Theorem, the proof of which relies on the following result:
+Necessary conditions for the order of a composition to be finite will be given by Pòlya's Theorem, the proof of which relies on the following result:
 
-\begin{lemma}[Bohr]
-    Let $0 < R < 1$ and suppose $f$ is analytic on $\cl{\D}$, such that $f(0) = 0$ and $M_f(R) = 1$. Let $r_f$ denote the largest $r \geq 0$ such that $C_r \subseteq f(\cl{\D})$. Then we have $r_f > C > 0$, where $C$ is a constant depending only on $R$.
-\end{lemma}
+\begin{theorem}[Bohr] \label{thm:bohr}
+    Let $0 < \theta < 1$ and $f \in H(\cl{\D})$, such that $f(0) = 0$ and $M_f(\theta) = 1$. Let $r_f$ denote the largest $r > 0$ such that $\partial B_r(0) \subseteq f(\cl{\D})$. Then we have $r_f \geq C_\theta$, where $C_\theta > 0$ is a constant depending only on $\theta$.
+\end{theorem}
 
 \begin{proof}
-    \todo{TODO. Note that the proof relies on the strong form of Schottky's Theorem.}
+    Suppose $g$ satisfies the hypothesis of the theorem and let $C > 0$ such that for all $r \geq C$ there exists some point $w_r \in \partial B_r(0)$ with $w_r \notin f(\cl{\D})$. Choose such points $w_C, w_{2C}$ and define
+    $$ h(z) \coloneqq \frac{g(z) - w_C}{w_{2C} - w_C} \in H(\cl{\D}, \C \setminus \{ 0, 1 \}). $$
+    Since
+    $$ \vert h(0) \vert = \left\vert \frac{g(0) - w_C}{w_{2C} - w_C} \right\vert \leq \frac{C}{2C - C} = 1, $$
+    by Schottky's Theorem we have $\vert h(z) \vert \leq \psi(\theta, 1)$ for all $\vert z \vert \leq \theta$. Therefore
+    $$ \vert g(z) \vert - C \leq \vert g(z) - w_C \vert \leq \vert w_{2C} - w_C \vert \psi(\theta, 1) \leq 3 C \psi(\theta, 1) $$
+    and thus $\vert g(z) \vert \leq C + 3C \psi(\theta, 1)$ for all $\vert z \vert \leq \theta$. Using the hypothesis that $M_g(\theta) = 1$ and the maximum modulus principle we obtain $C \geq \frac{1}{1 + 3 \psi(\theta, 1)}$ and choosing $C_\theta$ to be less than this constant yields the theorem.
 \end{proof}
 
 \begin{theorem}[Pólya] \label{thm:polya}
-    Let $g, h$ be entire. For the order of $g \circ h$ to be finite, it must hold that either
+    Let $g, h \in H(\C)$. For the order of $g \circ h$ to be finite, it must hold that either
     \begin{enumerate}[i.]
-        \item $h$ is a polynomial and $g$ of finite order, or
-        \item $h$ is of finite order, not a polynomial, and $g$ is of order zero.
+        \item $h$ is a polynomial and $\rho_g < \infty$, or
+        \item $h$ is not a polynomial, $\rho_h < \infty$ and $\rho_g = 0$.
     \end{enumerate}
 \end{theorem}
 
 \begin{proof}
-    \todo{TODO.}
+    Without loss of generality we can assume $h(0) = 0$; otherwise we just consider $h_0(z) \coloneqq h(z) - h(0)$ and $g_0(w) \coloneqq g(w + h(0))$. Set $f \coloneqq g \circ h$ and define
+    \begin{equation*}
+        k_r(z) \coloneqq \frac{h(rz)}{M_h(r / 2)} \in H(\cl{\D}), \quad \textrm{for } r > 0.
+    \end{equation*}
+    Note that by definition we have $M_{k_r}(1/2) = 1$ and $k_r(0) = 0$, thus by \Cref{thm:bohr} there is some constant $C > 0$ and an $R / M_h(r/2) > C$ such that $\partial B_{R / M_h(r/2)}(0) \subseteq k_r(\cl{\D})$ and thus $\partial B_R(0) \subseteq h(\cl{B_r(0)})$. By the maximum modulus principle, $\vert g \vert$ assumes its maximum over $\cl{B_R(0)}$ at some $w_0 \in \partial B_R(0)$. By the above there is a $z_0 \in \cl{B_r(0)}$ with $h(z_0) = w_0$. Thus we get
+    \begin{equation*}
+        M_g(C M_h(r / 2)) < M_g(R) = \vert g(w_0) \vert = \vert g(h(z_0)) \vert = \vert f(z_0) \vert \leq M_f(r).
+    \end{equation*}
+    Assuming $\rho_f < \infty$, we have $M_f(r) < K \exp(r^\alpha)$ for some $\alpha > \rho_f$. Consider the power series expansion $h(z) = \sum_{n=0}^\infty a_n z^n$ and let $a_m$ denote any non-zero coefficient; note that since $h(0) = 0$ we have $m \geq 1$. By Cauchy's integral formula we have, for all $s > 0$,
+    \begin{equation*} \label{eq:proof-polya-cauchy-inequality}
+        \vert a_m \vert = \left\vert \frac{h^{(m)}(0)}{m!} \right\vert = \frac{1}{2\pi} \left\vert \int_{\partial B_{s}(0)} \frac{h(\zeta)}{\zeta^{n+1}} \diff \zeta \right\vert \leq \frac{M_h(s)}{s^m} \tag{\textasteriskcentered}
+    \end{equation*}
+    and thus
+    \begin{equation*}
+        M_g(C \vert a_m \vert (r/2)^m) \leq M_g(C M_h(r/2)) < M_f(r) < K \exp(r^\alpha), \quad \textrm{for all } r > 0.
+    \end{equation*}
+    Replacing $(r/2)^m$ with $r$ we obtain $\rho_g \leq \alpha / m $. If $h$ is not a polynomial we may let $m \to \infty$, thus $\rho_g = 0$.
+
+    Now consider $g(z) = \sum_{n=0}^\infty b_n z^n$. Replacing $h$ with $g$ in (\ref{eq:proof-polya-cauchy-inequality}) we obtain $\vert b_n \vert s^n \leq M_g(s)$ for all $s > 0$ and $n \geq 1$ and thus
+    \begin{equation*}
+        \vert b_n \vert (C M_h(r/2))^n \leq M_g(C M_h(r/2)) < M_f(r) < K \exp(r^\alpha),
+    \end{equation*}
+    which implies $\rho_h \leq \alpha < \infty$.
 \end{proof}
 
 \begin{theorem}[Thron] \label{thm:thron}
-    Let $g$ be an entire function of finite order, not a polynomial, which takes some value $w$ only finitely often. Suppose further that there exists some function $f$ such that $f \circ f = g$. Then $f$ is not entire.
+    Let $g \in H(\C)$ be transcendental, of finite order, such that $g$ assumes some value $w \in \C$ only finitely often. Then there does not exist any $f \in H(\C)$ such that $f \circ f = g$.
 \end{theorem}
 
 \begin{proof}
-    Seeking contradiction, suppose $f$ were entire. Since $g$ is not a polynomial, \Cref{thm:polya} implies that $f$ is of order $0$ and not a polynomial. Let $(z_j)_{j \in J}$ denote the points where $f$ equals $w$. For each $m \in J$ we additionally denote by $(z_{j,m})_{j \in J_m}$ the points where $f$ equals $z_m$. Thus, for each $m \in J$ and $n \in J_m$ we have
+    Seeking contradiction, suppose there were such a $f \in H(\C)$. Since $g$ is not a polynomial, Pólya's Theorem implies that $f$ is of order $0$ and not a polynomial. Let $(z_j)_{j \in J}$ denote the points where $f$ equals $w$. For each $m \in J$ we additionally denote by $(z_{j,m})_{j \in J_m}$ the points where $f$ equals $z_m$. Thus, for each $m \in J$ and $n \in J_m$ we have
     $$ g(z_{n,m}) = f(f(z_{n,m})) = f(z_m) = w. $$
     Our assumption on $g$ assures that there must only be finitely many distinct points among the $(z_{n,m})_{m \in J,n \in J_m}$. Thus, each point in $(z_j)_{j \in J}$ is only taken on by $f$ finitely often.
 
-    By \Cref{cor:transcendental-every-value-inf}, $f$ attains all values in the complex plane infinitely often, with at most one exception. This implies that that there is at most one $z_0$ in $(z_j)_{j \in J}$ that is only taken on finitely often by $f$.
+    By \Cref{cor:transcendental-every-value-inf}, $f$ assumes all values in the complex plane infinitely often, with at most one exception. This implies that that there is at most one $z_0$ in $(z_j)_{j \in J}$ that is only taken on finitely often by $f$.
 
-    If there is no such $z_0$, then $h(z) \coloneqq f(z) - w$ is entire, of order $0$ and nowhere $0$. Thus, by Hadamard's Theorem (\ref{thm:hadamard}), $h$ must be constant, and therefore $f$ aswell, a contradiction.
+    If there is no such $z_0$, then $h(z) \coloneqq f(z) - w$ is entire, of order $0$ and nowhere $0$. Thus, by Hadamard's Theorem, $h$ must be constant, and therefore $f$ aswell, a contradiction.
 
     If such a $z_0$ exists, then $h(z) \coloneqq f(z) - w$ has a zero of finite order $n \in \N$ at $z_0$. Therefore we can write $h(z) = (z - z_0)^n p(z)$, where $p$ is entire, of order $0$ and nowhere $0$. Again, this implies that $p$ is constant, and therefore $f$ a polynomial, a contradiction.
 \end{proof}
 
 \begin{example}
-    A natural application of \Cref{thm:thron} is taking $g$ to be $e^z$, which never takes on $0$ as a value. Indeed, this implies that there is no entire function $f$ satisfying
+    A natural application of \Cref{thm:thron} is taking $g$ to be $e^z$, which never assumes zero as a value. Indeed, this implies that there is no entire function $f$ satisfying
     $$ f(f(z)) = e^z. $$
     On the other hand, there does exist a real-analytic function satisfying the above, as demonstrated by H. Kneser. \todo{I probably still need a citation here.}
 \end{example}

@@ -1,12 +1,16 @@
 \section{Bloch's Theorem}
 \label{sec:blochs-theorem}
 
+Bloch's Theorem (\ref{thm:bloch}) will show that for any $f \in H(\cl{\D})$ with $f'(0) = 1$ the image of $\cl{\D}$ under $f$ contains a disk of a fixed radius. The point at which said disk is centered at is given in the proof.
+
+If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. Since such an $f$ is an open mapping, we first observe a simple criterion for the size of disks in their image domain:
+
 \begin{lemma} \label{lem:bloch-lemma-1}
     Let $G \subset \C$ be a bounded domain, $f : \cl{G} \to \C$ continuous and $\restr{f}{G} : G \to \C$ open. If there exists $a \in G$ such that $s \coloneqq \min_{z \in \partial G} \vert f(z) - f(a) \vert > 0$, then $B_{s}(f(a)) \subseteq f(G)$.
 \end{lemma}
 
 \begin{proof}
-    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it attains its minimum $m$ at some $w_* \in \partial f(G)$. Let $(z_n)_{n \in \N}$ be a sequence in $G$, such that $\lim_{n \to \infty} f(z_n) = w_*$. Since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$ and by continuity of $f$ we have $f(z_*) = w_*$.
+    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it assumes its minimum $m$ at some $w_* \in \partial f(G)$. Let $(z_n)_{n \in \N}$ be a sequence in $G$, such that $\lim_{n \to \infty} f(z_n) = w_*$. Since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$ and by continuity of $f$ we have $f(z_*) = w_*$.
 
     Assuming $z_* \in G$, since $\restr{f}{G}$ is open, the image of any open set in $G$ containing $z_*$ under $f$ must be an open set in $f(G)$ containing $w_*$, which is impossible since $w_* \in \partial G$.
 
@@ -38,7 +42,7 @@
         \vert f'(0) \vert \rho - \vert f(z) \vert &\leq \vert \alpha_f(z) \vert \leq \frac{\rho^2}{r - \rho} \vert f'(0) \vert \\
         \Longleftrightarrow \quad \vert f(z) \vert &\geq \left( \rho - \frac{\rho^2}{r - \rho} \right) \vert f'(0) \vert.
     \end{align*}
-    Considering $\rho - \rho^2 / (r - \rho)$ as a function of $\rho$, it attains its maximum value, $(3 - 2 \sqrt{2}) r$, at $\rho_* \coloneqq (1 - \sqrt{2} / 2)r \in (0, r)$. Therefore,
+    Considering $\rho - \rho^2 / (r - \rho)$ as a function of $\rho$, it assumes its maximum value, $(3 - 2 \sqrt{2}) r$, at $\rho_* \coloneqq (1 - \sqrt{2} / 2)r \in (0, r)$. Therefore,
     \begin{equation*}
         \vert f(z) \vert \geq (3 - 2 \sqrt{2}) r \vert f'(0) \vert = R, \quad \textrm{for all} \quad \vert z \vert = \rho_*.
     \end{equation*}
@@ -52,7 +56,7 @@
 \begin{proof}
     The function
     $$ \mapping{\alpha_f}{\cl{\D} & \to & \R}{z & \mapsto & \vert f'(z) \vert (1 - \vert z \vert)} $$
-    is continuous and attains its maximum $C_f > 0$ at some point $p \in \D$.
+    is continuous and assumes its maximum $C_f > 0$ at some point $p \in \D$.
     
     Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then we have $B_{t}(p) \subseteq \D$ and $1 - \vert z \vert \geq t$ for $z \in B_{t}(p)$. Since $\vert f'(z) \vert (1 - \vert z \vert) \leq C_f = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$. By \Cref{lem:bloch-lemma-2}, we obtain
     $ B_{R}(f(p)) \subseteq f(\D) $, where 

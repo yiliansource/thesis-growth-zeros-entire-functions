@@ -1,6 +1,8 @@
 \section{Schottky's Theorem}
 \label{sec:schottkys-theorem}
 
+Holomorphic functions which omit the values $0$ and $1$ have a universal estimate on the growth of their modulus, given by Schottky's Theorem.
+
 For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ such that $f(G) \subseteq E$.
 
 \begin{lemma} \label{lem:schottky-1}
@@ -64,7 +66,7 @@ For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ 
         \cos \pi a &= {\textstyle\frac{1}{2}}( e^{i \pi a} + e^{-i \pi a}) = {\textstyle\frac{1}{2}} (-1)^p ((q + \sqrt{q^2 - 1})^{-1} + (q + \sqrt{q^2 - 1})) = \\
         &= (-1)^p \frac{1}{2} \frac{1 + q^2 + 2q \sqrt{q^2 - 1} + q^2 - 1}{q + \sqrt{q^2 - 1}} = (-1)^p q.
     \end{align*}
-    Thus $\cos \pi (\cos \pi a) = \pm 1$. But $0, 1 \notin f(\cl{D})$, therefore $g(\cl{D}) \cap A = \emptyset$ and $g(\cl{D})$ cannot contain a disk of radius $1$.
+    Thus $\cos \pi (\cos \pi a) = \pm 1$. But $0, 1 \notin f(\cl{\D})$, therefore $a \notin g(\cl{\D})$, thus $g(\cl{\D}) \cap A = \emptyset$ and $g(\cl{\D})$ cannot contain a disk of radius $1$.
 
     For (iii), let $0 < \theta < 1$, then for $\vert z \vert \leq \theta$ we have $1 - \theta \leq d(z, \partial \D)$. By (ii) and \Cref{cor:bloch-domain} it follows that $\beta (1 - \theta) \vert g'(z) \vert \leq 1$. Let $\gamma$ denote the line connecting $0$ and $z$, then
     \begin{align*}
@@ -72,6 +74,12 @@ For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ 
     \end{align*}
     yields our desired estimate.
 \end{proof}
+
+\begin{remark}
+    One may notice that in the proof of \Cref{lem:schottky-3} (i) and (ii) we never used the fact that we act on the unit disk. Indeed, applying the proof for $\C$, we can quickly obtain Picard's Little Theorem, which states that any $f \in H(\C; \C \setminus \{ a, b \})$, for distinct points $a, b \in \C$, is constant:
+
+    Let $g(z) \coloneqq \frac{f(z) - a}{b - a} \in H(\C; \C \setminus \{ 0, 1 \})$ then, by the argument above, $g$ does not contain a disk of radius $1$. \Cref{cor:bloch-entire} thus implies that $g$ is constant, and therefore so is $f$.
+\end{remark}
 
 \begin{theorem}[Schottky] \label{thm:schottky}
     There exists a function ${\psi(\theta, \omega) : (0, 1) \times (0, \infty) \to (0, \infty)}$ such that for any $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$ with $\vert f(0) \vert \leq \omega$ it holds that
@@ -81,14 +89,13 @@ For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ 
 \end{theorem}
 
 \begin{proof}
-    Set
-    \begin{equation*}
-        \psi(\theta, \omega) \coloneqq \exp \left( \pi \exp \pi \left( 3 + 2 \omega + \frac{\theta}{\beta (1 - \theta)} \right) \right).
-    \end{equation*}
-    Note that for all $w \in \C$ we have $\vert \cos w \vert \leq e^{\vert w \vert}$ and $\frac{1}{2} \vert 1 + \cos w \vert \leq e^{\vert w \vert}$. Hence, from \Cref{lem:schottky-3}, we conclude
+    % \begin{equation*}
+    %     \psi(\theta, \omega) \coloneqq \exp \left( \pi \exp \pi \left( 3 + 2 \omega + \frac{\theta}{\beta (1 - \theta)} \right) \right).
+    % \end{equation*}
+    Note that for all $w \in \C$ we have $\vert \cos w \vert \leq e^{\vert w \vert}$ and $\frac{1}{2} \vert 1 + \cos w \vert \leq e^{\vert w \vert}$. Hence, from \Cref{lem:schottky-3}, we get
     \begin{align*}
-        \vert f(z) \vert &= \vert {\textstyle \frac{1}{2}} ( 1 + \cos \pi ( \cos \pi g(z) ) ) \vert \leq \exp \pi \vert \cos \pi g(z) \vert \leq \\
-        &\leq \exp ( \pi \exp \pi \vert g(z) \vert ) \leq \exp (\pi \exp \pi (\vert g(0) \vert + \theta / \beta(1 - \theta))) \leq \\
-        &\leq \exp ( \pi \exp \pi ( 3 + 2 \omega + \theta / \beta(1 - \theta) ) ) = \psi(\theta, \omega).
+        \vert f(z) \vert &= \vert {\textstyle \frac{1}{2}} ( 1 + \cos \pi ( \cos \pi g(z) ) ) \vert \leq \exp ( \pi \exp \pi \vert g(z) \vert ) \leq \\ &\leq \exp (\pi \exp \pi (\vert g(0) \vert + \theta / \beta(1 - \theta))) \leq \\
+        &\leq \exp ( \pi \exp \pi ( 3 + 2 \omega + \theta / \beta(1 - \theta) ) ),
     \end{align*}
+    and defining $\psi(\theta, \omega)$ as the rightmost term establishes the assertion.
 \end{proof}

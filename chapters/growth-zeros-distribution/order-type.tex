@@ -9,7 +9,9 @@
     Constant functions, by convention, have order 0.
 \end{definition}
 
-Note that, for any entire function $f$, we have $0 \leq \rho_f \leq \infty$. Furthermore, $\rho_f < \infty$ if and only if $M_f(r) = O(\exp(r^{\rho_f + \varepsilon}))$ for every $\varepsilon > 0$ and no $\varepsilon < 0$, as $r \to \infty$~\cite{segal-complex-analysis}.
+Note that, for any entire function $f$, we have $0 \leq \rho_f \leq \infty$. Equivalently, $\rho_f$ can also be defined as the infimum over all $\rho > 0$ such that $M_f(r) = O(\exp(r^\rho))$ as $r \to \infty$.
+
+% Furthermore, $\rho_f < \infty$ if and only if $M_f(r) = O(\exp(r^{\rho_f + \varepsilon}))$ for every $\varepsilon > 0$ and no $\varepsilon < 0$, as $r \to \infty$~\cite{segal-complex-analysis}.
 
 An elementary fact regarding the order of the sum or product of two entire functions of finite order can immediately be obtained by naively estimating their respective maximum modulus:
 
@@ -38,7 +40,7 @@ For functions of finite and positive order, we can obtain a natural refinement o
     \end{equation}
 \end{definition}
 
-For any entire function $f$ with $0 < \rho_f < \infty$, we have $0 < \tau_f \leq \infty$. Additionally, we have $0 < \rho_f < \infty$ and $\tau_f < \infty$ if and only if $M_f(r) = O(\exp((\tau_f + \varepsilon) r^{\rho_f}))$ for every $\varepsilon > 0$ and no $\varepsilon < 0$, as $r \to \infty$~\cite{segal-complex-analysis}.
+For any entire function $f$ with $0 < \rho_f < \infty$, we have $0 \leq \tau_f \leq \infty$. Equivalently, $\tau_f$ can also be defined as the infimum over all $\tau > 0$ such that $M_f(r) = O(\exp(\tau r^{\rho_f}))$ as $r \to \infty$.
 
 Imitating the proof of \Cref{prop:order-derivative}, we immediately get:
 

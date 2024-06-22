@@ -1,11 +1,11 @@
-\section{Zeros}
+\section{Zeros distribution}
 \label{sec:zeros}
 
 We recall a rather explicit connection between the moduli of the zeros of an analytic function and the modulus of the function itself:
 
 \begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
     Let $f$ be analytic on $B_{R}(0)$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
-    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}. $$
+    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}. $$
 \end{theorem}
 
 \begin{definition}
@@ -14,7 +14,7 @@ We recall a rather explicit connection between the moduli of the zeros of an ana
 
 \begin{corollary}
     Let $f$ be analytic on $B_{R}(0)$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
-    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \vartheta}) \vert \diff \vartheta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s $$
+    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s $$
 \end{corollary}
 
 \begin{proof}
@@ -46,7 +46,7 @@ In particular, we observe that the more zeros a function $f(z)$ has, the faster 
 \end{proof}
 
 \begin{example} \label{exm:exponent-of-convergence}
-    Consider the entire function $f(z) \coloneqq \sin(z)$, which has zeros at $(n \pi)_{n \in \Z}$, and let $\lambda > 0$. Since
+    Consider the entire function $f(z) \coloneqq \sin(z)$, we want to calculate $\lambda_f$ and $\rho_f$. First, let $\lambda > 0$ and consider that $f$ has zeros at $(n \pi)_{n \in \Z}$. Since
     $$ \sum_{n \in \Z \setminus \{0\}} \frac{1}{\vert n \pi \vert^\lambda} = \frac{2}{\pi^\lambda} \sum_{n=1}^\infty \frac{1}{\vert n \vert^\lambda} $$
     is finite if and only if $\lambda > 1$, we obtain $\lambda_f = 1$. Furthermore, we have $\vert \sin(z) \vert \leq e^{\vert \Im z \vert}$
     and therefore
