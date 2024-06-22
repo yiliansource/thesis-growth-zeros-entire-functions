@@ -40,10 +40,10 @@ For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ 
 \end{proof}
 
 \begin{lemma} \label{lem:schottky-3}
-    Let $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$. Then there exists a $g \in H(G)$ such that:
+    Let $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$. Then there exists a $g \in H(\cl{\D})$ such that:
     \begin{enumerate}[i.]
         \item $f = \frac{1}{2} ( 1 + \cos \pi (\cos \pi g))$, and $\vert g(0) \vert \leq 3 + 2 \vert f(0) \vert$.
-        \item $g(G)$ contains no disk of radius $1$.
+        \item $g(\cl{\D})$ contains no disk of radius $1$.
         \item $\vert g(z) \vert \leq \vert g(0) \vert + \theta / b (1 - \theta)$, for all $\vert z \vert \leq \theta$ where $0 < \theta < 1$.
     \end{enumerate}
 \end{lemma}
@@ -64,9 +64,9 @@ For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ 
         \cos \pi a &= {\textstyle\frac{1}{2}}( e^{i \pi a} + e^{-i \pi a}) = {\textstyle\frac{1}{2}} (-1)^p ((q + \sqrt{q^2 - 1})^{-1} + (q + \sqrt{q^2 - 1})) = \\
         &= (-1)^p \frac{1}{2} \frac{1 + q^2 + 2q \sqrt{q^2 - 1} + q^2 - 1}{q + \sqrt{q^2 - 1}} = (-1)^p q.
     \end{align*}
-    Thus $\cos \pi (\cos \pi a) = \pm 1$. But $0, 1 \notin f(G)$, therefore $g(G) \cap A = \emptyset$ and $g(G)$ cannot contain a disk of radius $1$.
+    Thus $\cos \pi (\cos \pi a) = \pm 1$. But $0, 1 \notin f(\cl{D})$, therefore $g(\cl{D}) \cap A = \emptyset$ and $g(\cl{D})$ cannot contain a disk of radius $1$.
 
-    For (iii), let $0 < \theta < 1$, then for $\vert z \vert \leq \theta$ we have $d(z, \partial \D) \leq 1 - \theta$. By (ii) and \Cref{cor:bloch-domain} it follows that $\beta (1 - \theta) \vert g'(z) \vert \leq 1$. Let $\gamma$ denote the line connecting $0$ and $z$, then
+    For (iii), let $0 < \theta < 1$, then for $\vert z \vert \leq \theta$ we have $1 - \theta \leq d(z, \partial \D)$. By (ii) and \Cref{cor:bloch-domain} it follows that $\beta (1 - \theta) \vert g'(z) \vert \leq 1$. Let $\gamma$ denote the line connecting $0$ and $z$, then
     \begin{align*}
         \vert g(z) \vert &\leq \vert g(0) \vert + \vert g(z) - g(0) \vert \leq \vert g(0) \vert + \int_\gamma \vert g'(\zeta) \vert \diff \zeta \leq \vert g(0) \vert + \frac{\theta}{\beta (1 - \theta)}
     \end{align*}
@@ -74,7 +74,7 @@ For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ 
 \end{proof}
 
 \begin{theorem}[Schottky] \label{thm:schottky}
-    There exists a function ${\psi(\theta, \omega) : (0, 1) \times (0, \infty) \to \R_{>0}}$ such that for any $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$ with $\vert f(0) \vert \leq \omega$ it holds that
+    There exists a function ${\psi(\theta, \omega) : (0, 1) \times (0, \infty) \to (0, \infty)}$ such that for any $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$ with $\vert f(0) \vert \leq \omega$ it holds that
     \begin{equation}
         \vert f(z) \vert \leq \psi(\theta, \omega), \quad \vert z \vert \leq \theta.
     \end{equation}

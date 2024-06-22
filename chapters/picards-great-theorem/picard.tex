@@ -56,7 +56,7 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \end{proof}
 
 \begin{theorem}[Picard's Great Theorem] \label{thm:picards-great-theorem}
-    Let $G \subset \C$ be open, $w \in G$ and suppose $f \in H(G \setminus \{ w \})$ such that $f$ has an essential singularity at $w$. Then $f$ takes on all values in $\C$, with at most one exception, in any punctured neighborhood of $w$.
+    Let $G \subseteq \C$ be open, $w \in G$ and suppose $f \in H(G \setminus \{ w \})$ such that $f$ has an essential singularity at $w$. Then $f$ takes on all values in $\C$, with at most one exception, infinitely often in any punctured neighborhood of $w$.
 \end{theorem}
 
 \begin{proof}
@@ -70,7 +70,7 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \end{corollary}
 
 \begin{proof}
-    If $f(z) = \sum_{n \in \Z_{\geq 0}} a_n z^n$, then $f(z^{-1}) = \sum_{n \in \Z_{\leq 0}} a_{-n} z^{n}$, thus $f$ has an essential singularity at $\infty$ and Picard's Great Theorem (\ref{thm:picards-great-theorem}) concludes the claim.
+    If $f(z) = \sum_{n=0}^\infty a_n z^n$, then $f(z^{-1}) = \sum_{n=-\infty}^0 a_{-n} z^{n}$, thus $f$ has an essential singularity at $\infty$ and Picard's Great Theorem establishes the assertion.
 \end{proof}
 
 \begin{corollary}[Picard's Little Theorem] \label{thm:picards-little-theorem}
@@ -78,7 +78,7 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \end{corollary}
 
 \begin{proof}
-    A non-constant entire function $f$ is either a non-constant polynomial or a transcendental function. In the latter case, the claim follows from \Cref{cor:transcendental-every-value-inf}.
+    A non-constant entire function $f$ is either a non-constant polynomial or transcendental. In the latter case, the claim follows from \Cref{cor:transcendental-every-value-inf}.
     
-    Otherwise let $w \in \C$, then $f(z) - w$ is a non-constant polynomial. By the Fundamental Theorem of Algebra it has a zero at some $z_0 \in \C$. Therefore $f(z_0) = w$ and $f$ attains all values.
+    Otherwise let $w \in \C$, then $f(z) - w$ has a complex root by the Fundamental Theorem of Algebra and hence $f$ assumes all values.
 \end{proof}
