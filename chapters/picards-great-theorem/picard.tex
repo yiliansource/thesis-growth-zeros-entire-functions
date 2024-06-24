@@ -28,12 +28,12 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \begin{proof}
     We shall give the proof in three steps:
     \begin{enumerate}
-        \item Let $w \in G$, $c > 0$ and $\F_*$ be a subfamily of $\F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is a neighborhood of $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $\cl{B_t(w)} \subset G$. Without loss of generality we may assume $w = 0$ and $t = 1$. By the maximum modulus principle and Schottky's Theorem (\ref{thm:schottky}) we obtain
+        \item Let $w \in G$, $c > 0$ and $\F_*$ be a subfamily of $\F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is a neighborhood of $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $\cl{B_t(w)} \subset G$. Without loss of generality we may assume $w = 0$ and $t = 1$. By the maximum modulus principle and Schottky's Theorem we obtain
         $$ \sup \{ \Vert f \Vert_{B_{1/2}(0)} : f \in \F_* \} \leq \psi(1/2, c) < \infty. $$
 
-        \item Fix some $w_* \in G$ and set $\F_1 \coloneqq \{ f \in \F : \vert f(w_*) \vert \leq 1 \}$. We aim to show that $\F_1$ is locally bounded (and by Montel's Theorem (\ref{thm:montel}) therefore normal) in $G$. Consider the set
+        \item Fix some $w_* \in G$ and set $\F_1 \coloneqq \{ f \in \F : \vert f(w_*) \vert \leq 1 \}$. We aim to show that $\F_1$ is locally bounded (and by Montel's Theorem therefore normal) in $G$. Consider the set
         $$ U \coloneqq \{ w \in G : \F_1 \textrm{ is bounded in a neighborhood of } w \}, $$
-        which is open in $G$. By (1) we have that $w_* \in U$. For sake of contradiction, assume that $U \neq G$. Then there exists some $w \in \partial U \cap G$ and a sequence $f_n \in \F_1$ with $\lim_{n \to \infty} f_n(w) = \infty$. Set $g_n \coloneqq 1 / f_n \in \F$, then $\lim_{n \to \infty} g_n(w) = 0$ and by (1) the family $(g_n)_{n \in \N}$ must be bounded in a neighborhood of $w$. By Montel's Theorem (\ref{thm:montel}) it is therefore normal and there exists a subsequence $(g_{n_k})_{k \in \N}$ which converges compactly to a $g \in H(B)$, for some disk $B$ around $w$. The functions $g_n$ have no zeros, but $g(w) = 0$; by Hurwitz's Theorem (\ref{thm:hurwitz}) we therefore have $g \equiv 0$. Then for any $z \in B \cap U$ we have
+        which is open in $G$. By (1) we have that $w_* \in U$. For sake of contradiction, assume that $U \neq G$. Then there exists some $w \in \partial U \cap G$ and a sequence $f_n \in \F_1$ with $\lim_{n \to \infty} f_n(w) = \infty$. Set $g_n \coloneqq 1 / f_n \in \F$, then $\lim_{n \to \infty} g_n(w) = 0$ and by (1) the family $(g_n)_{n \in \N}$ must be bounded in a neighborhood of $w$. By Montel's Theorem it is therefore normal and there exists a subsequence $(g_{n_k})_{k \in \N}$ which converges compactly to a $g \in H(B)$, for some disk $B$ around $w$. The functions $g_n$ have no zeros, but $g(w) = 0$; by Hurwitz's Theorem we therefore have $g \equiv 0$. Then for any $z \in B \cap U$ we have
         $$ \lim_{k \to \infty} f_{n_k}(z) = \lim_{k \to \infty} 1 / g_{n_k}(z) = \infty, $$
         contradicting the assumption that $\F_1$ is bounded in a neighborhood of $z$.
 
@@ -70,7 +70,7 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \end{corollary}
 
 \begin{proof}
-    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be transcendental and entire, and consider $g(z) \coloneqq f(1 / z)$. Then $g$ has an essential singularity at zero, thus by Picard's Great Theorem $g$ assumes all values in $\C$ on $B_1(0) \setminus \{ 0 \}$, except at most one. Thus $f$ does the same on $\C \setminus B_1(0)$.
+    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be transcendental and entire, and consider $g(z) \coloneqq f(1 / z)$. Then the Laurent series expansion of $g$ has an infinite principal part, therefore $g$ has an essential singularity at zero. By Picard's Great Theorem $g$ assumes all values in $\C$ on $\C^\times$, except at most one. Thus $f$ does the same on $\C^\times$.
 \end{proof}
 
 \begin{corollary}[Picard's Little Theorem] \label{thm:picards-little-theorem}
