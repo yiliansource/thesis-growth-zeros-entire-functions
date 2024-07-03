@@ -1,9 +1,9 @@
 \section{Schottky's Theorem}
 \label{sec:schottkys-theorem}
 
-Holomorphic functions which omit the values $0$ and $1$ have a universal estimate on the growth of their modulus, given by Schottky's Theorem.
+Holomorphic functions which omit the values $0$ and $1$ have a universal estimate on the growth of their modulus, which will be given by Schottky's Theorem.
 
-For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ such that $f(G) \subseteq E$.
+For a domain $G \subseteq \C$ and a set $E \subseteq \C$ we define $H(G; E)$ as the set of all $f \in H(G)$ such that $f(G) \subseteq E$.
 
 \begin{lemma} \label{lem:schottky-1}
     It holds that:
@@ -30,59 +30,74 @@ For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ 
     \end{equation*}
 \end{proof}
 
+We recall the following result: Let $G \subseteq \C$ be a simply connected domain and $f \in H(G)$ such that $f$ vanishes nowhere on $G$. Then there is a $g \in H(G)$ such that $f = e^g$. This can also be used to obtain multiplicative $n$-th roots of such functions, by defining $\sqrt[n]{f} \coloneqq e^{g/n}$.
+
 \begin{lemma} \label{lem:schottky-2}
     Let $G \subseteq \C$ be a simply connected domain and $f \in H(G; \C \setminus \{ -1, 1 \})$. Then there exists an $F \in H(G)$ such that $f = \cos F$.
 \end{lemma}
 
 \begin{proof}
     Since $1 - f^2$ vanishes nowhere in $G$ it has a square root $g \in H(G)$. It follows that
-    $$ 1 = f^2 + g^2 = (f + ig)(f - ig). $$
-    Thus $f + ig$ vanishes nowhere and there exists an $F \in H(G)$ with $f + ig = e^{iF}$. Additionally we have $f - ig = e^{-iF}$ and therefore
+    \begin{equation*}
+        1 = f^2 + g^2 = (f + ig)(f - ig).
+    \end{equation*}
+    Thus $f + ig$ vanishes nowhere and there exists an $F \in H(G)$ with $f + ig = e^{iF}$. By the above we also have $f - ig = e^{-iF}$ and therefore
     $$ f = {\textstyle \frac{1}{2}} (e^{iF} + e^{-iF}) = \cos F. $$
 \end{proof}
 
 \begin{lemma} \label{lem:schottky-3}
-    Let $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$. Then there exists a $g \in H(\cl{\D})$ such that:
+    Let $G \subseteq \C$ be a simply connected domain and $f \in H(G; \C \setminus \{ 0, 1 \})$. Then there exists a $g \in H(G)$ such that:
     \begin{enumerate}[i.]
-        \item $f = \frac{1}{2} ( 1 + \cos \pi (\cos \pi g))$, and $\vert g(0) \vert \leq 3 + 2 \vert f(0) \vert$.
-        \item $g(\cl{\D})$ contains no disk of radius $1$.
-        \item $\vert g(z) \vert \leq \vert g(0) \vert + \theta / b (1 - \theta)$, for all $\vert z \vert \leq \theta$ where $0 < \theta < 1$.
+        \item $f = \frac{1}{2} ( 1 + \cos \pi (\cos \pi g))$.
+        \item $\vert g(0) \vert \leq 3 + 2 \vert f(0) \vert$.
+        \item $g(G)$ contains no disk of radius $1$.
+        \item If $\D \subseteq G$ then $\vert g(z) \vert \leq \vert g(0) \vert + \theta / b (1 - \theta)$, for all $\vert z \vert \leq \theta$ where $0 < \theta < 1$.
     \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-    By \Cref{lem:schottky-2} there exists a $\widetilde{F} \in H(\cl{\D})$ such that $2f - 1 = \cos \pi \widetilde{F}$. By \Cref{lem:schottky-1} there is a $b \in \C$ such that $\cos \pi b = 2f(0) - 1$ and $\vert b \vert \leq 1 + \vert 2 f(0) - 1 \vert \leq 2 + 2 \vert f(0) \vert$. Additionally we have that $b = \pm \widetilde{F}(0) + 2k$ for some $k \in \Z$. Then $F \coloneqq \pm \widetilde{F} + 2k \in H(\cl{\D})$ satifies $F(0) = b$. Since $F$ must omit all integers, there exists a $\widetilde{g} \in H(\cl{\D})$ such that $F = \cos \pi \widetilde{g}$. Again, there is an $a \in \C$ such that $\cos \pi a = b$ and $\vert a \vert \leq 1 + \vert b \vert \leq 3 + 2 \vert f(0) \vert$. Like above, we have $a = \pm \widetilde{g}(0) + 2\ell$ for some $\ell \in \Z$, thus $g \coloneqq \pm \widetilde{g} + 2\ell \in H(\cl{\D})$ satisfies $g(0) = a$. Ultimately, we obtain
-    $$ \textstyle f = \frac{1}{2} (1 + \cos \pi (\cos \pi g)), \quad \textrm{and} \quad \vert g(0) \vert = \vert a \vert \leq 3 + 2 \vert f(0) \vert. $$
+    By \Cref{lem:schottky-2} there exists a $\widetilde{F} \in H(G)$ such that $2f - 1 = \cos \pi \widetilde{F}$ and by \Cref{lem:schottky-1} there is a $b \in \C$ such that $\cos \pi b = 2f(0) - 1$ and $\vert b \vert \leq 1 + \vert 2 f(0) - 1 \vert \leq 2 + 2 \vert f(0) \vert$. Furthermore, since $\cos \pi b = \cos \pi \widetilde{F}(0)$, we have $b = \pm \widetilde{F}(0) + 2k$ for some $k \in \Z$. Then $F \coloneqq \pm \widetilde{F} + 2k \in H(G)$ satifies $F(0) = b$ and $2f - 1 = \cos \pi F$.
+    
+    Since $F$ must omit all integers, there exists a $\widetilde{g} \in H(G)$ such that $F = \cos \pi \widetilde{g}$. Similarly, there is an $a \in \C$ such that $\cos \pi a = b$ and $\vert a \vert \leq 1 + \vert b \vert \leq 3 + 2 \vert f(0) \vert$. Like above, since $\cos \pi a = \cos \pi \widetilde{g}(0)$, we have $a = \pm \widetilde{g}(0) + 2\ell$ for some $\ell \in \Z$, thus $g \coloneqq \pm \widetilde{g} + 2\ell \in H(G)$ satisfies $g(0) = a$ and $F = \cos \pi g$. Ultimately, we obtain
+    $$ \textstyle f = \frac{1}{2} (1 + \cos \pi (\cos \pi g)), \quad \textrm{and} \quad \vert g(0) \vert = \vert a \vert \leq 3 + 2 \vert f(0) \vert $$
+    and have thus shown (i) and (ii).
 
-    To show (ii) we consider the set
+    To show (iii) we consider the set
     $$ A \coloneqq \{ m \pm i \pi^{-1} \log (n + \sqrt{n^2 - 1}) : m \in \Z, n \in \N \setminus \{ 0 \} \}, $$
-    the points of which can be considered the vertices of a rectangular grid in $\C$. The width of said rectangles is $1$, and since
+    the points of which can be considered the vertices of a rectangular grid in $\C$. The width of such a rectangular cell is $1$, and since
     \begin{align*}
         \log ((n+1) &+ \sqrt{(n+1)^2 - 1}) - \log (n + \sqrt{n^2 - 1}) = \\
         &= \log \frac{1 + \frac{1}{n} + \sqrt{1 + \frac{2}{n}}}{1 + \sqrt{1 - \frac{1}{n^2}}} \leq \log (2 + \sqrt{3}) < \pi
     \end{align*}
-    their height is strictly bounded above by $1$. Let $a = p + i \pi^{-1} \log(q + \sqrt{q^2 - 1}) \in A$, then
+    their height is bounded above by some $C < 1$. Therefore, for all $z \in \C$ there is a $w_z \in A$ such that $\vert \Re z - \Re w_z \vert \leq \frac{1}{2}$ and $\vert \Im z - \Im w_z \vert \leq \frac{C}{2}$. Thus we have
+    $$ \vert z - w_z \vert \leq \vert \Re z - \Re w_z \vert + \vert \Im z - \Im w_z \vert \leq \frac{1}{2} + \frac{C}{2} < 1. $$
+    If we can show that $g(G) \cap A = \emptyset$, then $g(G)$ therefore cannot contain a disk of radius $1$. Let $a = p + i \pi^{-1} \log(q + \sqrt{q^2 - 1}) \in A$, then
     \begin{align*}
         \cos \pi a &= {\textstyle\frac{1}{2}}( e^{i \pi a} + e^{-i \pi a}) = {\textstyle\frac{1}{2}} (-1)^p ((q + \sqrt{q^2 - 1})^{-1} + (q + \sqrt{q^2 - 1})) = \\
-        &= (-1)^p \frac{1}{2} \frac{1 + q^2 + 2q \sqrt{q^2 - 1} + q^2 - 1}{q + \sqrt{q^2 - 1}} = (-1)^p q.
+        &= (-1)^p \frac{1}{2} \frac{1 + q^2 + 2q \sqrt{q^2 - 1} + q^2 - 1}{q + \sqrt{q^2 - 1}} = (-1)^p q
     \end{align*}
-    Thus $\cos \pi (\cos \pi a) = \pm 1$. But $0, 1 \notin f(\cl{\D})$, therefore $a \notin g(\cl{\D})$, thus $g(\cl{\D}) \cap A = \emptyset$ and $g(\cl{\D})$ cannot contain a disk of radius $1$.
+    and thus $\cos \pi (\cos \pi a) = \pm 1$. But $0, 1 \notin f(G)$, therefore $a \notin g(G)$ and $g(G) \cap A = \emptyset$, proving (iii).
 
-    For (iii), let $0 < \theta < 1$, then for $\vert z \vert \leq \theta$ we have $1 - \theta \leq d(z, \partial \D)$. By (ii) and \Cref{cor:bloch-domain} it follows that $\beta (1 - \theta) \vert g'(z) \vert \leq 1$. Let $\gamma$ denote the line connecting $0$ and $z$, then
+    For (iv), if $\D \subseteq G$, then $\restr{g}{\D} \in H(\D)$. Fix $0 < \theta < 1$, then for $\vert z \vert \leq \theta$ we have
+    $$ d(z, \partial \D) = \inf_{w \in \partial \D} \vert z - w \vert \geq \inf_{w \in \partial \D} \left( \vert w \vert - \vert z \vert \right) \geq 1 - \theta. $$
+    From (iii) it follows that $\restr{g}{\D}(\D)$ does not contain a disk of radius $1$. Let $0 < s < 1 - \theta$, then applying \Cref{cor:bloch-domain} to $\restr{g}{\D}$ implies that $\beta s \vert g'(z) \vert < 1$. Taking the supremum over $s$ and rearranging yields $ \vert g'(z) \vert \leq 1 / (\beta (1 - \theta))$. Thus our desired estimate is shown by
     \begin{align*}
-        \vert g(z) \vert &\leq \vert g(0) \vert + \vert g(z) - g(0) \vert \leq \vert g(0) \vert + \int_\gamma \vert g'(\zeta) \vert \diff \zeta \leq \vert g(0) \vert + \frac{\theta}{\beta (1 - \theta)}
+        \vert g(z) \vert &\leq \vert g(0) \vert + \vert g(z) - g(0) \vert \leq \vert g(0) \vert + \int_{[0, z]} \vert g'(\zeta) \vert \diff \zeta \leq \vert g(0) \vert + \frac{\theta}{\beta (1 - \theta)}.
     \end{align*}
-    yields our desired estimate.
 \end{proof}
 
-\begin{remark}
-    One may notice that in the proof of \Cref{lem:schottky-3} (i) and (ii) we never used the fact that we act on the unit disk. Indeed, applying the proof for $\C$, we can quickly obtain Picard's Little Theorem, which states that any $f \in H(\C; \C \setminus \{ a, b \})$, for distinct points $a, b \in \C$, is constant:
+The result we just proved is quite powerful, as it contains both Schottky's Theorem, as well as Picard's Little Theorem:
 
-    Let $g(z) \coloneqq \frac{f(z) - a}{b - a} \in H(\C; \C \setminus \{ 0, 1 \})$ then, by the argument above, $g$ does not contain a disk of radius $1$. \Cref{cor:bloch-entire} thus implies that $g$ is constant, and therefore so is $f$.
-\end{remark}
+\begin{theorem}[Picard's Little Theorem] \label{thm:picard-little}
+    Let $f \in H(\C; \C \setminus \{ a, b \})$ for distinct points $a, b \in \C$. Then $f$ is constant.
+\end{theorem}
+
+\begin{proof}
+    Consider $f_1(z) \coloneqq \frac{f(z) - a}{b - a} \in H(\C; \C \setminus \{ 0, 1 \})$. By \Cref{lem:schottky-3} there is some $g \in H(\C)$ such that $f_1 = \frac{1}{2}(1 + \cos \pi (\cos \pi g))$ and $g(\C)$ does not contain a disk of radius $1$. By \Cref{cor:bloch-entire} we thereby have that $g$ must be constant and therefore so are $f_1$ and $f$.
+\end{proof}
 
 \begin{theorem}[Schottky] \label{thm:schottky}
-    There exists a function ${\psi(\theta, \omega) : (0, 1) \times (0, \infty) \to (0, \infty)}$ such that for any $f \in H(\cl{\D}; \C \setminus \{ 0, 1 \})$ with $\vert f(0) \vert \leq \omega$ it holds that
+    There exists a function ${\psi(\theta, \omega) : (0, 1) \times (0, \infty) \to (0, \infty)}$ such that for any $f \in H(\D; \C \setminus \{ 0, 1 \})$ with $\vert f(0) \vert \leq \omega$ it holds that
     \begin{equation}
         \vert f(z) \vert \leq \psi(\theta, \omega), \quad \vert z \vert \leq \theta.
     \end{equation}
@@ -97,5 +112,5 @@ For sets $G, E \subseteq \C$ we define by $H(G; E)$ the set of all $f \in H(G)$ 
         \vert f(z) \vert &= \vert {\textstyle \frac{1}{2}} ( 1 + \cos \pi ( \cos \pi g(z) ) ) \vert \leq \exp ( \pi \exp \pi \vert g(z) \vert ) \leq \\ &\leq \exp (\pi \exp \pi (\vert g(0) \vert + \theta / \beta(1 - \theta))) \leq \\
         &\leq \exp ( \pi \exp \pi ( 3 + 2 \omega + \theta / \beta(1 - \theta) ) ),
     \end{align*}
-    and defining $\psi(\theta, \omega)$ as the rightmost term establishes the assertion.
+    and defining $\psi(\theta, \omega)$ as the final term establishes the assertion.
 \end{proof}

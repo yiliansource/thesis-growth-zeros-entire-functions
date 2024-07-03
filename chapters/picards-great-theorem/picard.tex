@@ -1,58 +1,24 @@
 \section{Picard's Great Theorem}
 \label{sec:picards-great-theorem}
 
-\begin{definition} \label{def:normal-family}
-    Let $G \subseteq \C$ be a domain and $\F \subseteq H(G)$. Then:
-    \begin{itemize}
-        \item $\F$ is called \emph{locally bounded} if for every $w \in G$ there is a neighborhood $U$ of $w$ and a constant $C > 0$ such that $\vert f(z) \vert \leq C$ for all $f \in \F$ and $z \in U$.
-        \item $\F$ is called \emph{normal} in $G$ if every sequence in $\F$ has a subsequence which converges compactly in $G$ to some $f \in H(G)$ or to $\infty$.
-    \end{itemize}
-\end{definition}
-
-The following well-known theorem establishes the equivalence of the two concepts:
-
-\begin{theorem}[Montel] \label{thm:montel}
-    Let $G \subseteq \C$ be a domain. Then a family $\F \subseteq H(G)$ is normal if and only if it is locally bounded.
-\end{theorem}
-
-\begin{theorem}[Hurwitz] \label{thm:hurwitz}
-    Let $G \subseteq \C$ be a domain and $(f_n)_{n \in \N}$ a sequence in $H(G)$ that converges compactly to $f$. If for every $n \in \N$ the number of $a$-points of $f_n$ is bounded by some $m \in \N_0$, then either the number of $a$-points of $f$ are also bounded by $m$, or $f \equiv a$.
-\end{theorem}
-
-The following lemma can be interpreted as a sharpened version of Montel's Theorem (\ref{thm:montel}) and is sometimes referred to as the \emph{fundamental normality test}.
-
-\begin{lemma} \label{lem:montel-sharpened}
-    For any domain $G \subseteq \C$ the family $\F \coloneqq H(G, \C \setminus \{ 0, 1 \})$ is normal in $G$.
-\end{lemma}
-
-\begin{proof}
-    We shall give the proof in three steps:
-    \begin{enumerate}
-        \item Let $w \in G$, $c > 0$ and $\F_*$ be a subfamily of $\F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is a neighborhood of $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $\cl{B_t(w)} \subset G$. Without loss of generality we may assume $w = 0$ and $t = 1$. By the maximum modulus principle and Schottky's Theorem we obtain
-        $$ \sup \{ \Vert f \Vert_{B_{1/2}(0)} : f \in \F_* \} \leq \psi(1/2, c) < \infty. $$
-
-        \item Fix some $w_* \in G$ and set $\F_1 \coloneqq \{ f \in \F : \vert f(w_*) \vert \leq 1 \}$. We aim to show that $\F_1$ is locally bounded (and by Montel's Theorem therefore normal) in $G$. Consider the set
-        $$ U \coloneqq \{ w \in G : \F_1 \textrm{ is bounded in a neighborhood of } w \}, $$
-        which is open in $G$. By (1) we have that $w_* \in U$. For sake of contradiction, assume that $U \neq G$. Then there exists some $w \in \partial U \cap G$ and a sequence $f_n \in \F_1$ with $\lim_{n \to \infty} f_n(w) = \infty$. Set $g_n \coloneqq 1 / f_n \in \F$, then $\lim_{n \to \infty} g_n(w) = 0$ and by (1) the family $(g_n)_{n \in \N}$ must be bounded in a neighborhood of $w$. By Montel's Theorem it is therefore normal and there exists a subsequence $(g_{n_k})_{k \in \N}$ which converges compactly to a $g \in H(B)$, for some disk $B$ around $w$. The functions $g_n$ have no zeros, but $g(w) = 0$; by Hurwitz's Theorem we therefore have $g \equiv 0$. Then for any $z \in B \cap U$ we have
-        $$ \lim_{k \to \infty} f_{n_k}(z) = \lim_{k \to \infty} 1 / g_{n_k}(z) = \infty, $$
-        contradicting the assumption that $\F_1$ is bounded in a neighborhood of $z$.
-
-        \item We can now conclude the proof. Let $(f_n)_{n \in \N}$ be a sequence in $\F$. If it has a subsequence in $\F_1$, then the claim follows from (2).
-        
-        On the other hand, if there are only finitely many $f_n$ in $\F_1$, then $(1 / f_n)_{n \in \N}$ has some subsequence, say $g_n$, in $\F_1$, which converges compactly in $G$ to some $g \in H(G)$. If $g$ has no zeros, then the subsequence $1 / g_n$ of the sequence $f_n$ converges compactly in $G$ to $1 / g$. If $g$ has zeros, then by Hurwitz's Theorem (\ref{thm:hurwitz}) we have $g \equiv 0$, thus $1 / g_n$ converges compactly in $G$ to $\infty$.
-    \end{enumerate}
-\end{proof}
+The following lemma is integral in showing that functions which omit two values on the punctured unit disk cannot have an essential singularity at $0$.
 
 \begin{lemma} \label{lem:great-picard-bounded}
     Let $f \in H(\D^\times; \C \setminus \{ 0, 1 \})$. Then $f$ or $1/f$ is bounded in a punctured neighborhood of zero.
 \end{lemma}
 
 \begin{proof}
-    Set $f_n(z) \coloneqq f(z / n) \in H(\D^\times; \C \setminus \{ 0, 1 \})$. By \Cref{lem:montel-sharpened} there exists a subsequence $(f_{n_k})_{k \in \N}$ such that $(f_{n_k})_{k \in \N}$ or $(1 / f_{n_k})_{k \in \N}$ is bounded on $\partial B_{1/2}(0)$.
+    For $n \in \N$ set $f_n(z) \coloneqq f(z / n) \in H(\D^\times; \C \setminus \{ 0, 1 \})$. By \Cref{lem:montel-sharpened} the sequence $(f_n)_{n \in \N}$ has a subsequence $(f_{n_k})_{k \in \N}$ that converges compactly to a $f \in H(\D^\times)$ or to $\infty$.
 
-    In the first case, we have $\vert f(z / n_k) \vert \leq M$ for some $M > 0$ and all $\vert z \vert = \frac{1}{2}$, $k \in \N$. Thus $f$ is bounded on every circle of radius $1 / (2 n_k)$. By the maximum modulus principle, $f$ must therefore be bounded on every annulus $1 / (2 n_{k + 1}) \leq \vert z \vert \leq 1 / (2 n_k)$. This yields that $f$ is bounded in a punctured neighborhood of zero.
+    Assume the former case. Then there is some $k_0 \in \N$ such that for all $k \geq k_0$ we have $ \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} < 1 $ and thus
+    \begin{equation*}
+        \Vert f \Vert_{\partial B_{1/2n_k}(0)} = \Vert f_{n_k} \Vert_{\partial B_{1/2}(0)} \leq \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} + \Vert f \Vert_{\partial B_{1/2}(0)} \leq 1 + \Vert f \Vert_{\partial B_{1/2}(0)} \eqqcolon C.
+    \end{equation*}
+    By the maximum modulus principle, $f$ must therefore be bounded on every annulus $1 / (2 n_{k + 1}) \leq \vert z \vert \leq 1 / (2 n_k)$, for $k \geq k_0$. Thus $f$ is bounded on
+    $$ V \coloneqq \bigcup_{k \geq k_0} \left\{ z \in \C : \frac{1}{2 n_{k+1}} \leq \vert z \vert \leq \frac{1}{2 n_k} \right\}, $$
+    which is a punctured neighborhood of zero.
 
-    In the second case, the same argument shows that $1 / f$ is bounded in a punctured neighborhood of zero.
+    In the latter case, $(1 / f_{n_k})_{k \in \N}$ converges compactly to $0$ by \Cref{lem:compact-convergence-reciprocals}. Replacing $f_{n_k}$ with $1 / f_{n_k}$ and $f$ with $0$ in the above we likewise obtain that $1 / f$ is bounded in a punctured neighborhood of zero.
 \end{proof}
 
 \begin{theorem}[Picard's Great Theorem] \label{thm:picards-great-theorem}
@@ -60,25 +26,23 @@ The following lemma can be interpreted as a sharpened version of Montel's Theore
 \end{theorem}
 
 \begin{proof}
-    Aiming for contradiction, assume that $f$ only takes on $z_0, z_1 \in \C$ finitely often in some punctured neighborhood $W$ of $w$. Then $W$ contains a punctured disk of radius $\varepsilon > 0$ around $w$, on which $f$ does not assume $z_0, z_1$. The function
-    $$ g(z) \coloneqq \frac{f(\varepsilon z + w) - z_0}{z_1 - z_0} \in H(\D^\times; \C \setminus \{ 0, 1 \}) $$
-    has an essential singularity at zero. By \Cref{lem:great-picard-bounded}, we have that either $g$ or $1/g$ must be bounded in a neighborhood of zero. In the former case the singularity must therefore be removable, whereas in the latter case it must be a pole, yielding a contradiction.
+    Aiming for contradiction, assume that $f$ only takes on $z_0, z_1 \in \C$ finitely often in some punctured neighborhood $W$ of $w$. Then $W$ contains a punctured disk of radius $t > 0$ around $w$, on which $f$ does not assume $z_0, z_1$, and
+    $$ g(z) \coloneqq \frac{f(t z + w) - z_0}{z_1 - z_0} \in H(\D^\times; \C \setminus \{ 0, 1 \}) $$
+    has an essential singularity at zero. By \Cref{lem:great-picard-bounded}, we have that either $g$ or $1/g$ must be bounded in a punctured neighborhood of zero. By the classification of isolated singularities, in the former case the singularity must therefore be removable, whereas in the latter case it must be a pole, yielding a contradiction.
 \end{proof}
+
+The following corollary is sometimes also referred to as Picard's Great Theorem:
 
 \begin{corollary} \label{cor:transcendental-every-value-inf}
     Every entire transcendental function assumes every value in $\C$ infinitely often, with at most one exception.
 \end{corollary}
 
 \begin{proof}
-    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be transcendental and entire, and consider $g(z) \coloneqq f(1 / z)$. Then the Laurent series expansion of $g$ has an infinite principal part, therefore $g$ has an essential singularity at zero. By Picard's Great Theorem $g$ assumes all values in $\C$ on $\C^\times$, except at most one. Thus $f$ does the same on $\C^\times$.
+    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be transcendental and entire, and consider $g(z) \coloneqq f(1 / z) \in H(\C^\times)$. Then the Laurent series expansion of $g$ at $0$ has infinite principal part, therefore $g$ has an essential singularity at zero. By Picard's Great Theorem $g$ assumes all values in $\C$ on $B_1(0) \setminus \{ 0 \}$ infinitely often, except at most one, and so $f$ does the same on $\C \setminus B_1(0)$.
 \end{proof}
 
-\begin{corollary}[Picard's Little Theorem] \label{thm:picards-little-theorem}
-    Every non-constant entire function omits at most one value.
-\end{corollary}
-
-\begin{proof}
-    A non-constant entire function $f$ is either a non-constant polynomial or transcendental. In the latter case, the claim follows from \Cref{cor:transcendental-every-value-inf}.
+\begin{remark}
+    Unsurprisingly, Picard's Little Theorem is contained in Picard's Great Theorem; a non-constant $f \in H(\C)$ is either a non-constant polynomial or transcendental. In the latter case, $f$ omits at most one value by \Cref{cor:transcendental-every-value-inf}.
     
-    Otherwise let $w \in \C$, then $f(z) - w$ has a complex root by the Fundamental Theorem of Algebra and hence $f$ assumes all values.
-\end{proof}
+    In the former case let $w \in \C$, then $f(z) - w$ has a zero in $\C$ by the Fundamental Theorem of Algebra and hence $f$ assumes all values.
+\end{remark}

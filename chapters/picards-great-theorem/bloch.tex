@@ -1,34 +1,37 @@
 \section{Bloch's Theorem}
 \label{sec:blochs-theorem}
 
-Bloch's Theorem (\ref{thm:bloch}) will show that for any $f \in H(\cl{\D})$ with $f'(0) = 1$ the image of $\cl{\D}$ under $f$ contains a disk of a fixed radius. The point at which said disk is centered at is given in the proof.
+Bloch's Theorem will show that for any $f \in H(\cl{\D})$ with $f'(0) = 1$ the image of $\cl{\D}$ under $f$ contains a disk of a fixed radius. The point at which said disk is centered at is given in the proof.
 
-If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. Since such an $f$ is an open mapping, we first observe a simple criterion for the size of disks in their image domain:
+If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. Since such an $f$ is an open mapping on $G$, we first observe a general criterion for the size of disks in the image domain of such functions:
 
 \begin{lemma} \label{lem:bloch-lemma-1}
     Let $G \subset \C$ be a bounded domain, $f : \cl{G} \to \C$ continuous and $\restr{f}{G} : G \to \C$ open. If there exists $a \in G$ such that $s \coloneqq \min_{z \in \partial G} \vert f(z) - f(a) \vert > 0$, then $B_{s}(f(a)) \subseteq f(G)$.
 \end{lemma}
 
 \begin{proof}
-    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it assumes its minimum $m$ at some $w_* \in \partial f(G)$. Let $(z_n)_{n \in \N}$ be a sequence in $G$, such that $\lim_{n \to \infty} f(z_n) = w_*$. Since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$ and by continuity of $f$ we have $f(z_*) = w_*$.
+    Since $G$ is bounded, $\cl{G}$ is compact and by continuity of $f$, so is $\cl{f(G)}$.
+    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it assumes its minimum $m$ at some $w_* \in \partial f(G)$. Choose a sequence $(z_n)_{n \in \N}$ in $G$ with $\lim_{n \to \infty} f(z_n) = w_*$ then, since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$. By continuity of $f$ we have $f(z_*) = w_*$.
 
-    Assuming $z_* \in G$, since $\restr{f}{G}$ is open, the image of any open set in $G$ containing $z_*$ under $f$ must be an open set in $f(G)$ containing $w_*$, which is impossible since $w_* \in \partial G$.
+    If $z_* \in G$, since $\restr{f}{G}$ is open, the image of any open set in $G$ containing $z_*$ under $f$ is an open set in $f(G)$ containing $w_*$, which is impossible since $w_* \in \partial f(G)$.
 
-    Therefore $z_* \in \partial G$ and we have $m = \vert w_* - f(a) \vert = \vert f(z_*) - f(a) \vert \geq s$, from which it follows that $B_{s}(f(a)) \subseteq f(G)$.
+    Therefore $z_* \in \partial G$ and we have
+    $$ d(f(a), \partial f(G)) = m = \vert w_* - f(a) \vert = \vert f(z_*) - f(a) \vert \geq s, $$
+    which implies $B_{s}(f(a)) \subseteq f(G)$.
 \end{proof}
 
 \begin{lemma} \label{lem:bloch-lemma-2}
-    Let $a \in \C, r > 0$ and $B \coloneqq B_{r}(a)$. Suppose further that $f \in H(\cl{B})$ such that $\Vert f' \Vert_B \leq 2 \vert f'(a) \vert$. Then $ B_{R}(f(a)) \subseteq f(B)$, where $ R \coloneqq (3 - 2 \sqrt{2}) r \vert f'(a) \vert $.
+    Fix $a \in \C, r > 0$ and let $B \coloneqq B_{r}(a)$. Suppose further that $f \in H(\cl{B})$ such that $\Vert f' \Vert_B \leq 2 \vert f'(a) \vert$. Then $ B_{R}(f(a)) \subseteq f(B)$, where $ R \coloneqq (3 - 2 \sqrt{2}) r \vert f'(a) \vert $.
 \end{lemma}
 
 \begin{proof}
-    Without loss of generality we can assume $a = f(a) = 0$. Consider the function
+    We can assume $a = f(a) = 0$, otherwise we consider $f_1(z) \coloneqq f(z + a) - f(a)$. The function
     $$ \mapping{\alpha_f}{B & \to & \C,}{z & \mapsto & f(z) - f'(0) z,} $$
-    which satifies, for the line $\gamma$ connecting $0$ to $z \in B$,
+    satifies, for all $z \in B$,
     \begin{equation} \label{eq:bloch-lemma-2:estimate-1}
-        \vert \alpha_f(z) \vert = \left\vert \int_\gamma f'(\zeta) - f'(0) \diff \zeta \right\vert \leq \int_0^1 \vert f'(t z) - f'(0) \vert \vert z \vert \diff t. \tag{\textasteriskcentered}
+        \vert \alpha_f(z) \vert = \left\vert \int_{[0, z]} f'(\zeta) - f'(0) \diff \zeta \right\vert \leq \int_0^1 \vert f'(t z) - f'(0) \vert \vert z \vert \diff t. \tag{\textasteriskcentered}
     \end{equation}
-    Let $w \in B$, then Cauchy's integral formula gives
+    We wish to further estimate the integrand. Let $w \in B$, then Cauchy's integral formula gives
     \begin{align*}
         \vert f'(w) - f'(0) \vert &= \frac{1}{2\pi} \left\vert \int_{\partial B} \frac{f'(\zeta)}{\zeta - w} - \frac{f'(\zeta)}{\zeta} \diff \zeta \right\vert = \frac{1}{2\pi} \left\vert \int_{\partial B} \frac{w f'(\zeta)}{\zeta (\zeta - w)} \diff \zeta \right\vert \leq \\
         &\leq \frac{1}{2\pi} \int_{\partial B} \frac{\vert w \vert \Vert f' \Vert_B}{r(r - \vert w \vert)} \diff \zeta = \frac{\vert w \vert}{r - \vert w \vert} \Vert f' \Vert_B.
@@ -42,11 +45,11 @@ If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is
         \vert f'(0) \vert \rho - \vert f(z) \vert &\leq \vert \alpha_f(z) \vert \leq \frac{\rho^2}{r - \rho} \vert f'(0) \vert \\
         \Longleftrightarrow \quad \vert f(z) \vert &\geq \left( \rho - \frac{\rho^2}{r - \rho} \right) \vert f'(0) \vert.
     \end{align*}
-    Considering $\rho - \rho^2 / (r - \rho)$ as a function of $\rho$, it assumes its maximum value, $(3 - 2 \sqrt{2}) r$, at $\rho_* \coloneqq (1 - \sqrt{2} / 2)r \in (0, r)$. Therefore,
+    The function $\rho \mapsto \rho - \rho^2 / (r - \rho)$ assumes its maximum value at $\rho_* \coloneqq (1 - \sqrt{2} / 2)r \in (0, r)$, namely $(3 - 2 \sqrt{2}) r$. Therefore,
     \begin{equation*}
         \vert f(z) \vert \geq (3 - 2 \sqrt{2}) r \vert f'(0) \vert = R, \quad \textrm{for all} \quad \vert z \vert = \rho_*.
     \end{equation*}
-    Invoking \Cref{lem:bloch-lemma-1} with $G \coloneqq B_{\rho_*}(0)$ thus yields $B_{R}(0) \subseteq f(G) \subseteq f(B)$.
+    In particular, $\min_{z \in \partial B_{\rho_*}} \vert f(z) \vert \geq R > 0$, thus invoking \Cref{lem:bloch-lemma-1} with the domain $B_{\rho_*}(0)$ yields $B_{R}(0) \subseteq f(B_{\rho_*}(0)) \subseteq f(B)$.
 \end{proof}
 
 \begin{theorem} \label{thm:bloch-stronger}
@@ -56,30 +59,30 @@ If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is
 \begin{proof}
     The function
     $$ \mapping{\alpha_f}{\cl{\D} & \to & \R}{z & \mapsto & \vert f'(z) \vert (1 - \vert z \vert)} $$
-    is continuous and assumes its maximum $C_f > 0$ at some point $p \in \D$.
-    
-    Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then we have $B_{t}(p) \subseteq \D$ and $1 - \vert z \vert \geq t$ for $z \in B_{t}(p)$. Since $\vert f'(z) \vert (1 - \vert z \vert) \leq C_f = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$. By \Cref{lem:bloch-lemma-2}, we obtain
-    $ B_{R}(f(p)) \subseteq f(\D) $, where 
-    $$ R \coloneqq (3 - 2 \sqrt{2}) t \vert f'(p) \vert = ({\textstyle \frac{3}{2}} - \sqrt{2}) \vert f'(p) \vert (1 - \vert p \vert) > {\textstyle \frac{1}{12}} \vert f'(0) \vert, $$
-    establishes the assertion.
+    is continuous and assumes its maximum $C_f > 0$ at some point $p \in \cl{\D}$. Note that $C_f \geq \vert f'(0) \vert$ and since $f$ is non-constant and $\restr{\alpha_f}{\partial \D} = 0$ we even have $p \in \D$.
+
+    Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then we have $B_{t}(p) \subseteq \D$. Furthermore, for $z \in B_t(p)$, we have
+    $$ 1 - \vert z \vert \geq 1 - \vert z - p \vert - \vert p \vert \geq 1 - t - \vert p \vert = t $$
+    and since $\vert f'(z) \vert (1 - \vert z \vert) \leq C_f = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$ for all $z \in B_t(p)$. By \Cref{lem:bloch-lemma-2}, we get $ B_{R}(f(p)) \subseteq f(\D) $, where $R \coloneqq (3 - 2 \sqrt{2}) t \vert f'(p) \vert = ({\textstyle \frac{3}{2}} - \sqrt{2}) C_f$,
+    which establishes the assertion.
 \end{proof}
 
-We immediately have:    
+We now immediately obtain:    
 
 \begin{theorem}[Bloch] \label{thm:bloch}
-    Let $f \in H(\cl{\D})$ and assume that $f'(0) = 1$. Then $f(\D)$ contains a disk of radius $\frac{3}{2} - \sqrt{2}$.
+    Let $f \in H(\cl{\D})$ and assume $f'(0) = 1$. Then $f(\D)$ contains a disk of radius $\frac{3}{2} - \sqrt{2}$.
 \end{theorem}
 
-In the following we will denote by $\beta > 0$ any constant satisfying Bloch's Theorem, for example $\beta = \frac{1}{12} < \frac{3}{2} - \sqrt{2}$.
+In the following we will denote by $\beta > 0$ any constant less than or equal to the radius in Bloch's Theorem, for example $\beta = \frac{1}{12} < \frac{3}{2} - \sqrt{2}$.
 
 \begin{corollary} \label{cor:bloch-domain}
-    Let $G \subset \C$ be a domain and $f \in H(G)$ with $f'(c) \neq 0$ for some $c \in G$. Then $f(G)$ contains a disk of every radius $\beta s \vert f'(c) \vert$, where $0 < s < d(c, \partial G)$.
+    Let $G \subseteq \C$ be a domain and $f \in H(G)$ with $f'(c) \neq 0$ for some $c \in G$. Then $f(G)$ contains a disk of every radius $\beta s \vert f'(c) \vert$, where $0 < s < d(c, \partial G)$.
 \end{corollary}
 
 \begin{proof}
-    Without loss of generality we may assume $c = 0$. Since $f$ is analytic on $\cl{B_s(0)} \subseteq G$, we have $g(z) \coloneqq f(sz) / sf'(0) \in H(\cl{\D})$. Since $g'(0) = 1$, Bloch's Theorem (\ref{thm:bloch}) yields a disk $B$ of radius $\beta$ such that $B \subseteq g(\D)$. It follows that
+    We may assume $c = 0$, otherwise we consider $f_1(z) \coloneqq f(z+c)$. Let $0 < s < d(c, \partial G)$, then $f$ is analytic on $\cl{B_s(0)} \subseteq G$, thus we have $g(z) \coloneqq f(sz) / sf'(0) \in H(\cl{\D})$. Since $g'(0) = 1$, Bloch's Theorem yields a disk $B$ of radius $\beta$ with $B \subseteq g(\D)$. Then $D \coloneqq s \vert f'(0) \vert B$ is a disk of radius $\beta s \vert f'(0) \vert$ and we have
     \begin{equation*}
-        s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(G).
+        D = s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(G).
     \end{equation*}
 \end{proof}
 
