@@ -16,10 +16,10 @@ A well-known theorem on compact convervence is:
     Let $G \subseteq \C$ be a domain and $(f_n)_{n \in \N}$ a sequence in $H(G)$ that converges compactly to $f \in H(G)$. If for every $n \in \N$ the number of $a$-points of $f_n$ is bounded by some $m \in \N_0$, then either the number of $a$-points of $f$ are also bounded by $m$, or $f \equiv a$.
 \end{theorem}
 
-Compact convergence is, in some ways, compatible with reciprocals:
+As an immediate consequence we obtain that compact convergence is, in some ways, compatible with reciprocals:
 
 \begin{lemma} \label{lem:compact-convergence-reciprocals}
-Let $G \subseteq \C$ be a domain and $(f_n)_{n \in \N}$ a sequence in $H(G; \C \setminus \{ 0 \})$. If it converges compactly to some $f \in H(G)$. Then it holds that either:
+Let $G \subseteq \C$ be a domain and $(f_n)_{n \in \N}$ a sequence in $H(G; \C \setminus \{ 0 \})$. If it converges compactly to some $f \in H(G)$, then it holds that either:
 \begin{itemize}
     \item $0 \notin f(G)$ and $1 / f_n \to 1 / f$ compactly in $G$, or
     \item $f \equiv 0$ and $1 / f_n \to \infty$ compactly in $G$.
@@ -66,7 +66,7 @@ The following theorem can be interpreted as a sharpened version of Montel's Theo
 \end{theorem}
 
 \begin{proof}
-    We shall give the proof in three steps:
+    We give the proof in three steps:
     \begin{enumerate}
         \item Let $w \in G$, $c > 0$ and $\F_* \subseteq \F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is an open disk at $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $B_t(w) \subseteq G$. Let $f \in \F_*$, then $g(z) \coloneqq f(tz + w) \in H(\D)$. By the maximum modulus principle and Schottky's Theorem we obtain
         $$ \sup_{z \in B_{t/2}(w)} \vert f(z) \vert \leq \sup_{z \in B_{1/2}(0)} \vert g(z) \vert \leq \sup_{\vert z \vert = 1/2} \vert g(z) \vert \leq \psi(1/2, c) $$

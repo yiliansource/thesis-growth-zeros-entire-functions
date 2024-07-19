@@ -2,7 +2,7 @@
 \label{sec:hadamards-theorem}
 
 \begin{theorem}[Weierstrass \cite{bluemlinger-complex-analysis,stein-shakarchi-princeton}] \label{thm:weierstrass}
-    Let $(z_j)_{j \in \N}$ be a sequence in $\C$ without accumulation points. Then there exists an entire function $E$ (called the \emph{Weierstrass canonical product} formed from said sequence) that has zeros precisely at $(z_j)_{j \in \N}$, with multiplicities equal to how often $z_j$ occurs in the sequence.
+    Let $(z_j)_{j \in \N}$ be a sequence in $\C$ without accumulation points. Then there exists an $E \in H(\C)$ (called the \emph{Weierstrass canonical product} formed from said sequence) that has zeros precisely at $(z_j)_{j \in \N}$, and $z_j$ has multiplicity equal to how often $z_j$ occurs in the sequence.
 \end{theorem}
 
 In particular, we have
@@ -14,9 +14,9 @@ where $k$ is the order of the zero at $z = 0$ and $R_n$ is a polynomial, namely 
 Weierstrass' Theorem is also known as the \emph{Weierstrass Factorization Theorem}, due to the following corollary:
 
 \begin{corollary} \label{cor:weierstrass-factorization}
-    Let $f$ be an entire function with zeros $(z_j)_{j \in \N}$. Then there exists an entire function $g$, such that
+    Let $f \in H(\C)$ have zeros $(z_j)_{j \in \N}$. Then there exists a $g \in H(\C)$ such that
     $$ f(z) = e^{g(z)} E(z), $$
-    where $E$ is a Weierstrass canonical product formed from the zeros of $f$.
+    where $E \in H(\C)$ is a Weierstrass canonical product formed from $(z_j)_{j \in \N}$.
 \end{corollary}
 
 \begin{proof}
@@ -26,8 +26,8 @@ Weierstrass' Theorem is also known as the \emph{Weierstrass Factorization Theore
 Hadamard's Theorem will show that, for functions of finite order $\rho$, the function $g$ in \Cref{cor:weierstrass-factorization} can be taken to be a polynomial of degree less than $\rho$ and the degree of the polynomials $R_n$ in \eqref{eq:weierstrass-canonical-product} can be taken to be independant of $n$. To prove this we require the following lemma, which can be interpreted as a version of the maximum modulus principle applied to the real part of an analytic function.
 
 \begin{lemma}[Borel-Carathéodory] \label{lem:borel-caratheodory}
-    Let $f$ be analytic in $\cl{\D}$ and let
-    $$ A_f(r) = \max_{\vert z \vert = r} \Re f(z). $$
+    Let $f \in H(\cl{\D})$ and define
+    $$ A_f(r) \coloneqq \max_{\vert z \vert = r} \Re f(z). $$
     Then, for $0 < r < R$,
     $$ M_f(r) \leq \frac{2r}{R - r} A_f(R) + \frac{R + r}{R - r} \vert f(0) \vert $$
     and, if additionally $A_f(R) \geq 0$, then for $n \in \N$
@@ -39,9 +39,9 @@ Hadamard's Theorem will show that, for functions of finite order $\rho$, the fun
 \end{proof}
 
 \begin{theorem}[Hadamard] \label{thm:hadamard}
-    Let $f$ be an entire function of finite order with zeros $(z_j)_{j \in \N}$. Then there exists a polynomial $Q$ with $\deg Q \leq \rho_f$, such that
+    Let $f \in H(\C)$ be of finite order with zeros $(z_j)_{j \in \N}$. Then there exists a polynomial $Q$ with $\deg Q \leq \rho_f$, such that
     $$ f(z) = e^{Q(z)} E(z), $$
-    where $E$ is a Weierstrass canonical product formed from the zeros of $f$.
+    where $E$ is a Weierstrass canonical product formed from $(z_j)_{j \in \N}$.
 \end{theorem}
 
 \begin{proof}

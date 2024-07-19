@@ -3,27 +3,30 @@
 
 Necessary conditions for the order of a composition to be finite will be given by Pòlya's Theorem, the proof of which relies on a result that was first proven by Harald Bohr. While Bloch's Theorem dealt with disks contained in the image of holomorphic functions, we now focus on circles contained in such images.
 
-\begin{remark}    
-    To justify our next definition, let $G \subset \C$ be a bounded domain with $0 \in G$. We claim that $\cl{G}$ contains a circle (the boundary of a disk) centered at $0$ of maximal, non-zero radius; in other words, we claim that the set
-    $$ S \coloneqq \{ r > 0 : \partial B_r(0) \subseteq \cl{G} \} $$
-    has a maximum. Firstly, since $G$ is open and contains $0$, there is some $t > 0$ such that $B_t(0) \subseteq G$. Since $\partial B_t(0) \subset \cl{B_t(0)} \subseteq \cl{G}$ we thus have $t \in S$ and $S$ is non-empty. It now suffices to show that the set $S_0 \coloneqq S \cup \{ 0 \}$ is compact. Clearly $S_0$ is bounded from below by $0$ and since $\cl{G}$ is bounded it must also be bounded from above. Thus it remains to show that $S_0$ is closed.
+\begin{proposition}
+    Let $G \subset \C$ be a bounded domain with $0 \in G$. Then the set
+    \begin{equation} \label{eq:set-circle-maximal-radius}
+        S \coloneqq \{ r \geq 0 : \partial B_r(0) \subseteq \cl{G} \}
+    \end{equation}
+    has a positive maximum; that is, $\cl{G}$ contains a circle of positive, maximal radius\footnote{The circle of radius $0$ is taken to be the singleton $\{ 0 \}$.}.
+\end{proposition}
 
-    Let $(r_n)_{n \in \N}$ be a convergent sequence in $S_0$ with limit $r \in [0, \infty)$. If $r = 0$, then $r \in S_0$. Otherwise we claim that $\partial B_r(0) \subseteq \cl{G}$. Let $z \in \partial B_r(0)$, and set $z_n \coloneqq r_n z / r$ for $n \in \N$. Now $\vert z_n \vert = r_n$, thus $z_n \in \partial B_{r_n}(0) \subseteq \cl{G}$ and therefore $(z_n)_{n \in \N}$ is a sequence in $\overline{G}$. Clearly $z_n \to z$ and since $\cl{G}$ is closed we therefore have $z \in \overline{G}$. Since $z$ was arbitrary, this concludes the claim and we have $r \in S_0$.
+\begin{proof}
+    Since $G$ is open and contains $0$ there is some $t > 0$ such that $B_t(0) \subseteq G$. Since $\partial B_t(0) \subset \cl{B_t(0)} \subseteq \cl{G}$ we thus have $t \in S$ and $S$ is non-empty. It now suffices to show that $S$ is compact, since then it would contain its maximum $m \geq t$. Clearly $S$ is bounded from below by $0$ and since $\cl{G}$ is bounded it must also be bounded from above. Thus it remains to show that $S$ is closed.
 
-    Thus $S_0$ is compact and therefore has a maximum $m \geq t > 0$, which is also a maximum of $S$.
-\end{remark}
+    Let $(r_n)_{n \in \N}$ be a convergent sequence in $S$ with limit $r \in [0, \infty)$. If $r = 0$, then $r \in S$. Otherwise we claim that $\partial B_r(0) \subseteq \cl{G}$. Let $z \in \partial B_r(0)$, and set $z_n \coloneqq r_n z / r$ for $n \in \N$. Now $\vert z_n \vert = r_n$, thus $z_n \in \partial B_{r_n}(0) \subseteq \cl{G}$ and therefore $(z_n)_{n \in \N}$ is a sequence in $\overline{G}$. Clearly $z_n \to z$ and since $\cl{G}$ is closed we therefore have $z \in \overline{G}$. Since $z$ was arbitrary, this concludes the claim, we have $r \in S$ and thus $S$ is closed.
+\end{proof}
 
 If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non-constant with $f(0) = 0$, then $f(G)$ is a bounded domain with $0 \in f(G)$. This, together with the above remark, justifies the following definition:
 
 \begin{definition}
-    Let $f \in H(\D) \cap C(\cl{\D}; \C)$ be non-constant with $f(0) = 0$, then we define
-    \begin{equation}
-        r_f \coloneqq \max \{ r > 0 : \partial B_r(0) \subseteq f(\cl{\D}) \} > 0.
-    \end{equation}
+    Let $f \in H(\D) \cap C(\cl{\D}; \C)$ be non-constant with $f(0) = 0$, then we define $r_f$ as the positive maximum of the set $S$ in \eqref{eq:set-circle-maximal-radius}, where $G = f(\D)$.
 \end{definition}
 
+Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
+
 \begin{theorem}[Bohr] \label{thm:bohr}
-    Fix $0 < \theta < 1$ and let $f \in H(\D) \cap C(\cl{\D}; \C)$ such that $f(0) = 0$ and $M_f(\theta) = 1$. Then $r_f \geq C_\theta$, where $C_\theta > 0$ is a constant depending only on $\theta$.
+    There exists a function ${\phi : (0, 1) \times \to (0, \infty)}$ such that for any $f \in H(\D) \cap C(\cl{\D}; \C)$ with $f(0) = 0$ and $M_f(\theta) = 1$ it holds that $r_f \geq \phi(\theta)$.
 \end{theorem}
 
 \begin{proof}
@@ -33,12 +36,13 @@ If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non
     $$ \vert h(0) \vert = \left\vert \frac{f(0) - w_{R_\varepsilon}}{w_{2 R_\varepsilon} - w_{R_\varepsilon}} \right\vert \leq \frac{\vert w_{R_\varepsilon} \vert}{\vert \vert w_{2 R_\varepsilon} \vert - \vert w_{R_\varepsilon} \vert \vert} = \frac{R_\varepsilon}{2 R_\varepsilon - R_\varepsilon} = 1, $$
     by Schottky's Theorem we have $\vert h(z) \vert \leq \psi(\theta, 1)$ for all $\vert z \vert \leq \theta$. Therefore
     $$ \vert f(z) \vert - R_\varepsilon \leq \vert g(z) - w_{R_\varepsilon} \vert \leq \vert w_{2 R_\varepsilon} - w_{R_\varepsilon} \vert \psi(\theta, 1) \leq 3 R_\varepsilon \psi(\theta, 1) $$
-    and thus $\vert f(z) \vert \leq R_\varepsilon + 3 R_\varepsilon \psi(\theta, 1)$ for all $\vert z \vert \leq \theta$. Using the hypothesis that $M_f(\theta) = 1$ and the maximum modulus principle we obtain $1 \leq R_\varepsilon + 3 R_\varepsilon \psi(\theta, 1)$, and letting $\varepsilon \to 0$ we have $1 \leq r_f + 3 r_f \psi(\theta, 1)$, thus
-    $$ r_f \geq \frac{1}{1 + 3 \psi(\theta, 1)} \eqqcolon C_\theta. $$
+    and thus $\vert f(z) \vert \leq R_\varepsilon + 3 R_\varepsilon \psi(\theta, 1)$ for all $\vert z \vert \leq \theta$. Using the hypothesis that $M_f(\theta) = 1$ and the maximum modulus principle we obtain $1 \leq R_\varepsilon + 3 R_\varepsilon \psi(\theta, 1)$, and letting $\varepsilon \to 0$ we have $1 \leq r_f + 3 r_f \psi(\theta, 1)$. Thus
+    $$ r_f \geq \frac{1}{1 + 3 \psi(\theta, 1)}$$
+    and defining $\phi(\theta)$ as the right-hand side establishes the assertion.
 \end{proof}
 
 \begin{theorem}[Pólya] \label{thm:polya}
-    Let $g, h \in H(\C)$. For the order of $g \circ h$ to be finite, it must hold that either
+    Let $g, h \in H(\C)$ be non-constant. For the order of $g \circ h$ to be finite, it must hold that either
     \begin{enumerate}[i.]
         \item $h$ is a polynomial and $\rho_g < \infty$, or
         \item $h$ is not a polynomial, $\rho_h < \infty$ and $\rho_g = 0$.
@@ -48,7 +52,7 @@ If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non
 \begin{proof}
     Without loss of generality we can assume $h(0) = 0$; otherwise we just consider $h_0(z) \coloneqq h(z) - h(0)$ and $g_0(w) \coloneqq g(w + h(0))$. Set $f \coloneqq g \circ h$ and define
     \begin{equation*}
-        k_r(z) \coloneqq \frac{h(rz)}{M_h(r / 2)} \in H(\cl{\D}), \quad \textrm{for } r > 0.
+        k_r(z) \coloneqq \frac{h(rz)}{M_h(r / 2)} \in H(\D) \cap C(\cl{\D}; \C), \quad \textrm{for } r > 0.
     \end{equation*}
     Note that by definition we have $M_{k_r}(1/2) = 1$ and $k_r(0) = 0$, thus by Bohr's Theorem there is some constant $C > 0$ and an $R / M_h(r/2) > C$ such that $\partial B_{R / M_h(r/2)}(0) \subseteq k_r(\cl{\D})$ and thus $\partial B_R(0) \subseteq h(\cl{B_r(0)})$. By the maximum modulus principle, $\vert g \vert$ assumes its maximum over $\cl{B_R(0)}$ at some $w_0 \in \partial B_R(0)$. By the above there is a $z_0 \in \cl{B_r(0)}$ with $h(z_0) = w_0$. Thus we get
     \begin{equation*}
@@ -72,7 +76,7 @@ If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non
 \end{proof}
 
 \begin{theorem}[Thron] \label{thm:thron}
-    Let $g \in H(\C)$ be transcendental, of finite order and suppose that $g$ assumes some value $w \in \C$ only finitely often. Then there exists no $f \in H(\C)$ with $f \circ f = g$.
+    Let $g \in H(\C)$ be transcendental, $\rho_g < \infty$ and suppose that $g$ assumes some value $w \in \C$ only finitely often. Then there exists no $f \in H(\C)$ with $f \circ f = g$.
 \end{theorem}
 
 \begin{proof}
@@ -80,9 +84,11 @@ If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non
     
     Consider the sets
     $$ Z \coloneqq f^{-1}(\{ w \}), \quad Z' \coloneqq \bigcup_{z \in Z} f^{-1}(\{ z \}). $$
-    Note that since pre-images of singletons are disjoint, the union above is actually disjoint. By definition, for each $z' \in Z'$ there is some $z \in Z$ with $z' \in f^{-1}(\{ z \})$, thus
+    By definition, for each $z' \in Z'$ there is some $z \in Z$ with $z' \in f^{-1}(\{ z \})$, thus
     $$ g(z') = f(f(z')) = f(z) = w. $$
-    Our hypothesis on $g$ implies that $Z'$ must be finite. Therefore, all points in $Z$ are only assumed finitely often by $f$. But by \Cref{cor:transcendental-every-value-inf}, $f$ assumes all values in the complex plane infinitely often, with at most one exception; therefore $\vert Z \vert \leq 1$.
+    Our hypothesis on $g$ implies that $Z'$ must be finite. Since pre-images of singletons are disjoint, $Z'$ is a disjoint union, therefore
+    $$ \sum_{z \in Z} \vert f^{-1}(\{ z \}) \vert = \left\vert \bigcup_{z \in Z} f^{-1}(\{ z \}) \right\vert = \vert Z' \vert < \infty $$
+    and thus all points in $Z$ are only assumed finitely often by $f$. But by \Cref{cor:transcendental-every-value-inf}, $f$ assumes at most one value only finitely often; therefore $\vert Z \vert \leq 1$.
 
     If $Z = \emptyset$, then $h(z) \coloneqq f(z) - w$ is entire, of order $0$ and nowhere $0$. By Hadamard's Theorem we have $h = e^Q$ for some constant polynomial $Q$. Therefore $h$ is constant and consequently so is $f$, a contradiction.
 

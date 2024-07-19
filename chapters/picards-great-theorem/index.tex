@@ -1,7 +1,19 @@
 \chapter{Picard's Great Theorem}
 \label{ch:picards-great-theorem}
 
-\todo{Introduction, mention E. Picard, essential singularities, Casorati-Weierstrass.}
+\todo{Mention essential singularities.}
+
+Already an interesting result is given by the Casorati-Weierstrass Theorem: Let $G \subseteq \C$ be open, $w \in G$ and suppose $f \in H(G \setminus \{ w \})$ such that $f$ has an essential singularity at $w$. Then, for any punctured neighborhood $U \subseteq G$ of $w$, the set $f(U)$ is dense in $\C$.
+
+Picard's Great Theorem will show that $f(U)$ is not only dense in $\C$, but that there is at most one value that is not taken on by $f$ infinitely often, on any such punctured neighborhood.
+
+To obtain the proof we first study Bloch's Theorem, which estimatates the size of disks in the image of a holomorphic map. We then immediately obtain Picard's Little Theorem, which states that an entire function which omits two values is constant.
+
+One can see this as a motivation to more closely study (non-entire) holomorphic functions that omit (at least) two values. For such functions, Schottky's Theorem will give an upper bound on their modulus. We use this to obtain a sharped version of Montel's Theorem, which asserts normality of any family of holomorphic functions, which omit two fixed values.
+
+Restricting the domain in the above to be the punctured unit disk, we use the above to obtain that such functions cannot have an essential singularity at the origin, which precisely yields Picard's Great Theorem.
+
+\todo{Introduction, mention E. Picard, essential singularities.}
 
 \input{chapters/picards-great-theorem/bloch.tex}
 \input{chapters/picards-great-theorem/schottky.tex}

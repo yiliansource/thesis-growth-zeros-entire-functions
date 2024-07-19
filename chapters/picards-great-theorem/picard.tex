@@ -26,12 +26,12 @@ The following lemma is integral in showing that functions which omit two values 
 \end{theorem}
 
 \begin{proof}
-    Aiming for contradiction, assume that $f$ only takes on $z_0, z_1 \in \C$ finitely often in some punctured neighborhood $W$ of $w$. Then $W$ contains a punctured disk of radius $t > 0$ around $w$, on which $f$ does not assume $z_0, z_1$, and
-    $$ g(z) \coloneqq \frac{f(t z + w) - z_0}{z_1 - z_0} \in H(\D^\times; \C \setminus \{ 0, 1 \}) $$
-    has an essential singularity at zero. By \Cref{lem:great-picard-bounded}, we have that either $g$ or $1/g$ must be bounded in a punctured neighborhood of zero. By the classification of isolated singularities, in the former case the singularity must therefore be removable, whereas in the latter case it must be a pole, yielding a contradiction.
+    Aiming for contradiction, assume that $f$ only takes on $z_0, z_1 \in \C$ finitely often in some punctured neighborhood $W$ of $w$. Then $W$ contains a punctured disk of radius $t > 0$ around $w$, on which $f$ does not assume $z_0$ or $z_1$, and thus
+    $$ g(z) \coloneqq \frac{f(t z + w) - z_0}{z_1 - z_0} \in H(\D^\times; \C \setminus \{ 0, 1 \}), $$
+    where $g$ has an essential singularity at zero. By \Cref{lem:great-picard-bounded}, we have that either $g$ or $1/g$ must be bounded in a punctured neighborhood of zero. By the classification of isolated singularities, in the former case the singularity must therefore be removable, whereas in the latter case it must be a pole, yielding a contradiction.
 \end{proof}
 
-The following corollary is sometimes also referred to as Picard's Great Theorem:
+The following corollary is also referred to as Picard's Great Theorem:
 
 \begin{corollary} \label{cor:transcendental-every-value-inf}
     Every entire transcendental function assumes every value in $\C$ infinitely often, with at most one exception.
@@ -42,7 +42,9 @@ The following corollary is sometimes also referred to as Picard's Great Theorem:
 \end{proof}
 
 \begin{remark}
-    Unsurprisingly, Picard's Little Theorem is contained in Picard's Great Theorem; a non-constant $f \in H(\C)$ is either a non-constant polynomial or transcendental. In the latter case, $f$ omits at most one value by \Cref{cor:transcendental-every-value-inf}.
+    Picard's Little Theorem is contained in Picard's Great Theorem:
+    
+    A non-constant $f \in H(\C)$ is either a non-constant polynomial or transcendental. In the latter case, $f$ omits at most one value by \Cref{cor:transcendental-every-value-inf}.
     
     In the former case let $w \in \C$, then $f(z) - w$ has a zero in $\C$ by the Fundamental Theorem of Algebra and hence $f$ assumes all values.
 \end{remark}

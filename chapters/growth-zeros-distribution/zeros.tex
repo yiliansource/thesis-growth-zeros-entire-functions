@@ -4,17 +4,23 @@
 We recall a rather explicit connection between the moduli of the zeros of an analytic function and the modulus of the function itself:
 
 \begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
-    Let $f$ be analytic on $B_{R}(0)$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
-    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}. $$
+    Let $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
+    \begin{equation}
+        \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}.
+    \end{equation}
 \end{theorem}
 
 \begin{definition}
-    Let $f$ be analytic on $B_{R}(0)$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B_{r}(0)}$.
+    Let $f \in H(B_R(0))$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B_{r}(0)}$.
 \end{definition}
 
+Jensen's Theorem has a useful equivalent form:
+
 \begin{corollary}
-    Let $f$ be analytic on $B_{R}(0)$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
-    $$ \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s $$
+    Let $f \in H(B_R(0))$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
+    \begin{equation}
+        \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s
+    \end{equation}
 \end{corollary}
 
 \begin{proof}
@@ -27,18 +33,18 @@ We recall a rather explicit connection between the moduli of the zeros of an ana
     and \Cref{thm:jensen} concludes the claim.
 \end{proof}
 
-In particular, we observe that the more zeros a function $f(z)$ has, the faster its modulus must grow as $\vert z \vert \to \infty$. The converse is naturally false, as seen by iterated exponentials~\cite{segal-complex-analysis}.
+We observe that the more zeros a function $f(z)$ has, the faster $M_f(r)$ must grow as $r \to \infty$. The converse is naturally false, as seen by iterated exponentials~\cite{segal-complex-analysis}.
 
 \begin{definition}
-    Let $f$ be an entire function and let $(r_j)_{j \in \N}$ denote the non-zero moduli of its zeros (if any) arranged in non-decreasing order. Then
+    Let $f \in H(\C)$ and denote with $(r_j)_{j \in \N}$ the non-zero moduli of its zeros, arranged in non-decreasing order. Then
     $$ \lambda_f \coloneqq \inf \left\{ \lambda > 0 : \sum_{n=1}^\infty \frac{1}{r^\lambda_n} < \infty \right\} $$
     is called the \emph{exponent of convergence of the zeros of f}. If $f$ has finitely many zeros, then we set $\lambda_f = 0$ by convention.
 
-    Furthermore, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of zeros of $f(z) - a$.
+    Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of zeros of $f(z) - a$.
 \end{definition}
 
 \begin{theorem} \label{thm:inequality-order-exponent-of-convergence}
-    Let $f$ be an entire function of finite order. Then $\lambda_f \leq \rho_f$.
+    If $f \in H(\C)$ is of finite order, then $\lambda_f \leq \rho_f$.
 \end{theorem}
 
 \begin{proof}
@@ -46,16 +52,14 @@ In particular, we observe that the more zeros a function $f(z)$ has, the faster 
 \end{proof}
 
 \begin{example} \label{exm:exponent-of-convergence}
-    Consider the entire function $f(z) \coloneqq \sin(z)$, we want to calculate $\lambda_f$ and $\rho_f$. First, let $\lambda > 0$ and consider that $f$ has zeros at $(n \pi)_{n \in \Z}$. Since
+    Consider $f(z) \coloneqq \sin(z) \in H(\C)$, we want to calculate $\lambda_f$ and $\rho_f$. First, let $\lambda > 0$ and recall that $f$ has zeros at $(n \pi)_{n \in \Z}$. Since
     $$ \sum_{n \in \Z \setminus \{0\}} \frac{1}{\vert n \pi \vert^\lambda} = \frac{2}{\pi^\lambda} \sum_{n=1}^\infty \frac{1}{\vert n \vert^\lambda} $$
-    is finite if and only if $\lambda > 1$, we obtain $\lambda_f = 1$. Furthermore, we have $\vert \sin(z) \vert \leq e^{\vert \Im z \vert}$
-    and therefore
-    $$ M_f(r) \leq \max_{\vert z \vert = r} \vert e^z \vert. $$
-    Since $e^z$ is of order $1$, this implies $\rho_f \leq 1$. Finally, \Cref{thm:inequality-order-exponent-of-convergence} concludes $\rho_f = 1$.
+    is finite if and only if $\lambda > 1$, we obtain $\lambda_f = 1$. Furthermore, we have $\vert \sin(z) \vert \leq e^{\vert z \vert}$
+    and therefore $M_f(r) \leq e^r$, whereby $\rho_f \leq 1$. Finally, \Cref{thm:inequality-order-exponent-of-convergence} concludes $\rho_f = 1$.
 \end{example}
 
 \begin{theorem} \label{thm:exponent-of-convergence-weierstrass-product}
-    Let $E$ be a Weierstrass canonical product of finite order. Then $\lambda_E = \rho_E$.
+    Let $E \in H(\C)$ be a Weierstrass canonical product formed from $(z_j)_{j \in \N}$. If $E$ is of finite order, then $\lambda_E = \rho_E$.
 \end{theorem}
 
 \begin{proof}
@@ -63,17 +67,17 @@ In particular, we observe that the more zeros a function $f(z)$ has, the faster 
 \end{proof}
 
 \begin{theorem} \label{thm:finite-non-integer-order-equals-exponent-of-convergence}
-    Let $f$ be an entire function of finite, non-integer order. Then $\rho_f = \lambda_f$.
+    Let $f \in H(\C)$ be of finite, non-integer order. Then $\rho_f = \lambda_f$.
 \end{theorem}
 
 \begin{proof}
-    By \Cref{thm:inequality-order-exponent-of-convergence} we have $\lambda_f \leq \rho_f$. Invoking Hadamard's Theorem we can write $f = e^Q E$ for a polynomial $Q$ with $\deg Q \leq \rho_f$. Since $\rho_f$ is not an integer, this implies $\deg Q \leq \lfloor \rho_f \rfloor < \rho_f$. Now, again by Hadamard's Theorem, $e^Q$ has order $\deg Q$ and by \Cref{thm:exponent-of-convergence-weierstrass-product} $E$ has order $\lambda_f$. Using \Cref{prop:algebraic-properties-order} we obtain
+    By \Cref{thm:inequality-order-exponent-of-convergence} we have $\lambda_f \leq \rho_f$. Invoking Hadamard's Theorem we can write $f = e^Q E$ for a polynomial $Q$ with $\deg Q \leq \rho_f$. Since $\rho_f$ is not an integer, this implies $\deg Q \leq \lfloor \rho_f \rfloor < \rho_f$. As seen in \Cref{rem:order-exponential-polynomial} $e^Q$ has order $\deg Q$ and by \Cref{thm:exponent-of-convergence-weierstrass-product} $E$ has order $\lambda_f$. Using \Cref{prop:order-sum-product-estimate} we obtain
     $$ \rho_f \leq \max \{ \deg Q, \lambda_f \} = \lambda_f \leq \rho_f, $$
-    implying $\rho_f = \lambda_f$.
+    since $\rho_f \leq \max \{ \deg Q, \lambda_f \} = \deg Q < \rho_f$ is a contradiction, and we get $\rho_f = \lambda_f$.
 \end{proof}
 
 \begin{theorem} \label{thm:finite-non-integer-order-infinite-zeros}
-    Let $f$ be an entire function of finite, non-integer order. Then $f$ has infinitely many zeros.
+    Let $f \in H(\C)$ be of finite, non-integer order. Then $f$ has infinitely many zeros.
 \end{theorem}
 
 \begin{proof}
