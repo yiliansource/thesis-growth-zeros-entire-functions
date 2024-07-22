@@ -60,7 +60,7 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
     \end{equation*}
     Assuming $\rho_f < \infty$, we have $M_f(r) < K \exp(r^\alpha)$ for some $\alpha > \rho_f$. Consider the power series expansion $h(z) = \sum_{n=0}^\infty a_n z^n$ and let $a_m$ denote any non-zero coefficient; note that since $h(0) = 0$ we have $m \geq 1$. By Cauchy's integral formula we have, for all $s > 0$,
     \begin{equation*} \label{eq:proof-polya-cauchy-inequality}
-        \vert a_m \vert = \left\vert \frac{h^{(m)}(0)}{m!} \right\vert = \frac{1}{2\pi} \left\vert \int_{\partial B_{s}(0)} \frac{h(\zeta)}{\zeta^{n+1}} \diff \zeta \right\vert \leq \frac{M_h(s)}{s^m} \tag{\textasteriskcentered}
+        \vert a_m \vert = \left\vert \frac{h^{(m)}(0)}{m!} \right\vert = \frac{1}{2\pi} \left\vert \oint_{\partial B_{s}(0)} \frac{h(\zeta)}{\zeta^{n+1}} \diff \zeta \right\vert \leq \frac{M_h(s)}{s^m} \tag{\textasteriskcentered}
     \end{equation*}
     and thus
     \begin{equation*}

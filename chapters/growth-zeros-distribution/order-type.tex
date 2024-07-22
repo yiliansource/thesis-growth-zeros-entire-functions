@@ -9,7 +9,7 @@ To study the rate of growth of an entire function we first introduce the followi
     \end{equation*}
 \end{definition}
 
-By the maximum modulus principle, $M_f$ is monotonically increasing. We shall show it is continuous: Let $\varepsilon > 0$ and choose $\delta_\varepsilon > 0$ such that for ${\vert z_1 - z_2 \vert < \delta_\varepsilon}$ we have ${\left\vert \vert f(z_1) \vert - \vert f(z_2) \vert \right\vert < \varepsilon}$. Now let $r_1 < r_2$ and choose $\theta$ such that $M_f(r_2) = \vert f(r_2 e^{i \theta}) \vert$. Then
+By the maximum modulus principle, $M_f$ is either strictly increasing (if $f$ is non-constant) or constant (otherwise). We shall show it is continuous: Let $\varepsilon > 0$ and choose $\delta_\varepsilon > 0$ such that for ${\vert z_1 - z_2 \vert < \delta_\varepsilon}$ we have ${\left\vert \vert f(z_1) \vert - \vert f(z_2) \vert \right\vert < \varepsilon}$. Now let $r_1 < r_2$ and choose $\theta$ such that $M_f(r_2) = \vert f(r_2 e^{i \theta}) \vert$. Then
 \begin{equation*}
     0 \leq M_f(r_2) - M_f(r_1) \leq \vert f(r_2 e^{i \theta}) \vert - \vert f(r_1 e^{i \theta}) \vert < \varepsilon,
 \end{equation*}
@@ -129,7 +129,7 @@ A slightly deeper result is that, for entire functions of finite order, the orde
     \end{align*}
     By Cauchy's integral formula we have
     \begin{align*}
-        M_{f'}(r) &= \max_{z \in \partial B_r(0)} \vert f'(z) \vert = \max_{z \in \partial B_r(0)} \left\vert \frac{1}{2\pi i} \int_{\partial B_r(z)} \frac{f(\zeta)}{(\zeta-z)^2} \diff \zeta \right\vert \leq \\
+        M_{f'}(r) &= \max_{z \in \partial B_r(0)} \vert f'(z) \vert = \max_{z \in \partial B_r(0)} \left\vert \frac{1}{2\pi i} \oint_{\partial B_r(z)} \frac{f(\zeta)}{(\zeta-z)^2} \diff \zeta \right\vert \leq \\
         &\leq \frac{1}{2 \pi} 2 \pi r \max_{\substack{z \in \partial B_r(0) \\ w \in \partial B_r(z)}} \vert f(w) \vert \frac{1}{r^2} \leq \frac{M_f(2r)}{r}.
     \end{align*}
     Combining the above we get

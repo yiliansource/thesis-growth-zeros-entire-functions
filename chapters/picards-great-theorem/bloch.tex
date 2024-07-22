@@ -39,8 +39,8 @@ If $f$ is as before, then $f$ is an open mapping on $G$; we thus first observe a
     \end{equation}
     We wish to further estimate the integrand. Let $w \in B$, then Cauchy's integral formula gives
     \begin{align*}
-        \vert f'(w) - f'(0) \vert &= \frac{1}{2\pi} \left\vert \int_{\partial B} \frac{f'(\zeta)}{\zeta - w} - \frac{f'(\zeta)}{\zeta} \diff \zeta \right\vert = \frac{1}{2\pi} \left\vert \int_{\partial B} \frac{w f'(\zeta)}{\zeta (\zeta - w)} \diff \zeta \right\vert \leq \\
-        &\leq \frac{1}{2\pi} \int_{\partial B} \frac{\vert w \vert \Vert f' \Vert_B}{r(r - \vert w \vert)} \diff \zeta = \frac{\vert w \vert}{r - \vert w \vert} \Vert f' \Vert_B.
+        \vert f'(w) - f'(0) \vert &= \frac{1}{2\pi} \left\vert \oint_{\partial B} \frac{f'(\zeta)}{\zeta - w} - \frac{f'(\zeta)}{\zeta} \diff \zeta \right\vert = \frac{1}{2\pi} \left\vert \oint_{\partial B} \frac{w f'(\zeta)}{\zeta (\zeta - w)} \diff \zeta \right\vert \leq \\
+        &\leq \frac{1}{2\pi} \oint_{\partial B} \frac{\vert w \vert \Vert f' \Vert_B}{r(r - \vert w \vert)} \diff \zeta = \frac{\vert w \vert}{r - \vert w \vert} \Vert f' \Vert_B.
     \end{align*}
     Combining the above with \eqref{eq:bloch-lemma-2:estimate-1} and our estimate on $\Vert f' \Vert_B$ yields
     \begin{align*}
