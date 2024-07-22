@@ -8,7 +8,9 @@ We first recall a generalized form of uniform convergence:
     $$ \lim_{n \to \infty} \sup_{z \in K} \vert f_n(z) - f(z) \vert = 0, \quad \textrm{or} \quad \lim_{n \to \infty} \inf_{z \in K} \vert f_n(z) \vert = \infty. $$
 \end{definition}
 
-\todo{Maybe a note on how compact convergence can also been seen as uniform convergence on the compactified complex plane.}
+\begin{remark}
+    One can define compact convergence generally for functions from a topological space $(X, \mathcal{T})$ into a metric space $(Y, d_Y)$. Compact convergence to $\infty$ can then be seen as compact convergence to a constant function with value $\infty$, where $d_Y(y, \infty)$ is appropriately defined for $y \in Y$. This is precisely the case when considering the chordal metric of the Riemann sphere, but we shall not elaborate further on this.
+\end{remark}
 
 A well-known theorem on compact convervence is:
 
@@ -36,7 +38,7 @@ If it converges compactly to $\infty$, then $1 / f_n \to 0$ compactly in $G$.
 
     In the former case we have, again for any compact $K \subset G$, that $m \coloneqq \min_{z \in K} \vert f(z) \vert > 0$ and $\sup_{z \in K} \vert f_n(z) - f(z) \vert < \frac{m}{2}$ for sufficiently large $n \in \N$. Thus for all $z \in K$
     \begin{equation*}
-        \frac{m}{2} \geq \vert f(z) - f_n(z) \vert \geq \vert f(z) \vert - \vert f_n(z) \vert \geq  m - \vert f_n(z) \vert
+        \frac{m}{2} > \vert f(z) - f_n(z) \vert \geq \vert f(z) \vert - \vert f_n(z) \vert \geq  m - \vert f_n(z) \vert
     \end{equation*}
     and $\vert f_n(z) \vert \geq \frac{m}{2}$. We obtain, for large $n \in \N$,
     \begin{equation*}

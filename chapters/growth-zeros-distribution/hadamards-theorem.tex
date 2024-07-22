@@ -9,7 +9,7 @@ In particular, we have
 \begin{equation} \label{eq:weierstrass-canonical-product}
     E(z) = z^k \prod_{n=1}^\infty \left( 1 - \frac{z}{z_n} \right) e^{R_n(z / z_n)},
 \end{equation}
-where $k$ is the order of the zero at $z = 0$ and $R_n$ is a polynomial, namely a truncation of the power series for $-\log(1 - \frac{z}{z_n})$ chosen of smallest degree to ensure convergence of the product~\cite{segal-complex-analysis}.
+where $k$ is the order of the zero at $z = 0$ and $R_n(z/z_n)$ is a polynomial, namely a truncation of the power series for $-\log(1 - \frac{z}{z_n})$ chosen of smallest degree to ensure convergence of the product~\cite{segal-complex-analysis}.
 
 Weierstrass' Theorem is also known as the \emph{Weierstrass Factorization Theorem}, due to the following corollary:
 
@@ -23,7 +23,101 @@ Weierstrass' Theorem is also known as the \emph{Weierstrass Factorization Theore
     Since $f / E$ has removable singularities at all $(z_j)_{j \in \N}$, we have that $f / E$ is entire and nowhere zero. Thus there exists an entire function $g$ with $f / E = e^g$, which yields $f = e^g E$.
 \end{proof}
 
-Hadamard's Theorem will show that, for functions of finite order $\rho$, the function $g$ in \Cref{cor:weierstrass-factorization} can be taken to be a polynomial of degree less than $\rho$ and the degree of the polynomials $R_n$ in \eqref{eq:weierstrass-canonical-product} can be taken to be independant of $n$. To prove this we require the following lemma, which can be interpreted as a version of the maximum modulus principle applied to the real part of an analytic function.
+Hadamard's Theorem will show that, for functions of finite order $\rho$, the function $g$ in \Cref{cor:weierstrass-factorization} can be taken to be a polynomial of degree less than $\rho$ and the degree of the polynomials $R_n$ in \eqref{eq:weierstrass-canonical-product} can be taken to be independant of $n$. To prove this we want to study the connection between the order and zeros of an entire function.
+
+We first recall a rather explicit connection between the moduli of the zeros of an analytic function and the modulus of the function itself:
+
+\begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
+    Let $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
+    \begin{equation}
+        \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}.
+    \end{equation}
+\end{theorem}
+
+\begin{definition}
+    Let $f \in H(B_R(0))$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B_{r}(0)}$.
+\end{definition}
+
+Jensen's Theorem has a useful equivalent form:
+
+\begin{corollary} \label{cor:jensen-nf}
+    Let $f \in H(B_R(0))$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
+    \begin{equation}
+        \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s
+    \end{equation}
+\end{corollary}
+
+\begin{proof}
+    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
+    \begin{align*}
+        \log \frac{r^n}{r_1 \hdots r_n} &= \sum_{k=1}^n \log \frac{r}{r_k} = \sum_{k=1}^n \int_{r_k}^r \frac{1}{s} \diff s = \\
+        &= \sum_{k=1}^n \int_0^r \1_{(r_k, \infty)}(s) \frac{1}{s} \diff s = \int_0^r \left( \sum_{k=1}^n \1_{(r_k, \infty)}(s) \right) \frac{1}{s} \diff s = \\
+        &= \int_0^r \frac{n_f(s)}{s} \diff s
+    \end{align*}
+    and \Cref{thm:jensen} concludes the claim.
+\end{proof}
+
+This gives an immediate connection between the zeros and the growth of the modulus of an entire function:
+
+\begin{lemma} \label{lem:zeros-bounded-by-order}
+    Let $f \in H(\C)$ be of finite order. Then for all $\varepsilon > 0$ we have
+    $$ n_f(r) = O(r^{\rho_f + \varepsilon}), \quad \textrm{as} \quad r \to \infty. $$
+\end{lemma}
+
+\begin{proof}
+    We may assume $f(0) \neq 0$. Let $r > 0$, then since $n_f$ is non-negative and non-decreasing we have
+    \begin{align*}
+        \int_0^{2r} \frac{n_f(s)}{s} \diff s \geq \int_r^{2r} \frac{n_f(s)}{s} \diff s \geq n_f(r) \int_r^{2r} \frac{1}{s} \diff s = n_f(r) (\log 2r - \log r) = n_f(r) \log 2.
+    \end{align*}
+    \Cref{cor:jensen-nf} now yields
+    \begin{equation*}
+        n_f(r) \log 2 \leq \int_0^{2r} \frac{n_f(s)}{s} \diff s = \log \vert f(0) \vert + \frac{1}{2\pi} \int_0^{2 \pi} \log \vert f(2r e^{i \theta}) \vert \diff \theta \leq \log \vert f(0) \vert + \log M_f(2r)
+    \end{equation*}
+    and holds for all $r > 0$ since $f$ is entire. Now, $f$ is of finite order, thus for any $\varepsilon > 0$ there is a constant $K$ (we may assume $K > 1$) such that for sufficiently large $r$ we have $M_f(r) \leq K \exp {r^{\rho_f + \varepsilon}}$. Thus
+    \begin{align*}
+        n_f(r) \log 2 \leq \log \vert f(0) \vert + \log K + (2r)^{\rho_f + \varepsilon}.
+    \end{align*}
+    and thus $n_f(r) \leq K' r^{\rho_f + \varepsilon}$ for some constant $K' > 0$ and sufficiently large $r$.
+\end{proof}
+
+We observe that the more zeros a function $f(z)$ has, the faster $M_f(r)$ must grow as $r \to \infty$. The converse is naturally false, as seen by iterated exponentials~\cite{segal-complex-analysis}.
+
+\begin{definition} \label{def:zero-exponent}
+    Let $f \in H(\C)$ and denote with $(r_j)_{j \in \N}$ the non-zero moduli of its zeros, arranged in non-decreasing order. Then
+    $$ \lambda_f \coloneqq \inf \left\{ \lambda > 0 : \sum_{n=1}^\infty \frac{1}{r^\lambda_n} < \infty \right\} $$
+    is called the \emph{exponent of convergence of the zeros of f}. If $f$ has finitely many zeros, then we set $\lambda_f = 0$ by convention.
+
+    Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of zeros of $f(z) - a$.
+\end{definition}
+
+\begin{theorem} \label{thm:inequality-order-exponent-of-convergence}
+    If $f \in H(\C)$ is of finite order, then $\lambda_f \leq \rho_f$.
+\end{theorem}
+
+\begin{proof}
+    We may assume $f(0) \neq 0$. Let $\varepsilon = 0$ then \Cref{lem:zeros-bounded-by-order} yields a constant $K_1 > 0$ such that for sufficiently large $r$ we have $n_f(r) \leq K_1 r^{\rho_f + \varepsilon}$. If $(r_j)_{j \in \N}$ denote the non-zero moduli of its zeros, arranged in non-decreasing order, then for any $m \in \N$ we have $m = n_f(r_m) \leq K_1 r_m^{\rho_f + \varepsilon}$. Let $\delta > 0$ then this implies
+    \begin{align*}
+        \left( \frac{1}{r_m} \right)^{\lambda_f - \delta} \leq K_2 m^{- \frac{\lambda_f - \delta}{\rho_f + \varepsilon}}.
+    \end{align*}
+    for some constant $K_2 > 0$. Therefore
+    \begin{equation*}
+        \sum_{m=1}^\infty \left( \frac{1}{r_m} \right)^{\lambda_f - \delta} \leq K_2 \sum_{m=1}^\infty m^{- \frac{\lambda_f - \delta}{\rho_f + \varepsilon}}.
+    \end{equation*}
+    The left series is divergent by \Cref{def:zero-exponent}, thus so is the right one. But the right one is divergent if and only if $\frac{\lambda_f - \delta}{\rho_f + \varepsilon} \leq 1$, therefore letting $\delta \to 0$ and then $\varepsilon \to 0$ yields $\lambda_f \leq \rho_f$.
+\end{proof}
+
+\begin{remark}
+    The function $f(z) \coloneqq \exp z$ is of order one and has no zeros. Thus we observe that we may have $\lambda_f < \rho_f$ in some cases.
+\end{remark}
+
+\begin{example} \label{exm:exponent-of-convergence}
+    Consider $f(z) \coloneqq \sin(z) \in H(\C)$, we want to calculate $\lambda_f$ and $\rho_f$. First, let $\lambda > 0$ and recall that $f$ has zeros at $(n \pi)_{n \in \Z}$. Since
+    $$ \sum_{n \in \Z \setminus \{0\}} \frac{1}{\vert n \pi \vert^\lambda} = \frac{2}{\pi^\lambda} \sum_{n=1}^\infty \frac{1}{\vert n \vert^\lambda} $$
+    is finite if and only if $\lambda > 1$, we obtain $\lambda_f = 1$. Furthermore, we have $\vert \sin(z) \vert \leq e^{\vert z \vert}$
+    and therefore $M_f(r) \leq e^r$, whereby $\rho_f \leq 1$. Finally, \Cref{thm:inequality-order-exponent-of-convergence} concludes $\rho_f = 1$.
+\end{example}
+
+The final key to proving Hadamard's Theorem is the following lemma, which can be considered as a version of the maximum modulus principle applied to the real part of a holomorphic function.
 
 \begin{lemma}[Borel-Carathéodory] \label{lem:borel-caratheodory}
     Let $f \in H(\cl{\D})$ and define

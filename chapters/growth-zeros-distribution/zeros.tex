@@ -1,62 +1,7 @@
 \section{Zeros Distribution}
 \label{sec:zeros}
 
-We recall a rather explicit connection between the moduli of the zeros of an analytic function and the modulus of the function itself:
-
-\begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
-    Let $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
-    \begin{equation}
-        \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}.
-    \end{equation}
-\end{theorem}
-
-\begin{definition}
-    Let $f \in H(B_R(0))$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B_{r}(0)}$.
-\end{definition}
-
-Jensen's Theorem has a useful equivalent form:
-
-\begin{corollary}
-    Let $f \in H(B_R(0))$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
-    \begin{equation}
-        \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s
-    \end{equation}
-\end{corollary}
-
-\begin{proof}
-    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
-    \begin{align*}
-        \log \frac{r^n}{r_1 \hdots r_n} &= \sum_{k=1}^n \log \frac{r}{r_k} = \sum_{k=1}^n \int_{r_k}^r \frac{1}{s} \diff s = \\
-        &= \sum_{k=1}^n \int_0^r \1_{(r_k, \infty)}(s) \frac{1}{s} \diff s = \int_0^r \left( \sum_{k=1}^n \1_{(r_k, \infty)}(s) \right) \frac{1}{s} \diff s = \\
-        &= \int_0^r \frac{n_f(s)}{s} \diff s
-    \end{align*}
-    and \Cref{thm:jensen} concludes the claim.
-\end{proof}
-
-We observe that the more zeros a function $f(z)$ has, the faster $M_f(r)$ must grow as $r \to \infty$. The converse is naturally false, as seen by iterated exponentials~\cite{segal-complex-analysis}.
-
-\begin{definition}
-    Let $f \in H(\C)$ and denote with $(r_j)_{j \in \N}$ the non-zero moduli of its zeros, arranged in non-decreasing order. Then
-    $$ \lambda_f \coloneqq \inf \left\{ \lambda > 0 : \sum_{n=1}^\infty \frac{1}{r^\lambda_n} < \infty \right\} $$
-    is called the \emph{exponent of convergence of the zeros of f}. If $f$ has finitely many zeros, then we set $\lambda_f = 0$ by convention.
-
-    Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of zeros of $f(z) - a$.
-\end{definition}
-
-\begin{theorem} \label{thm:inequality-order-exponent-of-convergence}
-    If $f \in H(\C)$ is of finite order, then $\lambda_f \leq \rho_f$.
-\end{theorem}
-
-\begin{proof}
-    \todo{TODO.}
-\end{proof}
-
-\begin{example} \label{exm:exponent-of-convergence}
-    Consider $f(z) \coloneqq \sin(z) \in H(\C)$, we want to calculate $\lambda_f$ and $\rho_f$. First, let $\lambda > 0$ and recall that $f$ has zeros at $(n \pi)_{n \in \Z}$. Since
-    $$ \sum_{n \in \Z \setminus \{0\}} \frac{1}{\vert n \pi \vert^\lambda} = \frac{2}{\pi^\lambda} \sum_{n=1}^\infty \frac{1}{\vert n \vert^\lambda} $$
-    is finite if and only if $\lambda > 1$, we obtain $\lambda_f = 1$. Furthermore, we have $\vert \sin(z) \vert \leq e^{\vert z \vert}$
-    and therefore $M_f(r) \leq e^r$, whereby $\rho_f \leq 1$. Finally, \Cref{thm:inequality-order-exponent-of-convergence} concludes $\rho_f = 1$.
-\end{example}
+For Weierstrass canonical products the exponent of convergence of zeros and the order are even more closely related:
 
 \begin{theorem} \label{thm:exponent-of-convergence-weierstrass-product}
     Let $E \in H(\C)$ be a Weierstrass canonical product formed from $(z_j)_{j \in \N}$. If $E$ is of finite order, then $\lambda_E = \rho_E$.
@@ -65,6 +10,8 @@ We observe that the more zeros a function $f(z)$ has, the faster $M_f(r)$ must g
 \begin{proof}
     \todo{TODO.}
 \end{proof}
+
+This result allows us to prove easily prove two results regarding functions of finite, non-integer order.
 
 \begin{theorem} \label{thm:finite-non-integer-order-equals-exponent-of-convergence}
     Let $f \in H(\C)$ be of finite, non-integer order. Then $\rho_f = \lambda_f$.
@@ -93,3 +40,5 @@ We observe that the more zeros a function $f(z)$ has, the faster $M_f(r)$ must g
 \begin{proof}
     \todo{TODO.}
 \end{proof}
+
+\todo{Zeros distribution (upper density, etc.).}

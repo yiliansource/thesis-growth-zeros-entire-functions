@@ -64,7 +64,11 @@ For functions of finite order, we have an equivalent characterization:
 \end{remark}
 
 \begin{remark}\label{rem:order-exponential-polynomial}
-    If $Q$ be a polynomial of degree $\rho \in \N$, we claim that $e^Q$ is of order $\rho$.
+    If $Q(z) = \sum_{k=0}^n a_k z^k$ is a polynomial we claim that $f(z) \coloneqq \exp {Q(z)}$ is of order $n$. Let $\varepsilon > 0$, then since $\lim_{r \to \infty}(\sum_{k=0}^n \vert a_k \vert r^k) / r^{n + \varepsilon} = 0$ there is some $r_0$ such that for all $r > r_0$ we have $(\sum_{k=0}^n \vert a_k \vert r^k) / r^{n + \varepsilon} < 1$ and thus
+    \begin{align*}
+        M_f(r) \leq \exp \sum_{k=0}^n \vert a_n \vert r^k \leq \exp(r^{n + \varepsilon}),
+    \end{align*}
+    showing $\rho_f \leq n + \varepsilon$. On the other hand, since
 \end{remark}
 
 \begin{proposition} \label{prop:order-sum-product-estimate}
@@ -171,6 +175,16 @@ Once again, we have an equivalent characterization for functions of finite order
     \end{equation}
     is finite, and in either case we have $\tau_f = \tau$.
 \end{proposition}
+
+\begin{proof}
+    Suppose $0 \leq \tau < \infty$, then for all $\varepsilon > 0$ we have $M_f(r) = O(\exp (\tau + \varepsilon) r^{\rho_f})$ as $r \to \infty$. Thus there exists a constant $K_\varepsilon > 0$ and an $r_0 > 0$ such that for all $r \geq r_0$ we have $M_f(r) \leq K_\varepsilon \exp (\tau + \varepsilon) r^{\rho_f}$. Therefore
+    \begin{align*}
+        \frac{\log M_f(r)}{r^{\rho_f}} \leq \frac{\log K_\varepsilon + (\tau + \varepsilon) r^{\rho_f}}{r^{\rho_f}} = \frac{\log K_\varepsilon}{r^{\rho_f}} + \tau + \varepsilon
+    \end{align*}
+    and taking the limit superior as $r \to \infty$ and letting $\varepsilon \to 0$ afterwards yields $\tau_f \leq \tau$.
+
+    Now suppose $0 \leq \tau_f < \infty$ and let $\varepsilon > 0$. Then, by definition of the limit superior, there is an $r_0 > 0$ such that for all $r \geq r_0$ we have $ \log M_f(r) \leq (\tau_f + \varepsilon) r^{\rho_f}$ and therefore $M_f(r) \leq \exp((\tau_f + \varepsilon) r^{\rho_f})$. Thus $M_f(r) = O(\exp ((\tau_f + \varepsilon) r^{\rho_f}))$, thereby $\tau \leq \tau_f + \varepsilon$ and letting $\varepsilon \to 0$ yields $\tau \leq \tau_f$.
+\end{proof}
 
 % Equivalently, $\tau_f$ can also be defined as the infimum over all $\tau > 0$ such that $M_f(r) = O(\exp(\tau r^{\rho_f}))$ as $r \to \infty$.
 
