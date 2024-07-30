@@ -1,0 +1,95 @@
+\subsection{Exponent of Convergence}
+
+We first recall a rather explicit connection between the moduli of the zeros of a holomorphic function and the modulus of the function itself:
+
+\begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
+    Let $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
+    \begin{equation}
+        \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}.
+    \end{equation}
+\end{theorem}
+
+\begin{definition}
+    Let $f \in H(B_R(0))$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B_{r}(0)}$.
+\end{definition}
+
+This zero-counting function is sometimes simpler to use than the sequence of zeros. For example it can be used to obtain an equivalent version of Jensen's Theorem:
+
+\begin{corollary} \label{cor:jensen-nf}
+    Let $f \in H(B_R(0))$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
+    \begin{equation}
+        \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(re^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \int_0^r \frac{n_f(s)}{s} \diff s
+    \end{equation}
+\end{corollary}
+
+\begin{proof}
+    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
+    \begin{align*}
+        \log \frac{r^n}{r_1 \hdots r_n} &= \sum_{k=1}^n \log \frac{r}{r_k} = \sum_{k=1}^n \int_{r_k}^r \frac{1}{s} \diff s = \\
+        &= \sum_{k=1}^n \int_0^r \1_{(r_k, \infty)}(s) \frac{1}{s} \diff s = \int_0^r \left( \sum_{k=1}^n \1_{(r_k, \infty)}(s) \right) \frac{1}{s} \diff s = \\
+        &= \int_0^r \frac{n_f(s)}{s} \diff s
+    \end{align*}
+    and \Cref{thm:jensen} concludes the claim.
+\end{proof}
+
+This gives an immediate connection between the zeros and the growth of the modulus of an entire function:
+
+\begin{proposition} \label{prop:zeros-bounded-by-order}
+    Let $f \in H(\C)$ be of finite order. Then for any $\rho > \rho_f$ we have
+    $$ n_f(r) = O(r^{\rho}), \quad \textrm{as} \quad r \to \infty. $$
+\end{proposition}
+
+\begin{proof}
+    We may assume $f(0) \neq 0$. Let $r > 0$, then since $n_f$ is non-negative and non-decreasing we have
+    \begin{align*}
+        \int_0^{2r} \frac{n_f(s)}{s} \diff s \geq \int_r^{2r} \frac{n_f(s)}{s} \diff s \geq n_f(r) \int_r^{2r} \frac{1}{s} \diff s = n_f(r) (\log 2r - \log r) = n_f(r) \log 2.
+    \end{align*}
+    \Cref{cor:jensen-nf} now yields
+    \begin{equation*}
+        n_f(r) \log 2 \leq \int_0^{2r} \frac{n_f(s)}{s} \diff s = \log \vert f(0) \vert + \frac{1}{2\pi} \int_0^{2 \pi} \log \vert f(2r e^{i \theta}) \vert \diff \theta \leq \log \vert f(0) \vert + \log M_f(2r)
+    \end{equation*}
+    and holds for all $r > 0$ since $f$ is entire. Now, $f$ is of finite order, thus for any $\varepsilon > 0$ there is a constant $K_1 > 0$ such that for sufficiently large $r$ we have $M_f(r) \leq K_1 \exp {r^{\rho_f + \varepsilon}}$. Thus
+    \begin{align*}
+        n_f(r) \log 2 \leq \log \vert f(0) \vert + \log K_1 + (2r)^{\rho_f + \varepsilon}.
+    \end{align*}
+    and therefore $n_f(r) \leq K_2 r^{\rho_f + \varepsilon}$ for some constant $K_2 > 0$ and sufficiently large $r$.
+\end{proof}
+
+The result above shows that the more zeros a function $f$ has, the faster $M_f$ must grow as $r \to \infty$. The converse is naturally false; by composing exponentials one can obtain an entire function $f$ for which $M_f$ grow arbitrarily fast, yet $f$ has no zeros.
+
+\begin{definition} \label{def:zero-exponent}
+    Let $f \in H(\C)$ and denote with $(r_j)_{j \in \N}$ the non-zero moduli of its zeros, arranged in non-decreasing order. Then
+    $$ \lambda_f \coloneqq \inf \left\{ \lambda > 0 : \sum_{n=1}^\infty \frac{1}{r^\lambda_n} < \infty \right\} $$
+    is called the \emph{exponent of convergence of the zeros of f}. If $f$ has finitely many zeros, then we set $\lambda_f = 0$ by convention.
+
+    Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of zeros of $f(z) - a$ and will be denoted $\lambda_f^{(a)}$.
+\end{definition}
+
+\begin{theorem} \label{thm:inequality-order-exponent-of-convergence}
+    If $f \in H(\C)$ is of finite order, then $\lambda_f \leq \rho_f$.
+\end{theorem}
+
+\begin{proof}
+    We may assume $f(0) \neq 0$. If $\lambda_f = 0$ there is nothing to show. Let $\rho > \rho_f$ then \Cref{prop:zeros-bounded-by-order} yields a constant $K_1 > 0$ such that for sufficiently large $r$ we have $n_f(r) \leq K_1 r^{\rho}$. If $(r_j)_{j \in \N}$ denote the non-zero moduli of the zeros of $f$, arranged in non-decreasing order, then for any $m \in \N$ we have $m = n_f(r_m) \leq K_1 r_m^{\rho}$. Let $0 < \lambda < \lambda_f$ then this implies
+    \begin{align*}
+        \left( \frac{1}{r_m} \right)^{\lambda} \leq K_2 \left( \frac{1}{m} \right)^{\lambda/\rho}.
+    \end{align*}
+    for some constant $K_2 > 0$. Therefore
+    \begin{equation*}
+        \sum_{m=1}^\infty \left( \frac{1}{r_m} \right)^{\lambda} \leq K_2 \sum_{m=1}^\infty \left( \frac{1}{m} \right)^{\lambda/\rho}.
+    \end{equation*}
+    The left-hand side diverges by \Cref{def:zero-exponent}, thus so does the right-hand side. But the latter diverges if and only if $\frac{\lambda}{\rho} \leq 1$, therefore letting $\lambda \nearrow \lambda_f$ and then $\rho \searrow \rho_f$ yields $\lambda_f \leq \rho_f$.
+\end{proof}
+
+\begin{remark}
+    The function $f(z) \coloneqq \exp z$ is of order one and has no zeros -- thus we observe that we may have $\lambda_f < \rho_f$ in some cases.
+\end{remark}
+
+\iffalse
+\begin{example} \label{exm:exponent-of-convergence}
+    Consider $f(z) \coloneqq \sin(z) \in H(\C)$, we want to calculate $\lambda_f$ and $\rho_f$. First, let $\lambda > 0$ and recall that $f$ has zeros at $(n \pi)_{n \in \Z}$. Since
+    $$ \sum_{n \in \Z \setminus \{0\}} \frac{1}{\vert n \pi \vert^\lambda} = \frac{2}{\pi^\lambda} \sum_{n=1}^\infty \frac{1}{n^\lambda} $$
+    is finite if and only if $\lambda > 1$, we obtain $\lambda_f = 1$. Furthermore, we have $\vert \sin(z) \vert \leq e^{\vert z \vert}$
+    and therefore $M_f(r) \leq e^r$, whereby $\rho_f \leq 1$. Finally, \Cref{thm:inequality-order-exponent-of-convergence} concludes $\rho_f = 1$.
+\end{example}
+\fi

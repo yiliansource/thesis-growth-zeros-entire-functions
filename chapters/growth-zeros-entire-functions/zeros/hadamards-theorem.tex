@@ -1,0 +1,148 @@
+\subsection{Hadamard's Theorem}
+\label{sec:hadamards-theorem}
+
+\todo{Some notes comparing Weierstrass' Theorem to a generalization of the Fundamental Theorem of Algebra and creating functions with prescribed zeros.}
+
+\begin{theorem}[Weierstrass] \label{thm:weierstrass}
+    Let $(z_j)_{j \in \N}$ be a sequence in $\C$ without accumulation points. Then there exists an $E \in H(\C)$ (called the \emph{Weierstrass canonical product} formed from said sequence) that has zeros precisely at $(z_j)_{j \in \N}$, and $z_j$ has multiplicity equal to how often $z_j$ occurs in the sequence.
+\end{theorem}
+
+\todo{Go a bit more in-depth how the canonical product actually looks (the convergence exponent, etc.).}
+
+In particular, we have
+\begin{equation} \label{eq:weierstrass-canonical-product}
+    E(z) = z^k \prod_{n=1}^\infty \left( 1 - \frac{z}{z_n} \right) e^{R_n(z / z_n)},
+\end{equation}
+where $k$ is the order of the zero at $z = 0$ and $R_n(z/z_n)$ is a polynomial, namely a truncation of the power series for $-\log(1 - \frac{z}{z_n})$ chosen of smallest degree to ensure convergence of the product~\cite{segal-complex-analysis}.
+
+Weierstrass' Theorem is also known as the \emph{Weierstrass Factorization Theorem}, due to the following corollary:
+
+\begin{corollary} \label{cor:weierstrass-factorization}
+    Let $f \in H(\C)$ have zeros $(z_j)_{j \in \N}$. Then there exists a $g \in H(\C)$ such that
+    $$ f(z) = e^{g(z)} E(z), $$
+    where $E \in H(\C)$ is a Weierstrass canonical product formed from $(z_j)_{j \in \N}$.
+\end{corollary}
+
+\begin{proof}
+    Since $f / E$ has removable singularities at all $(z_j)_{j \in \N}$, we have that $f / E$ is entire and nowhere zero. Thus there exists an entire function $g$ with $f / E = e^g$, which yields $f = e^g E$.
+\end{proof}
+
+Hadamard's Theorem will show that, for functions of finite order $\rho$, the function $g$ in \Cref{cor:weierstrass-factorization} can be taken to be a polynomial of degree less than or equal to $\rho$ and the degree of the polynomials $R_n$ in \eqref{eq:weierstrass-canonical-product} can be taken to be independant of $n$. The key to proving Hadamard's Theorem is the following lemma, which can be considered as a version of the maximum modulus principle applied to the real part of a holomorphic function:
+
+\begin{lemma}[Borel-Carathéodory] \label{lem:borel-caratheodory}
+    Let $G$ be a domain, $R > 0$ and suppose $\cl{B_R(0)} \subseteq G$ and $f \in H(G)$. Define $ A_f(r) \coloneqq \max_{\vert z \vert = r} \Re f(z) $, then, for $0 < r < R$,
+    \begin{equation} \label{eq:borel-caratheodory-1}
+        M_f(r) \leq \frac{2r}{R - r} A_f(R) + \frac{R + r}{R - r} \vert f(0) \vert
+    \end{equation}
+    and, if additionally $A_f(R) \geq 0$, then for any $n \in \N$
+    \begin{equation} \label{eq:borel-caratheodory-2}
+        M_{f^{(n)}}(r) \leq \frac{2^{n+2} n! R}{(R - r)^{n+1}} (A_f(R) + \vert f(0) \vert).
+    \end{equation}
+\end{lemma}
+
+\begin{proof}
+    If $f$ is constant there is nothing to show.
+
+    We assume $f$ being non-constant. First, for $r > 0$ we have
+    \begin{align*}
+        A_f(r) = \max_{\vert z \vert = r} \Re f(z) = \log \max_{\vert z \vert = r} \exp {\Re f(z)} = \log \max_{\vert z \vert = r} \vert \exp f(z) \vert = \log M_{\exp f}(r)
+    \end{align*}
+    and since $M_{\exp f}$ is strictly increasing and continuous therefore so is $A_f$.
+
+    We will show (\ref{eq:borel-caratheodory-1}) by considering two cases. First assume $f$ is non-constant and $f(0) = 0$. Then by the above we have $A_f(R) > A_f(0) = 0$. Define
+    \begin{equation*}
+        \phi(z) \coloneqq \frac{f(z)}{2 A_f(R) - f(z)} \in H(B_R(0)).
+    \end{equation*}
+    Note that we have $\phi(0) = 0$ and
+    \begin{align*}
+        \vert \phi(z) \vert^2 &= \phi(z) \overline{\phi(z)} = \frac{\vert f(z) \vert^2}{(2 A_f(R) - f(z))(2 A_f(R) - \overline{f(z)})} = \\
+        &= \frac{\vert f(z) \vert^2}{(2 A_f(R) - \Re f(z))^2 + \vert f(z) \vert^2 - (\Re f(z))^2} \leq 1,
+    \end{align*}
+    since clearly $2 A_f(R) - \Re f(z) \geq \Re f(z)$. Now, since $\phi(zR) \in H(\D)$ and $\vert \phi(zR) \vert \leq 1$ for $z \in \D$, Schwartz' Lemma implies $\vert \phi(zR) \vert \leq \vert z \vert$ for $z \in \D$. Therefore, for $z \in B_R(0)$, we have $\vert \phi (z) \vert \leq \frac{\vert z \vert}{R}$, and for $z \in B_r(0)$ we have $\vert \phi (z) \vert < \frac{r}{R} < 1$. Since
+    \begin{equation*}
+        f(z) = 2 A_f(R) \frac{\phi(z)}{1 + \phi(z)}
+    \end{equation*}
+    we obtain
+    \begin{align*}
+        \vert f(z) \vert &= 2 A_f(R) \left\vert \sum_{n=1}^\infty (-1)^n \phi(z)^n \right\vert \leq 2 A_f(R) \sum_{n=1}^\infty \left( \frac{r}{R} \right)^n = \frac{2 r}{R - r} A_f(R).
+    \end{align*}
+
+    Now assume that $f$ is non-constant and $f(0) \neq 0$. Set $g(z) \coloneqq f(z) - f(0)$, then by the above we have, for $w \in B_r(0)$,
+    \begin{align*}
+        \vert f(w) \vert - \vert f(0) \vert \leq \vert g(w) \vert \leq M_g(r) \leq \frac{2 r}{R - r} A_g(R) \leq \frac{2r}{R - r} A_f(R) - \frac{2r}{R - r} \Re f(0).
+    \end{align*}
+    Since $-\Re f(0) \leq \vert f(0) \vert$, this implies
+    \begin{align*}
+        \vert f(w) \vert \leq \frac{2r}{R - r}A_f(R) + \frac{2r}{R - r} \vert f(0) \vert + \vert f(0) \vert \leq \frac{2r}{R - r} A_f(R) + \frac{R + r}{R - r} \vert f(0) \vert,
+    \end{align*}
+    thus proving (\ref{eq:borel-caratheodory-1}).
+
+    To show (\ref{eq:borel-caratheodory-2}), let $z \in \partial B_r(0)$ and set $s \coloneqq \frac{R - r}{2}$, then by Cauchy's integral formula
+    \begin{equation*}
+        f^{(n)}(z) = \frac{n!}{2 \pi i} \oint_{\partial B_s(z)} \frac{f(\zeta)}{(\zeta - z)^{n+1}} \diff \zeta.
+    \end{equation*}
+    Applying (\ref{eq:borel-caratheodory-1}) with $r = \frac{R + r}{2} < R$ we get
+    \begin{align*}
+        \vert f^{(n)}(z) \vert &\leq \frac{n!}{2 \pi} 2 \pi \frac{R - r}{2} \left( \frac{2}{R - r} \right)^{n+1} \left( \frac{2 (R + r)/2}{R - (R+r)/2} A_f(R) + \frac{R + (R + r)/2}{R - (R + r)/2} \vert f(0) \vert \right) \leq \\
+        &\leq \frac{2^{n+1} n!}{(R - r)^{n+1}} \frac{R - r}{2} \left( 2 \frac{R+r}{R-r} A_f(R) + \frac{3R + r}{R - r} \vert f(0) \vert \right) \leq \\
+        &\leq \frac{2^{n+1} n!}{(R - r)^{n+1}} \left( (R+r) A_f(R) + \frac{3R + r}{2} \vert f(0) \vert \right) \leq \frac{2^{n+2} n! R}{(R - r)^{n+1}} (A_f(R) + \vert f(0) \vert).
+    \end{align*}
+\end{proof}
+
+\begin{theorem}[Hadamard] \label{thm:hadamard}
+    Let $f \in H(\C)$ be of finite order with zeros $(z_j)_{j \in \N}$. Then there exists a polynomial $Q$ with $\deg Q \leq \rho_f$, such that
+    $$ f(z) = e^{Q(z)} E(z), $$
+    where $E$ is a Weierstrass canonical product formed from $(z_j)_{j \in \N}$.
+\end{theorem}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+Hadamard's Theorem has a few consequences for entire functions of finite order, which we will explore further. To begin with, for Weierstrass canonical products the exponent of convergence of zeros and the order are actually equal:
+
+\begin{theorem} \label{thm:exponent-of-convergence-weierstrass-product}
+    Let $E \in H(\C)$ be a Weierstrass canonical product. If $\rho_E$ is finite, then $\lambda_E = \rho_E$.
+\end{theorem}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+This result allows us to prove easily prove two results regarding functions of finite, non-integer order.
+
+\begin{theorem} \label{thm:finite-non-integer-order-equals-exponent-of-convergence}
+    Let $f \in H(\C)$ be of finite, non-integer order. Then $\rho_f = \lambda_f$.
+\end{theorem}
+
+\begin{proof}
+    By \Cref{thm:inequality-order-exponent-of-convergence} we have $\lambda_f \leq \rho_f$. Invoking Hadamard's Theorem we can write $f = e^Q E$ for a polynomial $Q$ with $\deg Q \leq \rho_f$. Since $\rho_f$ is not an integer, this implies $\deg Q \leq \lfloor \rho_f \rfloor < \rho_f$. By \Cref{prop:order-exponential-polynomial} $e^Q$ has order $\deg Q$ and by \Cref{thm:exponent-of-convergence-weierstrass-product} $E$ has order $\lambda_f$. Using \Cref{prop:order-sum-product-estimate} we obtain
+    $$ \rho_f \leq \max \{ \deg Q, \lambda_f \} = \lambda_f \leq \rho_f, $$
+    since $\rho_f \leq \max \{ \deg Q, \lambda_f \} = \deg Q < \rho_f$ would be a contradiction, and we get $\rho_f = \lambda_f$.
+\end{proof}
+
+\begin{theorem} \label{thm:finite-non-integer-order-infinite-zeros}
+    Let $f \in H(\C)$ be of finite, non-integer order. Then $f$ has infinitely many zeros.
+\end{theorem}
+
+\begin{proof}
+    By \Cref{thm:finite-non-integer-order-equals-exponent-of-convergence} we have $\rho_f = \lambda_f$. Since $\rho_f$ is not an integer, $\lambda_f > 0$, which implies that $f$ has infinitely many zeros.
+\end{proof}
+
+\begin{theorem}[Borel] \label{thm:existence-borel-exceptional-values}
+    Let $f \in H(\C)$ be of finite, integer order. Then for any $a \in \C$ we have $\lambda_f^{(a)} = \rho_f$, except possibly for one value of $a$.
+\end{theorem}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+\todo{Relate to Picard exceptional values, ``substantial deepening'' of Picard's Little Theorem ...}
+
+\iffalse
+\begin{example}
+    Since $\cos \sqrt{z} = \sum_{k=0}^\infty \frac{(-1)^k z^k}{(2k)!}$, the function
+    $$ f(z) \coloneqq e^z \cos \sqrt{z} $$
+    is entire. We have $\rho_f = 1$ (\todo{why?}) and $f$ has zeros at $\left( \frac{\pi^2 n^2}{4} \right)_{n \in \N}$, hence $\lambda_f = \frac{1}{2}$. By \Cref{thm:existence-borel-exceptional-values} the exponent of convergence of the $a$-points of $f$, for $a \neq 0$, must be $1$.
+\end{example}
+\fi

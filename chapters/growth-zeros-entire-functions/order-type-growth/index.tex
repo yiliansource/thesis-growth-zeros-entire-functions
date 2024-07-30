@@ -1,0 +1,21 @@
+\section{Order, Type and Growth}
+
+To study the rate of growth of an entire function we first introduce the following:
+\begin{definition}
+    Let $f \in H(\C)$, then for $r \geq 0$ we define
+    \begin{equation*}
+        M_f(r) \coloneqq \max_{\vert z \vert = r} \vert f(z) \vert.
+    \end{equation*}
+\end{definition}
+
+\begin{remark}    
+    By the maximum modulus principle, $M_f$ is either strictly increasing (if $f$ is non-constant) or constant (otherwise). We shall show it is continuous: Let $\varepsilon > 0$ and choose $\delta_\varepsilon > 0$ such that for ${\vert z_1 - z_2 \vert < \delta_\varepsilon}$ we have ${\left\vert \vert f(z_1) \vert - \vert f(z_2) \vert \right\vert < \varepsilon}$. Now let $r_1 < r_2$ and choose $\theta$ such that $M_f(r_2) = \vert f(r_2 e^{i \theta}) \vert$. Then
+    \begin{equation*}
+        0 \leq M_f(r_2) - M_f(r_1) \leq \vert f(r_2 e^{i \theta}) \vert - \vert f(r_1 e^{i \theta}) \vert < \varepsilon,
+    \end{equation*}
+    for $r_2 - r_1 < \delta_\varepsilon$.
+\end{remark}
+
+\input{chapters/growth-zeros-entire-functions/order-type-growth/order.tex}
+\input{chapters/growth-zeros-entire-functions/order-type-growth/type.tex}
+\input{chapters/growth-zeros-entire-functions/order-type-growth/growth.tex}

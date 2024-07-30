@@ -3,7 +3,7 @@
 
 Necessary conditions for the order of a composition to be finite will be given by Pòlya's Theorem, the proof of which relies on a result that was first proven by Harald Bohr. While Bloch's Theorem dealt with disks contained in the image of holomorphic functions, we now focus on circles contained in such images.
 
-\begin{proposition}
+\begin{proposition} \label{prop:existence-circle-maximal-radius}
     Let $G \subset \C$ be a bounded domain with $0 \in G$. Then the set
     \begin{equation} \label{eq:set-circle-maximal-radius}
         S \coloneqq \{ r \geq 0 : \partial B_r(0) \subseteq \cl{G} \}
@@ -17,7 +17,7 @@ Necessary conditions for the order of a composition to be finite will be given b
     Let $(r_n)_{n \in \N}$ be a convergent sequence in $S$ with limit $r \in [0, \infty)$. If $r = 0$, then $r \in S$. Otherwise we claim that $\partial B_r(0) \subseteq \cl{G}$. Let $z \in \partial B_r(0)$, and set $z_n \coloneqq r_n z / r$ for $n \in \N$. Now $\vert z_n \vert = r_n$, thus $z_n \in \partial B_{r_n}(0) \subseteq \cl{G}$ and therefore $(z_n)_{n \in \N}$ is a sequence in $\overline{G}$. Clearly $z_n \to z$ and since $\cl{G}$ is closed we therefore have $z \in \overline{G}$. Since $z$ was arbitrary, this concludes the claim, we have $r \in S$ and thus $S$ is closed.
 \end{proof}
 
-If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non-constant with $f(0) = 0$, then $f(G)$ is a bounded domain with $0 \in f(G)$. This, together with the above remark, justifies the following definition:
+If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non-constant with $f(0) = 0$, then $f(G)$ is a bounded domain with $0 \in f(G)$. This, together with \Cref{prop:existence-circle-maximal-radius}, justifies the following definition:
 
 \begin{definition}
     Let $f \in H(\D) \cap C(\cl{\D}; \C)$ be non-constant with $f(0) = 0$, then we define $r_f$ as the positive maximum of the set $S$ in \eqref{eq:set-circle-maximal-radius}, where $G = f(\D)$.
@@ -26,12 +26,12 @@ If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non
 Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
 
 \begin{theorem}[Bohr] \label{thm:bohr}
-    There exists a function ${\phi : (0, 1) \times \to (0, \infty)}$ such that for any $f \in H(\D) \cap C(\cl{\D}; \C)$ with $f(0) = 0$ and $M_f(\theta) = 1$ it holds that $r_f \geq \phi(\theta)$.
+    There exists a function ${\phi : (0, 1) \to (0, \infty)}$ such that for any $f \in H(\D) \cap C(\cl{\D}; \C)$ with $f(0) = 0$ and $M_f(\theta) = 1$ it holds that $r_f \geq \phi(\theta)$.
 \end{theorem}
 
 \begin{proof}
     Suppose $f$ satisfies the hypothesis of the theorem, let $\varepsilon > 0$ and set $R_\varepsilon \coloneqq r_f + \varepsilon$. By definition of $r_f$, for all $r \geq R_\varepsilon$ there exists some point $w_r \in \partial B_r(0)$ with $w_r \notin f(\cl{\D})$. Choose such points $w_{R_\varepsilon}, w_{2 R_\varepsilon}$ and define
-    $$ h(z) \coloneqq \frac{f(z) - w_{R_\varepsilon}}{w_{2 R_\varepsilon} - w_{R_\varepsilon}} \in H(\D, \C \setminus \{ 0, 1 \}). $$
+    $$ h(z) \coloneqq \frac{f(z) - w_{R_\varepsilon}}{w_{2 R_\varepsilon} - w_{R_\varepsilon}} \in H(\D; \C \setminus \{ 0, 1 \}). $$
     Since
     $$ \vert h(0) \vert = \left\vert \frac{f(0) - w_{R_\varepsilon}}{w_{2 R_\varepsilon} - w_{R_\varepsilon}} \right\vert \leq \frac{\vert w_{R_\varepsilon} \vert}{\vert \vert w_{2 R_\varepsilon} \vert - \vert w_{R_\varepsilon} \vert \vert} = \frac{R_\varepsilon}{2 R_\varepsilon - R_\varepsilon} = 1, $$
     by Schottky's Theorem we have $\vert h(z) \vert \leq \psi(\theta, 1)$ for all $\vert z \vert \leq \theta$. Therefore
@@ -96,7 +96,9 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
 \end{proof}
 
 \begin{example}
-    A natural application of Thron's Theorem is taking $g$ to be $e^z$, which never assumes zero as a value. Indeed, this implies that there is no entire function $f$ satisfying
-    $$ f(f(z)) = e^z. $$
+    A natural application of Thron's Theorem is to set $g(z) \coloneqq \exp z$, which never assumes zero as a value. Indeed, this implies that there is $f \in H(\C)$ satisfying
+    $$ f(f(z)) = \exp z. $$
+    \iffalse
     On the other hand, there does exist a real-analytic function satisfying the above, as demonstrated by H. Kneser. \todo{I probably still need a citation here.}
+    \fi
 \end{example}

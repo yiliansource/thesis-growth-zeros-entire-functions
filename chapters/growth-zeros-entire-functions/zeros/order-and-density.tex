@@ -1,0 +1,33 @@
+\subsection{Order and Density}
+
+As \Cref{prop:zeros-bounded-by-order} might indicate, a more precise analysis of the density of the zeros $z_1, z_2, \hdots$ of an entire function $f$ is contained in the growth of the zero counting function $n_f$.
+
+\begin{definition} \label{def:order-density-zero-counting}
+    Let $f \in H(\C)$. As the \emph{order} of the zero counting function $n_f$ we define
+    \begin{equation}
+        \mu_f \coloneqq \limsup_{r \to \infty} \frac{\log n_f(r)}{\ln r}.
+    \end{equation}
+    If $\mu_f$ is finite we additionally define the \emph{upper density} of the sequence of zeros as
+    \begin{equation}
+        \Delta_f \coloneqq \limsup_{r \to \infty} \frac{n_f(r)}{r^{\eta_f}}.
+    \end{equation}
+    If the limit exists then $\Delta_f$ is simply called the \emph{density}.
+\end{definition}
+
+\begin{proposition}
+    Let $f \in H(\C)$, then $\lambda_f$ is finite if and only if $\mu_f$ is finite and in either case we have $\lambda_f = \mu_f$.
+\end{proposition}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
+
+\begin{theorem}
+    Let $E \in H(\C)$ be a Weierstrass canonical product of finite order. Then $\rho_E = \lambda_E$ and if either is not an integer, then the canonical product is of maximal, minimal or normal type according to whether $\Delta_f$ is equal to infinity, zero, or a positive, real number.
+\end{theorem}
+
+\begin{proof}
+    The first assertion is already given by \Cref{thm:exponent-of-convergence-weierstrass-product}.
+    
+    \todo{TODO.}
+\end{proof}
