@@ -1,16 +1,22 @@
 \section{Normal families}
 \label{sec:normal-families}
 
-We first recall a generalized form of uniform convergence:
+We first recall a generalized form of locally uniform convergence:
 
 \begin{definition}
     Let $G \subseteq \C$ be a domain, $f \in H(G)$ and $(f_n)_{n \in \N}$ a sequence in $H(G)$. We say that \emph{$f_n$ converges compactly in $G$ to $f$}, or \emph{$f_n$ converges compactly in $G$ to $\infty$} as $n \to \infty$, if for every compact set $K \subset G$
-    $$ \lim_{n \to \infty} \sup_{z \in K} \vert f_n(z) - f(z) \vert = 0, \quad \textrm{or} \quad \lim_{n \to \infty} \inf_{z \in K} \vert f_n(z) \vert = \infty. $$
+    \begin{equation}
+        \lim_{n \to \infty} \sup_{z \in K} \vert f_n(z) - f(z) \vert = 0, \quad \textrm{or} \quad \lim_{n \to \infty} \inf_{z \in K} \vert f_n(z) \vert = \infty.
+    \end{equation}
 \end{definition}
 
 \begin{remark}
     One can define compact convergence generally for functions from a topological space $(X, \mathcal{T})$ into a metric space $(Y, d_Y)$. Compact convergence to $\infty$ can then be seen as compact convergence to a constant function with value $\infty$, where $d_Y(y, \infty)$ is appropriately defined for $y \in Y$. This is precisely the case when considering the chordal metric of the Riemann sphere, but we shall not elaborate further on this.
 \end{remark}
+
+\begin{definition}
+    Let $f : \C \to \C$ and $a \in \C$. Then the \emph{a-points of $f$} are defined as the zeros of $f(z) - a$, that is the set of all points $w \in \C$ with $f(w) = a$.
+\end{definition}
 
 A well-known theorem on compact convervence is:
 
@@ -72,18 +78,18 @@ The following theorem can be interpreted as a sharpened version of Montel's Theo
     \begin{enumerate}
         \item Let $w \in G$, $c > 0$ and $\F_* \subseteq \F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is an open disk at $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $B_t(w) \subseteq G$. Let $f \in \F_*$, then $g(z) \coloneqq f(tz + w) \in H(\D)$. By the maximum modulus principle and Schottky's Theorem we obtain
         $$ \sup_{z \in B_{t/2}(w)} \vert f(z) \vert \leq \sup_{z \in B_{1/2}(0)} \vert g(z) \vert \leq \sup_{\vert z \vert = 1/2} \vert g(z) \vert \leq \psi(1/2, c) $$
-        and $f$ is bounded on the disk $B_{t/2}(w)$. Since $f$ was arbitrary, $\F_*$ is bounded aswell.
+        and $f$ is bounded on the disk $B_{t/2}(w)$. Since $f$ was arbitrary, $\F_*$ is bounded as well.
 
         \item Fix some $w_* \in G$ and set $\F_1 \coloneqq \{ f \in \F : \vert f(w_*) \vert \leq 1 \}$. We aim to show that $\F_1$ is locally bounded in $G$. Consider the set
         $$ U \coloneqq \{ w \in G : \F_1 \textrm{ is bounded in a neighborhood of } w \}, $$
         by (1) we have that $w_* \in U$. Note that $U$ is open in $G$, since if $\F_1$ is bounded in a disk $B_r(w)$, then for any $w' \in B_r(w)$ there is a disk $B_{r'}(w') \subseteq B_r(w)$, on which $\F_1$ is bounded as well.
         
-        For sake of contradiction, suppose that $U \neq G$. Then there exists some $w \in \partial U \cap G$ such $\F_1$ is unbounded in every neighborhood of $w$.
+        Assume towards a contradiction that $U \neq G$. Then there exists some $w \in \partial U \cap G$ such that $\F_1$ is unbounded in every neighborhood of $w$.
 
         If there were some $c > 0$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_1$, then by (1) there would exist an open disk centered at $w$ on which $\F_1$ would be bounded -- contradicting our assumption on $w$. Thus for every $n \in \N$ we can find some $f_n \in \F_1$ such that $\vert f_n(w) \vert \geq n$ and we obtain that $\lim_{n \to \infty} \vert f_n(w) \vert = \infty$.
         
         Set $g_n \coloneqq 1 / f_n \in \F$, then $\lim_{n \to \infty} \vert g_n(w) \vert = 0$. In particular, the family $(g_n)_{n \in \N}$ is bounded at $w$ by some constant, thus by (1) the family is bounded in some disk $B$ around $w$. By Montel's Theorem it is therefore normal in $B$, and there exists a subsequence $(g_{n_k})_{k \in \N}$ which converges compactly to a $g \in H(B)$. The functions $g_{n_k}$ have no zeros, but $g(w) = 0$; by Hurwitz's Theorem we therefore have $g \equiv 0$. Then for any $z \in B \cap U$ we have
-        $$ \lim_{k \to \infty} f_{n_k}(z) = \lim_{k \to \infty} 1 / g_{n_k}(z) = \infty, $$
+        $$ \lim_{k \to \infty} \vert f_{n_k}(z) \vert = \lim_{k \to \infty} 1 / \vert g_{n_k}(z) \vert = \infty, $$
         contradicting the assumption that $\F_1$ is bounded in a neighborhood of such $z$. We thus have $U = G$, therefore $\F_1$ is locally bounded and by Montel's Theorem therefore normal.
 
         \item We can now conclude the proof. Let $(f_n)_{n \in \N}$ be a sequence in $\F$, we claim that it has some subsequence which converges compactly to some function in $H(G)$ or to $\infty$.

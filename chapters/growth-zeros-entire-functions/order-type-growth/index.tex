@@ -9,9 +9,11 @@ To study the rate of growth of an entire function we first introduce the followi
 \end{definition}
 
 \begin{remark}    
-    By the maximum modulus principle, $M_f$ is either strictly increasing (if $f$ is non-constant) or constant (otherwise). We shall show it is continuous: Let $\varepsilon > 0$ and choose $\delta_\varepsilon > 0$ such that for ${\vert z_1 - z_2 \vert < \delta_\varepsilon}$ we have ${\left\vert \vert f(z_1) \vert - \vert f(z_2) \vert \right\vert < \varepsilon}$. Now let $r_1 < r_2$ and choose $\theta$ such that $M_f(r_2) = \vert f(r_2 e^{i \theta}) \vert$. Then
+    By the maximum modulus principle, $M_f$ is either strictly increasing (if $f$ is non-constant) or constant (otherwise), and we have
+    $$ M_f(r) = \max_{\vert z \vert \leq r} \vert f(z) \vert. $$
+    We shall show that $M_f$ is continuous: Let $\varepsilon > 0$ and choose $\delta_\varepsilon > 0$ such that for ${\vert z_1 - z_2 \vert < \delta_\varepsilon}$ we have ${\vert f(z_1) - f(z_2) \vert < \varepsilon}$. Now let $r_1 < r_2$ and choose $\theta$ such that $M_f(r_2) = \vert f(r_2 e^{i \theta}) \vert$. Then
     \begin{equation*}
-        0 \leq M_f(r_2) - M_f(r_1) \leq \vert f(r_2 e^{i \theta}) \vert - \vert f(r_1 e^{i \theta}) \vert < \varepsilon,
+        0 \leq M_f(r_2) - M_f(r_1) \leq \vert f(r_2 e^{i \theta}) \vert - \vert f(r_1 e^{i \theta}) \vert \leq \vert f(z_1) - f(z_2) \vert < \varepsilon,
     \end{equation*}
     for $r_2 - r_1 < \delta_\varepsilon$.
 \end{remark}

@@ -1,8 +1,8 @@
-\subsection{Exponent of Convergence}
+\subsection{Order, Density and Exponent of Convergence}
 
 We first recall a rather explicit connection between the moduli of the zeros of a holomorphic function and the modulus of the function itself:
 
-\begin{theorem}[Jensen \cite{stein-shakarchi-princeton}] \label{thm:jensen}
+\begin{theorem}[Jensen] \label{thm:jensen}
     Let $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
     \begin{equation}
         \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}.
@@ -10,10 +10,14 @@ We first recall a rather explicit connection between the moduli of the zeros of 
 \end{theorem}
 
 \begin{definition}
-    Let $f \in H(B_R(0))$. Then, for $0 < r < R$, we denote by $n_f(r)$ the number of zeros of $f$ in $\cl{B_{r}(0)}$.
+    Let $f \in H(B_R(0))$. Then, for $0 < r < R$, we define
+    \begin{equation}
+        n_f(r) \coloneqq \vert \{ z \in \cl{B_r(0)} : f(z) = 0 \} \vert,
+    \end{equation}
+    that is, the number of zeros of $f$ in $\cl{B_{r}(0)}$.
 \end{definition}
 
-This zero-counting function is sometimes simpler to use than the sequence of zeros. For example it can be used to obtain an equivalent version of Jensen's Theorem:
+This zero-counting function is, in some scenarios, simpler to work with than the sequence of zeros. For instance, it can be used to obtain an equivalent version of Jensen's Theorem:
 
 \begin{corollary} \label{cor:jensen-nf}
     Let $f \in H(B_R(0))$ with $f(0) \neq 0$. Then, for $0 < r < R$, we have
@@ -29,14 +33,14 @@ This zero-counting function is sometimes simpler to use than the sequence of zer
         &= \sum_{k=1}^n \int_0^r \1_{(r_k, \infty)}(s) \frac{1}{s} \diff s = \int_0^r \left( \sum_{k=1}^n \1_{(r_k, \infty)}(s) \right) \frac{1}{s} \diff s = \\
         &= \int_0^r \frac{n_f(s)}{s} \diff s
     \end{align*}
-    and \Cref{thm:jensen} concludes the claim.
+    and \Cref{thm:jensen} establishes the assertion.
 \end{proof}
 
 This gives an immediate connection between the zeros and the growth of the modulus of an entire function:
 
 \begin{proposition} \label{prop:zeros-bounded-by-order}
     Let $f \in H(\C)$ be of finite order. Then for any $\rho > \rho_f$ we have
-    $$ n_f(r) = O(r^{\rho}), \quad \textrm{as} \quad r \to \infty. $$
+    $$ n_f(r) = \O(r^{\rho}), \quad \textrm{as} \quad r \to \infty. $$
 \end{proposition}
 
 \begin{proof}
@@ -55,22 +59,28 @@ This gives an immediate connection between the zeros and the growth of the modul
     and therefore $n_f(r) \leq K_2 r^{\rho_f + \varepsilon}$ for some constant $K_2 > 0$ and sufficiently large $r$.
 \end{proof}
 
-The result above shows that the more zeros a function $f$ has, the faster $M_f$ must grow as $r \to \infty$. The converse is naturally false; by composing exponentials one can obtain an entire function $f$ for which $M_f$ grow arbitrarily fast, yet $f$ has no zeros.
+\Cref{prop:zeros-bounded-by-order} shows that the more zeros a function $f$ has, the faster $M_f$ must grow as $r \to \infty$. The converse is naturally false; by composing exponentials one can obtain an entire function $f$ for which $M_f$ grow arbitrarily fast, yet $f$ has no zeros.
 
 \begin{definition} \label{def:zero-exponent}
-    Let $f \in H(\C)$ and denote with $(r_j)_{j \in \N}$ the non-zero moduli of its zeros, arranged in non-decreasing order. Then
-    $$ \lambda_f \coloneqq \inf \left\{ \lambda > 0 : \sum_{n=1}^\infty \frac{1}{r^\lambda_n} < \infty \right\} $$
-    is called the \emph{exponent of convergence of the zeros of f}. If $f$ has finitely many zeros, then we set $\lambda_f = 0$ by convention.
+    Let $M \subseteq \N$ and $\mathbf{z} = (z_m)_{m \in M}$ be a family of points in $\C^\times$. Then
+    $$ \lambda_{\mathbf{z}} \coloneqq \inf \left\{ \lambda > 0 : \sum_{m \in M} \frac{1}{\vert z_m \vert^\lambda} < \infty \right\} $$
+    is called the \emph{exponent of convergence} of the family $\mathbf{z}$.
 
-    Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of zeros of $f(z) - a$ and will be denoted $\lambda_f^{(a)}$.
+    Let $f \in H(\C)$, then the \emph{exponent of convergence of the zeros of $f$} is defined as the exponent of convergence of the non-zero roots of $f$ and is denoted $\lambda_f$.
+
+    Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of the zeros of $f(z) - a$ and will be denoted $\lambda_f^{(a)}$.
 \end{definition}
+
+If $f \in H(\C)$ assumes some value $a \in \C$ only finitely often, then clearly $\lambda_f^{(a)} = 0$.
 
 \begin{theorem} \label{thm:inequality-order-exponent-of-convergence}
     If $f \in H(\C)$ is of finite order, then $\lambda_f \leq \rho_f$.
 \end{theorem}
 
 \begin{proof}
-    We may assume $f(0) \neq 0$. If $\lambda_f = 0$ there is nothing to show. Let $\rho > \rho_f$ then \Cref{prop:zeros-bounded-by-order} yields a constant $K_1 > 0$ such that for sufficiently large $r$ we have $n_f(r) \leq K_1 r^{\rho}$. If $(r_j)_{j \in \N}$ denote the non-zero moduli of the zeros of $f$, arranged in non-decreasing order, then for any $m \in \N$ we have $m = n_f(r_m) \leq K_1 r_m^{\rho}$. Let $0 < \lambda < \lambda_f$ then this implies
+    We may assume $f(0) \neq 0$. If $\lambda_f = 0$ there is nothing to show. Let $\rho > \rho_f$ then \Cref{prop:zeros-bounded-by-order} yields a constant $K_1 > 0$ such that for sufficiently large $r$ we have $n_f(r) \leq K_1 r^{\rho}$.
+    
+    If $(r_j)_{j \in \N}$ denote the non-zero moduli of the zeros of $f$, arranged in non-decreasing order, then for any $m \in \N$ we have $m = n_f(r_m) \leq K_1 r_m^{\rho}$. Let $0 < \lambda < \lambda_f$ then this implies
     \begin{align*}
         \left( \frac{1}{r_m} \right)^{\lambda} \leq K_2 \left( \frac{1}{m} \right)^{\lambda/\rho}.
     \end{align*}
@@ -84,6 +94,28 @@ The result above shows that the more zeros a function $f$ has, the faster $M_f$ 
 \begin{remark}
     The function $f(z) \coloneqq \exp z$ is of order one and has no zeros -- thus we observe that we may have $\lambda_f < \rho_f$ in some cases.
 \end{remark}
+
+As \Cref{prop:zeros-bounded-by-order} might indicate, a more precise analysis of the density of the zeros of an entire function $f$ is contained in the growth of the zero-counting function $n_f$.
+
+\begin{definition} \label{def:order-density-zero-counting}
+    Let $f \in H(\C)$. As the \emph{order} of the zero-counting function $n_f$ we define
+    \begin{equation}
+        \nu_f \coloneqq \limsup_{r \to \infty} \frac{\log n_f(r)}{\log r}.
+    \end{equation}
+    If $\nu_f$ is finite we additionally define the \emph{upper density} of the zeros of $f$ as
+    \begin{equation}
+        \Delta_f \coloneqq \limsup_{r \to \infty} \frac{n_f(r)}{r^{\nu_f}}.
+    \end{equation}
+    If the limit exists then $\Delta_f$ is simply called the \emph{density}.
+\end{definition}
+
+\begin{proposition}
+    Let $f \in H(\C)$, then $\lambda_f$ is finite if and only if $\nu_f$ is finite and in either case we have $\lambda_f = \nu_f$.
+\end{proposition}
+
+\begin{proof}
+    \todo{TODO.}
+\end{proof}
 
 \iffalse
 \begin{example} \label{exm:exponent-of-convergence}

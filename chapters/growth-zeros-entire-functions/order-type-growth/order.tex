@@ -8,10 +8,10 @@
     Constant functions, by convention, have order 0.
 \end{definition}
 
-Note that, for any entire function $f$, we have $0 \leq \rho_f \leq \infty$.
+Note that, for $f \in H(\C)$, we have $0 \leq \rho_f \leq \infty$.
 
 \begin{proposition} \label{prop:order-exponential-polynomial}
-    If $Q(z)$ is a polynomial of degree $n \in \N$, then $\exp Q(z)$ has order $n$.
+    If $Q$ is a polynomial of degree $n \in \N$, then $\exp Q$ has order $n$.
 \end{proposition}
 
 \begin{proof}
@@ -35,18 +35,18 @@ Note that, for any entire function $f$, we have $0 \leq \rho_f \leq \infty$.
 %     showing $\rho_f \leq n + \varepsilon$. On the other hand, since
 % \end{remark}
 
-For functions of finite order, we have an equivalent characterization:
+If the order of an entire function is finite we have an equivalent characterization.
 
 \begin{proposition} \label{prop:order-infimum}
     Let $f \in H(\C)$, then $f$ is of finite order if and only if
     \begin{equation}
-        \rho \coloneqq \inf \{ s > 0 : M_f(r) = O(\exp r^s) \textrm{ as } r \to \infty \}
+        \rho \coloneqq \inf \{ s > 0 : M_f(r) = \O(\exp r^s) \textrm{ as } r \to \infty \}
     \end{equation}
     is finite, and in either case we have $\rho_f = \rho$.
 \end{proposition}
 
 \begin{proof}
-    Suppose $0 \leq \rho < \infty$, then for all $s > \rho$ we have $M_f(r) = O(\exp r^s)$ as $r \to \infty$. Thus there exists a constant $K > 0$ (we may assume $K > 1$) and such that for all sufficiently large $r > 0$ we have $M_f(r) \leq K \exp r^s$. Using the fact that $\log (a+b) = \log a + \log (1 + \frac{b}{a})$ we get
+    Suppose $0 \leq \rho < \infty$, then for all $s > \rho$ we have $M_f(r) = \O(\exp r^s)$ as $r \to \infty$. Thus there exists a constant $K > 0$ (we may assume $K > 1$) and such that for all sufficiently large $r > 0$ we have $M_f(r) \leq K \exp r^s$. Using the fact that $\log (a+b) = \log a + \log (1 + \frac{b}{a})$ we get
     \begin{align*}
         \frac{\log \log M_f(r)}{\log r} &\leq \frac{\log (r^s + \log K)}{\log r} = s + \frac{\log (1 + (\log K) / r^s)}{\log r}. \tag{\textasteriskcentered} \label{eq:proof-order-infimum-1}
     \end{align*}
@@ -56,20 +56,20 @@ For functions of finite order, we have an equivalent characterization:
     \end{align*}
     by taking the limit superior as $r \to \infty$ in \eqref{eq:proof-order-infimum-1} and then letting $s \to \rho$ we obtain $\rho_f \leq \rho$.
 
-    Now suppose $0 \leq \rho_f < \infty$ and let $s > \rho_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log \log M_f(r) \leq s \log r$ and therefore $M_f(r) \leq \exp r^s$. Thus $M_f(r) = O(\exp r^s)$, thereby $\rho \leq s$ and letting $s \to \rho_f$ yields $\rho \leq \rho_f$.
+    Now suppose $0 \leq \rho_f < \infty$ and let $s > \rho_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log \log M_f(r) \leq s \log r$ and therefore $M_f(r) \leq \exp r^s$. Thus $M_f(r) = \O(\exp r^s)$, thereby $\rho \leq s$ and letting $s \to \rho_f$ yields $\rho \leq \rho_f$.
 \end{proof}
 
 \begin{remark} \label{rem:order-zero}
     Any polynomial is of order zero. Indeed, let $Q(z) = \sum_{k=0}^n a_k z^k$ be a polynomial and $m \in \N$. Then for any $r > 1$ we have
-    $$ \exp r^{1/m} = \sum_{k=0}^\infty \frac{r^{k/m}}{k!} > \frac{r^{n}}{(mn)!} \geq \frac{r^{n}}{(mn)!} $$
+    $$ \exp r^{1/m} = \sum_{k=0}^\infty \frac{r^{k/m}}{k!} > \frac{r^{n}}{(mn)!} $$
     and therefore
-    $$ M_Q(r) = \max_{\vert z \vert = r} \vert Q(z) \vert \leq n \max_{k = 0, \hdots, n} \vert a_k \vert r^n \leq \left( n \max_{k = 0, \hdots, n} \vert a_k \vert (mn)! \right) \exp r^{1/m}. $$
+    $$ M_Q(r) = \max_{\vert z \vert = r} \vert Q(z) \vert \leq \left( \sum_{k=0}^n \vert a_k \vert \right) r^n \leq \left( (mn)! \sum_{k=0}^n \vert a_k \vert \right) \exp r^{1/m}. $$
     Since $m \in \N$ was arbitrary, \Cref{prop:order-infimum} gives $\rho_Q = 0$.
 
-    There are however non-polynomial functions of order zero; one must simply construct an entire function of sufficiently rapid decay. Consider
+    There are however non-polynomial functions of order zero; one must simply construct an entire function with power series coefficients of sufficiently rapid decay. Consider
     $$ f(z) \coloneqq \sum_{k=0}^\infty \frac{z^k}{(k^2)!} $$
-    and let $m \in \N$. By the above we have $\sum_{k=0}^{m-1} \frac{r^k}{(k^2)!} \leq K \exp r^{1/m}$ for some constant $K_m > 0$ depending only on $m$, holding for all $r > 1$. Thus
-    $$ \sum_{k=0}^\infty \frac{r^k}{(k^2)!} \leq K_m \exp r^{1/m} + \sum_{k=m}^\infty \frac{r^k}{(km)!} \leq K_m \exp r^{1/m} + \sum_{k=0}^\infty \frac{r^{k/m}}{k!} \leq (K_m + 1) \exp r^{1/m} $$
+    and let $m \in \N$. By the above we have $\sum_{k=0}^{m-1} \frac{r^k}{(k^2)!} \leq K \exp r^{1/m}$ for some constant $K > 0$ depending only on $m$, holding for all $r > 1$. Thus
+    $$ \sum_{k=0}^\infty \frac{r^k}{(k^2)!} \leq K \exp r^{1/m} + \sum_{k=m}^\infty \frac{r^k}{(km)!} \leq K \exp r^{1/m} + \sum_{k=0}^\infty \frac{r^{k/m}}{k!} = (K + 1) \exp r^{1/m} $$
     and we obtain $\rho_f = 0$, as above.
 \end{remark}
 
@@ -82,13 +82,13 @@ For functions of finite order, we have an equivalent characterization:
 \end{proposition}
 
 \begin{proof}
-    That the order of the sum or product is bounded above by the higher of the respective two orders is immediately obtained through \Cref{prop:order-infimum}.
+    That the order of the sum or product is bounded above by the larger of the respective two orders is immediately obtained through \Cref{prop:order-infimum}.
 
     Assume $\rho_f \neq \rho_g$, without loss of generality $\rho_f < \rho_g$. By the above we have
     \begin{equation*}
         \rho_{f+g} \leq \max \{ \rho_f, \rho_g \} = \rho_g, \quad\textrm{and}\quad \rho_g = \rho_{f+g+(-f)} \leq \max \{ \rho_f, \rho_{f+g} \} = \rho_{f+g},
     \end{equation*}
-    since if $\rho_f > \rho_{f+g}$ then $\rho_f > \rho_{f+g} \geq \rho_g$ would be a contradiction. Thus $\rho_{f+g} = \rho_f$, proving the assertion.
+    since if $\rho_f > \rho_{f+g}$ then $\rho_f > \rho_{f+g} \geq \rho_g$ would be a contradiction. Thus $\rho_{f+g} = \rho_g$, proving the assertion.
 \end{proof}
 
 It is of note that \Cref{prop:order-sum-product-estimate} implies that the order of an entire function of finite order remains unchanged when adding a polynomial of arbitrary degree to it.
@@ -100,7 +100,7 @@ There is a, perhaps surprising, connection between the order of an entire functi
 \end{proposition}
 
 \begin{proof}
-    Without loss of generality we may assume $f(0) = 0$. If $f$ is a polynomial the assertion is clear. Otherwise for any $r > 0$ we have, using the maximum modulus principle,
+    Without loss of generality we may assume $f(0) = 0$. If $f$ is a polynomial the assertion is clear. Otherwise for any $r > 0$ we have,
     \begin{align*}
         M_f(r) &= \max_{\vert z \vert = r} \vert f(z) \vert = \max_{\vert z \vert = r} \left\vert \int_{[0, z]} f'(\zeta) \diff \zeta \right\vert \leq \\
         &\leq \max_{\vert z \vert = r} \left( \vert z \vert \max_{w \in \cl{B_r(0)}} \vert f'(w) \vert \right) \leq r M_{f'}(r).
@@ -115,7 +115,7 @@ There is a, perhaps surprising, connection between the order of an entire functi
     On the other hand, Cauchy's integral formula gives
     \begin{align*}
         M_{f'}(r) &= \max_{z \in \partial B_r(0)} \vert f'(z) \vert = \max_{z \in \partial B_r(0)} \left\vert \frac{1}{2\pi i} \oint_{\partial B_1(z)} \frac{f(\zeta)}{(\zeta-z)^2} \diff \zeta \right\vert \leq \\
-        &\leq \max_{\substack{z \in \partial B_r(0) \\ w \in \partial B_1(z)}} \vert f(w) \vert \leq M_f(r + 1).
+        &\leq \max_{\substack{z \in \partial B_r(0) \\ w \in \partial B_1(z)}} \vert f(w) \vert \leq \max_{z \in \cl{B_{r+1}(0)}} \vert f(z) \vert = M_f(r + 1).
     \end{align*}
     Therefore
     \begin{align*}

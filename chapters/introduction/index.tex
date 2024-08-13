@@ -7,12 +7,34 @@
 
 \todo{Overview of used notation.}
 
-$B_r(a)$ open disk of radius $r$ centered at $a$.
+Some results from complex analysis are assumed as pre-requisites, such as Cauchy's integral formula, the maximum modulus principle, the Weierstrass theorem on canonical products, the theorems of Montel, Hurwitz and Jensen, the Schwarz lemma and standard results on power series.
 
-$C(G, S)$ space of continuous functions on $G$ that map into $S$.
+The sets $\N$ and $\Z$ denote, respectively, the natural numbers (starting with $1$) and the integers. Furthermore we define $\N_0 \coloneqq \N \cup \{ 0 \}$.
 
-$H(G)$ space of holormphic functions on $G$.
+The sets $\R$ and $\C$ denote, respectively, the real line and the complex plane, which will both be endowed with the standard Euclidean metric and topology. The closure of a subset $A$ of $\R$ or $\C$ (with respect to the appropriate topology) will be denoted as $\cl{A}$ and the boundary as $\partial A$.
 
-In chapter $\ref{ch:growth-zeros-entire-functions}$ we will often utilize asymptotic notation:
+When integrating over the boundary of a set in $\C$ the boundary is, unless otherwise indicated, parametrized with mathematically positive (counter-clockwise) orientation.
+
+If $A$ is some set with $0 \in A$ we define $A^\times \coloneqq A \setminus \{ 0 \}$.
+
+For $a, b \in \C$ we denote by $[a, b]$ the straight line connecting $a$ to $b$, parametrized by the function $\gamma : [0, 1] \to \C, t \mapsto (1-t)a + tb$.
+
+For subsets $M, N$ of $\R$ or $\C$ we denote by $C(M, N)$ the space of continuous functions which map from $M$ into $N$.
+
+If $G \subseteq \C$, then $G$ is said to be a domain if $G$ is non-empty, open and connected.
+
+For a point $a \in \C$ and $r > 0$ we denote by $B_r(a)$ the open disk of radius $r$ centered at $a$. The unit disk $B_1(0)$ will be denoted $\D$.
+
+Let $G \subseteq \C$ be open, then a function $f : G \to \C$ is said to be holomorphic at $z \in G$ if $f$ is complex differentiable at $z$. If $f$ is holomorphic at all $z \in G$ then $f$ is said to be holomorphic on $G$. The space of all such holomorphic functions on $G$ will be denoted as $H(G)$.
+
+If $f$ is (real or complex) differentiable, then $f'$ and $f''$ denote the respective first and second derivatives of $f$. For $n \in \N$, the $n$-th derivative will be denoted $f^{(n)}$.
+
+For a real- or complex-valued function $f$ defined on some set $M$ we define $\Vert f \Vert_M \coloneqq \sup_{x \in M} \vert f(x) \vert$.
+
+The exponential function will be denoted $\exp : \R \to (0, \infty)$, with inverse $\log : (0, \infty) \to \R$.
+
+For a set $A$, the indicator function $\1_A(a)$ is defined as $1$ if $a \in A$ and $0$ otherwise.
+
+To simplify the asymptotic analysis in \cref{ch:growth-zeros-entire-functions} we shall employ the following notation: Let $a \in \R$ and let $f, g$ be functions on $[a, \infty)$ such that $f$ is either real- or complex-valued and $g$ is real-valued. Then we write $f(x) = \O(g(x))$ as $x \to \infty$ if there exist constants $C > 0$ and $x_0 \geq a$ such that for $x \geq x_0$ we have $\vert f(x) \vert \leq C g(x)$.
 
 % $$ \frac{} \lim_{r \to \infty} $$

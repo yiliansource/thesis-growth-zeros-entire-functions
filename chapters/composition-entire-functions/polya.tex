@@ -1,14 +1,14 @@
 \section{Pólya's Theorem}
 \label{sec:polyas-theorem}
 
-Necessary conditions for the order of a composition to be finite will be given by Pòlya's Theorem, the proof of which relies on a result that was first proven by Harald Bohr. While Bloch's Theorem dealt with disks contained in the image of holomorphic functions, we now focus on circles contained in such images.
+Necessary conditions for the order of a composition to be finite will be given by Pólya's Theorem, the proof of which relies on a result that was first proven by Harald Bohr. While Bloch's Theorem dealt with disks contained in the image of holomorphic functions, we now focus on circles contained in such images.
 
 \begin{proposition} \label{prop:existence-circle-maximal-radius}
     Let $G \subset \C$ be a bounded domain with $0 \in G$. Then the set
     \begin{equation} \label{eq:set-circle-maximal-radius}
         S \coloneqq \{ r \geq 0 : \partial B_r(0) \subseteq \cl{G} \}
     \end{equation}
-    has a positive maximum; that is, $\cl{G}$ contains a circle of positive, maximal radius\footnote{The circle of radius $0$ is taken to be the singleton $\{ 0 \}$.}.
+    has a positive maximum; that is, $\cl{G}$ contains a circle of positive, maximal radius\footnote{The circle of radius $0$ is understood as the singleton $\{ 0 \}$.}.
 \end{proposition}
 
 \begin{proof}
@@ -26,7 +26,7 @@ If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non
 Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
 
 \begin{theorem}[Bohr] \label{thm:bohr}
-    There exists a function ${\phi : (0, 1) \to (0, \infty)}$ such that for any $f \in H(\D) \cap C(\cl{\D}; \C)$ with $f(0) = 0$ and $M_f(\theta) = 1$ it holds that $r_f \geq \phi(\theta)$.
+    There exists a function ${\phi : (0, 1) \to (0, \infty)}$ such that for any $\theta \in (0, 1)$ and $f \in H(\D) \cap C(\cl{\D}; \C)$ with $f(0) = 0$ and $M_f(\theta) = 1$ it holds that $r_f \geq \phi(\theta)$.
 \end{theorem}
 
 \begin{proof}
@@ -54,11 +54,11 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
     \begin{equation*}
         k_r(z) \coloneqq \frac{h(rz)}{M_h(r / 2)} \in H(\D) \cap C(\cl{\D}; \C), \quad \textrm{for } r > 0.
     \end{equation*}
-    Note that by definition we have $M_{k_r}(1/2) = 1$ and $k_r(0) = 0$, thus by Bohr's Theorem there is some constant $C > 0$ and an $R / M_h(r/2) > C$ such that $\partial B_{R / M_h(r/2)}(0) \subseteq k_r(\cl{\D})$ and thus $\partial B_R(0) \subseteq h(\cl{B_r(0)})$. By the maximum modulus principle, $\vert g \vert$ assumes its maximum over $\cl{B_R(0)}$ at some $w_0 \in \partial B_R(0)$. By the above there is a $z_0 \in \cl{B_r(0)}$ with $h(z_0) = w_0$. Thus we get
+    Note that by definition we have $M_{k_r}(1/2) = 1$ and $k_r(0) = 0$, thus by Bohr's Theorem there is some constant $C > 0$ and an $R > C M_h(r/2)$ such that $\partial B_{R / M_h(r/2)}(0) \subseteq k_r(\cl{\D})$ and thus $\partial B_R(0) \subseteq h(\cl{B_r(0)})$. By the maximum modulus principle, $g$ assumes its maximum modulus over $\cl{B_R(0)}$ at some $w_0 \in \partial B_R(0)$. By the above there is a $z_0 \in \cl{B_r(0)}$ with $h(z_0) = w_0$. Thus we get
     \begin{equation*}
         M_g(C M_h(r / 2)) < M_g(R) = \vert g(w_0) \vert = \vert g(h(z_0)) \vert = \vert f(z_0) \vert \leq M_f(r).
     \end{equation*}
-    Assuming $\rho_f < \infty$, we have $M_f(r) < K \exp(r^\alpha)$ for some $\alpha > \rho_f$. Consider the power series expansion $h(z) = \sum_{n=0}^\infty a_n z^n$ and let $a_m$ denote any non-zero coefficient; note that since $h(0) = 0$ we have $m \geq 1$. By Cauchy's integral formula we have, for all $s > 0$,
+    Assuming $\rho_f < \infty$, we have $M_f(r) < K \exp(r^\alpha)$ for every $\alpha > \rho_f$, with suitable $K > 0$. Consider the power series expansion $h(z) = \sum_{n=0}^\infty a_n z^n$. Let $a_m$ denote any non-zero coefficient; note that since $h(0) = 0$ we have $m \geq 1$. By Cauchy's integral formula we have, for all $s > 0$,
     \begin{equation*} \label{eq:proof-polya-cauchy-inequality}
         \vert a_m \vert = \left\vert \frac{h^{(m)}(0)}{m!} \right\vert = \frac{1}{2\pi} \left\vert \oint_{\partial B_{s}(0)} \frac{h(\zeta)}{\zeta^{n+1}} \diff \zeta \right\vert \leq \frac{M_h(s)}{s^m} \tag{\textasteriskcentered}
     \end{equation*}
@@ -80,7 +80,7 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
 \end{theorem}
 
 \begin{proof}
-    Seeking contradiction, suppose there were such a $f \in H(\C)$. Since $g$ is not a polynomial, $f$ is not a polynomial either. Thus Pólya's Theorem implies $\rho_f = 0$.
+    Assume towards a contradiction that $f \in H(\C)$ with $f \circ f = g$ exists. Since $g$ is not a polynomial, $f$ is not a polynomial either. Thus Pólya's Theorem implies $\rho_f = 0$.
     
     Consider the sets
     $$ Z \coloneqq f^{-1}(\{ w \}), \quad Z' \coloneqq \bigcup_{z \in Z} f^{-1}(\{ z \}). $$
@@ -90,7 +90,7 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
     $$ \sum_{z \in Z} \vert f^{-1}(\{ z \}) \vert = \left\vert \bigcup_{z \in Z} f^{-1}(\{ z \}) \right\vert = \vert Z' \vert < \infty $$
     and thus all points in $Z$ are only assumed finitely often by $f$. But by \Cref{cor:transcendental-every-value-inf}, $f$ assumes at most one value only finitely often; therefore $\vert Z \vert \leq 1$.
 
-    If $Z = \emptyset$, then $h(z) \coloneqq f(z) - w$ is entire, of order $0$ and nowhere $0$. By Hadamard's Theorem we have $h = e^Q$ for some constant polynomial $Q$. Therefore $h$ is constant and consequently so is $f$, a contradiction.
+    If $Z = \emptyset$, then $h(z) \coloneqq f(z) - w$ is entire, of order $0$ and nowhere $0$. As discussed in \Cref{rem:consequences-hadamard}, as a consequence of Hadamard's Theorem we have that $h$ is constant and consequently so is $f$, a contradiction.
 
     If $Z = \{ z_0 \}$, then $h(z) \coloneqq f(z) - w$ has a single zero of finite order $n \in \N$ at $z_0$. Therefore we can write $h(z) = (z - z_0)^n p(z)$, where $p$ is entire, of order $0$ and nowhere $0$. Again, this implies that $p$ is constant, and therefore $f$ a polynomial, a contradiction.
 \end{proof}
@@ -98,7 +98,5 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
 \begin{example}
     A natural application of Thron's Theorem is to set $g(z) \coloneqq \exp z$, which never assumes zero as a value. Indeed, this implies that there is $f \in H(\C)$ satisfying
     $$ f(f(z)) = \exp z. $$
-    \iffalse
-    On the other hand, there does exist a real-analytic function satisfying the above, as demonstrated by H. Kneser. \todo{I probably still need a citation here.}
-    \fi
+    On the other hand, there does exist a real-analytic function satisfying the above. The construction of such a function is difficult, but was demonstrated by H. Kneser \cite{kneser-real-analytic-solution}.
 \end{example}

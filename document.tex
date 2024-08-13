@@ -6,7 +6,7 @@
 %\usepackage{fullpage}
 \usepackage{ifthen}
 \usepackage{color}
-\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage{amsmath,amsthm,amssymb,amsfonts,stmaryrd}
 \usepackage{graphicx}
 \usepackage{psfrag}
 \usepackage{setspace}
@@ -48,8 +48,10 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\D}{\mathbb{D}}
 \newcommand{\F}{\mathscr{F}}
+\renewcommand{\O}{\mathcal{O}}
 \newcommand{\powerseries}[2][n]{\sum_{#1=0}^\infty {#2}z^{#1}}
 \newcommand{\diff}{\mathop{}\!\mathrm{d}}
+\newcommand{\deriv}[2]{\frac{\mathrm{d}^{#2}}{\mathrm{d} {#1}^{#2}}}
 \newcommand{\1}{\mathbbm{1}}
 \newcommand{\restr}[2]{{% we make the whole thing an ordinary symbol
   \left.\kern-\nulldelimiterspace % automatically resize the bar with \right
@@ -81,6 +83,21 @@
 \newtheorem{definition}[theorem]{Definition}
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{example}[theorem]{Example}
+
+\AtBeginEnvironment{remark}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\sslash$}
+}
+\AtEndEnvironment{remark}{\popQED\endremark}
+
+\AtBeginEnvironment{definition}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\sslash$}
+}
+\AtEndEnvironment{definition}{\popQED\enddefinition}
+
+\AtBeginEnvironment{example}{%
+  \pushQED{\qed}\renewcommand{\qedsymbol}{$\sslash$}
+}
+\AtEndEnvironment{example}{\popQED\endexample}
 
 \recalctypearea % berechne Satzspiegel neu
 

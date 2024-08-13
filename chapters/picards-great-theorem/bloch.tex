@@ -1,18 +1,18 @@
 \section{Bloch's Theorem}
 \label{sec:blochs-theorem}
 
-If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. In particular, $f(G)$ contains open disks of some, potentially very small, radius. Bloch's Theorem will show that for any $f \in H(D) \cap C(\cl{\D}; \C)$ satisfying $f'(0) = 1$, the set $f(\D)$ always contains a disk of fixed radius.
+If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. In particular, $f(G)$ contains open disks of some, potentially very small, radius. Bloch's Theorem asserts that for any $f \in H(D) \cap C(\cl{\D}; \C)$ satisfying $f'(0) = 1$, the set $f(\D)$ always contains a disk of fixed radius.
 
-Note that $f(0)$ may not always be the center of such a disk; one must simply consider the sequence
+Note that $f(0)$ may not always be the center of such a disk; consider the sequence
 \begin{equation*}
     f_n(z) \coloneqq \frac{1 - e^{- n z}}{n} \in H(\D) \cap C(\cl{\D}; \C), \quad n \in \N,
 \end{equation*}
 which satisfies $f_n(0) = 0$ and $f_n'(0) = 1$, but omits the value $1 / n$.
 
-If $f$ is as before, then $f$ is an open mapping on $G$; we thus first observe a general criterion for the size of disks in image domains:
+If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open sets to open sets. We thus first observe a general criterion for the size of disks in the image domain of such functions:
 
 \begin{lemma} \label{lem:bloch-lemma-1}
-    Let $G \subset \C$ be a bounded domain and $f \in C(\cl{G}; \C)$ such that $\restr{f}{G}$ is an open mapping. If there exists an $a \in G$ such that $s \coloneqq \min_{z \in \partial G} \vert f(z) - f(a) \vert > 0$, then $B_{s}(f(a)) \subseteq f(G)$.
+    Let $G \subset \C$ be a bounded domain and $f \in C(\cl{G}; \C)$ such that $\restr{f}{G}$ is an open mapping. Let $a \in G$ and set $s \coloneqq d(f(a), f(\partial G))$. If $s > 0$, then $B_{s}(f(a)) \subseteq f(G)$.
 \end{lemma}
 
 \begin{proof}
@@ -23,17 +23,17 @@ If $f$ is as before, then $f$ is an open mapping on $G$; we thus first observe a
 
     Therefore $z_* \in \partial G$ and we have
     $$ d(f(a), \partial f(G)) = m = \vert w_* - f(a) \vert = \vert f(z_*) - f(a) \vert \geq s, $$
-    which implies $B_{s}(f(a)) \subseteq f(G)$.
+    which implies $B_{s}(f(a)) \subseteq f(G)$ if $s > 0$.
 \end{proof}
 
 \begin{lemma} \label{lem:bloch-lemma-2}
-    Fix $a \in \C, r > 0$ and let $B \coloneqq B_{r}(a)$. Suppose further that $f \in H(B) \cap C(\cl{B}; \C)$ such that $\Vert f' \Vert_B \leq 2 \vert f'(a) \vert$. Then $ B_{R}(f(a)) \subseteq f(B)$, where $ R \coloneqq (3 - 2 \sqrt{2}) r \vert f'(a) \vert $.
+    Fix $a \in \C, r > 0$ and let $B \coloneqq B_{r}(a)$. Suppose further $G \subseteq \C$ is a domain such that $\cl{B} \subset G$ and $f \in H(G)$ such that $\Vert f' \Vert_B \leq 2 \vert f'(a) \vert$. Then $ B_{R}(f(a)) \subseteq f(B)$, where $ R \coloneqq (3 - 2 \sqrt{2}) r \vert f'(a) \vert $.
 \end{lemma}
 
 \begin{proof}
     We may assume $a = f(a) = 0$, otherwise we consider $f_1(z) \coloneqq f(z + a) - f(a)$. The function
     $$ \mapping{\alpha_f}{B & \to & \C,}{z & \mapsto & f(z) - f'(0) z,} $$
-    satifies, for all $z \in B$,
+    satisfies, for all $z \in B$,
     \begin{equation} \label{eq:bloch-lemma-2:estimate-1}
         \vert \alpha_f(z) \vert = \left\vert \int_{[0, z]} f'(\zeta) - f'(0) \diff \zeta \right\vert \leq \int_0^1 \vert f'(t z) - f'(0) \vert \vert z \vert \diff t. \tag{\textasteriskcentered}
     \end{equation}
@@ -86,7 +86,7 @@ In the following we will denote by $\beta > 0$ any constant less than or equal t
 \end{corollary}
 
 \begin{proof}
-    We may assume $c = 0$, otherwise we consider $f_1(z) \coloneqq f(z+c)$. Let $0 < s < d(c, \partial G)$, then $f$ is analytic on $\cl{B_s(0)} \subseteq G$, thus we have $g(z) \coloneqq f(sz) / sf'(0) \in H(\D) \cap C(\cl{\D}; \C)$. Since $g'(0) = 1$, Bloch's Theorem yields a disk $B$ of radius $\beta$ with $B \subseteq g(\D)$. Then $D \coloneqq s \vert f'(0) \vert B$ is a disk of radius $\beta s \vert f'(0) \vert$ and we have
+    We may assume $c = 0$, otherwise we consider $f_1(z) \coloneqq f(z+c)$. Let $0 < s < d(c, \partial G)$, then $f$ is holomorphic on $\cl{B_s(0)} \subseteq G$, thus we have $g(z) \coloneqq f(sz) / sf'(0) \in H(\D) \cap C(\cl{\D}; \C)$. Since $g'(0) = 1$, Bloch's Theorem yields a disk $B$ of radius $\beta$ with $B \subseteq g(\D)$. Then $D \coloneqq s \vert f'(0) \vert B$ is a disk of radius $\beta s \vert f'(0) \vert$ and we have
     \begin{equation*}
         D = s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(G).
     \end{equation*}

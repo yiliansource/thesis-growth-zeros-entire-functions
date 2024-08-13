@@ -11,27 +11,27 @@ For functions of finite and positive order, we can obtain a natural refinement o
     If $\tau_f = 0$, then $f$ is said to be of \emph{minimal} type, if $0 < \tau_f < \infty$ of \emph{normal} type, and if $\tau_f = \infty$ of \emph{maximal} type.
 \end{definition}
 
-Once again, we have an equivalent characterization for functions of finite order and type:
+Once again, we have an equivalent characterization for functions of finite type:
 
 \begin{proposition} \label{prop:type-infimum}
     Let $f \in H(\C)$ be of finite, positive order, then $f$ is of finite type if and only if
     \begin{equation}
-        \tau \coloneqq \inf \{ t > 0 : M_f(r) = O(\exp (t r^{\rho_f})) \textrm{ as } r \to \infty \}
+        \tau \coloneqq \inf \{ t > 0 : M_f(r) = \O(\exp (t r^{\rho_f})) \textrm{ as } r \to \infty \}
     \end{equation}
     is finite, and in either case we have $\tau_f = \tau$.
 \end{proposition}
 
 \begin{proof}
-    Suppose $0 \leq \tau < \infty$, then for all $t > \tau$ we have $M_f(r) = O(\exp t r^{\rho_f})$ as $r \to \infty$. Thus there exists a constant $K > 0$ such that for all sufficiently large $r > 0$ we have $M_f(r) \leq K \exp t r^{\rho_f}$. Therefore
+    Suppose $0 \leq \tau < \infty$, then for all $t > \tau$ we have $M_f(r) = \O(\exp t r^{\rho_f})$ as $r \to \infty$. Thus there exists a constant $K > 0$ such that for all sufficiently large $r > 0$ we have $M_f(r) \leq K \exp t r^{\rho_f}$. Therefore
     \begin{align*}
         \frac{\log M_f(r)}{r^{\rho_f}} \leq \frac{\log K + t r^{\rho_f}}{r^{\rho_f}} = \frac{\log K}{r^{\rho_f}} + t
     \end{align*}
     and taking limits superior as $r \to \infty$ and letting $t \to \tau$ afterwards yields $\tau_f \leq \tau$.
 
-    Now suppose $0 \leq \tau_f < \infty$ and let $t > \tau_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log M_f(r) \leq t r^{\rho_f}$ and therefore $M_f(r) \leq \exp(t r^{\rho_f})$. Thus $M_f(r) = O(\exp (t r^{\rho_f}))$, thereby $\tau \leq t$ and letting $t \to \tau_f$ yields $\tau \leq \tau_f$.
+    Now suppose $0 \leq \tau_f < \infty$ and let $t > \tau_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log M_f(r) \leq t r^{\rho_f}$ and therefore $M_f(r) \leq \exp(t r^{\rho_f})$. Thus $M_f(r) = \O(\exp (t r^{\rho_f}))$, thereby $\tau \leq t$ and letting $t \to \tau_f$ yields $\tau \leq \tau_f$.
 \end{proof}
 
-% Equivalently, $\tau_f$ can also be defined as the infimum over all $\tau > 0$ such that $M_f(r) = O(\exp(\tau r^{\rho_f}))$ as $r \to \infty$.
+% Equivalently, $\tau_f$ can also be defined as the infimum over all $\tau > 0$ such that $M_f(r) = \O(\exp(\tau r^{\rho_f}))$ as $r \to \infty$.
 
 If $f \in H(\C)$ is of finite, positive order, then $f$ and $f'$ not only have the same order, they have the same type:
 

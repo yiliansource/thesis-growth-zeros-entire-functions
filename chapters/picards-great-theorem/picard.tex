@@ -1,7 +1,7 @@
 \section{Picard's Great Theorem}
 \label{sec:picards-great-theorem}
 
-The following lemma is integral in showing that functions which omit two values on the punctured unit disk cannot have an essential singularity at $0$.
+The following lemma is essential in showing that functions which omit two values on the punctured unit disk cannot have an essential singularity at $0$.
 
 \begin{lemma} \label{lem:great-picard-bounded}
     Let $f \in H(\D^\times; \C \setminus \{ 0, 1 \})$. Then $f$ or $1/f$ is bounded in a punctured neighborhood of zero.
@@ -12,10 +12,11 @@ The following lemma is integral in showing that functions which omit two values 
 
     Assume the former case. Then there is some $k_0 \in \N$ such that for all $k \geq k_0$ we have $ \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} < 1 $ and thus
     \begin{equation*}
-        \Vert f \Vert_{\partial B_{1/2n_k}(0)} = \Vert f_{n_k} \Vert_{\partial B_{1/2}(0)} \leq \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} + \Vert f \Vert_{\partial B_{1/2}(0)} \leq 1 + \Vert f \Vert_{\partial B_{1/2}(0)} \eqqcolon C.
+        \Vert f \Vert_{\partial B_{1/2n_k}(0)} = \Vert f_{n_k} \Vert_{\partial B_{1/2}(0)} \leq \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} + \Vert f \Vert_{\partial B_{1/2}(0)} \leq 1 + \Vert f \Vert_{\partial B_{1/2}(0)},
     \end{equation*}
+    whereby $f$ is bounded on $\partial B_{1/2n_k}(0)$.
     By the maximum modulus principle, $f$ must therefore be bounded on every annulus $1 / (2 n_{k + 1}) \leq \vert z \vert \leq 1 / (2 n_k)$, for $k \geq k_0$. Thus $f$ is bounded on
-    $$ V \coloneqq \bigcup_{k \geq k_0} \left\{ z \in \C : \frac{1}{2 n_{k+1}} \leq \vert z \vert \leq \frac{1}{2 n_k} \right\}, $$
+    $$ \bigcup_{k \geq k_0} \left\{ z \in \C : \frac{1}{2 n_{k+1}} \leq \vert z \vert \leq \frac{1}{2 n_k} \right\} = \cl{B_{1/2n_k}(0)} \setminus \{ 0 \}, $$
     which is a punctured neighborhood of zero.
 
     In the latter case, $(1 / f_{n_k})_{k \in \N}$ converges compactly to $0$ by \Cref{lem:compact-convergence-reciprocals}. Replacing $f_{n_k}$ with $1 / f_{n_k}$ and $f$ with $0$ in the above we likewise obtain that $1 / f$ is bounded in a punctured neighborhood of zero.
@@ -26,19 +27,19 @@ The following lemma is integral in showing that functions which omit two values 
 \end{theorem}
 
 \begin{proof}
-    Aiming for contradiction, assume that $f$ only takes on $z_0, z_1 \in \C$ finitely often in some punctured neighborhood $W$ of $w$. Then $W$ contains a punctured disk of radius $t > 0$ around $w$, on which $f$ does not assume $z_0$ or $z_1$, and thus
-    $$ g(z) \coloneqq \frac{f(t z + w) - z_0}{z_1 - z_0} \in H(\D^\times; \C \setminus \{ 0, 1 \}), $$
+    Assume towards a contradiction that $f$ takes on two distinct values $a, b \in \C$ only finitely often in some punctured neighborhood $W$ of $w$. Then $W$ contains a punctured disk of radius $t > 0$ around $w$, on which $f$ does not assume $a$ or $b$, and thus
+    $$ g(z) \coloneqq \frac{f(t z + w) - a}{b - a} \in H(\D^\times; \C \setminus \{ 0, 1 \}), $$
     where $g$ has an essential singularity at zero. By \Cref{lem:great-picard-bounded}, we have that either $g$ or $1/g$ must be bounded in a punctured neighborhood of zero. By the classification of isolated singularities, in the former case the singularity must therefore be removable, whereas in the latter case it must be a pole, yielding a contradiction.
 \end{proof}
 
-The following corollary is also referred to as Picard's Great Theorem:
+The following corollary is also referred to as Picard's Great Theorem. Here an entire transcendental function is an entire function which is not a polynomial.
 
 \begin{corollary} \label{cor:transcendental-every-value-inf}
     Every entire transcendental function assumes every value in $\C$ infinitely often, with at most one exception.
 \end{corollary}
 
 \begin{proof}
-    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be transcendental and entire, and consider $g(z) \coloneqq f(1 / z) \in H(\C^\times)$. Then the Laurent series expansion of $g$ at $0$ has infinite principal part, therefore $g$ has an essential singularity at zero. By Picard's Great Theorem $g$ assumes all values in $\C$ on $B_1(0) \setminus \{ 0 \}$ infinitely often, except at most one, and so $f$ does the same on $\C \setminus B_1(0)$.
+    Let $f(z) = \sum_{n=0}^\infty a_n z^n$ be transcendental and entire, and consider $g(z) \coloneqq f(1 / z) \in H(\C^\times)$. Then the Laurent series expansion of $g$ at $z = 0$ has infinite principal part, therefore $g$ has an essential singularity at zero. By Picard's Great Theorem $g$ assumes all values in $\C$ on $B_1(0) \setminus \{ 0 \}$ infinitely often, except at most one, and so $f$ does the same on $\C \setminus B_1(0)$.
 \end{proof}
 
 \begin{remark}
