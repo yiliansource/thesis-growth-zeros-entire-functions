@@ -73,25 +73,31 @@ If the order of an entire function is finite we have an equivalent characterizat
     and we obtain $\rho_f = 0$, as above.
 \end{remark}
 
+From \Cref{prop:order-infimum}, together with some rough estimates, it follows that the order of the sum or product of two entire functions is bounded by above the larger of the two:
+
 \begin{proposition} \label{prop:order-sum-product-estimate}
     Let $f, g \in H(\C)$ be of finite order. Then it holds that:
     \begin{enumerate}[i.]
-        \item $\rho_{f + g} \leq \max \{ \rho_f, \rho_g \}$, with equality holding if $\rho_f \neq \rho_g$.
+        \item $\rho_{f + g} \leq \max \{ \rho_f, \rho_g \}$.
         \item $\rho_{fg} \leq \max \{ \rho_f, \rho_g \}$.
     \end{enumerate}
 \end{proposition}
 
-\begin{proof}
-    That the order of the sum or product is bounded above by the larger of the respective two orders is immediately obtained through \Cref{prop:order-infimum}.
+For two entire functions of different, finite order, their sum has the order of the higher of the two:
 
-    Assume $\rho_f \neq \rho_g$, without loss of generality $\rho_f < \rho_g$. By the above we have
+\begin{proposition} \label{prop:order-sum-equality}
+    Let $f, g \in H(\C)$ be of finite order. If $\rho_f < \rho_g$, then $\rho_{f + g} = \rho_g$.
+\end{proposition}
+
+\begin{proof}
+    By \Cref{prop:order-sum-product-estimate} we have 
     \begin{equation*}
         \rho_{f+g} \leq \max \{ \rho_f, \rho_g \} = \rho_g, \quad\textrm{and}\quad \rho_g = \rho_{f+g+(-f)} \leq \max \{ \rho_f, \rho_{f+g} \} = \rho_{f+g},
     \end{equation*}
     since if $\rho_f > \rho_{f+g}$ then $\rho_f > \rho_{f+g} \geq \rho_g$ would be a contradiction. Thus $\rho_{f+g} = \rho_g$, proving the assertion.
 \end{proof}
 
-It is of note that \Cref{prop:order-sum-product-estimate} implies that the order of an entire function of finite order remains unchanged when adding a polynomial of arbitrary degree to it.
+It is of note that \Cref{prop:order-sum-equality} implies that the order of an entire function of finite order remains unchanged when adding a polynomial of arbitrary degree to it.
 
 There is a, perhaps surprising, connection between the order of an entire function and the order of its derivative:
 

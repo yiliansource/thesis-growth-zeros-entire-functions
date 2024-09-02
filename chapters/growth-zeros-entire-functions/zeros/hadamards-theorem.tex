@@ -100,7 +100,7 @@ Hadamard's Theorem can also be formulated more concisely: Let $f \in H(\C)$ be o
     $$ h_R^{(\nu + 1)}(z) = \deriv{z}{\nu} \left( \frac{f'(z)}{f(z)} \right) + \nu! \sum_{\substack{m \in M \\ \vert z_m \vert \leq R}} \frac{1}{(z_m - z)^{\nu + 1}} = Q^{(\nu + 1)}(z) - \nu! \sum_{\substack{m \in M \\ \vert z_m \vert > R}} \frac{1}{(z_m - z)^{\nu + 1}}. $$
     For $\vert z \vert = R / 2$ and $z_m > R$ we have $\vert z_m - z \vert \geq \vert z_m \vert - R / 2 \geq \vert z_m \vert / 2$, therefore
     $$ \vert Q^{(\nu+1)}(z) \vert \leq \nu! \sum_{\substack{m \in M \\ \vert z_m \vert > R}} \frac{1}{\vert z_m - z \vert^{\nu + 1}} + \vert h_R^{(\nu + 1)}(z) \vert \leq K_2 \sum_{\substack{m \in M \\ \vert z_m \vert > R}} \frac{1}{\vert z_m \vert^{\nu + 1}} + K_1 R^{\alpha - (\nu + 1)}, $$
-    where $K_2$ is some constant dependin only on $\nu$. By the maximum modulus principle this holds for all $\vert z \vert \leq R / 2$. Since $\nu + 1 > \rho_f \geq \lambda_f$ both terms on the right side tend to zero as $R \to \infty$, if $\rho_f < \alpha < \nu + 1$. Therefore $Q^{(\nu + 1)}$ vanishes identically, thus $Q$ is a polynomial of degree at most $\nu \leq \rho_f$.
+    where $K_2$ is some constant depending only on $\nu$. By the maximum modulus principle this holds for all $\vert z \vert \leq R / 2$. Since $\nu + 1 > \rho_f \geq \lambda_f$ both terms on the right side tend to zero as $R \to \infty$, if $\rho_f < \alpha < \nu + 1$. Therefore $Q^{(\nu + 1)}$ vanishes identically, thus $Q$ is a polynomial of degree at most $\nu \leq \rho_f$.
 \end{proof}
 
 \begin{remark} \label{rem:consequences-hadamard}
@@ -118,10 +118,10 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
 \end{theorem}
 
 \begin{proof}
-    We may assume $f(0) \neq 0$. By \Cref{thm:inequality-order-exponent-of-convergence} we have $\lambda_f \leq \rho_f$. Invoking Hadamard's Theorem we can write
-    $$ f(z) = e^{Q(z)} \Pi(z) $$
-    for some polynomial $Q$ with $\deg Q \leq \rho_f$ and a canonical product $\Pi$. Since $\rho_f$ is not an integer we have $\deg Q \leq \lfloor \rho_f \rfloor < \rho_f$. By \Cref{prop:order-exponential-polynomial} $e^Q$ has order $\deg Q$ and by \Cref{thm:exponent-of-convergence-weierstrass-product} $\Pi$ has order $\lambda_f$, therefore using \Cref{prop:order-sum-product-estimate} we obtain
-    $$ \rho_f \leq \max \{ \deg Q, \lambda_f \} = \lambda_f \leq \rho_f, $$
+    By \Cref{thm:inequality-order-exponent-of-convergence} we have $\lambda_f \leq \rho_f$. Invoking Hadamard's Theorem we can write
+    $$ f(z) = z^m e^{Q(z)} \Pi(z) $$
+    for some $m \in \N_0$, a polynomial $Q$ with $\deg Q \leq \rho_f$ and a canonical product $\Pi$. Since $\rho_f$ is not an integer we have $\deg Q \leq \lfloor \rho_f \rfloor < \rho_f$. By \Cref{prop:order-exponential-polynomial} $e^Q$ has order $\deg Q$ and by \Cref{thm:exponent-of-convergence-weierstrass-product} $\Pi$ has order $\lambda_f$, therefore using \Cref{prop:order-sum-product-estimate} we obtain
+    $$ \rho_f \leq \max \{ 0, \deg Q, \lambda_f \} = \lambda_f \leq \rho_f, $$
     since $\rho_f \leq \max \{ \deg Q, \lambda_f \} = \deg Q < \rho_f$ would be a contradiction, and we get $\rho_f = \lambda_f$.
 \end{proof}
 
@@ -134,14 +134,35 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
 \end{proof}
 
 \begin{theorem}[Borel] \label{thm:existence-borel-exceptional-values}
-    Let $f \in H(\C)$ be of finite, integer order. Then for any $a \in \C$ we have $\lambda_f^{(a)} = \rho_f$, except possibly for one value of $a$.
+    Let $f \in H(\C)$ be of finite, integer order $\rho_f > 0$. Then for any $a \in \C$ we have $\lambda_f^{(a)} = \rho_f$, except possibly for one value of $a$.
 \end{theorem}
 
 \begin{proof}
+    Note that for any $w \in \C$ we have
+    $$ \lambda_f^{(w)} = \lambda_{f-w} \leq \rho_{f-w} = \rho_f. $$
+    Assume towards a contradiction that there exist $a, b \in \C$ such that $\lambda_f^{(a)} < \rho_f$ and $\lambda_f^{(b)} < \rho_f$. By Hadamard's Theorem we can write
+    $$ \alpha(z) \coloneqq f(z) - a = z^{m_1} e^{Q_1(z)} \Pi_1(z), \quad \beta(z) \coloneqq f(z) - b = z^{m_2} e^{Q_2(z)} \Pi_2(z), $$
+    where $m_1, m_2 \in \N_0$, $Q_1, Q_2$ are polynomials of degree at most $\rho_f$ and $\Pi_1, \Pi_2$ denote appropriate canonical products. We have
+    $$ \deg Q_1 \leq \rho_f = \rho_\alpha \leq \max \{ 0, \deg Q_1, \rho_{\Pi_1} \}, $$
+    and since by \Cref{thm:exponent-of-convergence-weierstrass-product} $\rho_{\Pi_1} = \lambda_f^{(a)} < \rho_f$, it follows that $\deg Q_1 = \rho_f$. The analogous argument for $Q_2$ yields $\deg Q_2 = \rho_f$. Subtracting $\beta$ from $\alpha$ yields
+    \begin{equation} \label{thm:existence-borel-exceptional-values:difference-of-functions}
+    \begin{aligned}
+                        && b - a &= z^{m_1} e^{Q_1(z)} \Pi_1(z) - z^{m_2} e^{Q_2(z)} \Pi_2(z) \\
+        \Leftrightarrow && (b - a) e^{-Q_2(z)} &= z^{m_1} e^{Q_1(z) - Q_2(z)} \Pi_1(z) - z^{m_2} \Pi_2(z) \\
+        \Leftrightarrow && (b - a) e^{-Q_2(z)} + z^{m_2} \Pi_2(z) &= z^{m_1} e^{Q_1(z) - Q_2(z)} \Pi_1(z)
+    \end{aligned}
+    \end{equation}
+    Since $\rho_{\Pi_2} = \lambda_f^{(b)} < \rho_f$ and $-Q_2$ is of degree $\rho_f$, the left-hand side is of order $\rho_f$ and thus so is the right-hand side. Now similarly, since $\rho_{\Pi_1} = \lambda_f^{(b)} < \rho_f$ and the right-hand side has order $\rho_f$, we have that $Q_1 - Q_2$ has order $\rho_f$. Differentiating the first equation in \eqref{thm:existence-borel-exceptional-values:difference-of-functions} gives
+    $$ () $$
+
     \todo{TODO.}
 \end{proof}
 
 \todo{Relate to Picard exceptional values, ``substantial deepening'' of Picard's Little Theorem ...}
+
+\begin{remark}
+    Note that 
+\end{remark}
 
 \iffalse
 \begin{example}
@@ -150,3 +171,19 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
     is entire. We have $\rho_f = 1$ (\todo{why?}) and $f$ has zeros at $\left( \frac{\pi^2 n^2}{4} \right)_{n \in \N}$, hence $\lambda_f = \frac{1}{2}$. By \Cref{thm:existence-borel-exceptional-values} the exponent of convergence of the $a$-points of $f$, for $a \neq 0$, must be $1$.
 \end{example}
 \fi
+
+Hadamard's Theorem can be used to obtain a generalization of \Cref{thm:canonical-product-type-density} holding for entire functions other than canonical products. This requires the following result, the proof of which relies on finding a lower bound on the modulus of arbitrary entire functions and can be found as Theorem 12(a) in Levin \cite{levin-distribution-of-zeros}.
+
+\begin{proposition} \label{prop:order-type-product-equality}
+    Let $f, g \in H(\C)$ be of finite order. If $\rho_f < \rho_g$, then it holds that $ \rho_{fg} = \rho_g $ and $\tau_{fg} = \tau_g$.
+\end{proposition}
+
+\begin{theorem} \label{thm:entire-function-type-density}
+    Let $f \in H(\C)$ be of finite, non-integer order. Then $f$ is of maximal, minimal or normal type according to whether $\Delta_f$ is equal to infinity, zero, or a positive, real number.
+\end{theorem}
+
+\begin{proof}
+    By Hadamard's Theorem we can write
+    $$ f(z) = z^m e^{Q(z)} \Pi(z). $$
+    The first factor is of order zero, the second is of order $\lfloor \rho_f \rfloor < \rho_f$ and the last is of order $\rho_f$. Therefore, by \Cref{prop:order-type-product-equality} we have  $\tau_f = \tau_\Pi$. Since the order of $\Pi$ is not an integer and clearly $\Delta_f = \Delta_\Pi$, the assertion now follows from \Cref{thm:canonical-product-type-density}.
+\end{proof}

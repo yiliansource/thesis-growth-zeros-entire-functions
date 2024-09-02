@@ -88,7 +88,7 @@ The next theorem -- which is also known as the \emph{Weierstrass Product Theorem
 \end{proof}
 
 \begin{definition} \label{def:canonical-product}
-    With the notation of the \Cref{thm:function-with-prescribed-zeros}, $\Pi$ is called a \emph{Weierstrass product}\footnote{Note that this product is not uniquely determined, since the sequence $(p_m)_{m \in M}$ is not unique.} formed from the family $\mathbf{z}$. If $\mu < \infty$ then
+    With the notation of \Cref{thm:function-with-prescribed-zeros}, $\Pi$ is called a \emph{Weierstrass product}\footnote{Note that this product is not uniquely determined, since the sequence $(p_m)_{m \in M}$ is not unique.} formed from the family $\mathbf{z}$. If $\mu < \infty$ then
     \begin{equation}
         \Pi(z) \coloneqq \prod_{m \in M} W\left(\frac{z}{z_m}; \mu \right)
     \end{equation}
@@ -96,7 +96,7 @@ The next theorem -- which is also known as the \emph{Weierstrass Product Theorem
 \end{definition}
 
 \begin{remark}
-    By comparing \Cref{def:zero-exponent} and \Cref{def:canonical-product} we immediately observe that if $\lambda_\Pi < \infty$ then $\mu_\Pi \leq \lambda_\Pi \leq \mu_\Pi + 1$. If therefore $\lambda_f$ is an integer, and $\Pi$ has infinitely many zeros, the series
+    By comparing \Cref{def:zero-exponent} and \Cref{def:canonical-product} we immediately observe that if $\lambda_\Pi < \infty$ then $\mu_\Pi \leq \lambda_\Pi \leq \mu_\Pi + 1$. If therefore $\lambda_\Pi$ is an integer, and $\Pi$ has infinitely many zeros, the series
     $$ \sum_{m \in M} \frac{1}{\vert z_m \vert^{\lambda}}, $$
     will converge if $\lambda_\Pi = \mu_\Pi + 1$ and diverge if $\lambda_\Pi = \mu_\Pi$.
 \end{remark}
@@ -169,7 +169,7 @@ We wish to further estimate canonical products. To do this we first focus on the
     \todo{TODO.}
 \end{proof}
 
-\begin{theorem}
+\begin{theorem} \label{thm:canonical-product-type-density}
     Let $\Pi \in H(\C)$ be a canonical product of finite order. If $\lambda_\Pi$ is not an integer, then $\Pi$ is of maximal, minimal or normal type according to whether $\Delta_\Pi$ is equal to infinity, zero, or a positive, real number.
 \end{theorem}
 

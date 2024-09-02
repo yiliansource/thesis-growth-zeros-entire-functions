@@ -80,7 +80,7 @@ If $f \in H(\C)$ assumes some value $a \in \C$ only finitely often, then clearly
 \begin{proof}
     We may assume $f(0) \neq 0$. If $\lambda_f = 0$ there is nothing to show. Let $\rho > \rho_f$ then \Cref{prop:zeros-bounded-by-order} yields a constant $K_1 > 0$ such that for sufficiently large $r$ we have $n_f(r) \leq K_1 r^{\rho}$.
     
-    If $(r_j)_{j \in \N}$ denote the non-zero moduli of the zeros of $f$, arranged in non-decreasing order, then for any $m \in \N$ we have $m = n_f(r_m) \leq K_1 r_m^{\rho}$. Let $0 < \lambda < \lambda_f$ then this implies
+    If $(r_j)_{j \in \N}$ denote the non-zero moduli of the zeros of $f$, arranged in non-decreasing order, then for any $m \in \N$ we have $m \leq n_f(r_m) \leq K_1 r_m^{\rho}$. Let $0 < \lambda < \lambda_f$ then this implies
     \begin{align*}
         \left( \frac{1}{r_m} \right)^{\lambda} \leq K_2 \left( \frac{1}{m} \right)^{\lambda/\rho}.
     \end{align*}
@@ -109,12 +109,44 @@ As \Cref{prop:zeros-bounded-by-order} might indicate, a more precise analysis of
     If the limit exists then $\Delta_f$ is simply called the \emph{density}.
 \end{definition}
 
-\begin{proposition}
+\begin{proposition} \label{prop:zeros-order-equals-zeros-exponent}
     Let $f \in H(\C)$, then $\lambda_f$ is finite if and only if $\nu_f$ is finite and in either case we have $\lambda_f = \nu_f$.
 \end{proposition}
 
 \begin{proof}
-    \todo{TODO.}
+    If $f$ only has finitely many zeros the assertion is clear. Otherwise let $(r_n)_{n \in \N}$ denote the non-zero moduli of the roots of $f$, arranged in non-decreasing order, then we have
+    $$ n_f(t) = \sum_{n=1}^\infty \1_{[r_n, \infty)}(t). $$
+
+    From this representation we observe that $n_f$ is right-continuous, non-negative and non-decreasing. Therefore $n_f$ induces a Lebesgue-Stieltjes measure $\omega$. Since an indicator function of the form $\1_{[a, \infty)}$, for $a \in \R$, corresponds to a Dirac measure $\delta_{\{ a \}}$, and the correspondence between Lebesgue-Stieltjes measures and their distribution functions is linear in nature, we have
+    $$ \omega = \sum_{n = 1}^\infty \delta_{\{r_n\}}. $$
+    Therefore we can write, for any $\lambda > 0$,
+    \begin{equation} \label{eq:zeros-order-equals-zeros-exponent:series-integral}
+        \sum_{n=1}^\infty \frac{1}{r_n^\lambda} = \sum_{n=1}^\infty \int_{(0, \infty)} \frac{1}{t^\lambda} \diff \delta_{\{r_n\}}(t) = \int_{(0, \infty)} \frac{1}{t^\lambda} \diff \omega(t),
+    \end{equation}
+    in the sense that the left side is finite if and only if the right side is finite, in which case the values coincide.
+    
+    Let $\varepsilon > 0$, then integrating by parts yields
+    $$ \int_{(\varepsilon, r)} \frac{1}{t^\lambda} \diff \omega(t) + \int_{(\varepsilon, r)} n_f(t) \diff t^{-\lambda} = \frac{n_f(r)}{r^\lambda} - \frac{n_f(\varepsilon)}{\varepsilon^\lambda}. $$
+    Now, the Lebesgue-Stieltjes measure induced by $t \mapsto t^{-\lambda}$ has density $-\lambda t^{-(\lambda + 1)}$ with respect to the Lebesgue measure. Since $n_f(\varepsilon) = 0$ for $0 < \varepsilon < r_1$, letting $\varepsilon \to 0$ we therefore get
+    \begin{equation} \label{eq:zeros-order-equals-zeros-exponent:integration-by-parts}
+        \int_{(0, r)} \frac{1}{t^\lambda} \diff \omega(t) = \frac{n_f(r)}{r^\lambda} + \lambda \int_0^r \frac{n_f(t)}{t^{\lambda + 1}} \diff t.
+    \end{equation}
+
+    Suppose $\lambda_f < \infty$, then for any $\lambda > \lambda_f$ the integral in \eqref{eq:zeros-order-equals-zeros-exponent:series-integral} converges. In particular, the right-hand side of \eqref{eq:zeros-order-equals-zeros-exponent:integration-by-parts} is bounded. Since the right integrand is non-negative the right term is increasing in $r$ and must therefore converge as $r \to \infty$. Therefore the right-most term in
+    $$ 0 \leq \frac{n_f(r)}{r^\lambda} = \lambda n_f(r) \int_r^\infty \frac{1}{t^{\lambda + 1}} \diff t \leq \lambda \int_r^\infty \frac{n_f(t)}{t^{\lambda + 1}} \diff t $$
+    converges to $0$ as $r \to \infty$, from which we get
+    \begin{equation} \label{eq:zeros-order-equals-zeros-exponent:density-zero}
+        \lim_{r \to \infty} \frac{n_f(r)}{r^\lambda} = 0.
+    \end{equation}
+    Taking limits superior as $r \to \infty$ in
+    $$ \frac{\log n_f(r)}{\log r} = \left( \log \frac{n_f(r)}{r^\lambda} + \log r^\lambda\right)/{\log r} = \log \frac{n_f(r)}{r^\lambda} / \log r + \lambda $$
+    and then letting $\lambda \to \lambda_f$ yields $\nu_f \leq \lambda_f$.
+
+    Conversely suppose $\nu_f < \infty$, then for any $\varepsilon > 0$ by definition of $\nu_f$ there is a $r_0 > 0$ such that
+    $$ n_f(r) \leq r^{\nu_f + \varepsilon / 2} $$
+    for all $r \geq r_0$. Set $\lambda \coloneqq \nu_f + \varepsilon$, then
+    $$ \int_{r_0}^r \frac{n_f(t)}{t^{\lambda + 1}} \diff t \leq \int_{r_0}^r \frac{t^{\nu_f + \varepsilon / 2}}{t^{\nu_f + \varepsilon + 1}} \diff t = \int_{r_0}^r t^{-\varepsilon/2 - 1} \diff t = \frac{2}{\varepsilon r_0^{\varepsilon / 2}} - \frac{2}{\varepsilon r^{\varepsilon / 2}} $$
+    and therefore the leftmost integral converges as $r \to \infty$. Clearly \eqref{eq:zeros-order-equals-zeros-exponent:density-zero} holds, therefore \eqref{eq:zeros-order-equals-zeros-exponent:integration-by-parts} holds as $r \to \infty$. Thus the series in \eqref{eq:zeros-order-equals-zeros-exponent:series-integral} converges, yielding $\lambda_f \leq \lambda$. Letting $\varepsilon \to 0$ we now get $\lambda_f \leq \nu_f$.
 \end{proof}
 
 \iffalse
