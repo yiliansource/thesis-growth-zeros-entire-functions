@@ -10,7 +10,7 @@
 \usepackage{graphicx}
 \usepackage{psfrag}
 \usepackage{setspace}
-\usepackage{enumerate}
+\usepackage[shortlabels]{enumitem}
 \usepackage{mathtools}
 \usepackage{bbm}
 \usepackage{mathrsfs}
@@ -98,6 +98,9 @@
   \pushQED{\qed}\renewcommand{\qedsymbol}{$\sslash$}
 }
 \AtEndEnvironment{example}{\popQED\endexample}
+
+\newlist{arrowlist}{itemize}{1}
+\setlist[arrowlist]{label=$\rightsquigarrow$}
 
 \recalctypearea % berechne Satzspiegel neu
 

@@ -50,3 +50,19 @@ If $f \in H(\C)$ is of finite, positive order, then $f$ and $f'$ not only have t
     \end{align*}
     and taking limits superior as $r \to \infty$ yields $\tau_f \leq \tau_{f'}$ and $\tau_{f'} \leq \tau_f$.
 \end{proof}
+
+\begin{example} \label{exm:order-and-type}
+    \leavevmode
+    \begin{arrowlist}
+        \item For $\rho, \tau \in (0, \infty)$, the function
+        $$ f(z) \coloneqq \exp {\tau z^\rho} $$
+        is of order $\rho$ and type $\tau$.
+        \item We have already seen in \Cref{rem:order-zero} that polynomials are of order zero.
+        \item The function
+        $$ f(z) \coloneqq \exp \exp z $$
+        is of infinite order, since for any $m \in M$
+        $$ M_f(r) \geq \exp \exp r > \exp (r^m / m!), $$
+        therefore $\rho_f \geq m$, and since $m$ was arbitrary it follows that $\rho_f = \infty$.
+        \qedhere
+    \end{arrowlist}
+\end{example}

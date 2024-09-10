@@ -130,10 +130,10 @@ Just as any polynomial decomposes into linear factors involving their roots by t
 
 We wish to further estimate canonical products. To do this we first focus on the canonical factors.
 
-\begin{lemma}
+\begin{lemma} \label{lem:elementary-factor-estimate}
     For $p \in \N$ and all $z \in \C$ we have
     \begin{equation}
-        \log \vert W(z; p) \vert < A_p \frac{\vert z \vert^{p+1}}{1 + \vert z \vert}, \quad \textrm{where} \quad A_p \coloneqq 3e (2 + \ln p).
+        \log \vert W(z; p) \vert < A_p \frac{\vert z \vert^{p+1}}{1 + \vert z \vert}, \quad \textrm{where} \quad A_p \coloneqq 3e (2 + \log p).
     \end{equation}
     For $p = 0$ we have
     \begin{equation}
@@ -144,21 +144,59 @@ We wish to further estimate canonical products. To do this we first focus on the
 \begin{proof}
     The second assertion is clear since
     $$ \log \vert W(z; 0) \vert = \log \vert 1 - z \vert \leq \log (1 + \vert z \vert). $$
-
-    \todo{TODO.}
+    If $\vert z \vert \leq \frac{p}{p+1}$ then in particular we have $\vert z \vert < 1$. Since furthermore $1 + \vert z \vert < 2 < A_p$ we get
+    \begin{align*}
+        \log \vert W(z; p) \vert &= \log \left\vert (1-u) \exp \left( \sum_{k=1}^p \frac{z^k}{k} \right) \right\vert = \Re \left( \log(1-u) + \sum_{k=1}^p \frac{z^k}{k} \right) = \\
+        &= -\Re \sum_{k=p+1}^\infty \frac{z^k}{k} \leq \sum_{k=p+1}^\infty \frac{\vert z \vert^k}{k} < \frac{\vert z \vert^{p+1}}{(p+1)(1 - \vert z \vert)} \leq \vert z \vert^{p+1} \leq \\ &\leq A_p \frac{\vert z \vert^{p+1}}{1 + \vert z \vert}.
+    \end{align*}
+    If otherwise $\vert z \vert > \frac{p}{p+1}$ then we have $\frac{1}{\vert z \vert} < 1 + \frac{1}{p}$ and $2 \vert z \vert > 1$. From there we conclude
+    \begin{align*}
+        \log \vert W(z; p) \vert &= \log \left\vert (1-z) \exp \left( \sum_{k=1}^p \frac{z^k}{k} \right) \right\vert \leq \log(1 + \vert z \vert) + \sum_{k=1}^p \frac{\vert z \vert^k}{k} \leq \\
+        &\leq 2 \vert z \vert + \sum_{k=2}^p \frac{\vert z \vert^k}{k} = \vert z \vert^p \left( 2 \left\vert \frac{1}{z} \right\vert^{p-1} + \sum_{k=2}^p \frac{1}{k} \left\vert \frac{1}{z} \right\vert^{p-k} \right) < \\
+        &< \vert z \vert^p \left( 2 \left(1 + \frac{1}{p} \right)^{p-1} + \sum_{k=2}^p \frac{1}{k} \left( 1 + \frac{1}{p} \right)^{p-k} \right) < \\
+        &< \vert z \vert^p \left( 1 + \frac{1}{p} \right)^p \left( 2 + \sum_{k=1}^p \frac{1}{k} \right) < \vert z \vert^p e \left( 2 + \int_1^p \frac{1}{t} \diff t \right) = \\
+        &= \vert z \vert^p e \left( 2 + \log p \right) = \frac{1 + \vert z \vert}{1 + \vert z \vert} \vert z \vert^p e \left( 2 + \log p \right) < \\
+        &< \frac{3 \vert z \vert}{1 + \vert z \vert} \vert z \vert^p e \left( 2 + \log p \right) = A_p \frac{\vert z \vert^{p+1}}{1 + \vert z \vert}. \qedhere
+    \end{align*}
 \end{proof}
 
-\begin{lemma}
-    Let $\Pi \in H(\C)$ be a canonical product of genus $p \in \N_0$. Then for any $z \in \C$ and $r = \vert z \vert$ we have
+\begin{lemma} \label{lem:canonical-product-estimate}
+    Let $M \subseteq \N$ and $(z_m)_{m \in M}$ be a family in $\C^\times$ without accumulation points. If for given $p \in \N_0$ it holds that
+    $$ \sum_{m \in M} \frac{1}{\vert z_m \vert^{p+1}} < \infty, $$
+    then the entire function
+    $$ \Pi(z) \coloneqq \prod_{m \in M} W \left( \frac{z}{z_m}; p \right) $$
+    satisfies
     \begin{equation}
-        \log \vert \Pi(z) \vert < k_p r^p \left( \int_0^r \frac{n_f(t)}{t^{p+1}} \diff t + r \int_r^\infty \frac{n_f(t)}{t^{p+2}} \diff t \right),
+        \log \vert \Pi(z) \vert < k_p r^p \left( \int_0^r \frac{n_\Pi(t)}{t^{p+1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{p+2}} \diff t \right),
     \end{equation}
-    where
+    for all $z \in \C^\times$ and $r = \vert z \vert$, where
     $$ k_0 \coloneqq 1, \quad \textrm{and} \quad k_p \coloneqq 3e(p+1)(2 + \log p), \quad p \in \N. $$
 \end{lemma}
 
 \begin{proof}
-    \todo{TODO.}
+    Assuming $p > 0$, combining \Cref{lem:elementary-factor-estimate,lem:zeros-measure} gives
+    \begin{align*}
+        \log \vert \Pi(z) \vert &= \prod_{m \in M} W \left( \frac{z}{z_m}; p \right) = \sum_{m \in M} \log \left\vert W \left( \frac{z}{z_m}; p \right) \right\vert < \\
+        &< A_p \sum_{m \in M} \frac{\left\vert \frac{z}{z_m} \right\vert^{p+1}}{1 + \left\vert \frac{z}{z_m} \right\vert} = A_p r^{p+1} \sum_{m \in M} \frac{1}{\vert z_m \vert^p (\vert z_m \vert + r)} = \\
+        &= A_p r^{p+1} \int_{(0, \infty)} \frac{1}{t^p (t+r)} \diff \omega_\Pi(t),
+    \end{align*}
+    \Cref{lem:zeros-measure} also yields, for $s > 0$,
+    \begin{equation*}
+        \int_{(0, s)} \frac{1}{t^p (t+r)} \diff \omega_\Pi(t) = \frac{n_\Pi(s)}{s^p (s + r)} + \int_{(0, s)} n_\Pi(t) \frac{(p+1)t + pr}{t^{p+1} (t+r)^2} \diff t.
+    \end{equation*}
+    As seen in the proof of \Cref{prop:zeros-order-equals-zeros-exponent}, the left term on the right-hand side tends to $0$ as $s \to \infty$. Therefore we obtain
+    \begin{align*}
+        \log \vert \Pi(z) \vert &< A_p r^{p+1} \int_{(0, \infty)} \frac{1}{t^p (t+r)} \diff \omega_\Pi(t) = A_p r^{p+1} \int_0^\infty n_\Pi(t) \frac{(p+1)t + pr}{t^{p+1} (t+r)^2} \diff t < \\
+        &< A_p (p+1) r^{p+1} \int_0^\infty \frac{n_\Pi(t)}{t^{p+1}(t+r)} \diff t < \\
+        &< A_p (p+1) r^{p+1} \left( \frac{1}{r} \int_0^r \frac{n_\Pi(t)}{t^{p+1}} \diff t + \int_r^\infty \frac{n_\Pi(t)}{t^{p+2}} \diff t \right) = \\
+        &= k_p r^{p} \left( \int_0^r \frac{n_\Pi(t)}{t^{p+1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{p+2}} \diff t \right).
+    \end{align*}
+    The case $p=0$ is verified in the same fashion:
+    \begin{align*}
+        \log \vert \Pi(z) \vert &= \sum_{m \in M} \log \left\vert W \left( \frac{z}{z_m}; 0 \right) \right\vert \leq \sum_{m \in M} \log \left( 1 + \left\vert \frac{z}{z_m} \right\vert \right) \leq \\
+        &\leq \sum_{m \in M} \left\vert \frac{z}{z_m} \right\vert = r \sum_{m \in M} \frac{1}{\vert z_m \vert} = r \int_{(0, \infty)} \frac{1}{t} \diff \omega(t) = -r \int_0^\infty -\frac{n_\Pi(t)}{t^2} \diff t < \\
+        &< r \left( \int_0^r \frac{n_\Pi(t)}{tr} \diff t + \int_r^\infty \frac{n_\Pi(t)}{t^2} \diff t \right) = \int_0^r \frac{n_\Pi(t)}{t} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^2} \diff t. \qedhere
+    \end{align*}
 \end{proof}
 
 \begin{theorem} \label{thm:exponent-of-convergence-weierstrass-product}
@@ -166,7 +204,33 @@ We wish to further estimate canonical products. To do this we first focus on the
 \end{theorem}
 
 \begin{proof}
-    \todo{TODO.}
+    By \Cref{thm:inequality-order-exponent-of-convergence} we already have $\lambda_\Pi \leq \rho_\Pi$, it remains to show that $\rho_\Pi \leq \lambda_\Pi$. We first recall that the convergence exponent always satisfies $\mu \leq \lambda_\Pi \leq \mu + 1$, where $\mu \coloneqq \mu_\Pi$.
+    
+    Suppose $\lambda_\Pi < \mu + 1$ and let $\lambda_\Pi < \lambda < \mu + 1$. By \Cref{prop:zeros-order-equals-zeros-exponent} we have
+    $$ \lambda_\Pi = \nu_\Pi = \limsup_{r \to \infty} \frac{\log n_\Pi(r)}{\log r} < \lambda. $$
+    Therefore there exists some $r_0 > 0$ such that for all $r \geq r_0$ we have $n_\Pi(r) \leq r^\lambda$. Choose $\varepsilon > 0$ small enough such that $n_\Pi(\varepsilon) = 0$, then
+    \begin{equation*}
+        n_\Pi(r) = \frac{n_\Pi(r)}{r^\lambda} r^\lambda \leq \frac{n_\Pi(r_0)}{\varepsilon^\lambda} r^\lambda
+    \end{equation*}
+    and choosing $C_\lambda > \max \{ 1, n_\Pi(r_0) / \varepsilon^\lambda \}$ yields $n_\Pi(r) \leq C_\lambda r^\lambda$ for all $r > 0$. Applying this inequality to \Cref{lem:canonical-product-estimate} we get, for $r = \vert z \vert$,
+    \begin{align*}
+        \log \vert \Pi(z) \vert &< k_\mu r^\mu \left( \int_0^r \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t \right) \leq \\
+        &\leq k_\mu r^\mu C_\lambda \left( \int_0^r t^{\lambda - \mu - 1} \diff t + r \int_r^\infty t^{\lambda - \mu - 2} \diff t \right) = \\
+        &= k_\mu r^\mu C_\lambda \left( \frac{r^{\lambda - \mu}}{\lambda - \mu} - \frac{r^{\lambda - \mu}}{\lambda - \mu - 1} \right) = k_\mu C_\lambda \left( \frac{1}{\lambda - \mu} - \frac{1}{\lambda - \mu - 1} \right) r^\lambda.
+    \end{align*}
+    From this it follows that $\rho_\Pi \leq \lambda$ and letting $\lambda \searrow \lambda_\Pi$ yields $\rho_\Pi \leq \lambda_\Pi$.
+
+    If we otherwise assume $\lambda_\Pi = \mu + 1$, then by \Cref{lem:zeros-measure}
+    $$ \int_{(0, r)} \frac{1}{t^{\mu + 1}} \diff \omega_\Pi(t) = \frac{n_\Pi(r)}{r^{\mu + 1}} + (\mu + 1) \int_0^r \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t, $$
+    wherein the leftmost integral converges as $r \to \infty$. Imitating the proof of \Cref{prop:zeros-order-equals-zeros-exponent} we see that the left term on the right-hand side converges to $0$ as $r \to \infty$, thus the rightmost integral converges as well. This convergence implies that for any $\varepsilon > 0$ there is an $r_0 > 0$ such that for all $r \geq r_0$ we have
+    $$ \int_{r_0}^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} < \varepsilon. $$
+    From the argument above there is also an $r_1 > 0$ such that for all $r \geq r_1$ it holds that
+    $$ \frac{n_\Pi(r)}{r^{\mu + 1}} < \varepsilon. $$
+    Inserting these results into \Cref{lem:canonical-product-estimate} yields, for $r = \vert z \vert \geq \max \{ r_0, r_1 \}$,
+    \begin{align*}
+        \log \vert \Pi(z) \vert &< k_\mu r^\mu \left( \int_0^r \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t \right) = \\
+        &= k_\mu r^\mu \left( \int_0^{r_1} \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + \int_{r_1}^r \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t \right)
+    \end{align*}
 \end{proof}
 
 \begin{theorem} \label{thm:canonical-product-type-density}

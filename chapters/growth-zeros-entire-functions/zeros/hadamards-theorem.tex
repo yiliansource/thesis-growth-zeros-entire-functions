@@ -106,9 +106,13 @@ Hadamard's Theorem can also be formulated more concisely: Let $f \in H(\C)$ be o
 \begin{remark} \label{rem:consequences-hadamard}
     An immediate consequence of Hadamard's Theorem is that entire functions of order $\rho < 1$ are of genus $0$, and are therefore -- like polynomials -- solely determined by their roots and some scaling factor. Indeed, in this case the polynomial $Q$ in the factorization is constant and the canonical product $\Pi$ is of genus $0$ as well. In particular, any non-vanishing function of order zero is constant.
 
+    Furthermore, we can deduce that non-polynomial functions of order zero have no Picard exceptional value: Let $f$ denote such a function and assume towards a contradiction that $f$ assumes some value $a \in \C$ only finitely often. Then, by Hadamard's Theorem, we can write
+    $$ f(z) - a = C z^m \Pi(z) $$
+    for some constant $C > 0, m \in \N_0$ and a canonical product $\Pi$. Since $a$ is assumed only finitely often, the canonical product $\Pi$ must be finite and therefore $f$ a polynomial, a contradiction.
+    
     As shown in \Cref{rem:order-zero} the entire function
     $$ f(z) \coloneqq \sum_{k=0}^\infty \frac{z^k}{(k^2)!} $$
-    is of order zero. Since $f$ is clearly not a polynomial, $f$ therefore must have infinitely many zeros.
+    is an example of a non-polynomial, entire function of order zero and must therefore, by the above reasoning, assume all values in $\C$ infinitely often.
 \end{remark}
 
 Hadamard's Theorem has a few consequences for entire functions of finite order, which we will explore further. Combining it with \Cref{thm:exponent-of-convergence-weierstrass-product} allows us to prove easily prove two results regarding functions of finite, non-integer order.
@@ -134,7 +138,7 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
 \end{proof}
 
 \begin{theorem}[Borel] \label{thm:existence-borel-exceptional-values}
-    Let $f \in H(\C)$ be of finite, integer order $\rho_f > 0$. Then for any $a \in \C$ we have $\lambda_f^{(a)} = \rho_f$, except possibly for one value of $a$.
+    Let $f \in H(\C)$ be of integer order $\rho_f > 0$. Then for any $a \in \C$ we have $\lambda_f^{(a)} = \rho_f$, except possibly for one value of $a$.
 \end{theorem}
 
 \begin{proof}
@@ -152,27 +156,50 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
         \Leftrightarrow && (b - a) e^{-Q_2(z)} + z^{m_2} \Pi_2(z) &= z^{m_1} e^{Q_1(z) - Q_2(z)} \Pi_1(z)
     \end{aligned}
     \end{equation}
-    Since $\rho_{\Pi_2} = \lambda_f^{(b)} < \rho_f$ and $-Q_2$ is of degree $\rho_f$, the left-hand side is of order $\rho_f$ and thus so is the right-hand side. Now similarly, since $\rho_{\Pi_1} = \lambda_f^{(b)} < \rho_f$ and the right-hand side has order $\rho_f$, we have that $Q_1 - Q_2$ has order $\rho_f$. Differentiating the first equation in \eqref{thm:existence-borel-exceptional-values:difference-of-functions} gives
-    $$ () $$
-
-    \todo{TODO.}
+    Since $\rho_{\Pi_2} = \lambda_f^{(b)} < \rho_f$ and $-Q_2$ is of degree $\rho_f$, the left-hand side is of order $\rho_f$ and thus so is the right-hand side. Now similarly, since $\rho_{\Pi_1} = \lambda_f^{(b)} < \rho_f$ and the right-hand side has order $\rho_f$, we have that $Q_1 - Q_2$ is of degree $\rho_f$.
+    
+    Differentiating the first equation in \eqref{thm:existence-borel-exceptional-values:difference-of-functions} gives
+    \begin{equation*}
+    \begin{aligned}
+        && 0 &= m_1 z^{m_1 - 1} e^{Q_1(z)} \Pi_1(z) + z^{m_1} Q_1'(z) e^{Q_1(z)} \Pi_1(z) + z^{m_1} e^{Q_1}(z) \Pi_1'(z) \\
+        && &\quad\quad - m_2 z^{m_2 - 1} e^{Q_2(z)} \Pi_2(z) - z^{m_2} Q_2'(z) e^{Q_2(z)} \Pi_2(z) - z^{m_2} e^{Q_2(z)} \Pi_2'(z) \\
+        \Leftrightarrow && 0 &= e^{Q_1(z)} (m_1 z^{m_1 - 1} \Pi_1(z) + z^{m_1} Q_1'(z) \Pi_1(z) + z^{m_1} \Pi_1'(z)) \\
+        && &\quad\quad - e^{Q_2(z)} (m_2 z^{m_2 - 1} \Pi_2(z) + z^{m_2} Q_2'(z) \Pi_2(z) + z^{m_2} \Pi_2'(z))
+    \end{aligned}
+    \end{equation*}
+    By \Cref{prop:order-derivative} we have $\rho_{\Pi_1'} = \rho_{\Pi_1}$ and $\rho_{\Pi_2'} = \rho_{\Pi_2}$, therefore the coefficients of $e^{Q_1}$ and $e^{Q_2}$ have order less than $\rho_f$. By Hadamard's Theorem we therefore get
+    \begin{equation*}
+        e^{Q_1(z)} z^{m_3} e^{Q_3(z)} \Pi_3(z) = e^{Q_2(z)} z^{m_4} e^{Q_4(z)} \Pi_4(z)
+    \end{equation*}
+    where $m_3, m_4 \in \N_0, Q_3, Q_4$ are polynomials of degree less than or equal to $\rho_f - 1$ (since $\rho_f$ is an integer) and $P_3, P_4$ denote canonical products. Rewriting the above we get
+    \begin{equation*}
+        z^{m_3} e^{Q_1(z) + Q_3(z)} \Pi_3(z) = z^{m_4} e^{Q_2(z) + Q_4(z)} \Pi_4(z)
+    \end{equation*}
+    Since both sides are equal, in particular they must share the same zeros and multiplicities, therefore we have $m_3 = m_4$ and $\Pi_3 = \Pi_4$. But this implies
+    \begin{equation*}
+    \begin{aligned}
+        && Q_1(z) + Q_3(z) &= Q_2(z) + Q_4(z) \\
+        \Leftrightarrow && Q_2(z) - Q_1(z) &= Q_3(z) - Q(4)
+    \end{aligned}
+    \end{equation*}
+    and by the above the left side is of degree $\rho_f$, whereas the right side is of degree less than $\rho_f$ -- a contradiction.
 \end{proof}
 
-\todo{Relate to Picard exceptional values, ``substantial deepening'' of Picard's Little Theorem ...}
+In the context of Borel's Theorem, we refer to such an exceptional value is a \emph{Borel exceptional value}. The theorem thus shows that entire functions of integer order have at most one Borel exceptional value.
 
-\begin{remark}
-    Note that 
-\end{remark}
+Borel's Theorem together with \Cref{thm:finite-non-integer-order-infinite-zeros} allows us to obtain a stronger version of Picard's Little Theorem for functions of finite, positive order:
 
-\iffalse
-\begin{example}
-    Since $\cos \sqrt{z} = \sum_{k=0}^\infty \frac{(-1)^k z^k}{(2k)!}$, the function
-    $$ f(z) \coloneqq e^z \cos \sqrt{z} $$
-    is entire. We have $\rho_f = 1$ (\todo{why?}) and $f$ has zeros at $\left( \frac{\pi^2 n^2}{4} \right)_{n \in \N}$, hence $\lambda_f = \frac{1}{2}$. By \Cref{thm:existence-borel-exceptional-values} the exponent of convergence of the $a$-points of $f$, for $a \neq 0$, must be $1$.
-\end{example}
-\fi
+\begin{corollary}
+    Let $f \in H(\C)$ with $\rho_f \in (0, \infty)$. Then $f$ assumes at most one value only finitely often.
+\end{corollary}
 
-Hadamard's Theorem can be used to obtain a generalization of \Cref{thm:canonical-product-type-density} holding for entire functions other than canonical products. This requires the following result, the proof of which relies on finding a lower bound on the modulus of arbitrary entire functions and can be found as Theorem 12(a) in Levin \cite{levin-distribution-of-zeros}.
+\begin{proof}
+    If $\rho_f$ is an integer then and $f$ takes on some value $a \in \C$ only on finitely often, then $\lambda_f^{(a)} = 0 < \rho_f$ and by Borel's Theorem there is at most one value of $a$ for which this holds.
+
+    If $\rho_f$ is not an integer, then for any $w \in \C$ the function $f(z) - w$ is also of finite, non-integer order and therefore has infinitely many zeros by \Cref{thm:finite-non-integer-order-infinite-zeros}. Thus $f$ assumes all values infinitely often.
+\end{proof}
+
+Hadamard's Theorem can also be used to obtain a generalization of \Cref{thm:canonical-product-type-density} holding for entire functions other than canonical products. This requires the following result, the proof of which relies on finding a lower bound on the modulus of arbitrary entire functions and can be found as Theorem 12(a) in Levin \cite{levin-distribution-of-zeros}.
 
 \begin{proposition} \label{prop:order-type-product-equality}
     Let $f, g \in H(\C)$ be of finite order. If $\rho_f < \rho_g$, then it holds that $ \rho_{fg} = \rho_g $ and $\tau_{fg} = \tau_g$.
@@ -185,5 +212,5 @@ Hadamard's Theorem can be used to obtain a generalization of \Cref{thm:canonical
 \begin{proof}
     By Hadamard's Theorem we can write
     $$ f(z) = z^m e^{Q(z)} \Pi(z). $$
-    The first factor is of order zero, the second is of order $\lfloor \rho_f \rfloor < \rho_f$ and the last is of order $\rho_f$. Therefore, by \Cref{prop:order-type-product-equality} we have  $\tau_f = \tau_\Pi$. Since the order of $\Pi$ is not an integer and clearly $\Delta_f = \Delta_\Pi$, the assertion now follows from \Cref{thm:canonical-product-type-density}.
+    The first factor is of order zero, the second is at most of order $\lfloor \rho_f \rfloor < \rho_f$ and the last is of order $\rho_f$. Therefore, by \Cref{prop:order-type-product-equality} we have  $\tau_f = \tau_\Pi$. Since the order of $\Pi$ is not an integer and clearly $\Delta_f = \Delta_\Pi$, the assertion now follows from \Cref{thm:canonical-product-type-density}.
 \end{proof}

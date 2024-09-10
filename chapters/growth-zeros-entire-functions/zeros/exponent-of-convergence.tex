@@ -10,7 +10,7 @@ We first recall a rather explicit connection between the moduli of the zeros of 
 \end{theorem}
 
 \begin{definition}
-    Let $f \in H(B_R(0))$. Then, for $0 < r < R$, we define
+    Let $f \in H(B_R(0)), f \neq 0$. Then, for $0 < r < R$, we define
     \begin{equation}
         n_f(r) \coloneqq \vert \{ z \in \cl{B_r(0)} : f(z) = 0 \} \vert,
     \end{equation}
@@ -62,7 +62,7 @@ This gives an immediate connection between the zeros and the growth of the modul
 \Cref{prop:zeros-bounded-by-order} shows that the more zeros a function $f$ has, the faster $M_f$ must grow as $r \to \infty$. The converse is naturally false; by composing exponentials one can obtain an entire function $f$ for which $M_f$ grow arbitrarily fast, yet $f$ has no zeros.
 
 \begin{definition} \label{def:zero-exponent}
-    Let $M \subseteq \N$ and $\mathbf{z} = (z_m)_{m \in M}$ be a family of points in $\C^\times$. Then
+    Let $M \subseteq \N$ and $\mathbf{z} = (z_m)_{m \in M}$ be a family of points\footnote{Note that the exponent of convergence is only affected by their moduli, not by their arguments.} in $\C^\times$. Then
     $$ \lambda_{\mathbf{z}} \coloneqq \inf \left\{ \lambda > 0 : \sum_{m \in M} \frac{1}{\vert z_m \vert^\lambda} < \infty \right\} $$
     is called the \emph{exponent of convergence} of the family $\mathbf{z}$.
 
@@ -109,30 +109,49 @@ As \Cref{prop:zeros-bounded-by-order} might indicate, a more precise analysis of
     If the limit exists then $\Delta_f$ is simply called the \emph{density}.
 \end{definition}
 
+The following lemma provides great utility in further analyzing the function $n_f$.
+
+\begin{lemma} \label{lem:zeros-measure}
+    Let $f \in H(\C)$ and denote by $(r_m)_{m \in M}$ the moduli of the zeros of $f$, arranged in non-decreasing order. Then $f$ induces a unique Lebesgue-Stieltjes measure $\omega_f$ on $(0, \infty)$, such that, for any non-negative, measureable function $\varphi$ on $(0, \infty)$, it holds that
+    \begin{equation*}
+        \sum_{m \in M} \varphi(r_m) = \int_{(0, \infty)} \varphi \diff \omega_f.
+    \end{equation*}
+    If in addition $\varphi$ is monotone and continuously differentiable on $(0, \infty)$, then for all $r > 0$ it holds that
+    \begin{equation*}
+        \int_{(0, r)} \varphi \diff \omega_f = n_f(r) \varphi(r) - \int_0^r n_f(t) \varphi'(t) \diff t.
+    \end{equation*}
+\end{lemma}
+
+\begin{proof}
+    From the representation
+    $$ n_f(r) = \sum_{m \in M} \1_{[r_m, \infty)}(r) $$
+    we observe that $n_f$ is right-continuous, non-negative and non-decreasing. Therefore $n_f$ induces a unique Lebesgue-Stieltjes measure $\omega_f$. Since an indicator function of the form $\1_{[a, \infty)}$, for $a \in \R$, corresponds to a Dirac measure $\delta_{\{ a \}}$, and the correspondence between Lebesgue-Stieltjes measures and their distribution functions is linear in nature, we have
+    $$ \omega = \sum_{m \in M} \delta_{\{r_m\}}. $$
+    From this it follows that
+    \begin{equation*}
+        \sum_{m \in M} \varphi(r_m) = \sum_{m \in M} \int_{(0, \infty)} \varphi \diff \delta_{\{r_m\}} = \int_{(0, \infty)} \varphi \diff \left( \sum_{m \in M} \delta_{\{r_m\}} \right) = \int_{(0, \infty)} \varphi \diff \omega_f.
+    \end{equation*}
+    Assume $\varphi$ is monotone and continuously differentiable on $(0, \infty)$. Then $\varphi$ also induces a Lebesgue-Stieltjes measure $\eta_\varphi$, with density $\varphi'$ with respect to the Lebesgue measure. Thus, for any $0 < \varepsilon < r < \infty$, integration by parts gives
+    \begin{equation*}
+        \int_{(\varepsilon, r)} \varphi \diff \omega_f + \int_{(\varepsilon, r)} n_f \diff \eta_\varphi = n_f(r) \varphi(r) - n_f(\varepsilon) \varphi(\varepsilon).
+    \end{equation*}
+    Since $\kappa \coloneqq \min_{m \in M} r_m > 0$ we have $n_f(s) = 0$ for $0 < s < \kappa$. Letting $\varepsilon \to 0$ and using the density of $\eta_\varphi$ therefore yields
+    \begin{equation*}
+        \int_{(0, r)} \varphi \diff \omega_f + \int_0^r n_f(t) \varphi'(t) \diff t = n_f(r) \varphi(r)
+    \end{equation*}
+    and rearranging terms provides the desired result.
+\end{proof}
+
 \begin{proposition} \label{prop:zeros-order-equals-zeros-exponent}
     Let $f \in H(\C)$, then $\lambda_f$ is finite if and only if $\nu_f$ is finite and in either case we have $\lambda_f = \nu_f$.
 \end{proposition}
 
 \begin{proof}
-    If $f$ only has finitely many zeros the assertion is clear. Otherwise let $(r_n)_{n \in \N}$ denote the non-zero moduli of the roots of $f$, arranged in non-decreasing order, then we have
-    $$ n_f(t) = \sum_{n=1}^\infty \1_{[r_n, \infty)}(t). $$
-
-    From this representation we observe that $n_f$ is right-continuous, non-negative and non-decreasing. Therefore $n_f$ induces a Lebesgue-Stieltjes measure $\omega$. Since an indicator function of the form $\1_{[a, \infty)}$, for $a \in \R$, corresponds to a Dirac measure $\delta_{\{ a \}}$, and the correspondence between Lebesgue-Stieltjes measures and their distribution functions is linear in nature, we have
-    $$ \omega = \sum_{n = 1}^\infty \delta_{\{r_n\}}. $$
-    Therefore we can write, for any $\lambda > 0$,
-    \begin{equation} \label{eq:zeros-order-equals-zeros-exponent:series-integral}
-        \sum_{n=1}^\infty \frac{1}{r_n^\lambda} = \sum_{n=1}^\infty \int_{(0, \infty)} \frac{1}{t^\lambda} \diff \delta_{\{r_n\}}(t) = \int_{(0, \infty)} \frac{1}{t^\lambda} \diff \omega(t),
-    \end{equation}
-    in the sense that the left side is finite if and only if the right side is finite, in which case the values coincide.
-    
-    Let $\varepsilon > 0$, then integrating by parts yields
-    $$ \int_{(\varepsilon, r)} \frac{1}{t^\lambda} \diff \omega(t) + \int_{(\varepsilon, r)} n_f(t) \diff t^{-\lambda} = \frac{n_f(r)}{r^\lambda} - \frac{n_f(\varepsilon)}{\varepsilon^\lambda}. $$
-    Now, the Lebesgue-Stieltjes measure induced by $t \mapsto t^{-\lambda}$ has density $-\lambda t^{-(\lambda + 1)}$ with respect to the Lebesgue measure. Since $n_f(\varepsilon) = 0$ for $0 < \varepsilon < r_1$, letting $\varepsilon \to 0$ we therefore get
-    \begin{equation} \label{eq:zeros-order-equals-zeros-exponent:integration-by-parts}
-        \int_{(0, r)} \frac{1}{t^\lambda} \diff \omega(t) = \frac{n_f(r)}{r^\lambda} + \lambda \int_0^r \frac{n_f(t)}{t^{\lambda + 1}} \diff t.
-    \end{equation}
-
-    Suppose $\lambda_f < \infty$, then for any $\lambda > \lambda_f$ the integral in \eqref{eq:zeros-order-equals-zeros-exponent:series-integral} converges. In particular, the right-hand side of \eqref{eq:zeros-order-equals-zeros-exponent:integration-by-parts} is bounded. Since the right integrand is non-negative the right term is increasing in $r$ and must therefore converge as $r \to \infty$. Therefore the right-most term in
+    If $f$ only has finitely many zeros the assertion is clear. Let $\lambda > \lambda_f$ and $r > 0$. Invoking \Cref{lem:zeros-measure} with $\varphi(t) \coloneqq t^{-\lambda}$ we get
+    \begin{equation*}
+        \int_{(0, r)} \frac{1}{t^\lambda} \diff \omega_f(t) = \frac{n_f(r)}{r^\lambda} + \lambda \int_0^r \frac{n_f(t)}{t^{\lambda + 1}} \diff t.
+    \end{equation*}
+    Since $\lambda > \lambda_f$, the same lemma implies that the left integral converges as $r \to \infty$. In particular, the right-hand side must be bounded. Since the right integrand is non-negative, the right-most term is increasing in $r$ and must therefore converge as $r \to \infty$. Therefore the right-most term in
     $$ 0 \leq \frac{n_f(r)}{r^\lambda} = \lambda n_f(r) \int_r^\infty \frac{1}{t^{\lambda + 1}} \diff t \leq \lambda \int_r^\infty \frac{n_f(t)}{t^{\lambda + 1}} \diff t $$
     converges to $0$ as $r \to \infty$, from which we get
     \begin{equation} \label{eq:zeros-order-equals-zeros-exponent:density-zero}
@@ -140,13 +159,21 @@ As \Cref{prop:zeros-bounded-by-order} might indicate, a more precise analysis of
     \end{equation}
     Taking limits superior as $r \to \infty$ in
     $$ \frac{\log n_f(r)}{\log r} = \left( \log \frac{n_f(r)}{r^\lambda} + \log r^\lambda\right)/{\log r} = \log \frac{n_f(r)}{r^\lambda} / \log r + \lambda $$
-    and then letting $\lambda \to \lambda_f$ yields $\nu_f \leq \lambda_f$.
+    and then letting $\lambda \searrow \lambda_f$ yields $\nu_f \leq \lambda_f$.
 
-    Conversely suppose $\nu_f < \infty$, then for any $\varepsilon > 0$ by definition of $\nu_f$ there is a $r_0 > 0$ such that
-    $$ n_f(r) \leq r^{\nu_f + \varepsilon / 2} $$
-    for all $r \geq r_0$. Set $\lambda \coloneqq \nu_f + \varepsilon$, then
-    $$ \int_{r_0}^r \frac{n_f(t)}{t^{\lambda + 1}} \diff t \leq \int_{r_0}^r \frac{t^{\nu_f + \varepsilon / 2}}{t^{\nu_f + \varepsilon + 1}} \diff t = \int_{r_0}^r t^{-\varepsilon/2 - 1} \diff t = \frac{2}{\varepsilon r_0^{\varepsilon / 2}} - \frac{2}{\varepsilon r^{\varepsilon / 2}} $$
-    and therefore the leftmost integral converges as $r \to \infty$. Clearly \eqref{eq:zeros-order-equals-zeros-exponent:density-zero} holds, therefore \eqref{eq:zeros-order-equals-zeros-exponent:integration-by-parts} holds as $r \to \infty$. Thus the series in \eqref{eq:zeros-order-equals-zeros-exponent:series-integral} converges, yielding $\lambda_f \leq \lambda$. Letting $\varepsilon \to 0$ we now get $\lambda_f \leq \nu_f$.
+    Conversely suppose $\nu_f < \infty$ and let $\varepsilon > 0$. By the definition of $\nu_f$ and the nature of the limit superior there is an $r_0 > 0$ such that
+    $$ n_f(r) \leq r^{\nu_f + \varepsilon} $$
+    for all $r \geq r_0$. Set $\lambda \coloneqq \nu_f + 2 \varepsilon$, then
+    \begin{equation*}
+        \int_{r_0}^r \frac{n_f(t)}{t^{\lambda + 1}} \diff t \leq
+        \int_{r_0}^r \frac{t^{\nu_f + \varepsilon}}{t^{\nu_f + 2\varepsilon + 1}} \diff t =
+        \int_{r_0}^r t^{-\varepsilon - 1} \diff t = \frac{1}{\varepsilon r_0^{\varepsilon}} - \frac{1}{\varepsilon r^{\varepsilon}}
+    \end{equation*}
+    and since the right-hand side remains finite as $r \to \infty$ therefore the leftmost integral converges as $r \to \infty$. Clearly \eqref{eq:zeros-order-equals-zeros-exponent:density-zero} holds for our $\lambda$, therefore \Cref{lem:zeros-measure} implies the convergence of
+    \begin{equation*}
+        \int_{(0, \infty)} \frac{1}{t^\lambda} \diff \omega_f(t) = \sum_{m \in M} \frac{1}{r_m^\lambda},
+    \end{equation*}
+    yielding $\lambda_f \leq \lambda$, and letting $\varepsilon \to 0$ results in $\lambda_f \leq \nu_f$.
 \end{proof}
 
 \iffalse
