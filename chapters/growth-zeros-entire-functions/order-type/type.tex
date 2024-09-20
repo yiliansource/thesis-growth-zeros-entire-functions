@@ -40,7 +40,7 @@ If $f \in H(\C)$ is of finite, positive order, then $f$ and $f'$ not only have t
 \end{proposition}
 
 \begin{proof}
-    Reusing the inequalities obtained in \Cref{prop:order-derivative} we have, for all $r > 0$,
+    Reusing the inequalities obtained in the proof of \Cref{prop:order-derivative} we have, for all $r > 0$,
     \begin{equation*}
         M_f(r) \leq r M_{f'}(r), \quad \textrm{and} \quad M_{f'}(r) \leq M_f(r+1).
     \end{equation*}
@@ -48,7 +48,7 @@ If $f \in H(\C)$ is of finite, positive order, then $f$ and $f'$ not only have t
     \begin{align*}
         \frac{\log M_f(r)}{r^{\rho_f}} &\leq \frac{\log r + \log M_{f'}(r)}{r^{\rho_f}}, \quad \textrm{and} \quad \frac{\log M_{f'}(r)}{r^{\rho_f}} \leq \frac{\log M_{f}(r+1)}{(r+1)^{\rho_f}} \frac{(r+1)^{\rho_f}}{r^{\rho_f}}
     \end{align*}
-    and taking limits superior as $r \to \infty$ yields $\tau_f \leq \tau_{f'}$ and $\tau_{f'} \leq \tau_f$.
+    and, since by \Cref{prop:order-derivative} $\rho_f = \rho_{f'}$, taking limits superior as $r \to \infty$ yields $\tau_f \leq \tau_{f'}$ and $\tau_{f'} \leq \tau_f$.
 \end{proof}
 
 \begin{example} \label{exm:order-and-type}

@@ -4,6 +4,8 @@ By the Fundamental Theorem of Algebra every complex polynomial can be written as
 
 The question arises if one can construct an entire function that vanishes precisely at the points of some infinite sequence $(z_k)_{k \in \N}$ and nowhere else. Clearly the product $\prod_{k=1}^\infty (z - z_k)$ need not be convergent in the entire complex plane. This issue is solved by introducing additional exponential factors, which improve convergence without introducing new zeros. We first study sufficient conditions for convergence of infinite products of numbers and holomorphic functions.
 
+The early parts of the section will closely follow Stein and Shakarchi \cite{stein-shakarchi-princeton}, while the later estimates and results will follow Levin \cite{levin-distribution-of-zeros}.
+
 \begin{lemma} \label{lem:infinite-product-criteria}
     Suppose $G \subseteq \C$ is open and let $(f_k)_{k \in \N}$ be a sequence of non-vanishing functions in $H(G)$. If $\sum_{k=1}^\infty (1 - f_k(z))$ converges absolutely compactly in $G$, then $\prod_{k=1}^\infty f_k(z)$ converges compactly in $G$ to a non-vanishing $f \in H(G)$.
 \end{lemma}
@@ -15,12 +17,12 @@ The question arises if one can construct an entire function that vanishes precis
     \end{equation*}
     Therefore
     \begin{equation*}
-        \sum_{k=1}^\infty \vert \log f_k(z) \vert = \sum_{k=1}^\infty \vert \log (1 - (1 - f_k(z))) \vert \leq \sum_{k=1}^{k_0 - 1} \vert \log f_k(z) \vert + \sum_{k=k_0}^\infty \vert 1 - f_k(z) \vert
+        \sum_{k=1}^\infty \vert \log f_k(z) \vert = \sum_{k=1}^\infty \vert \log (1 - (1 - f_k(z))) \vert \leq \sum_{k=1}^{k_0 - 1} \vert \log f_k(z) \vert + 2 \sum_{k=k_0}^\infty \vert 1 - f_k(z) \vert
     \end{equation*}
     and since the rightmost sum converges compactly it follows that $\sum_{k=1}^\infty \log f_k(z)$ converges absolutely compactly in $G$. Since the exponential function is uniformly continuous, the sequence
-    $$ \exp \sum_{k=k_0}^n \log f_k(z) = \prod_{k=k_0}^n f_k(z), \quad n \in \N $$
+    $$ \exp \left( \sum_{k=k_0}^n \log f_k(z) \right) = \prod_{k=k_0}^n f_k(z), \quad n \in \N $$
     converges absolutely compactly to some $f \in H(G)$. Again by continuity of the exponential function we have
-    $$ f(z) = \prod_{k=1}^\infty f_k(z) = \exp \sum_{k=1}^\infty \log f_k(z) \neq 0 $$
+    $$ f(z) = \prod_{k=1}^\infty f_k(z) = \exp \left( \sum_{k=1}^\infty \log f_k(z) \right) \neq 0 $$
     and thus $f$ is non-vanishing.
 \end{proof}
 
@@ -104,7 +106,7 @@ The next theorem -- which is also known as the \emph{Weierstrass Product Theorem
 Just as any polynomial decomposes into linear factors involving their roots by to the Fundamental Theorem of Algebra, Weierstrass products allow us to obtain a similar factorization result for arbitrary entire functions, known as the \emph{Weierstrass Factorization Theorem}.
 
 \begin{theorem}[Weierstrass] \label{thm:weierstrass}
-    Let $f \in H(\C), f \neq 0$ and let $m \in \N_0$ be the order of the zero of $f$ at the origin. Then there exists a $g \in H(\C)$ such that
+    Let $f \in H(\C)$ be not identically zero and let $m \in \N_0$ be the order of the zero of $f$ at the origin. Then there exists a $g \in H(\C)$ such that
     \begin{equation}
         f(z) = z^m e^{g(z)} \Pi(z),
     \end{equation}
@@ -218,19 +220,19 @@ We wish to further estimate canonical products. To do this we first focus on the
         &\leq k_\mu r^\mu C_\lambda \left( \int_0^r t^{\lambda - \mu - 1} \diff t + r \int_r^\infty t^{\lambda - \mu - 2} \diff t \right) = \\
         &= k_\mu r^\mu C_\lambda \left( \frac{r^{\lambda - \mu}}{\lambda - \mu} - \frac{r^{\lambda - \mu}}{\lambda - \mu - 1} \right) = k_\mu C_\lambda \left( \frac{1}{\lambda - \mu} - \frac{1}{\lambda - \mu - 1} \right) r^\lambda.
     \end{align*}
-    From this it follows that $\rho_\Pi \leq \lambda$ and letting $\lambda \searrow \lambda_\Pi$ yields $\rho_\Pi \leq \lambda_\Pi$.
+    From this it follows $M_\Pi(r) = \O(\exp r^\lambda)$ and thus that $\rho_\Pi \leq \lambda$. Letting $\lambda \searrow \lambda_\Pi$ yields $\rho_\Pi \leq \lambda_\Pi$.
 
     If we otherwise assume $\lambda_\Pi = \mu + 1$, then by \Cref{lem:zeros-measure}
     $$ \int_{(0, r)} \frac{1}{t^{\mu + 1}} \diff \omega_\Pi(t) = \frac{n_\Pi(r)}{r^{\mu + 1}} + (\mu + 1) \int_0^r \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t, $$
-    wherein the leftmost integral converges as $r \to \infty$. Imitating the proof of \Cref{prop:zeros-order-equals-zeros-exponent} we see that the left term on the right-hand side converges to $0$ as $r \to \infty$, thus the rightmost integral converges as well. This convergence implies that for any $\varepsilon > 0$ there is an $r_0 > 0$ such that for all $r \geq r_0$ we have
-    $$ \int_{r_0}^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} < \varepsilon. $$
-    From the argument above there is also an $r_1 > 0$ such that for all $r \geq r_1$ it holds that
-    $$ \frac{n_\Pi(r)}{r^{\mu + 1}} < \varepsilon. $$
-    Inserting these results into \Cref{lem:canonical-product-estimate} yields, for $r = \vert z \vert \geq \max \{ r_0, r_1 \}$,
+    wherein the leftmost integral converges as $r \to \infty$. Imitating the proof of \Cref{prop:zeros-order-equals-zeros-exponent} we see that the left term on the right-hand side converges to $0$ as $r \to \infty$, thus the rightmost integral converges as well. Let $\varepsilon > 0$. These two convergences imply that there is an $r_0 > 0$ such that for all $r \geq r_0$ we have
+    $$ \int_{r_0}^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t < \varepsilon, \quad \textrm{and} \quad \frac{n_\Pi(r)}{r^{\mu + 1}} < \varepsilon. $$
+    Inserting these results into \Cref{lem:canonical-product-estimate} yields, for $r = \vert z \vert \geq r_0$,
     \begin{align*}
         \log \vert \Pi(z) \vert &< k_\mu r^\mu \left( \int_0^r \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t \right) = \\
-        &= k_\mu r^\mu \left( \int_0^{r_1} \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + \int_{r_1}^r \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t \right)
+        &= k_\mu r^\mu \left( \int_0^{r_1} \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + \int_{r_1}^r \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t \right) \leq \\
+        &\leq k_\mu r^\mu \left(C + (r - r_1) \varepsilon + r \varepsilon \right) \leq k_\mu (C r^\mu + 2 \varepsilon r^{\mu + 1}).
     \end{align*}
+    The right-most term asymptotically dominates, therefore $M_\Pi(r) = \O(\exp(\varepsilon r^{\mu + 1}))$ and thus $\Pi$ is at most of order $\mu + 1 = \lambda_\Pi$ and, since $\varepsilon$ was arbitrary, minimal type.
 \end{proof}
 
 \begin{theorem} \label{thm:canonical-product-type-density}
@@ -238,5 +240,29 @@ We wish to further estimate canonical products. To do this we first focus on the
 \end{theorem}
 
 \begin{proof}
-    \todo{TODO.}
+    by \Cref{lem:zeros-bounded-by-modulus} there is a constant $K > 0$ such that for all sufficiently large $r$ we have $n_\Pi(r) \leq K \log M_\Pi(er)$ and by \Cref{prop:zeros-order-equals-zeros-exponent} and \Cref{thm:exponent-of-convergence-weierstrass-product} we have $\nu_\Pi = \lambda_\Pi = \rho_\Pi$. Therefore we have, for large $r$,
+    \begin{equation} \label{eq:density-smaller-constant-type}
+        \frac{n_\Pi(r)}{r^{\nu_\Pi}} = \frac{n_\Pi(r)}{r^{\rho_\Pi}} \leq K e^{\rho_\Pi} \frac{\log M_\Pi(er)}{(e r)^{\rho_\Pi}}.
+    \end{equation}
+    We now consider two cases. If $\Delta_\Pi$ is infinite then taking limits superior as $r \to \infty$ in the above shows than $\Pi$ must be of maximal type.
+
+    If $\Delta_\Pi$ is finite then let $\Delta > \Delta_\Pi$. By definition of the limit superior there is an $r_0 > 0$ such that, for all $r \geq r_0$, we have
+    \begin{equation*}
+        n_\Pi(r) \leq \Delta r^{\nu_\Pi} = \Delta r^{\rho_\Pi}. 
+    \end{equation*}
+    As demonstrated in the proof of \Cref{thm:exponent-of-convergence-weierstrass-product}, we can find a constant $C_{\lambda_\Pi} > 0$ such that for all $r > 0$ we have
+    \begin{equation*}
+        n_\Pi(r) \leq C_{\lambda_\Pi} \Delta r^{\rho_\Pi}
+    \end{equation*}
+    The genus $\mu$ of the canonical product satisfies $\mu < \lambda_\Pi < \mu + 1$, since $\lambda_\Pi$ is not an integer. Therefore, by \Cref{lem:canonical-product-estimate}, for all $r > 0$ and $\vert z \vert = r$ we have
+    \begin{align*}
+        \log \vert \Pi(z) \vert &< k_\mu r^\mu \left( \int_0^r \frac{n_\Pi(t)}{t^{\mu + 1}} \diff t + r \int_r^\infty \frac{n_\Pi(t)}{t^{\mu + 2}} \diff t \right) \leq \\
+        &\leq k_\mu r^\mu C_{\lambda_\Pi} \Delta \left( \int_0^r t^{\rho_\Pi - \mu - 1} \diff t + r \int_r^\infty t^{\rho_\Pi - \mu - 2} \diff t \right) = \\
+        &= k_\mu r^\mu C_{\lambda_\Pi} \Delta \left( \frac{r^{\rho_\Pi - \mu}}{\rho_\Pi - \mu} - \frac{r^{\rho_\Pi - \mu}}{\rho_\Pi - \mu - 1} \right) = k_\mu C_{\lambda_\Pi} \Delta \left( \frac{1}{\rho_\Pi - \mu} - \frac{1}{\rho_\Pi - \mu - 1} \right) r^{\rho_\Pi}.
+    \end{align*}
+    Dividing by $r^{\rho_\Pi}$, taking limits superior as $r \to \infty$ and letting $\Delta \searrow \Delta_\Pi$ therefore yields $\tau_\Pi \leq C \Delta_\Pi$ for a constant $C > 0$. Combining with \eqref{eq:density-smaller-constant-type}, we get
+    \begin{equation*}
+        C_1 \tau_\Pi \leq \Delta_\Pi \leq C_2 \tau_\Pi
+    \end{equation*}
+    for constants $C_1, C_2 > 0$. This shows that, if $\Delta_\Pi \in (0, \infty)$, then $\Pi$ is of normal type, and if $\Delta_\Pi = 0$, then $\Pi$ is of minimal type.
 \end{proof}

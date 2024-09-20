@@ -58,19 +58,19 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
     \begin{equation*}
         M_g(C M_h(r / 2)) < M_g(R) = \vert g(w_0) \vert = \vert g(h(z_0)) \vert = \vert f(z_0) \vert \leq M_f(r).
     \end{equation*}
-    Assuming $\rho_f < \infty$, we have $M_f(r) < K \exp(r^\alpha)$ for every $\alpha > \rho_f$, with suitable $K > 0$. Consider the power series expansion $h(z) = \sum_{n=0}^\infty a_n z^n$. Let $a_m$ denote any non-zero coefficient; note that since $h(0) = 0$ we have $m \geq 1$. By Cauchy's integral formula we have, for all $s > 0$,
+    Assuming $\rho_f < \infty$, we have $M_f(r) < K \exp(r^\alpha)$ for every $\alpha > \rho_f$, with suitable $K > 0$ and all $r > r_0$. Consider the power series expansion $h(z) = \sum_{n=0}^\infty a_n z^n$. Let $a_m$ denote any non-zero coefficient; note that since $h(0) = 0$ we have $m \geq 1$. By Cauchy's integral formula we have, for all $s > 0$,
     \begin{equation*} \label{eq:proof-polya-cauchy-inequality}
         \vert a_m \vert = \left\vert \frac{h^{(m)}(0)}{m!} \right\vert = \frac{1}{2\pi} \left\vert \oint_{\partial B_{s}(0)} \frac{h(\zeta)}{\zeta^{n+1}} \diff \zeta \right\vert \leq \frac{M_h(s)}{s^m} \tag{\textasteriskcentered}
     \end{equation*}
     and thus
     \begin{equation*}
-        M_g(C \vert a_m \vert (r/2)^m) \leq M_g(C M_h(r/2)) < M_f(r) < K \exp(r^\alpha), \quad \textrm{for all } r > 0.
+        M_g(C \vert a_m \vert (r/2)^m) \leq M_g(C M_h(r/2)) < M_f(r) < K \exp(r^\alpha), \quad \textrm{for all } r > r_0.
     \end{equation*}
     Replacing $(r/2)^m$ with $r$ we obtain $\rho_g \leq \alpha / m $. If $h$ is not a polynomial we may let $m \to \infty$, thus $\rho_g = 0$.
 
     Now consider $g(z) = \sum_{n=0}^\infty b_n z^n$. Replacing $h$ with $g$ in (\ref{eq:proof-polya-cauchy-inequality}) we obtain $\vert b_n \vert s^n \leq M_g(s)$ for all $s > 0$ and $n \geq 1$ and thus
     \begin{equation*}
-        \vert b_n \vert (C M_h(r/2))^n \leq M_g(C M_h(r/2)) < M_f(r) < K \exp(r^\alpha),
+        \vert b_n \vert (C M_h(r/2))^n \leq M_g(C M_h(r/2)) < M_f(r) < K \exp(r^\alpha), \quad \textrm{for all } r > r_0,
     \end{equation*}
     which implies $\rho_h \leq \alpha < \infty$.
 \end{proof}

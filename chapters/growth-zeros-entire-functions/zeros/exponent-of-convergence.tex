@@ -10,7 +10,7 @@ We first recall a rather explicit connection between the moduli of the zeros of 
 \end{theorem}
 
 \begin{definition}
-    Let $f \in H(B_R(0)), f \neq 0$. Then, for $0 < r < R$, we define
+    Let $f \in H(B_R(0))$ be not identically zero. Then, for $0 < r < R$, we define
     \begin{equation}
         n_f(r) \coloneqq \vert \{ z \in \cl{B_r(0)} : f(z) = 0 \} \vert,
     \end{equation}
@@ -38,35 +38,27 @@ This zero-counting function is, in some scenarios, simpler to work with than the
 
 This gives an immediate connection between the zeros and the growth of the modulus of an entire function:
 
-\begin{proposition} \label{prop:zeros-bounded-by-order}
-    Let $f \in H(\C)$ be of finite order. Then for any $\rho > \rho_f$ we have
-    $$ n_f(r) = \O(r^{\rho}), \quad \textrm{as} \quad r \to \infty. $$
-\end{proposition}
+\begin{lemma} \label{lem:zeros-bounded-by-modulus}
+    If $f \in H(\C)$, then
+    $$ n_f(r) = \O( \log M_f(er) ). $$
+\end{lemma}
 
 \begin{proof}
-    We may assume $f(0) \neq 0$. Let $r > 0$, then since $n_f$ is non-negative and non-decreasing we have
-    \begin{align*}
-        \int_0^{2r} \frac{n_f(s)}{s} \diff s \geq \int_r^{2r} \frac{n_f(s)}{s} \diff s \geq n_f(r) \int_r^{2r} \frac{1}{s} \diff s = n_f(r) (\log 2r - \log r) = n_f(r) \log 2.
-    \end{align*}
-    \Cref{cor:jensen-nf} now yields
+    We may assume $\vert f(0) \vert = 1$. Let $r > 0$, then since $n_f$ is non-negative and non-decreasing we have
     \begin{equation*}
-        n_f(r) \log 2 \leq \int_0^{2r} \frac{n_f(s)}{s} \diff s = \log \vert f(0) \vert + \frac{1}{2\pi} \int_0^{2 \pi} \log \vert f(2r e^{i \theta}) \vert \diff \theta \leq \log \vert f(0) \vert + \log M_f(2r)
+        n_f(r) \leq \int_r^{er} \frac{n_f(t)}{t} \diff t \leq \frac{1}{2 \pi} \log \vert f(er e^{i \theta}) \vert \diff \theta \leq \log M_f(er),
     \end{equation*}
-    and holds for all $r > 0$ since $f$ is entire. Now, $f$ is of finite order, thus for any $\varepsilon > 0$ there is a constant $K_1 > 0$ such that for sufficiently large $r$ we have $M_f(r) \leq K_1 \exp {r^{\rho_f + \varepsilon}}$. Thus
-    \begin{align*}
-        n_f(r) \log 2 \leq \log \vert f(0) \vert + \log K_1 + (2r)^{\rho_f + \varepsilon}.
-    \end{align*}
-    and therefore $n_f(r) \leq K_2 r^{\rho_f + \varepsilon}$ for some constant $K_2 > 0$ and sufficiently large $r$.
+    establishing the assertion.
 \end{proof}
 
-\Cref{prop:zeros-bounded-by-order} shows that the more zeros a function $f$ has, the faster $M_f$ must grow as $r \to \infty$. The converse is naturally false; by composing exponentials one can obtain an entire function $f$ for which $M_f$ grow arbitrarily fast, yet $f$ has no zeros.
+\Cref{lem:zeros-bounded-by-modulus} shows that the more zeros a function $f$ has, the faster $M_f$ must grow as $r \to \infty$. The converse is naturally false; by composing exponentials one can obtain an entire function $f$ for which $M_f$ grow arbitrarily fast, yet $f$ has no zeros.
 
 \begin{definition} \label{def:zero-exponent}
     Let $M \subseteq \N$ and $\mathbf{z} = (z_m)_{m \in M}$ be a family of points\footnote{Note that the exponent of convergence is only affected by their moduli, not by their arguments.} in $\C^\times$. Then
     $$ \lambda_{\mathbf{z}} \coloneqq \inf \left\{ \lambda > 0 : \sum_{m \in M} \frac{1}{\vert z_m \vert^\lambda} < \infty \right\} $$
     is called the \emph{exponent of convergence} of the family $\mathbf{z}$.
 
-    Let $f \in H(\C)$, then the \emph{exponent of convergence of the zeros of $f$} is defined as the exponent of convergence of the non-zero roots of $f$ and is denoted $\lambda_f$.
+    Let $f \in H(\C)$, then the \emph{exponent of convergence of the zeros of $f$} is defined as the exponent of convergence of the non-zero roots of $f$ and is denoted $\lambda_f$. If $f$ is constant we set $\lambda_f = 0$ by convention.
 
     Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of the zeros of $f(z) - a$ and will be denoted $\lambda_f^{(a)}$.
 \end{definition}
@@ -78,7 +70,8 @@ If $f \in H(\C)$ assumes some value $a \in \C$ only finitely often, then clearly
 \end{theorem}
 
 \begin{proof}
-    We may assume $f(0) \neq 0$. If $\lambda_f = 0$ there is nothing to show. Let $\rho > \rho_f$ then \Cref{prop:zeros-bounded-by-order} yields a constant $K_1 > 0$ such that for sufficiently large $r$ we have $n_f(r) \leq K_1 r^{\rho}$.
+    We may assume $f(0) \neq 0$. If $\lambda_f = 0$ there is nothing to show. Let $\rho > \rho_f$ then
+    by \Cref{lem:zeros-bounded-by-modulus} and \Cref{prop:order-infimum} we have $n_f(r) = \O(\log M_f(er))$ and $M_f(r) = \O(\exp r^\rho)$, respectively. Therefore $n_f(r) = \O(r^\rho)$, thus there exists a constant $K_1 > 0$ such that for sufficiently large $r > 0$ we have $n_f(r) \leq K_1 r^\rho$.
     
     If $(r_j)_{j \in \N}$ denote the non-zero moduli of the zeros of $f$, arranged in non-decreasing order, then for any $m \in \N$ we have $m \leq n_f(r_m) \leq K_1 r_m^{\rho}$. Let $0 < \lambda < \lambda_f$ then this implies
     \begin{align*}
@@ -95,7 +88,7 @@ If $f \in H(\C)$ assumes some value $a \in \C$ only finitely often, then clearly
     The function $f(z) \coloneqq \exp z$ is of order one and has no zeros -- thus we observe that we may have $\lambda_f < \rho_f$ in some cases.
 \end{remark}
 
-As \Cref{prop:zeros-bounded-by-order} might indicate, a more precise analysis of the density of the zeros of an entire function $f$ is contained in the growth of the zero-counting function $n_f$.
+A more precise analysis of the density of the zeros of an entire function $f$ is contained in the growth of the zero-counting function $n_f$. We therefore introduce the following definitions:
 
 \begin{definition} \label{def:order-density-zero-counting}
     Let $f \in H(\C)$. As the \emph{order} of the zero-counting function $n_f$ we define

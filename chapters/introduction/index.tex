@@ -1,40 +1,38 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-\todo{Some words why the subject is of interest.}
+In this thesis, we explore the theory of entire functions, that is, complex-valued functions that are holomorphic on the entire complex plane.
 
-\todo{A reference to the primary literature used.}
+Our early focus lies on Picard's Great Theorem, an important corollary of which states that an entire function assumes every complex value, with at most one exception, infinitely often. A natural example for this behaviour is the complex exponential function, which does not assume zero, but does assume all other values infinitely often. \Cref{ch:picards-great-theorem} is dedicated to deriving this theorem and providing groundwork for the results in the later chapters.
 
-\todo{Overview of used notation.}
+In \Cref{sec:growth} we then briefly introduce a scale of asymptotic growth for the modulus of entire functions, in the form of order and type. Roughly speaking, if $f$ is of finite order, then $f$ grows no faster than a function of form $e^{Q(z)}$, where $Q$ is a polynomial, as $\vert z \vert \to \infty$.
 
-Some results from complex analysis are assumed as pre-requisites, such as Cauchy's integral formula, the maximum modulus principle, the Weierstrass theorem on canonical products, the theorems of Montel, Hurwitz and Jensen, the Schwarz lemma and standard results on power series.
+\Cref{sec:zeros} explores the nature of zeros of entire functions. As is well-known, a complex polynomial can be represented solely by its zeros and some scaling factor. This behaviour is generalized for entire functions by the Weierstrass Factorization Theorem: For any entire function $f$ there exists an entire function $g$ and a so-called ``canonical product'' $\Pi$, which is determined by the zeros of $f$, such that
+$$ f(z) = z^m e^{g(z)} \Pi(z), \quad \textrm{for all } z \in \C, $$
+where $m$ denotes the order of the zero of $f$ at the origin. Hadamard's Theorem then provides an immediate refinement for entire functions of finite order $\rho$, showing that $g$ can be taken to be a polynomial of degree at most $\rho$. This has immediate corollaries, in particular if the order is not an integer, which we will explore towards the end of the section.
 
-The sets $\N$ and $\Z$ denote, respectively, the natural numbers (starting with $1$) and the integers. Furthermore we define $\N_0 \coloneqq \N \cup \{ 0 \}$.
+Finally, \Cref{ch:composition-entire-functions} studies when the composition of functions of finite order is, again, of finite order. Pólya's Theorem will provide necessary conditions for this to hold. A consequence is Thron's Theorem, which states that for any entire function $g$ of finite order, which assumes some complex value only finitely often, there does not exist an entire function $f$ for which $f \circ f = g$ holds on the entire complex plane.
 
-The sets $\R$ and $\C$ denote, respectively, the real line and the complex plane, which will both be endowed with the standard Euclidean metric and topology. The closure of a subset $A$ of $\R$ or $\C$ (with respect to the appropriate topology) will be denoted as $\cl{A}$ and the boundary as $\partial A$.
+Introductory results on complex analysis are assumed as prerequisites and will be used as found in \cite{bluemlinger-complex-analysis,stein-shakarchi-princeton}. These include Cauchy's integral formula, the maximum modulus principle, the theorems of Montel, Hurwitz and Jensen, the Schwarz lemma and standard results on power series.
 
-When integrating over the boundary of a set in $\C$ the boundary is, unless otherwise indicated, parametrized with mathematically positive (counter-clockwise) orientation.
+The following is an overview of the notation used:
 
-If $A$ is some set with $0 \in A$ we define $A^\times \coloneqq A \setminus \{ 0 \}$.
-
-For $a, b \in \C$ we denote by $[a, b]$ the straight line connecting $a$ to $b$, parametrized by the function $\gamma : [0, 1] \to \C, t \mapsto (1-t)a + tb$.
-
-For subsets $M, N$ of $\R$ or $\C$ we denote by $C(M, N)$ the space of continuous functions which map from $M$ into $N$.
-
-If $G \subseteq \C$, then $G$ is said to be a domain if $G$ is non-empty, open and connected.
-
-For a point $a \in \C$ and $r > 0$ we denote by $B_r(a)$ the open disk of radius $r$ centered at $a$. The unit disk $B_1(0)$ will be denoted $\D$.
-
-Let $G \subseteq \C$ be open, then a function $f : G \to \C$ is said to be holomorphic at $z \in G$ if $f$ is complex differentiable at $z$. If $f$ is holomorphic at all $z \in G$ then $f$ is said to be holomorphic on $G$. The space of all such holomorphic functions on $G$ will be denoted as $H(G)$.
-
-If $f$ is (real or complex) differentiable, then $f'$ and $f''$ denote the respective first and second derivatives of $f$. For $n \in \N$, the $n$-th derivative will be denoted $f^{(n)}$.
-
-For a real- or complex-valued function $f$ defined on some set $M$ we define $\Vert f \Vert_M \coloneqq \sup_{x \in M} \vert f(x) \vert$.
-
-The exponential function will be denoted $\exp : \R \to (0, \infty)$, with inverse $\log : (0, \infty) \to \R$.
-
-For a set $A$, the indicator function $\1_A(a)$ is defined as $1$ if $a \in A$ and $0$ otherwise.
-
-To simplify the asymptotic analysis in \cref{ch:growth-zeros-entire-functions} we shall employ the following notation: Let $a \in \R$ and let $f, g$ be functions on $[a, \infty)$ such that $f$ is either real- or complex-valued and $g$ is real-valued. Then we write $f(x) = \O(g(x))$ as $x \to \infty$ if there exist constants $C > 0$ and $x_0 \geq a$ such that for $x \geq x_0$ we have $\vert f(x) \vert \leq C g(x)$.
-
-% $$ \frac{} \lim_{r \to \infty} $$
+\begin{itemize}[label=$\rightsquigarrow$]
+    \item The sets $\N$ and $\Z$ denote, respectively, the natural numbers (starting with $1$) and the integers. Furthermore we define $\N_0 \coloneqq \N \cup \{ 0 \}$.
+    \item For a set $A$, its indicator function $\1_A(a)$ is defined as $1$ if $a \in A$ and $0$ otherwise.
+    \item The restriction of a function $f : M \to N$ to a set $D \subseteq M$ will be denoted $\restr{f}{D}$.
+    \item The sets $\R$ and $\C$ denote, respectively, the real line and the complex plane, which will both be endowed with the standard Euclidean metric and topology.
+    \item The closure of a subset $A$ of $\R$ or $\C$ (with respect to the appropriate topology) will be denoted as $\cl{A}$ and the boundary as $\partial A$.
+    \item For subsets $M, N$ of $\R$ or $\C$ we denote by $C(M, N)$ the space of continuous maps from $M$ into $N$.
+    \item For a real- or complex-valued function $f$ defined on some set $M$ we define $\Vert f \Vert_M \coloneqq \sup_{x \in M} \vert f(x) \vert$.
+    \item If a function $f$ is differentiable, in the real or complex sense, then $f'$ and $f''$ denote the respective first and second derivatives of $f$. For $n \in \N$, the $n$-th derivative will be denoted $f^{(n)}$.
+    \item Let $a \in \R$ and let $f, g$ be functions on $[a, \infty)$ such that $f$ is either real- or complex-valued and $g$ is real-valued. Then we write $f(x) = \O(g(x))$ as $x \to \infty$ if there exist constants $C > 0$ and $x_0 \geq a$ such that for $x \geq x_0$ we have $\vert f(x) \vert \leq C g(x)$.
+    \item For $a, b \in \C$ we denote by $[a, b]$ the line segment connecting $a$ and $b$, parametrized by $\gamma : [0, 1] \to \C, t \mapsto (1 - t) a + tb$.
+    \item If $G \subseteq \C$, then $G$ is said to be a \emph{domain} if $G$ is non-empty, open and connected.
+    \item For a point $a \in \C$ and $r > 0$ we denote by $B_r(a)$ the open disk of radius $r$ centered at $a$. The open unit disk $B_1(0)$ will be denoted $\D$, furthermore we define $\C^\times \coloneqq \C \setminus \{ 0 \}$ and $\D^\times \coloneqq \D \setminus \{ 0 \}$.
+    \item Let $G \subseteq \C$ be open, then a function $f : G \to \C$ is said to be \emph{holomorphic} at $z \in G$ if $f$ is complex differentiable at $z$. If $f$ is holomorphic at all $z \in G$ then $f$ is said to be holomorphic on $G$. The space of all such holomorphic functions on $G$ will be denoted as $H(G)$. If $f \in H(\C)$ then $f$ is called \emph{entire}.
+    \item If $G \subseteq \C$ is a domain and $D \subseteq \C$ is a set with $\cl{D} \subseteq G$, then the contour integral of an $f \in H(G)$ along the boundary of $D$ will be denoted
+    $$ \oint_{\partial D} f(z) \diff z $$
+    and is, unless otherwise indicated, always parametrized with mathematically positive (counter-clockwise) orientation.
+    \item The exponential function will be denoted $\exp : \C \to \C^\times$. The (local) inverse will be denoted $\log$, where we, unless specified otherwise, always choose the principle branch, i.e. the branch where $\log 1 = 0$.
+\end{itemize}

@@ -1,7 +1,7 @@
 \section{Bloch's Theorem}
 \label{sec:blochs-theorem}
 
-If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. In particular, $f(G)$ contains open disks of some, potentially very small, radius. Bloch's Theorem asserts that for any $f \in H(D) \cap C(\cl{\D}; \C)$ satisfying $f'(0) = 1$, the set $f(\D)$ always contains a disk of fixed radius.
+If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. In particular, $f(G)$ contains open disks of some, potentially very small, radius. Bloch's Theorem asserts that for any $f \in H(\D) \cap C(\cl{\D}; \C)$ satisfying $f'(0) = 1$, the set $f(\D)$ always contains a disk of fixed radius.
 
 Note that $f(0)$ may not always be the center of such a disk; consider the sequence
 \begin{equation*}
@@ -17,11 +17,11 @@ If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open s
 
 \begin{proof}
     Since $G$ is bounded, $\cl{G}$ is compact and by continuity of $f$, so is $\cl{f(G)}$.
-    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it assumes its minimum $m$ at some $w_* \in \partial f(G)$. Choose a sequence $(z_n)_{n \in \N}$ in $G$ with $\lim_{n \to \infty} f(z_n) = w_*$ then, since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$. By continuity of $f$ we have $f(z_*) = w_*$.
+    The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it assumes its minimum $m$ at some $w_* \in \partial f(G)$. Choose a sequence $(z_n)_{n \in \N}$ in $G$ with $\lim_{n \to \infty} f(z_n) = w_*$, then, since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$. By continuity of $f$, we have $f(z_*) = w_*$.
 
     If $z_* \in G$, since $\restr{f}{G}$ is open, the image of any open set in $G$ containing $z_*$ under $f$ is an open set in $f(G)$ containing $w_*$, which is impossible since $w_* \in \partial f(G)$.
 
-    Therefore $z_* \in \partial G$ and we have
+    Therefore, $z_* \in \partial G$ and we have
     $$ d(f(a), \partial f(G)) = m = \vert w_* - f(a) \vert = \vert f(z_*) - f(a) \vert \geq s, $$
     which implies $B_{s}(f(a)) \subseteq f(G)$ if $s > 0$.
 \end{proof}
@@ -65,11 +65,11 @@ If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open s
 \begin{proof}
     The function
     $$ \mapping{\alpha_f}{\cl{\D} & \to & \R}{z & \mapsto & \vert f'(z) \vert (1 - \vert z \vert)} $$
-    is continuous and assumes its maximum $C_f > 0$ at some point $p \in \cl{\D}$. Note that $C_f \geq \vert f'(0) \vert$ and since $f$ is non-constant and $\restr{\alpha_f}{\partial \D} = 0$ we even have $p \in \D$.
+    is continuous and assumes its maximum $C_f > 0$ at some point $p \in \cl{\D}$. Note that $C_f \geq \vert f'(0) \vert$ and, since $f$ is non-constant and $\restr{\alpha_f}{\partial \D} = 0$ we even have $p \in \D$.
 
     Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then we have $B_{t}(p) \subseteq \D$. Furthermore, for $z \in B_t(p)$, we have
-    $$ 1 - \vert z \vert \geq 1 - \vert z - p \vert - \vert p \vert \geq 1 - t - \vert p \vert = t $$
-    and since $\vert f'(z) \vert (1 - \vert z \vert) \leq C_f = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$ for all $z \in B_t(p)$. By \Cref{lem:bloch-lemma-2}, we get $ B_{R}(f(p)) \subseteq f(\D) $, where $R \coloneqq (3 - 2 \sqrt{2}) t \vert f'(p) \vert = ({\textstyle \frac{3}{2}} - \sqrt{2}) C_f$,
+    $$ 1 - \vert z \vert \geq 1 - \vert z - p \vert - \vert p \vert \geq 1 - t - \vert p \vert = t. $$
+    Since $\vert f'(z) \vert (1 - \vert z \vert) \leq C_f = 2 t \vert f'(p) \vert$, this implies $\vert f'(z) \vert \leq 2 \vert f'(p) \vert$ for all $z \in B_t(p)$. By \Cref{lem:bloch-lemma-2}, we get $ B_{R}(f(p)) \subseteq f(\D) $, where $R \coloneqq (3 - 2 \sqrt{2}) t \vert f'(p) \vert = ({\textstyle \frac{3}{2}} - \sqrt{2}) C_f$,
     which establishes the assertion.
 \end{proof}
 
@@ -88,7 +88,7 @@ In the following we will denote by $\beta > 0$ any constant less than or equal t
 \begin{proof}
     We may assume $c = 0$, otherwise we consider $f_1(z) \coloneqq f(z+c)$. Let $0 < s < d(c, \partial G)$, then $f$ is holomorphic on $\cl{B_s(0)} \subseteq G$, thus we have $g(z) \coloneqq f(sz) / sf'(0) \in H(\D) \cap C(\cl{\D}; \C)$. Since $g'(0) = 1$, Bloch's Theorem yields a disk $B$ of radius $\beta$ with $B \subseteq g(\D)$. Then $D \coloneqq s \vert f'(0) \vert B$ is a disk of radius $\beta s \vert f'(0) \vert$ and we have
     \begin{equation*}
-        D = s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(G).
+        D = s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(G). \qedhere
     \end{equation*}
 \end{proof}
 

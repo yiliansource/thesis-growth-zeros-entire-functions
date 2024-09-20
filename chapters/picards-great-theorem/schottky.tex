@@ -1,7 +1,7 @@
 \section{Schottky's Theorem}
 \label{sec:schottkys-theorem}
 
-Holomorphic functions which omit the values $0$ and $1$ have a universal estimate on the growth of their modulus, which will be given by Schottky's Theorem.
+Holomorphic functions, which omit the values $0$ and $1$, have a universal estimate on the growth of their modulus, which will be given by Schottky's Theorem.
 
 For a domain $G \subseteq \C$ and a set $E \subseteq \C$ we define $H(G; E)$ as the set\footnote{Note that, unlike $H(G)$, the set $H(G; E)$ is usually not a linear space.} of all $f \in H(G)$ such that $f(G) \subseteq E$.
 
@@ -14,7 +14,7 @@ For a domain $G \subseteq \C$ and a set $E \subseteq \C$ we define $H(G; E)$ as 
 \end{lemma}
 
 \begin{proof}
-    For the first part, it suffices to notice that
+    For the first part it suffices to note that
     $$ 0 = \cos \pi a - \cos \pi b = \textstyle -2 \sin \frac{\pi}{2} ( a + b ) \sin \frac{\pi}{2} ( a - b ). $$
     Since the complex cosine function is surjective and $2 \pi$-periodic, we can choose $v = a + i b$ with $w = \cos \pi v$ and $\vert a \vert \leq 1$. Now we have
     \begin{align*}
@@ -30,19 +30,21 @@ For a domain $G \subseteq \C$ and a set $E \subseteq \C$ we define $H(G; E)$ as 
     \end{equation*}
 \end{proof}
 
-We recall the following result: Let $G \subseteq \C$ be a simply connected domain and $f \in H(G)$ such that $f$ vanishes nowhere on $G$. Then there is a $g \in H(G)$ such that $f = e^g$. This can also be used to obtain multiplicative $n$-th roots of such functions, by defining $\sqrt[n]{f} \coloneqq e^{g/n}$.
+We recall the following result: Let $G \subseteq \C$ be a simply connected domain and $f \in H(G)$, such that $f$ vanishes nowhere on $G$. There is a $g \in H(G)$ such that $f = e^g$, which can also be used to obtain multiplicative $n$-th roots of such functions by defining $\sqrt[n]{f} \coloneqq e^{g/n}$.
 
 \begin{lemma} \label{lem:schottky-2}
-    Let $G \subseteq \C$ be a simply connected domain and $f \in H(G; \C \setminus \{ -1, 1 \})$. Then there exists an $F \in H(G)$ such that $f = \cos F$.
+    Let $G \subseteq \C$ be a simply connected domain and $f \in H(G; \C \setminus \{ -1, 1 \})$, then there exists an $F \in H(G)$ such that $f = \cos F$.
 \end{lemma}
 
 \begin{proof}
-    Since $1 - f^2$ vanishes nowhere in $G$ it has a square root $g \in H(G)$. It follows that
+    Since $1 - f^2$ vanishes nowhere in $G$, it has a square root $g \in H(G)$, therefore
     \begin{equation*}
         1 = f^2 + g^2 = (f + ig)(f - ig).
     \end{equation*}
     Thus $f + ig$ vanishes nowhere and there exists an $F \in H(G)$ with $f + ig = e^{iF}$. By the above we also have $f - ig = e^{-iF}$ and therefore
-    $$ f = {\textstyle \frac{1}{2}} (e^{iF} + e^{-iF}) = \cos F. $$
+    \begin{equation*}
+        f = {\textstyle \frac{1}{2}} (e^{iF} + e^{-iF}) = \cos F. \qedhere
+    \end{equation*}
 \end{proof}
 
 \begin{lemma} \label{lem:schottky-3}
@@ -56,11 +58,11 @@ We recall the following result: Let $G \subseteq \C$ be a simply connected domai
 \end{lemma}
 
 \begin{proof}
-    By \Cref{lem:schottky-2} there exists a $\widetilde{F} \in H(G)$ such that $2f - 1 = \cos \pi \widetilde{F}$ and by \Cref{lem:schottky-1} there is a $b \in \C$ such that $\cos \pi b = 2f(0) - 1$ and $\vert b \vert \leq 1 + \vert 2 f(0) - 1 \vert \leq 2 + 2 \vert f(0) \vert$. Furthermore, since $\cos \pi b = \cos \pi \widetilde{F}(0)$, we have $b = \pm \widetilde{F}(0) + 2k$ for some $k \in \Z$. Then $F \coloneqq \pm \widetilde{F} + 2k \in H(G)$ satisfies $F(0) = b$ and $2f - 1 = \cos \pi F$.
+    By \Cref{lem:schottky-2}, there exists a $\widetilde{F} \in H(G)$ such that $2f - 1 = \cos \pi \widetilde{F}$ and by \Cref{lem:schottky-1} there is a $b \in \C$ with $\cos \pi b = 2f(0) - 1$ and $\vert b \vert \leq 2 + \vert 2 f(0) - 1 \vert \leq 2 + 2 \vert f(0) \vert$. Furthermore, since $\cos \pi b = \cos \pi \widetilde{F}(0)$, we have $b = \pm \widetilde{F}(0) + 2k$ for some $k \in \Z$. Then $F \coloneqq \pm \widetilde{F} + 2k \in H(G)$ satisfies $F(0) = b$ and $2f - 1 = \cos \pi F$.
     
-    Since $F$ must omit all integers, there exists a $\widetilde{g} \in H(G)$ such that $F = \cos \pi \widetilde{g}$. Similarly, there is an $a \in \C$ such that $\cos \pi a = b$ and $\vert a \vert \leq 1 + \vert b \vert \leq 3 + 2 \vert f(0) \vert$. Like above, since $\cos \pi a = \cos \pi \widetilde{g}(0)$, we have $a = \pm \widetilde{g}(0) + 2\ell$ for some $\ell \in \Z$, thus $g \coloneqq \pm \widetilde{g} + 2\ell \in H(G)$ satisfies $g(0) = a$ and $F = \cos \pi g$. Together we obtain
+    Since $F$ must omit all integers, there exists a $\widetilde{g} \in H(G)$ such that $F = \cos \pi \widetilde{g}$. Similarly, there is an $a \in \C$ such that $\cos \pi a = b$ and $\vert a \vert \leq 1 + \vert b \vert \leq 3 + 2 \vert f(0) \vert$. Like in the above above, since $\cos \pi a = \cos \pi \widetilde{g}(0)$, we have $a = \pm \widetilde{g}(0) + 2\ell$ for some $\ell \in \Z$, thus $g \coloneqq \pm \widetilde{g} + 2\ell \in H(G)$ satisfies $g(0) = a$ and $F = \cos \pi g$. Together we obtain
     $$ \textstyle f = \frac{1}{2} (1 + \cos \pi (\cos \pi g)), \quad \textrm{and} \quad \vert g(0) \vert = \vert a \vert \leq 3 + 2 \vert f(0) \vert $$
-    and have thus shown (i) and (ii).
+    and thus have shown (i) and (ii).
 
     To show (iii) we consider the set
     $$ A \coloneqq \{ m \pm i \pi^{-1} \log (n + \sqrt{n^2 - 1}) : m \in \Z, n \in \N \setminus \{ 0 \} \}, $$
@@ -80,9 +82,9 @@ We recall the following result: Let $G \subseteq \C$ be a simply connected domai
 
     For (iv), if $\D \subseteq G$, then $\restr{g}{\D} \in H(\D)$. Fix $0 < \theta < 1$, then for $\vert z \vert \leq \theta$ we have
     $$ d(z, \partial \D) = \inf_{w \in \partial \D} \vert z - w \vert \geq \inf_{w \in \partial \D} \left( \vert w \vert - \vert z \vert \right) \geq 1 - \theta. $$
-    From (iii) it follows that $\restr{g}{\D}(\D)$ does not contain a disk of radius $1$. Let $0 < s < 1 - \theta$, then applying \Cref{cor:bloch-domain} to $\restr{g}{\D}$ implies that $\beta s \vert g'(z) \vert < 1$. Taking the supremum over $s$ and rearranging yields $ \vert g'(z) \vert \leq 1 / (\beta (1 - \theta))$. Thus our desired estimate is shown by
+    From (iii) it follows that $\restr{g}{\D}(\D)$ does not contain a disk of radius $1$. Let $0 < s < 1 - \theta$, then applying \Cref{cor:bloch-domain} to $\restr{g}{\D}$ implies that $\beta s \vert g'(z) \vert < 1$. Taking the supremum over $s$, and rearranging yields $ \vert g'(z) \vert \leq 1 / (\beta (1 - \theta))$, thus our desired estimate is shown by
     \begin{align*}
-        \vert g(z) \vert &\leq \vert g(0) \vert + \vert g(z) - g(0) \vert \leq \vert g(0) \vert + \int_{[0, z]} \vert g'(\zeta) \vert \diff \zeta \leq \vert g(0) \vert + \frac{\theta}{\beta (1 - \theta)}.
+        \vert g(z) \vert &\leq \vert g(0) \vert + \vert g(z) - g(0) \vert \leq \vert g(0) \vert + \int_{[0, z]} \vert g'(\zeta) \vert \diff \zeta \leq \vert g(0) \vert + \frac{\theta}{\beta (1 - \theta)}. \qedhere
     \end{align*}
 \end{proof}
 
@@ -109,5 +111,5 @@ We recall the following result: Let $G \subseteq \C$ be a simply connected domai
 \end{theorem}
 
 \begin{proof}
-    Consider $f_1(z) \coloneqq \frac{f(z) - a}{b - a} \in H(\C; \C \setminus \{ 0, 1 \})$. By \Cref{lem:schottky-3} there is some $g \in H(\C)$ such that $f_1 = \frac{1}{2}(1 + \cos \pi (\cos \pi g))$ and $g(\C)$ does not contain a disk of radius $1$. By \Cref{cor:bloch-entire} we thereby have that $g$ must be constant and therefore so are $f_1$ and $f$.
+    Consider $f_1(z) \coloneqq \frac{f(z) - a}{b - a} \in H(\C; \C \setminus \{ 0, 1 \})$. By \Cref{lem:schottky-3} there is some $g \in H(\C)$ such that $f_1 = \frac{1}{2}(1 + \cos \pi (\cos \pi g))$ and $g(\C)$ does not contain a disk of radius $1$. By \Cref{cor:bloch-entire}, we thereby have that $g$ must be constant, and therefore so are $f_1$ and $f$.
 \end{proof}
