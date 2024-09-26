@@ -1,9 +1,11 @@
-\subsection{Order, Density and Exponent of Convergence}
+\section{Order, Density and Exponent of Convergence of Zeros} \label{sec:zeros}
+
+% We will mostly follow the contents of chapter 1 in Levin \cite{levin-distribution-of-zeros}.
 
 We first recall a rather explicit connection between the moduli of the zeros of a holomorphic function and the modulus of the function itself:
 
 \begin{theorem}[Jensen] \label{thm:jensen}
-    Let $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
+    Let $R > 0$, $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
     \begin{equation}
         \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}.
     \end{equation}
@@ -58,7 +60,7 @@ This gives an immediate connection between the zeros and the growth of the modul
     $$ \lambda_{\mathbf{z}} \coloneqq \inf \left\{ \lambda > 0 : \sum_{m \in M} \frac{1}{\vert z_m \vert^\lambda} < \infty \right\} $$
     is called the \emph{exponent of convergence} of the family $\mathbf{z}$.
 
-    Let $f \in H(\C)$, then the \emph{exponent of convergence of the zeros of $f$} is defined as the exponent of convergence of the non-zero roots of $f$ and is denoted $\lambda_f$. If $f$ is constant we set $\lambda_f = 0$ by convention.
+    Let $f \in H(\C)$, then the \emph{exponent of convergence of the zeros of $f$} is defined as the exponent of convergence of the non-zero roots of $f$ and is denoted $\lambda_f$. If $f$ is constant, we set $\lambda_f = 0$ by convention.
 
     Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of the zeros of $f(z) - a$ and will be denoted $\lambda_f^{(a)}$.
 \end{definition}
@@ -95,17 +97,17 @@ A more precise analysis of the density of the zeros of an entire function $f$ is
     \begin{equation}
         \nu_f \coloneqq \limsup_{r \to \infty} \frac{\log n_f(r)}{\log r}.
     \end{equation}
-    If $\nu_f$ is finite we additionally define the \emph{upper density} of the zeros of $f$ as
+    If $\nu_f$ is finite, we additionally define the \emph{upper density} of the zeros of $f$ as
     \begin{equation}
         \Delta_f \coloneqq \limsup_{r \to \infty} \frac{n_f(r)}{r^{\nu_f}}.
     \end{equation}
-    If the limit exists then $\Delta_f$ is simply called the \emph{density}.
+    If the limit exists, then $\Delta_f$ is simply called the \emph{density}.
 \end{definition}
 
 The following lemma provides great utility in further analyzing the function $n_f$.
 
 \begin{lemma} \label{lem:zeros-measure}
-    Let $f \in H(\C)$ and denote by $(r_m)_{m \in M}$ the moduli of the zeros of $f$, arranged in non-decreasing order. Then $f$ induces a unique Lebesgue-Stieltjes measure $\omega_f$ on $(0, \infty)$, such that, for any non-negative, measureable function $\varphi$ on $(0, \infty)$, it holds that
+    Let $f \in H(\C)$ and denote by $(r_m)_{m \in M}$ the moduli of the zeros of $f$ arranged in non-decreasing order. Then $f$ induces a unique -Stieltjes measure $\omega_f$ on $(0, \infty)$, such that, for any non-negative, measureable function $\varphi$ on $(0, \infty)$, it holds that
     \begin{equation*}
         \sum_{m \in M} \varphi(r_m) = \int_{(0, \infty)} \varphi \diff \omega_f.
     \end{equation*}
@@ -118,13 +120,13 @@ The following lemma provides great utility in further analyzing the function $n_
 \begin{proof}
     From the representation
     $$ n_f(r) = \sum_{m \in M} \1_{[r_m, \infty)}(r) $$
-    we observe that $n_f$ is right-continuous, non-negative and non-decreasing. Therefore $n_f$ induces a unique Lebesgue-Stieltjes measure $\omega_f$. Since an indicator function of the form $\1_{[a, \infty)}$, for $a \in \R$, corresponds to a Dirac measure $\delta_{\{ a \}}$, and the correspondence between Lebesgue-Stieltjes measures and their distribution functions is linear in nature, we have
+    we observe that $n_f$ is right-continuous, non-negative and non-decreasing. Therefore $n_f$ induces a unique Lebesgue--Stieltjes measure $\omega_f$. Since an indicator function of the form $\1_{[a, \infty)}$, for $a \in \R$, corresponds to a Dirac measure $\delta_{\{ a \}}$, and the correspondence between Lebesgue-Stieltjes measures and their distribution functions is linear in nature, we have
     $$ \omega = \sum_{m \in M} \delta_{\{r_m\}}. $$
     From this it follows that
     \begin{equation*}
         \sum_{m \in M} \varphi(r_m) = \sum_{m \in M} \int_{(0, \infty)} \varphi \diff \delta_{\{r_m\}} = \int_{(0, \infty)} \varphi \diff \left( \sum_{m \in M} \delta_{\{r_m\}} \right) = \int_{(0, \infty)} \varphi \diff \omega_f.
     \end{equation*}
-    Assume $\varphi$ is monotone and continuously differentiable on $(0, \infty)$. Then $\varphi$ also induces a Lebesgue-Stieltjes measure $\eta_\varphi$, with density $\varphi'$ with respect to the Lebesgue measure. Thus, for any $0 < \varepsilon < r < \infty$, integration by parts gives
+    Assume $\varphi$ is monotone and continuously differentiable on $(0, \infty)$. Then $\varphi$ also induces a Lebesgue--Stieltjes measure $\eta_\varphi$, with density $\varphi'$ with respect to the Lebesgue measure. Thus, for any $0 < \varepsilon < r < \infty$, integration by parts gives
     \begin{equation*}
         \int_{(\varepsilon, r)} \varphi \diff \omega_f + \int_{(\varepsilon, r)} n_f \diff \eta_\varphi = n_f(r) \varphi(r) - n_f(\varepsilon) \varphi(\varepsilon).
     \end{equation*}

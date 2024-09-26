@@ -1,14 +1,14 @@
-\subsection{Type}
+\section{Type of Entire Functions} \label{sec:type}
 
 For functions of finite and positive order, we can obtain a natural refinement of the concept of order:
 
 \begin{definition}
     Let $f \in H(\C)$ be of order $0 < \rho_f < \infty$. The \emph{type} of $f$ is defined by
     \begin{equation} \label{eq:def-type}
-        \tau_f \coloneqq \limsup_{r \to \infty} \frac{\log M_f(r)}{r^{\rho_f}}
+        \tau_f \coloneqq \limsup_{r \to \infty} \frac{\log M_f(r)}{r^{\rho_f}}.
     \end{equation}
 
-    If $\tau_f = 0$, then $f$ is said to be of \emph{minimal} type, if $0 < \tau_f < \infty$ of \emph{normal} type, and if $\tau_f = \infty$ of \emph{maximal} type.
+    If $\tau_f = 0$, then $f$ is said to be of \emph{minimal} type, if $0 < \tau_f < \infty$, of \emph{normal} type, and if $\tau_f = \infty$, of \emph{maximal} type.
 \end{definition}
 
 Once again, we have an equivalent characterization for functions of finite type:
@@ -60,7 +60,7 @@ If $f \in H(\C)$ is of finite, positive order, then $f$ and $f'$ not only have t
         \item We have already seen in \Cref{rem:order-zero} that polynomials are of order zero.
         \item The function
         $$ f(z) \coloneqq \exp \exp z $$
-        is of infinite order, since for any $m \in M$
+        is of infinite order, since for any $m \in \N$
         $$ M_f(r) \geq \exp \exp r > \exp (r^m / m!), $$
         therefore $\rho_f \geq m$, and since $m$ was arbitrary it follows that $\rho_f = \infty$.
         \qedhere

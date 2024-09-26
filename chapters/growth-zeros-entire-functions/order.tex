@@ -1,4 +1,22 @@
-\subsection{Order}
+\section{Order of Entire Functions} \label{sec:order}
+
+To study the rate of growth of an entire function, we first introduce the following:
+\begin{definition}
+    Let $f \in H(\C)$, then for $r \geq 0$ we define
+    \begin{equation*}
+        M_f(r) \coloneqq \max_{\vert z \vert = r} \vert f(z) \vert. \qedhere
+    \end{equation*}
+\end{definition}
+
+\begin{remark}    
+    By the maximum modulus principle, $M_f$ is either strictly increasing (if $f$ is non-constant) or constant (otherwise), and we have
+    $$ M_f(r) = \max_{\vert z \vert \leq r} \vert f(z) \vert. $$
+    We shall show that $M_f$ is continuous: Let $\varepsilon > 0$ and choose $\delta_\varepsilon > 0$ such that for ${\vert z_1 - z_2 \vert < \delta_\varepsilon}$ we have ${\vert f(z_1) - f(z_2) \vert < \varepsilon}$. Now let $r_1 < r_2$ and choose $\theta$ such that $M_f(r_2) = \vert f(r_2 e^{i \theta}) \vert$. Then
+    \begin{equation*}
+        0 \leq M_f(r_2) - M_f(r_1) \leq \vert f(r_2 e^{i \theta}) \vert - \vert f(r_1 e^{i \theta}) \vert \leq \vert f(r_2 e^{i \theta}) - f(r_1 e^{i \theta}) \vert < \varepsilon,
+    \end{equation*}
+    for $r_2 - r_1 < \delta_\varepsilon$.
+\end{remark}
 
 \begin{definition} \label{def:order}
     Let $f \in H(\C)$. The \emph{order} of $f$ is defined by
@@ -8,7 +26,7 @@
     Constant functions, by convention, have order 0.
 \end{definition}
 
-Note that, for $f \in H(\C)$, we have $0 \leq \rho_f \leq \infty$.
+Note that, for $f \in H(\C)$ we have $0 \leq \rho_f \leq \infty$.
 
 \begin{proposition} \label{prop:order-exponential-polynomial}
     If $Q$ is a polynomial of degree $n \in \N$, then $\exp Q$ has order $n$.
@@ -35,7 +53,7 @@ Note that, for $f \in H(\C)$, we have $0 \leq \rho_f \leq \infty$.
 %     showing $\rho_f \leq n + \varepsilon$. On the other hand, since
 % \end{remark}
 
-If the order of an entire function is finite we have an equivalent characterization.
+If the order of an entire function is finite, we have an equivalent characterization.
 
 \begin{proposition} \label{prop:order-infimum}
     Let $f \in H(\C)$, then $f$ is of finite order if and only if
@@ -66,14 +84,14 @@ If the order of an entire function is finite we have an equivalent characterizat
     $$ M_Q(r) = \max_{\vert z \vert = r} \vert Q(z) \vert \leq \left( \sum_{k=0}^n \vert a_k \vert \right) r^n \leq \left( (mn)! \sum_{k=0}^n \vert a_k \vert \right) \exp r^{1/m}. $$
     Since $m \in \N$ was arbitrary, \Cref{prop:order-infimum} gives $\rho_Q = 0$.
 
-    There are however non-polynomial functions of order zero; one must simply construct an entire function with power series coefficients of sufficiently rapid decay. Consider
+    There are, however, non-polynomial functions of order zero; one may simply construct an entire function with power series coefficients of sufficiently rapid decay. Consider
     $$ f(z) \coloneqq \sum_{k=0}^\infty \frac{z^k}{(k^2)!} $$
-    and let $m \in \N$. By the above we have $\sum_{k=0}^{m-1} \frac{r^k}{(k^2)!} \leq K \exp r^{1/m}$ for some constant $K > 0$ depending only on $m$, holding for all $r > 1$. Thus
+    and let $m \in \N$. By the above, we have $\sum_{k=0}^{m-1} \frac{r^k}{(k^2)!} \leq K \exp r^{1/m}$ for some constant $K > 0$ depending only on $m$, holding for all $r > 1$. Thus,
     $$ \sum_{k=0}^\infty \frac{r^k}{(k^2)!} \leq K \exp r^{1/m} + \sum_{k=m}^\infty \frac{r^k}{(km)!} \leq K \exp r^{1/m} + \sum_{k=0}^\infty \frac{r^{k/m}}{k!} = (K + 1) \exp r^{1/m} $$
     and we obtain $\rho_f = 0$, as above.
 \end{remark}
 
-From \Cref{prop:order-infimum}, together with some rough estimates, it follows that the order of the sum or product of two entire functions is bounded by above the larger of the two:
+From \Cref{prop:order-infimum}, together with some rough estimates, it follows that the order of the sum or product of two entire functions is bounded above by the larger of the two:
 
 \begin{proposition} \label{prop:order-sum-product-estimate}
     Let $f, g \in H(\C)$ be of finite order. Then it holds that:

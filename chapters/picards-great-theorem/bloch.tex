@@ -9,14 +9,14 @@ Note that $f(0)$ may not always be the center of such a disk; consider the seque
 \end{equation*}
 which satisfies $f_n(0) = 0$ and $f_n'(0) = 1$, but omits the value $1 / n$.
 
-If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open sets to open sets. We thus first observe a general criterion for the size of disks in the image domain of such functions:
+If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open sets to open sets. We thus first observe a general criterion, not relying on the holomorphic property, for the size of disks in the image domain of such functions:
 
 \begin{lemma} \label{lem:bloch-lemma-1}
     Let $G \subset \C$ be a bounded domain and $f \in C(\cl{G}; \C)$ such that $\restr{f}{G}$ is an open mapping. Let $a \in G$ and set $s \coloneqq d(f(a), f(\partial G))$. If $s > 0$, then $B_{s}(f(a)) \subseteq f(G)$.
 \end{lemma}
 
 \begin{proof}
-    Since $G$ is bounded, $\cl{G}$ is compact and by continuity of $f$, so is $\cl{f(G)}$.
+    Since $G$ is bounded, $\cl{G}$ is compact and, by continuity of $f$, so is $\cl{f(G)}$.
     The function $z \mapsto \vert z - f(a) \vert$ is continuous on the compact set $\partial f(G)$, hence it assumes its minimum $m$ at some $w_* \in \partial f(G)$. Choose a sequence $(z_n)_{n \in \N}$ in $G$ with $\lim_{n \to \infty} f(z_n) = w_*$, then, since $\cl{G}$ is compact, we can find a subsequence that converges to some $z_* \in \cl{G}$. By continuity of $f$, we have $f(z_*) = w_*$.
 
     If $z_* \in G$, since $\restr{f}{G}$ is open, the image of any open set in $G$ containing $z_*$ under $f$ is an open set in $f(G)$ containing $w_*$, which is impossible since $w_* \in \partial f(G)$.
@@ -51,7 +51,7 @@ If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open s
         \vert f'(0) \vert \rho - \vert f(z) \vert &\leq \vert \alpha_f(z) \vert \leq \frac{\rho^2}{r - \rho} \vert f'(0) \vert \\
         \Longleftrightarrow \quad \vert f(z) \vert &\geq \left( \rho - \frac{\rho^2}{r - \rho} \right) \vert f'(0) \vert.
     \end{align*}
-    The function $\rho \mapsto \rho - \rho^2 / (r - \rho)$ assumes its maximum value at $\rho_* \coloneqq (1 - \sqrt{2} / 2)r \in (0, r)$, namely $(3 - 2 \sqrt{2}) r$. Therefore,
+    The function $\rho \mapsto \rho - \rho^2 / (r - \rho)$ assumes its maximum value at $\rho_* \coloneqq (1 - 1 / \sqrt{2})r \in (0, r)$, namely $(3 - 2 \sqrt{2}) r$. Therefore,
     \begin{equation*}
         \vert f(z) \vert \geq (3 - 2 \sqrt{2}) r \vert f'(0) \vert = R, \quad \textrm{for all} \quad \vert z \vert = \rho_*.
     \end{equation*}
@@ -65,7 +65,7 @@ If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open s
 \begin{proof}
     The function
     $$ \mapping{\alpha_f}{\cl{\D} & \to & \R}{z & \mapsto & \vert f'(z) \vert (1 - \vert z \vert)} $$
-    is continuous and assumes its maximum $C_f > 0$ at some point $p \in \cl{\D}$. Note that $C_f \geq \vert f'(0) \vert$ and, since $f$ is non-constant and $\restr{\alpha_f}{\partial \D} = 0$ we even have $p \in \D$.
+    is continuous and assumes its maximum $C_f > 0$ at some point $p \in \cl{\D}$. Note that $C_f \geq \vert f'(0) \vert$ and, since $f$ is non-constant and $\restr{\alpha_f}{\partial \D} = 0$, we even have $p \in \D$.
 
     Set $t \coloneqq \frac{1}{2}(1 - \vert p \vert) > 0$, then we have $B_{t}(p) \subseteq \D$. Furthermore, for $z \in B_t(p)$, we have
     $$ 1 - \vert z \vert \geq 1 - \vert z - p \vert - \vert p \vert \geq 1 - t - \vert p \vert = t. $$
@@ -86,7 +86,9 @@ In the following we will denote by $\beta > 0$ any constant less than or equal t
 \end{corollary}
 
 \begin{proof}
-    We may assume $c = 0$, otherwise we consider $f_1(z) \coloneqq f(z+c)$. Let $0 < s < d(c, \partial G)$, then $f$ is holomorphic on $\cl{B_s(0)} \subseteq G$, thus we have $g(z) \coloneqq f(sz) / sf'(0) \in H(\D) \cap C(\cl{\D}; \C)$. Since $g'(0) = 1$, Bloch's Theorem yields a disk $B$ of radius $\beta$ with $B \subseteq g(\D)$. Then $D \coloneqq s \vert f'(0) \vert B$ is a disk of radius $\beta s \vert f'(0) \vert$ and we have
+    We may assume $c = 0$, otherwise we consider $f_1(z) \coloneqq f(z+c)$. Let $0 < s < d(c, \partial G)$, then $f$ is holomorphic in and continuous on $\cl{B_s(0)} \subseteq G$, thus we have
+    $$ g(z) \coloneqq \frac{f(sz)}{sf'(0)} \in H(\D) \cap C(\cl{\D}; \C). $$
+    Since $g'(0) = 1$, Bloch's Theorem yields a disk $B$ of radius $\beta$ with $B \subseteq g(\D)$. Then $D \coloneqq s \vert f'(0) \vert B$ is a disk of radius $\beta s \vert f'(0) \vert$ and we have
     \begin{equation*}
         D = s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(G). \qedhere
     \end{equation*}

@@ -1,4 +1,4 @@
-\subsection{Canonical Products}
+\section{Canonical Products} \label{sec:canonical-products}
 
 By the Fundamental Theorem of Algebra every complex polynomial can be written as a product of linear factors involving only its roots and some scaling factor. Conversely, for a finite sequence of points $z_1, \hdots, z_n$ the polynomial $p(z) \coloneqq \prod_{k=1}^n (z - z_k)$ vanishes only at said points.
 
@@ -51,7 +51,7 @@ The early parts of the section will closely follow Stein and Shakarchi \cite{ste
     \end{equation*}
 \end{proof}
 
-The next theorem -- which is also known as the \emph{Weierstrass Product Theorem} -- now constructively asserts the existence of entire function with prescribed zeros.
+The next theorem -- which is also known as the \emph{Weierstraß Product Theorem} -- now constructively asserts the existence of entire function with prescribed zeros.
 
 \begin{theorem} \label{thm:function-with-prescribed-zeros}
     Let $M \subseteq \N$ and $\mathbf{z} = (z_m)_{m \in M}$ be a family in $\C^\times$ without accumulation points. Then there is a family $(p_m)_{m \in M}$ in $\N_0$ such that
@@ -62,7 +62,7 @@ The next theorem -- which is also known as the \emph{Weierstrass Product Theorem
     \begin{equation}
         \mu \coloneqq \min \left\{ p \in \N_0 : \sum_{m \in M} \frac{1}{\vert z_m \vert^{p+1}} < \infty \right\}
     \end{equation}
-    is finite then one can take $p_m = \mu, m \in M$.
+    is finite, then one can take $p_m = \mu, m \in M$.
 \end{theorem}
 
 \begin{proof}
@@ -90,27 +90,27 @@ The next theorem -- which is also known as the \emph{Weierstrass Product Theorem
 \end{proof}
 
 \begin{definition} \label{def:canonical-product}
-    With the notation of \Cref{thm:function-with-prescribed-zeros}, $\Pi$ is called a \emph{Weierstrass product}\footnote{Note that this product is not uniquely determined, since the sequence $(p_m)_{m \in M}$ is not unique.} formed from the family $\mathbf{z}$. If $\mu < \infty$ then
+    With the notation of \Cref{thm:function-with-prescribed-zeros}, $\Pi$ is called a \emph{Weierstraß product}\footnote{Note that this product is not uniquely determined, since the sequence $(p_m)_{m \in M}$ is not unique.} formed from the family $\mathbf{z}$. If $\mu < \infty$, then
     \begin{equation}
         \Pi(z) \coloneqq \prod_{m \in M} W\left(\frac{z}{z_m}; \mu \right)
     \end{equation}
-    is called a \emph{(Weierstrass) canonical product} and $\mu$ is called the \emph{genus} of the canonical product, which will also be denoted as $\mu_\Pi$. Otherwise the genus of $\Pi$ is said to be infinite.
+    is called a \emph{(Weierstraß) canonical product} and $\mu$ is called the \emph{genus} of the canonical product, which will also be denoted as $\mu_\Pi$. Otherwise the genus of $\Pi$ is said to be infinite.
 \end{definition}
 
 \begin{remark}
-    By comparing \Cref{def:zero-exponent} and \Cref{def:canonical-product} we immediately observe that if $\lambda_\Pi < \infty$ then $\mu_\Pi \leq \lambda_\Pi \leq \mu_\Pi + 1$. If therefore $\lambda_\Pi$ is an integer, and $\Pi$ has infinitely many zeros, the series
+    By comparing \Cref{def:zero-exponent} and \Cref{def:canonical-product} we immediately observe that if $\lambda_\Pi < \infty$, then $\mu_\Pi \leq \lambda_\Pi \leq \mu_\Pi + 1$. If therefore $\lambda_\Pi$ is an integer, and $\Pi$ has infinitely many zeros, the series
     $$ \sum_{m \in M} \frac{1}{\vert z_m \vert^{\lambda}}, $$
     will converge if $\lambda_\Pi = \mu_\Pi + 1$ and diverge if $\lambda_\Pi = \mu_\Pi$.
 \end{remark}
 
-Just as any polynomial decomposes into linear factors involving their roots by to the Fundamental Theorem of Algebra, Weierstrass products allow us to obtain a similar factorization result for arbitrary entire functions, known as the \emph{Weierstrass Factorization Theorem}.
+Just as any polynomial decomposes into linear factors involving their roots by the Fundamental Theorem of Algebra, Weierstraß products allow us to obtain a similar factorization result for arbitrary entire functions, known as the \emph{Weierstraß Factorization Theorem}.
 
-\begin{theorem}[Weierstrass] \label{thm:weierstrass}
-    Let $f \in H(\C)$ be not identically zero and let $m \in \N_0$ be the order of the zero of $f$ at the origin. Then there exists a $g \in H(\C)$ such that
+\begin{theorem}[Weierstraß] \label{thm:Weierstraß}
+    Let $f \in H(\C)$ be not identically zero and let $m \in \N_0$ be the order of the zero of $f$ at the origin. Then there exists $g \in H(\C)$ such that
     \begin{equation}
         f(z) = z^m e^{g(z)} \Pi(z),
     \end{equation}
-    where $\Pi$ denotes a Weierstrass product formed from the zeros of $f$.
+    where $\Pi$ denotes a Weierstraß product formed from the zeros of $f$.
 \end{theorem}
 
 \begin{proof}
@@ -122,12 +122,12 @@ Just as any polynomial decomposes into linear factors involving their roots by t
 \end{proof}
 
 \begin{definition} \label{def:genus}
-    In the context of Weierstrass' Theorem, if $\Pi$ is of finite genus and $g$ is a polynomial, then the \emph{genus of the entire function $f$} is defined as
+    In the context of Weierstraß' Theorem, if $\Pi$ is of finite genus and $g$ is a polynomial, then the \emph{genus of the entire function $f$} is defined as
     \begin{equation}
         \mu_f \coloneqq \max \{ \mu_\Pi, \deg g \}.
     \end{equation}
 
-    If $g$ is not a polynomial or if $\Pi$ is of infinite genus then $f$ is said to be of infinite genus.
+    If $g$ is not a polynomial or if $\Pi$ is of infinite genus, then $f$ is said to be of infinite genus.
 \end{definition}
 
 We wish to further estimate canonical products. To do this we first focus on the canonical factors.
@@ -201,7 +201,7 @@ We wish to further estimate canonical products. To do this we first focus on the
     \end{align*}
 \end{proof}
 
-\begin{theorem} \label{thm:exponent-of-convergence-weierstrass-product}
+\begin{theorem} \label{thm:exponent-of-convergence-Weierstraß-product}
     Let $\Pi \in H(\C)$ be a canonical product of finite order, then $\lambda_\Pi = \rho_\Pi$.
 \end{theorem}
 
@@ -235,12 +235,14 @@ We wish to further estimate canonical products. To do this we first focus on the
     The right-most term asymptotically dominates, therefore $M_\Pi(r) = \O(\exp(\varepsilon r^{\mu + 1}))$ and thus $\Pi$ is at most of order $\mu + 1 = \lambda_\Pi$ and, since $\varepsilon$ was arbitrary, minimal type.
 \end{proof}
 
+\todo{Short introductory remark for the theorem.}
+
 \begin{theorem} \label{thm:canonical-product-type-density}
     Let $\Pi \in H(\C)$ be a canonical product of finite order. If $\lambda_\Pi$ is not an integer, then $\Pi$ is of maximal, minimal or normal type according to whether $\Delta_\Pi$ is equal to infinity, zero, or a positive, real number.
 \end{theorem}
 
 \begin{proof}
-    by \Cref{lem:zeros-bounded-by-modulus} there is a constant $K > 0$ such that for all sufficiently large $r$ we have $n_\Pi(r) \leq K \log M_\Pi(er)$ and by \Cref{prop:zeros-order-equals-zeros-exponent} and \Cref{thm:exponent-of-convergence-weierstrass-product} we have $\nu_\Pi = \lambda_\Pi = \rho_\Pi$. Therefore we have, for large $r$,
+    by \Cref{lem:zeros-bounded-by-modulus} there is a constant $K > 0$ such that for all sufficiently large $r$ we have $n_\Pi(r) \leq K \log M_\Pi(er)$ and by \Cref{prop:zeros-order-equals-zeros-exponent} and \Cref{thm:exponent-of-convergence-Weierstraß-product} we have $\nu_\Pi = \lambda_\Pi = \rho_\Pi$. Therefore we have, for large $r$,
     \begin{equation} \label{eq:density-smaller-constant-type}
         \frac{n_\Pi(r)}{r^{\nu_\Pi}} = \frac{n_\Pi(r)}{r^{\rho_\Pi}} \leq K e^{\rho_\Pi} \frac{\log M_\Pi(er)}{(e r)^{\rho_\Pi}}.
     \end{equation}
@@ -250,7 +252,7 @@ We wish to further estimate canonical products. To do this we first focus on the
     \begin{equation*}
         n_\Pi(r) \leq \Delta r^{\nu_\Pi} = \Delta r^{\rho_\Pi}. 
     \end{equation*}
-    As demonstrated in the proof of \Cref{thm:exponent-of-convergence-weierstrass-product}, we can find a constant $C_{\lambda_\Pi} > 0$ such that for all $r > 0$ we have
+    As demonstrated in the proof of \Cref{thm:exponent-of-convergence-Weierstraß-product}, we can find a constant $C_{\lambda_\Pi} > 0$ such that for all $r > 0$ we have
     \begin{equation*}
         n_\Pi(r) \leq C_{\lambda_\Pi} \Delta r^{\rho_\Pi}
     \end{equation*}

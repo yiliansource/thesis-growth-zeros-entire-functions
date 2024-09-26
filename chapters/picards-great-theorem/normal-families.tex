@@ -6,22 +6,23 @@ First, we recall a generalized form of locally uniform convergence:
 \begin{definition}
     Let $G \subseteq \C$ be a domain, $f \in H(G)$ and $(f_n)_{n \in \N}$ a sequence in $H(G)$. We say that \emph{$f_n$ converges compactly in $G$ to $f$}, or \emph{$f_n$ converges compactly in $G$ to $\infty$} as $n \to \infty$, if for every compact set $K \subset G$
     \begin{equation}
-        \lim_{n \to \infty} \sup_{z \in K} \vert f_n(z) - f(z) \vert = 0, \quad \textrm{or} \quad \lim_{n \to \infty} \inf_{z \in K} \vert f_n(z) \vert = \infty. \qedhere
+        \lim_{n \to \infty} \sup_{z \in K} \vert f_n(z) - f(z) \vert = 0, \quad \textrm{or} \quad \lim_{n \to \infty} \inf_{z \in K} \vert f_n(z) \vert = \infty,
     \end{equation}
+    where the supremum and infimum over empty sets are defined as $0$ and $\infty$, respectively.
 \end{definition}
 
-\begin{remark}
-    One can define compact convergence generally for functions from a topological space $(X, \mathcal{T})$ into a metric space $(Y, d_Y)$. Compact convergence to $\infty$ can then be seen as compact convergence to a constant function with value $\infty$, where $d_Y(y, \infty)$ is appropriately defined for $y \in Y$. This is precisely the case when considering the chordal metric of the Riemann sphere, but we shall not elaborate further on this.
-\end{remark}
+% \begin{remark}
+%     One can define compact convergence generally for functions from a topological space $(X, \mathcal{T})$ into a metric space $(Y, d_Y)$. Compact convergence to $\infty$ can then be seen as compact convergence to a constant function with value $\infty$, where $d_Y(y, \infty)$ is appropriately defined for $y \in Y$. This is precisely the case when considering the chordal metric of the Riemann sphere, but we shall not elaborate further on this.
+% \end{remark}
 
 \begin{definition}
     Let $f : \C \to \C$ and $a \in \C$, then the \emph{a-points of $f$} are defined as the zeros of $f(z) - a$, that is the set of all points $w \in \C$ with $f(w) = a$.
 \end{definition}
 
-A well-known theorem on compact convervence is:
+A well-known theorem on compact convergence is:
 
 \begin{theorem}[Hurwitz] \label{thm:hurwitz}
-    Let $G \subseteq \C$ be a domain and $(f_n)_{n \in \N}$ a sequence in $H(G)$ that converges compactly to $f \in H(G)$. If for every $n \in \N$ the number of $a$-points of $f_n$ is bounded by some $m \in \N_0$, then either
+    Let $G \subseteq \C$ be a domain, $a \in \C$ and $(f_n)_{n \in \N}$ a sequence in $H(G)$ that converges compactly to $f \in H(G)$. If for every $n \in \N$ the number of $a$-points of $f_n$ is bounded by some $m \in \N_0$, then either
     \begin{itemize}
         \item the number of $a$-points of $f$ are also bounded by $m$ or
         \item $f \equiv a$.
@@ -31,12 +32,12 @@ A well-known theorem on compact convervence is:
 As an immediate consequence we obtain that compact convergence is, in some ways, compatible with reciprocals:
 
 \begin{lemma} \label{lem:compact-convergence-reciprocals}
-Let $G \subseteq \C$ be a domain and $(f_n)_{n \in \N}$ a sequence in $H(G; \C \setminus \{ 0 \})$. If it converges compactly to some $f \in H(G)$, then it holds that either:
+Let $G \subseteq \C$ be a domain and $(f_n)_{n \in \N}$ a sequence in $H(G; \C \setminus \{ 0 \})$. If $(f_n)_{n \in \N}$ converges compactly to some $f \in H(G)$, then it holds that either:
 \begin{itemize}
     \item $0 \notin f(G)$ and $1 / f_n \to 1 / f$ compactly in $G$, or
     \item $f \equiv 0$ and $1 / f_n \to \infty$ compactly in $G$.
 \end{itemize}
-If it converges compactly to $\infty$, then $1 / f_n \to 0$ compactly in $G$.
+If, on the other hand, $(f_n)_{n \in \N}$ converges compactly to $\infty$, then $1 / f_n \to 0$ compactly in $G$.
 \end{lemma}
 
 \begin{proof}
@@ -44,9 +45,9 @@ If it converges compactly to $\infty$, then $1 / f_n \to 0$ compactly in $G$.
     \begin{equation*}
         \frac{1}{\sup_{z \in K} \vert f_n(z) \vert} = \inf_{z \in K} \left\vert \frac{1}{f_n(z)} \right\vert.
     \end{equation*}
-    Since the $f_n$ vanish nowhere, by Hurwitz' Theorem we either have $0 \notin f(G)$ or $f \equiv 0$. In the latter case we have just shown that $1 / f_n \to \infty$ compactly.
+    Since the functions $(f_n)_{n \in \N}$ vanish nowhere, by Hurwitz' Theorem we either have $0 \notin f(G)$ or $f \equiv 0$. In the latter case we have just shown that $1 / f_n \to \infty$ compactly.
 
-    In the former case we have, again for any compact $K \subset G$, that $m \coloneqq \min_{z \in K} \vert f(z) \vert > 0$ and $\sup_{z \in K} \vert f_n(z) - f(z) \vert < \frac{m}{2}$ for sufficiently large $n \in \N$. Thus for all $z \in K$
+    In the former case, we have, again for any compact $K \subset G$, that $m \coloneqq \min_{z \in K} \vert f(z) \vert > 0$ and $\sup_{z \in K} \vert f_n(z) - f(z) \vert < \frac{m}{2}$ for all sufficiently large $n \in \N$. Thus, for all $z \in K$
     \begin{equation*}
         \frac{m}{2} > \vert f(z) - f_n(z) \vert \geq \vert f(z) \vert - \vert f_n(z) \vert \geq  m - \vert f_n(z) \vert
     \end{equation*}
@@ -61,44 +62,46 @@ If it converges compactly to $\infty$, then $1 / f_n \to 0$ compactly in $G$.
     Let $G \subseteq \C$ be a domain and $\F \subseteq H(G)$, then $\F$ is called:
     \begin{itemize}
         \item \emph{locally bounded}, if for every $w \in G$ there is a neighborhood $U$ of $w$ and a constant $C > 0$ such that $\vert f(z) \vert \leq C$ for all $f \in \F$ and $z \in U$.
-        \item \emph{normal} in $G$, if every sequence in $\F$ has a subsequence which converges compactly in $G$ to some $f \in H(G)$. If the limit $\infty$ is also permitted it is instead called \emph{$\ast$-normal}.
+        \item \emph{normal} in $G$, if every sequence in $\F$ has a subsequence which converges compactly in $G$ to some $f \in H(G)$. If the limit $\infty$ is also permitted, it is instead called \emph{$\ast$-normal}.
     \end{itemize}
 \end{definition}
 
-The former two concepts are equivalent by the following well-known theorem:
+These two concepts are equivalent by the following well-known theorem:
 
 \begin{theorem}[Montel] \label{thm:montel}
     Let $G \subseteq \C$ be a domain, then a family $\F \subseteq H(G)$ is normal if and only if it is locally bounded.
 \end{theorem}
 
-The following theorem can be interpreted as a sharpened version of Montel's Theorem and is sometimes referred to as the \emph{fundamental normality test}.
+The following theorem can now be interpreted as a sharpened version of the above:
 
-\begin{theorem} \label{lem:montel-sharpened}
+\begin{theorem}[Fundamental Normality Test] \label{lem:montel-sharpened}
     Let $G \subseteq \C$ be a domain, then any family $\F \subseteq H(G, \C \setminus \{ 0, 1 \})$ is $\ast$-normal in $G$.
 \end{theorem}
 
 \begin{proof}
     We present the proof in three steps:
     \begin{enumerate}
-        \item Let $w \in G$, $c > 0$ and $\F_* \subseteq \F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is an open disk at $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $B_t(w) \subseteq G$. Let $f \in \F_*$, then $g(z) \coloneqq f(tz + w) \in H(\D)$. By the maximum modulus principle and Schottky's Theorem we obtain
-        $$ \sup_{z \in B_{t/2}(w)} \vert f(z) \vert \leq \sup_{z \in B_{1/2}(0)} \vert g(z) \vert \leq \sup_{\vert z \vert = 1/2} \vert g(z) \vert \leq \psi(1/2, c) $$
+        \item Let $w \in G$, $c > 0$ and $\F_* \subseteq \F$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_*$. We aim to show that there is an open disk around $w$ in which $\F_*$ is bounded. Select $t > 0$ such that $B_t(w) \subseteq G$. Let $f \in \F_*$, then $g(z) \coloneqq f(tz + w) \in H(\D)$. By the maximum modulus principle and $\psi$ from Schottky's Theorem we obtain
+        $$ \sup_{z \in B_{t/2}(w)} \vert f(z) \vert = \sup_{z \in B_{1/2}(0)} \vert g(z) \vert \leq \sup_{\vert z \vert = 1/2} \vert g(z) \vert \leq \psi(1/2, c) $$
         and $f$ is bounded on the disk $B_{t/2}(w)$. Since $f$ was arbitrary, $\F_*$ is bounded as well.
 
         \item Fix some $w_* \in G$ and set $\F_1 \coloneqq \{ f \in \F : \vert f(w_*) \vert \leq 1 \}$. We aim to show that $\F_1$ is locally bounded in $G$. Consider the set
         $$ U \coloneqq \{ w \in G : \F_1 \textrm{ is bounded in a neighborhood of } w \}, $$
-        by (1) we have that $w_* \in U$. Note that $U$ is open in $G$, since if $\F_1$ is bounded in a disk $B_r(w)$, then for any $w' \in B_r(w)$ there is a disk $B_{r'}(w') \subseteq B_r(w)$, on which $\F_1$ is bounded as well.
+        by 1. we have that $w_* \in U$. Note that $U$ is open in $G$, since if $\F_1$ is bounded in a disk $B_r(w)$, then for any $w' \in B_r(w)$ there is a disk $B_{r'}(w') \subseteq B_r(w)$, on which $\F_1$ is bounded as well.
         
         Assume towards a contradiction that $U \neq G$, then there exists some $w \in \partial U \cap G$ such that $\F_1$ is unbounded in every neighborhood of $w$.
 
-        If there were some $c > 0$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_1$, then by (1) there would exist an open disk centered at $w$ on which $\F_1$ would be bounded -- contradicting our assumption on $w$. Thus for every $n \in \N$, we can find some $f_n \in \F_1$ such that $\vert f_n(w) \vert \geq n$ and we obtain that $\lim_{n \to \infty} \vert f_n(w) \vert = \infty$.
+        If there were some $c > 0$ such that $\vert f(w) \vert \leq c$ for all $f \in \F_1$, then by 1. there would exist an open disk centered at $w$ on which $\F_1$ would be bounded -- contradicting our assumption on $w$. Thus, for every $n \in \N$ we can find some $f_n \in \F_1$ such that $\vert f_n(w) \vert \geq n$ and we obtain that $\lim_{n \to \infty} \vert f_n(w) \vert = \infty$.
         
-        Set $g_n \coloneqq 1 / f_n \in \F$, then $\lim_{n \to \infty} \vert g_n(w) \vert = 0$. In particular, the family $(g_n)_{n \in \N}$ is bounded at $w$ by some constant, thus by (1) the family is bounded in some disk $B$ around $w$. By Montel's Theorem it is therefore normal in $B$, and there exists a subsequence $(g_{n_k})_{k \in \N}$ which converges compactly to a $g \in H(B)$. The functions $g_{n_k}$ have no zeros, but $g(w) = 0$; by Hurwitz's Theorem we therefore have $g \equiv 0$. Then for any $z \in B \cap U$ we have
+        Since the functions $(f_n)_{n \in \N}$ do not assume $0$ or $1$ as values, the functions $g_n \coloneqq 1 / f_n, n \in \N$ are well-defined, do not assume $0$ or $1$ as values, and satisfy
+        $$ \lim_{n \to \infty} \vert g_n(w) \vert = 0. $$
+        In particular, the family $(g_n)_{n \in \N}$ is bounded at $w$ by some constant, thus by 1. the family is bounded in some disk $B$ around $w$. By Montel's Theorem it is therefore normal in $B$, and there exists a subsequence $(g_{n_k})_{k \in \N}$ which converges compactly to some $g \in H(B)$. The functions $g_{n_k}$ have no zeros, but $g(w) = 0$; by Hurwitz's Theorem we therefore have $g \equiv 0$. Then for any $z \in B \cap U$ we have
         $$ \lim_{k \to \infty} \vert f_{n_k}(z) \vert = \lim_{k \to \infty} 1 / \vert g_{n_k}(z) \vert = \infty, $$
         contradicting the assumption that $\F_1$ is bounded in a neighborhood of such $z$. We thus have $U = G$, therefore $\F_1$ is locally bounded and by Montel's Theorem therefore normal.
 
         \item We can now conclude the proof. Let $(f_n)_{n \in \N}$ be a sequence in $\F$, we claim that it has some subsequence which converges compactly to some function in $H(G)$ or to $\infty$.
         
-        If infinitely many $f_n$ lie in $\F_1$, then there is a subsequence $(f_{n_m})_{m \in \N}$ in $\F_1$, which by (2) has a subsequence $(f_{n_{m_k}})_{k \in \N}$ in $\F_1$ which convergences compactly in $G$ to some $f \in H(G)$. This sequence is also a subsequence of $(f_n)_{n \in \N}$, concluding the claim in this case.
+        If infinitely many $f_n$ lie in $\F_1$, then there is a subsequence $(f_{n_m})_{m \in \N}$ in $\F_1$, which by 2. has a subsequence $(f_{n_{m_k}})_{k \in \N}$ in $\F_1$ which converges compactly in $G$ to some $f \in H(G)$. This sequence is also a subsequence of $(f_n)_{n \in \N}$, concluding the claim in this case.
         
         On the other hand, if there are only finitely many $f_n$ in $\F_1$, then infinitely many $1 / f_n$ lie in $\F_1$. As above, we thus obtain some subsequence in $\F_1$, say $(g_n)_{n \in \N}$, converging compactly in $G$ to some $g \in H(G)$. The sequence $(1 / g_n)_{n \in \N}$ is a subsequence of $(f_n)_{n \in \N}$, which -- by \Cref{lem:compact-convergence-reciprocals} -- converges compactly to $1 / g$ if $0 \notin g(G) $, and to $\infty$ otherwise. \qedhere
     \end{enumerate}

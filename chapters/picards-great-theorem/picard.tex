@@ -1,6 +1,8 @@
 \section{Picard's Great Theorem}
 \label{sec:picards-great-theorem}
 
+\todo{We are now ready to show Picard's Great Theorem, bla bla bla einleitende Worte.}
+
 The following lemma is essential in showing that functions, which omit two values on the punctured unit disk, cannot have an essential singularity at $0$.
 
 \begin{lemma} \label{lem:great-picard-bounded}
@@ -8,17 +10,17 @@ The following lemma is essential in showing that functions, which omit two value
 \end{lemma}
 
 \begin{proof}
-    For $n \in \N$ set $f_n(z) \coloneqq f(z / n) \in H(\D^\times; \C \setminus \{ 0, 1 \})$. By \Cref{lem:montel-sharpened} the sequence $(f_n)_{n \in \N}$ has a subsequence $(f_{n_k})_{k \in \N}$ that converges compactly to a $f \in H(\D^\times)$ or to $\infty$.
+    For $n \in \N$ set $f_n(z) \coloneqq f(z / n) \in H(\D^\times; \C \setminus \{ 0, 1 \})$. By \Cref{lem:montel-sharpened} the sequence $(f_n)_{n \in \N}$ has a subsequence $(f_{n_k})_{k \in \N}$ that converges compactly to some $f \in H(\D^\times)$ or to $\infty$.
 
-    Assume the former case, then there is some $k_0 \in \N$, such that for all $k \geq k_0$ we have $ \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} < 1 $ and thus
+    Assume the former case, then there is some $k_0 \in \N$ such that for all $k \geq k_0$ we have $ \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} < 1 $ and thus
     \begin{equation*}
-        \Vert f \Vert_{\partial B_{1/2n_k}(0)} = \Vert f_{n_k} \Vert_{\partial B_{1/2}(0)} \leq \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} + \Vert f \Vert_{\partial B_{1/2}(0)} \leq 1 + \Vert f \Vert_{\partial B_{1/2}(0)},
+        \Vert f \Vert_{\partial B_{1/(2n_k)}(0)} = \Vert f_{n_k} \Vert_{\partial B_{1/2}(0)} \leq \Vert f_{n_k} - f \Vert_{\partial B_{1/2}(0)} + \Vert f \Vert_{\partial B_{1/2}(0)} \leq 1 + \Vert f \Vert_{\partial B_{1/2}(0)},
     \end{equation*}
-    whereby $f$ is bounded on $\partial B_{1/2n_k}(0)$. By the maximum modulus principle, $f$ therefore must be bounded on every annulus $1 / (2 n_{k + 1}) \leq \vert z \vert \leq 1 / (2 n_k)$, for $k \geq k_0$. Thus $f$ is bounded on
-    $$ \bigcup_{k \geq k_0} \left\{ z \in \C : \frac{1}{2 n_{k+1}} \leq \vert z \vert \leq \frac{1}{2 n_k} \right\} = \cl{B_{1/2n_k}(0)} \setminus \{ 0 \}, $$
+    whereby $f$ is bounded on $\partial B_{1/(2n_k)}(0)$ uniformly, with respect to $k$. By the maximum modulus principle, $f$ therefore must be bounded uniformly on every annulus $1 / (2 n_{k + 1}) \leq \vert z \vert \leq 1 / (2 n_k)$ for $k \geq k_0$. Thus, $f$ is bounded on
+    $$ \bigcup_{k \geq k_0} \left\{ z \in \C : \frac{1}{2 n_{k+1}} \leq \vert z \vert \leq \frac{1}{2 n_k} \right\} = \cl{B_{1/(2n_k)}(0)} \setminus \{ 0 \}, $$
     which is a punctured neighborhood of zero.
 
-    In the latter case, $(1 / f_{n_k})_{k \in \N}$ converges compactly to $0$ by \Cref{lem:compact-convergence-reciprocals}. Replacing $f_{n_k}$ with $1 / f_{n_k}$ and $f$ with $0$ in the above, we likewise obtain that $1 / f$ is bounded in a punctured neighborhood of zero.
+    In the latter case, $(1 / f_{n_k})_{k \in \N}$ converges compactly to $0$ by \Cref{lem:compact-convergence-reciprocals}. Replacing $f_{n_k}$ with $1 / f_{n_k}$ and $f$ with $0$ in the above, we similarly obtain that $1 / f$ is bounded in a punctured neighborhood of zero.
 \end{proof}
 
 \begin{theorem}[Picard's Great Theorem] \label{thm:picards-great-theorem}
@@ -30,7 +32,7 @@ Such an exceptional value is also referred to as a \emph{Picard exceptional valu
 \begin{proof}
     Assume towards a contradiction that $f$ takes on two distinct values $a, b \in \C$ only finitely often in some punctured neighborhood $W$ of $w$, then $W$ contains a punctured disk of radius $t > 0$ around $w$, on which $f$ does not assume $a$ or $b$, and thus
     $$ g(z) \coloneqq \frac{f(t z + w) - a}{b - a} \in H(\D^\times; \C \setminus \{ 0, 1 \}), $$
-    where $g$ has an essential singularity at zero. By \Cref{lem:great-picard-bounded}, we have that either $g$ or $1/g$ must be bounded in a punctured neighborhood of zero. Using the classification of isolated singularities, assuming the former case we have that the singularity must be removable, whereas in the latter case it must be a pole, yielding a contradiction.
+    where $g$ has an essential singularity at zero. By \Cref{lem:great-picard-bounded}, we have that either $g$ or $1/g$ must be bounded in a punctured neighborhood of zero. Using the classification of isolated singularities, assuming the former case we have that the singularity must be removable, whereas in the latter case it must be a pole, yielding a contradiction in both cases.
 \end{proof}
 
 The following corollary is also referred to as Picard's Great Theorem. Here an entire transcendental function is an entire function which is not a polynomial.
@@ -48,5 +50,5 @@ The following corollary is also referred to as Picard's Great Theorem. Here an e
     
     A non-constant $f \in H(\C)$ is either a non-constant polynomial or transcendental. In the latter case, $f$ omits at most one value by \Cref{cor:transcendental-every-value-inf}.
     
-    In the former case let $w \in \C$, then $f(z) - w$ has a zero in $\C$ by the Fundamental Theorem of Algebra and hence $f$ assumes all values.
+    In the former case, let $w \in \C$, then $f(z) - w$ has a zero in $\C$ by the Fundamental Theorem of Algebra and hence $f$ even assumes all values.
 \end{remark}

@@ -14,16 +14,16 @@ Necessary conditions for the order of a composition to be finite will be given b
 \begin{proof}
     Since $G$ is open and contains $0$ there is some $t > 0$ such that $B_t(0) \subseteq G$. Since $\partial B_t(0) \subset \cl{B_t(0)} \subseteq \cl{G}$ we thus have $t \in S$ and $S$ is non-empty. It now suffices to show that $S$ is compact, since then it would contain its maximum $m \geq t$. Clearly $S$ is bounded from below by $0$ and since $\cl{G}$ is bounded it must also be bounded from above. Thus it remains to show that $S$ is closed.
 
-    Let $(r_n)_{n \in \N}$ be a convergent sequence in $S$ with limit $r \in [0, \infty)$. If $r = 0$, then $r \in S$. Otherwise we claim that $\partial B_r(0) \subseteq \cl{G}$. Let $z \in \partial B_r(0)$, and set $z_n \coloneqq r_n z / r$ for $n \in \N$. Now $\vert z_n \vert = r_n$, thus $z_n \in \partial B_{r_n}(0) \subseteq \cl{G}$ and therefore $(z_n)_{n \in \N}$ is a sequence in $\overline{G}$. Clearly $z_n \to z$ and since $\cl{G}$ is closed we therefore have $z \in \overline{G}$. Since $z$ was arbitrary, this concludes the claim, we have $r \in S$ and thus $S$ is closed.
+    Let $(r_n)_{n \in \N}$ be a convergent sequence in $S$ with limit $r \in [0, \infty)$. If $r = 0$, then $r \in S$. Otherwise we claim that $\partial B_r(0) \subseteq \cl{G}$. Let $z \in \partial B_r(0)$, and set $z_n \coloneqq r_n z / r$ for $n \in \N$. Now $\vert z_n \vert = r_n$, thus $z_n \in \partial B_{r_n}(0) \subseteq \cl{G}$ and therefore $(z_n)_{n \in \N}$ is a sequence in $\overline{G}$. Clearly $z_n \to z$ and since $\cl{G}$ is closed, we therefore have $z \in \overline{G}$. Since $z$ was arbitrary, this concludes the claim, we have $r \in S$ and thus $S$ is closed.
 \end{proof}
 
 If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non-constant with $f(0) = 0$, then $f(G)$ is a bounded domain with $0 \in f(G)$. This, together with \Cref{prop:existence-circle-maximal-radius}, justifies the following definition:
 
 \begin{definition}
-    Let $f \in H(\D) \cap C(\cl{\D}; \C)$ be non-constant with $f(0) = 0$, then we define $r_f$ as the positive maximum of the set $S$ in \eqref{eq:set-circle-maximal-radius}, where $G = f(\D)$.
+    Let $f \in H(\D) \cap C(\cl{\D}; \C)$ be non-constant with $f(0) = 0$, then we define $r_f$ as the positive maximum of the set $S$ in \eqref{eq:set-circle-maximal-radius} with $G = f(\D)$.
 \end{definition}
 
-Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
+Bohr's Theorem now asserts that $r_f$ (almost) does not depend on $f$ itself:
 
 \begin{theorem}[Bohr] \label{thm:bohr}
     There exists a function ${\phi : (0, 1) \to (0, \infty)}$ such that for any $\theta \in (0, 1)$ and $f \in H(\D) \cap C(\cl{\D}; \C)$ with $f(0) = 0$ and $M_f(\theta) = 1$ it holds that $r_f \geq \phi(\theta)$.
@@ -40,6 +40,8 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
     $$ r_f \geq \frac{1}{1 + 3 \psi(\theta, 1)}$$
     and defining $\phi(\theta)$ as the right-hand side establishes the assertion.
 \end{proof}
+
+\todo{Short introduction to Pólyas Theorem.}
 
 \begin{theorem}[Pólya] \label{thm:polya}
     Let $g, h \in H(\C)$ be non-constant. For the order of $g \circ h$ to be finite, it must hold that either
@@ -75,6 +77,8 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
     which implies $\rho_h \leq \alpha < \infty$.
 \end{proof}
 
+Once again, a transcendental entire function is an entire function that is not a polynomial.
+
 \begin{theorem}[Thron] \label{thm:thron}
     Let $g \in H(\C)$ be transcendental, $\rho_g < \infty$ and suppose that $g$ assumes some value $w \in \C$ only finitely often. Then there exists no $f \in H(\C)$ with $f \circ f = g$.
 \end{theorem}
@@ -98,5 +102,5 @@ Bohr's Theorem now asserts that $r_f$ does (almost) not depend on $f$ itself:
 \begin{example}
     A natural application of Thron's Theorem is to set $g(z) \coloneqq \exp z$, which never assumes zero as a value. Indeed, this implies that there is no $f \in H(\C)$ satisfying
     $$ f(f(z)) = \exp z. $$
-    On the other hand, there does exist a real-analytic function satisfying the above. The construction of such a function is difficult, but was demonstrated by H. Kneser \cite{kneser-real-analytic-solution}.
+    On the other hand, there does exist a \emph{real}-analytic function satisfying the above. Constructing such a function, however, is difficult, but was demonstrated by H. Kneser \cite{kneser-real-analytic-solution}.
 \end{example}

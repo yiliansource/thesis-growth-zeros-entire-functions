@@ -1,11 +1,10 @@
-\subsection{Hadamard's Theorem}
-\label{sec:hadamards-theorem}
+\section{Hadamard's Theorem} \label{sec:hadamards-theorem}
 
-Our main goal in this section will be to refine the factorization given by the Weierstrass Factorization Theorem for entire functions of finite order. Such a refinement is given by Hadamard's Theorem, the proof of which relies on the following lemma, which can be considered as a version of the maximum modulus principle applied to the real part of a holomorphic function.
+Our main goal in this section will be to refine the factorization given by the Weierstraß Factorization Theorem for entire functions of finite order. Such a refinement is given by Hadamard's Theorem, the proof of which relies on the following lemma, which can be considered as a version of the maximum modulus principle applied to the real part of a holomorphic function.
 
 The contents of this section closely follow the results found in Segal \cite{segal-complex-analysis}.
 
-\begin{lemma}[Borel-Carathéodory] \label{lem:borel-caratheodory}
+\begin{lemma}[Borel--Carathéodory] \label{lem:borel-caratheodory}
     Let $G \subseteq \C$ be a domain, $R > 0$ and suppose $\cl{B_R(0)} \subseteq G$ and $f \in H(G)$. Define $ A_f(r) \coloneqq \max_{\vert z \vert = r} \Re f(z) $, then, for $0 < r < R$,
     \begin{equation} \label{eq:borel-caratheodory-1}
         M_f(r) \leq \frac{2r}{R - r} A_f(R) + \frac{R + r}{R - r} \vert f(0) \vert
@@ -17,7 +16,7 @@ The contents of this section closely follow the results found in Segal \cite{seg
 \end{lemma}
 
 \begin{proof}
-    If $f$ is constant there is nothing to show.
+    If $f$ is constant, there is nothing to show.
 
     We assume $f$ being non-constant. First, for $r > 0$ we have
     \begin{align*}
@@ -76,7 +75,7 @@ The contents of this section closely follow the results found in Segal \cite{seg
 Hadamard's Theorem can also be formulated more concisely: Let $f \in H(\C)$ be of finite order, then $\mu_f \leq \rho_f$, that is the genus of $f$ does not exceed its order.
 
 \begin{proof}
-    We may assume $f(0) \neq 0$. By the Weierstrass Factorization Theorem we have $f(z) = e^{Q(z)} \Pi(z)$ for some $Q \in H(\C)$ and a Weierstrass product $\Pi$. Since
+    We may assume $f(0) \neq 0$. By the Weierstraß Factorization Theorem we have $f(z) = e^{Q(z)} \Pi(z)$ for some $Q \in H(\C)$ and a Weierstraß product $\Pi$. Since
     $$ \mu_\Pi \leq \lambda_\Pi = \lambda_f \leq \rho_f $$
     we may take $\Pi$ to be a canonical product. Set $\nu \coloneqq \lfloor \rho_f \rfloor$, then taking logarithms in the above factorization and differentiating $\nu + 1$ times we get
     \begin{align*}
@@ -117,7 +116,7 @@ Hadamard's Theorem can also be formulated more concisely: Let $f \in H(\C)$ be o
     is an example of a non-polynomial, entire function of order zero and must therefore, by the above reasoning, assume all values in $\C$ infinitely often.
 \end{remark}
 
-Hadamard's Theorem has a few consequences for entire functions of finite order, which we will explore further. Combining it with \Cref{thm:exponent-of-convergence-weierstrass-product} allows us to prove easily prove two results regarding functions of finite, non-integer order.
+Hadamard's Theorem has a few consequences for entire functions of finite order, which we will explore further. Combining it with \Cref{thm:exponent-of-convergence-Weierstraß-product} allows us to prove two results regarding functions of finite, non-integer order.
 
 \begin{theorem} \label{thm:finite-non-integer-order-equals-exponent-of-convergence}
     Let $f \in H(\C)$ be of finite, non-integer order. Then $\rho_f = \lambda_f$.
@@ -126,7 +125,7 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
 \begin{proof}
     By \Cref{thm:inequality-order-exponent-of-convergence} we have $\lambda_f \leq \rho_f$. Invoking Hadamard's Theorem we can write
     $$ f(z) = z^m e^{Q(z)} \Pi(z) $$
-    for some $m \in \N_0$, a polynomial $Q$ with $\deg Q \leq \rho_f$ and a canonical product $\Pi$. Since $\rho_f$ is not an integer we have $\deg Q \leq \lfloor \rho_f \rfloor < \rho_f$. By \Cref{prop:order-exponential-polynomial} $e^Q$ has order at most $\deg Q$ and by \Cref{thm:exponent-of-convergence-weierstrass-product} $\Pi$ has order $\lambda_f$, therefore using \Cref{prop:order-sum-product-estimate} we obtain
+    for some $m \in \N_0$, a polynomial $Q$ with $\deg Q \leq \rho_f$ and a canonical product $\Pi$. Since $\rho_f$ is not an integer we have $\deg Q \leq \lfloor \rho_f \rfloor < \rho_f$. By \Cref{prop:order-exponential-polynomial} $e^Q$ has order at most $\deg Q$ and by \Cref{thm:exponent-of-convergence-Weierstraß-product} $\Pi$ has order $\lambda_f$, therefore using \Cref{prop:order-sum-product-estimate} we obtain
     $$ \rho_f \leq \max \{ 0, \deg Q, \lambda_f \} = \lambda_f \leq \rho_f, $$
     since $\rho_f \leq \max \{ \deg Q, \lambda_f \} = \deg Q < \rho_f$ would be a contradiction, and we get $\rho_f = \lambda_f$.
 \end{proof}
@@ -150,7 +149,7 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
     $$ \alpha(z) \coloneqq f(z) - a = z^{m_1} e^{Q_1(z)} \Pi_1(z), \quad \beta(z) \coloneqq f(z) - b = z^{m_2} e^{Q_2(z)} \Pi_2(z), $$
     where $m_1, m_2 \in \N_0$, $Q_1, Q_2$ are polynomials of degree at most $\rho_f$ and $\Pi_1, \Pi_2$ denote appropriate canonical products. We have
     $$ \deg Q_1 \leq \rho_f = \rho_\alpha \leq \max \{ 0, \deg Q_1, \rho_{\Pi_1} \}, $$
-    and since by \Cref{thm:exponent-of-convergence-weierstrass-product} $\rho_{\Pi_1} = \lambda_f^{(a)} < \rho_f$, it follows that $\deg Q_1 = \rho_f$. The analogous argument for $Q_2$ yields $\deg Q_2 = \rho_f$. Subtracting $\beta$ from $\alpha$ yields
+    and since by \Cref{thm:exponent-of-convergence-Weierstraß-product} $\rho_{\Pi_1} = \lambda_f^{(a)} < \rho_f$, it follows that $\deg Q_1 = \rho_f$. The analogous argument for $Q_2$ yields $\deg Q_2 = \rho_f$. Subtracting $\beta$ from $\alpha$ yields
     \begin{equation} \label{thm:existence-borel-exceptional-values:difference-of-functions}
     \begin{aligned}
                         && b - a &= z^{m_1} e^{Q_1(z)} \Pi_1(z) - z^{m_2} e^{Q_2(z)} \Pi_2(z) \\
@@ -181,7 +180,7 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
     \begin{equation*}
     \begin{aligned}
         && Q_1(z) + Q_3(z) &= Q_2(z) + Q_4(z) \\
-        \Leftrightarrow && Q_2(z) - Q_1(z) &= Q_3(z) - Q(4)
+        \Leftrightarrow && Q_2(z) - Q_1(z) &= Q_3(z) - Q_4(z)
     \end{aligned}
     \end{equation*}
     and by the above the left side is of degree $\rho_f$, whereas the right side is of degree less than $\rho_f$, a contradiction.
@@ -189,7 +188,7 @@ Hadamard's Theorem has a few consequences for entire functions of finite order, 
 
 In the context of Borel's Theorem, we refer to such an exceptional value as a \emph{Borel exceptional value}. The theorem thus shows that entire functions of integer order have at most one Borel exceptional value.
 
-Borel's Theorem together with \Cref{thm:finite-non-integer-order-infinite-zeros} allows us to obtain a stronger version of Picard's Little Theorem for functions of finite, positive order:
+Borel's Theorem together with \Cref{thm:finite-non-integer-order-infinite-zeros} allow us to obtain a stronger version of Picard's Little Theorem for functions of finite, positive order:
 
 \begin{corollary}
     Let $f \in H(\C)$ with $\rho_f \in (0, \infty)$. Then $f$ assumes at most one value only finitely often.
@@ -201,7 +200,7 @@ Borel's Theorem together with \Cref{thm:finite-non-integer-order-infinite-zeros}
     If $\rho_f$ is not an integer, then for any $w \in \C$ the function $f(z) - w$ is also of finite, non-integer order and therefore has infinitely many zeros by \Cref{thm:finite-non-integer-order-infinite-zeros}. Thus $f$ assumes all values infinitely often.
 \end{proof}
 
-Hadamard's Theorem can also be used to obtain a generalization of \Cref{thm:canonical-product-type-density} holding for entire functions other than canonical products. This requires the following result, the proof of which relies on finding a lower bound on the modulus of arbitrary entire functions and can be found as Theorem 12(a) in Levin \cite{levin-distribution-of-zeros}.
+Hadamard's Theorem can also be used to obtain a generalization of \Cref{thm:canonical-product-type-density} which holds for entire functions other than canonical products. This requires the following result, the proof of which relies on finding a lower bound on the modulus of arbitrary entire functions and can be found in Levin \cite{levin-distribution-of-zeros} as Theorem 12(a).
 
 \begin{proposition} \label{prop:order-type-product-equality}
     Let $f, g \in H(\C)$ be of finite order. If $\rho_f < \rho_g$, then it holds that $ \rho_{fg} = \rho_g $ and\footnote{This holds in the sense that if $g$ is of maximal or minimal type, then $fg$ is of maximal or minimal type respectively, and, if $g$ is of normal type, then $\tau_{fg} = \tau_g$.} $\tau_{fg} = \tau_g$.
@@ -216,3 +215,5 @@ Hadamard's Theorem can also be used to obtain a generalization of \Cref{thm:cano
     $$ f(z) = z^m e^{Q(z)} \Pi(z). $$
     The first factor is of order zero, the second is at most of order $\lfloor \rho_f \rfloor < \rho_f$ and the last is of order $\rho_f$. Therefore, by \Cref{prop:order-type-product-equality} we have  $\tau_f = \tau_\Pi$. Since the order of $\Pi$ is not an integer and clearly $\Delta_f = \Delta_\Pi$, the assertion now follows from \Cref{thm:canonical-product-type-density}.
 \end{proof}
+
+\todo{Short recap what we achieved through this theorem.}

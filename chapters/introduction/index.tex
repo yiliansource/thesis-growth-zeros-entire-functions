@@ -1,15 +1,17 @@
 \chapter{Introduction}
 \label{ch:introduction}
 
-In this thesis, we explore the theory of entire functions, that is, complex-valued functions that are holomorphic on the entire complex plane.
+In this thesis, we explore the theory of entire functions, that is, complex-valued functions that are holomorphic in the entire complex plane.
 
-Our early focus lies on Picard's Great Theorem, an important corollary of which states that an entire function assumes every complex value, with at most one exception, infinitely often. A natural example for this behaviour is the complex exponential function, which does not assume zero, but does assume all other values infinitely often. \Cref{ch:picards-great-theorem} is dedicated to deriving this theorem and providing groundwork for the results in the later chapters.
+Our early focus lies on Picard's Great Theorem, an important corollary of which states that an entire function assumes every complex value infinitely often, with at most one exception. A natural example for this behaviour is the complex exponential function, which does not assume zero, but does assume all other values infinitely often. \Cref{ch:picards-great-theorem} is dedicated to deriving this theorem and providing groundwork for the results in the later chapters.
 
-In \Cref{sec:growth} we then briefly introduce a scale of asymptotic growth for the modulus of entire functions, in the form of order and type. Roughly speaking, if $f$ is of finite order, then $f$ grows no faster than a function of form $e^{Q(z)}$, where $Q$ is a polynomial, as $\vert z \vert \to \infty$.
+\Cref{sec:order,sec:type} then briefly introduce a scale of asymptotic growth for the modulus of entire functions, in the form of order and type. Roughly speaking, if $f$ is of finite order, then $f$ grows no faster than a function of the form $e^{Q(z)}$, where $Q$ is a polynomial, as $\vert z \vert \to \infty$. Results introduced here are not particularly interesting, but will frequently be utilized towards the end of the chapter.
 
-\Cref{sec:zeros} explores the nature of zeros of entire functions. As is well-known, a complex polynomial can be represented solely by its zeros and some scaling factor. This behaviour is generalized for entire functions by the Weierstrass Factorization Theorem: For any entire function $f$ there exists an entire function $g$ and a so-called ``canonical product'' $\Pi$, which is determined by the zeros of $f$, such that
+\Cref{sec:zeros,sec:canonical-products,sec:hadamards-theorem} explore the nature of zeros of entire functions. As is well-known, a complex polynomial can be represented solely by its zeros and some scaling factor. In \Cref{sec:canonical-products}, this property is generalized for entire functions by the Weierstraß Factorization Theorem: For any entire function $f$ there exists an entire function $g$ and a so-called ``canonical product'' $\Pi$, which is determined by the zeros of $f$, such that
 $$ f(z) = z^m e^{g(z)} \Pi(z), \quad \textrm{for all } z \in \C, $$
-where $m$ denotes the order of the zero of $f$ at the origin. Hadamard's Theorem then provides an immediate refinement for entire functions of finite order $\rho$, showing that $g$ can be taken to be a polynomial of degree at most $\rho$. This has immediate corollaries, in particular if the order is not an integer, which we will explore towards the end of the section.
+where $m \in \N_0$ denotes the order of the zero of $f$ at the origin. Hadamard's Theorem, which is the focus of \Cref{sec:hadamards-theorem}, then provides an immediate refinement for entire functions of finite order $\rho $, showing that $g$ can be taken to be a polynomial of degree at most $\rho$. This has immediate corollaries, in particular if the order is not an integer, which we will explore towards the end of the section.
+
+\todo{I should clarify what ``degree at most'' means if $\rho$ is not an integer. Maybe note which values $\rho$ can take overall.}
 
 Finally, \Cref{ch:composition-entire-functions} studies when the composition of functions of finite order is, again, of finite order. Pólya's Theorem will provide necessary conditions for this to hold. A consequence is Thron's Theorem, which states that for any entire function $g$ of finite order, which assumes some complex value only finitely often, there does not exist an entire function $f$ for which $f \circ f = g$ holds on the entire complex plane.
 
@@ -29,10 +31,10 @@ The following is an overview of the notation used:
     \item Let $a \in \R$ and let $f, g$ be functions on $[a, \infty)$ such that $f$ is either real- or complex-valued and $g$ is real-valued. Then we write $f(x) = \O(g(x))$ as $x \to \infty$ if there exist constants $C > 0$ and $x_0 \geq a$ such that for $x \geq x_0$ we have $\vert f(x) \vert \leq C g(x)$.
     \item For $a, b \in \C$ we denote by $[a, b]$ the line segment connecting $a$ and $b$, parametrized by $\gamma : [0, 1] \to \C, t \mapsto (1 - t) a + tb$.
     \item If $G \subseteq \C$, then $G$ is said to be a \emph{domain} if $G$ is non-empty, open and connected.
-    \item For a point $a \in \C$ and $r > 0$ we denote by $B_r(a)$ the open disk of radius $r$ centered at $a$. The open unit disk $B_1(0)$ will be denoted $\D$, furthermore we define $\C^\times \coloneqq \C \setminus \{ 0 \}$ and $\D^\times \coloneqq \D \setminus \{ 0 \}$.
-    \item Let $G \subseteq \C$ be open, then a function $f : G \to \C$ is said to be \emph{holomorphic} at $z \in G$ if $f$ is complex differentiable at $z$. If $f$ is holomorphic at all $z \in G$ then $f$ is said to be holomorphic on $G$. The space of all such holomorphic functions on $G$ will be denoted as $H(G)$. If $f \in H(\C)$ then $f$ is called \emph{entire}.
-    \item If $G \subseteq \C$ is a domain and $D \subseteq \C$ is a set with $\cl{D} \subseteq G$, then the contour integral of an $f \in H(G)$ along the boundary of $D$ will be denoted
+    \item For a point $a \in \C$ and $r > 0$ we denote by $B_r(a)$ the open disk of radius $r$ centered at $a$. The open unit disk $B_1(0)$ will be denoted $\D$. Furthermore we define $\C^\times \coloneqq \C \setminus \{ 0 \}$ and $\D^\times \coloneqq \D \setminus \{ 0 \}$.
+    \item Let $G \subseteq \C$ be open, then a function $f : G \to \C$ is said to be \emph{holomorphic} at $z \in G$ if $f$ is complex differentiable at $z$. If $f$ is holomorphic at all $z \in G$, then $f$ is said to be holomorphic on $G$. The space of all such holomorphic functions on $G$ will be denoted as $H(G)$. If $f \in H(\C)$, then $f$ is called \emph{entire}.
+    \item If $G \subseteq \C$ is a domain and $D \subseteq \C$ is a set with $\cl{D} \subseteq G$, then the contour integral of a function $f \in H(G)$ along the boundary of $D$ will be denoted
     $$ \oint_{\partial D} f(z) \diff z $$
-    and is, unless otherwise indicated, always parametrized with mathematically positive (counter-clockwise) orientation.
-    \item The exponential function will be denoted $\exp : \C \to \C^\times$. The (local) inverse will be denoted $\log$, where we, unless specified otherwise, always choose the principle branch, i.e. the branch where $\log 1 = 0$.
+    and is, unless otherwise indicated, always parametrized with mathematically positive (counter-clockwise) orientation. \todo{Only for NICE boundaries.}
+    \item The exponential function will be denoted $\exp : \C \to \C^\times$. The (local) inverse will be denoted $\log$, where we, unless specified otherwise, always choose the principle branch, i.e., the branch where $\log 1 = 0$.
 \end{itemize}
