@@ -1,0 +1,220 @@
+\section{Order and Type of Entire Functions} \label{sec:order-type}
+
+The first goal is to introduce a growth scale for the asymptotic modulus of an entire function. To characterize this scale we introduce a ``maximum modulus function''.
+
+\begin{definition}
+    Let $f \in H(\C)$, then for $r \geq 0$ we define
+    \begin{equation*}
+        M_f(r) \coloneqq \max_{\vert z \vert = r} \vert f(z) \vert. \qedhere
+    \end{equation*}
+\end{definition}
+
+\begin{remark}    
+    By the maximum modulus principle, $M_f$ is either strictly increasing (if $f$ is non-constant) or constant (otherwise), and we have
+    $$ M_f(r) = \max_{\vert z \vert \leq r} \vert f(z) \vert. $$
+    We shall show that $M_f$ is continuous: Let $\varepsilon > 0$ and choose $\delta_\varepsilon > 0$ such that for ${\vert z_1 - z_2 \vert < \delta_\varepsilon}$ we have ${\vert f(z_1) - f(z_2) \vert < \varepsilon}$. Now let $r_1 < r_2$ and choose $\theta$ such that $M_f(r_2) = \vert f(r_2 e^{i \theta}) \vert$. Then
+    \begin{equation*}
+        0 \leq M_f(r_2) - M_f(r_1) \leq \vert f(r_2 e^{i \theta}) \vert - \vert f(r_1 e^{i \theta}) \vert \leq \vert f(r_2 e^{i \theta}) - f(r_1 e^{i \theta}) \vert < \varepsilon,
+    \end{equation*}
+    for $r_2 - r_1 < \delta_\varepsilon$.
+\end{remark}
+
+\begin{definition} \label{def:order}
+    Let $f \in H(\C)$. The \emph{order} of $f$ is defined by
+    \begin{equation} \label{eq:def-order}
+        \rho_f \coloneqq \limsup_{r \to \infty} \frac{\log \log M_f(r)}{\log r}.
+    \end{equation}
+    Constant functions, by convention, have order 0.
+\end{definition}
+
+Note that for $f \in H(\C)$ we have $0 \leq \rho_f \leq \infty$.
+
+\begin{proposition} \label{prop:order-exponential-polynomial}
+    If $Q$ is a polynomial of degree $n \in \N$, then $\exp Q$ has order $n$.
+\end{proposition}
+
+\begin{proof}
+    Write $Q(z) = \sum_{k=0}^n a_k z^k$ and let $\zeta$ be an $n$-th root of $\overline{a_n} / \vert a_n \vert$. Then
+    \begin{align*}
+        \vert a_n \vert - \sum_{k=0}^{n-1} \vert a_k \vert r^{k-n} \leq \Re \sum_{k=0}^{n} a_k \zeta^k r^{k-n} = \Re \frac{Q(r \zeta)}{r^n} \leq \max_{\vert z \vert = r} \Re \frac{Q(z)}{r^n} \leq \vert a_n \vert + \sum_{k=0}^{n-1} \vert a_k \vert r^{k-n}
+    \end{align*}
+    and taking limits as $r \to \infty$ we get $\lim_{r \to \infty} \max_{\vert z \vert = r} \Re \frac{Q(z)}{r^n} = \vert a_n \vert$. Set $f(z) \coloneqq \exp Q(z)$, then
+    \begin{align*}
+        \frac{\log \log M_f(r)}{\log r} &= \frac{\log \log \max_{\vert z \vert = r} \vert \exp Q(z) \vert}{\log r} = \frac{\log \log \max_{\vert z \vert = r} \exp \Re Q(z)}{\log r} = \\
+        &= \frac{\log \max_{\vert z \vert = r} \Re Q(z)}{\log r} = \frac{\log \max_{\vert z \vert = r} \Re Q(z) / r^n}{\log r} + n
+    \end{align*}
+    and taking the limit superior as $r \to \infty$ yields $\rho_f = n$.
+\end{proof}
+
+% \begin{remark}\label{rem:order-exponential-polynomial}
+%     If $Q(z) = \sum_{k=0}^n a_k z^k$ is a polynomial we claim that $f(z) \coloneqq \exp {Q(z)}$ is of order $n$. Let $\varepsilon > 0$, then since $\lim_{r \to \infty}(\sum_{k=0}^n \vert a_k \vert r^k) / r^{n + \varepsilon} = 0$ there is some $r_0$ such that for all $r > r_0$ we have $(\sum_{k=0}^n \vert a_k \vert r^k) / r^{n + \varepsilon} < 1$ and thus
+%     \begin{align*}
+%         M_f(r) \leq \exp \sum_{k=0}^n \vert a_n \vert r^k \leq \exp(r^{n + \varepsilon}),
+%     \end{align*}
+%     showing $\rho_f \leq n + \varepsilon$. On the other hand, since
+% \end{remark}
+
+If the order of an entire function is finite, we have an equivalent characterization.
+
+\begin{proposition} \label{prop:order-infimum}
+    Let $f \in H(\C)$, then $f$ is of finite order if and only if
+    \begin{equation}
+        \rho \coloneqq \inf \{ s > 0 : M_f(r) = \O(\exp r^s) \textrm{ as } r \to \infty \}
+    \end{equation}
+    is finite, and in either case we have $\rho_f = \rho$.
+\end{proposition}
+
+\begin{proof}
+    Suppose $0 \leq \rho < \infty$, then for all $s > \rho$ we have $M_f(r) = \O(\exp r^s)$ as $r \to \infty$. Thus there exists a constant $K > 0$ (we may assume $K > 1$) and such that for all sufficiently large $r > 0$ we have $M_f(r) \leq K \exp r^s$. Using the fact that $\log (a+b) = \log a + \log (1 + \frac{b}{a})$ we get
+    \begin{align*}
+        \frac{\log \log M_f(r)}{\log r} &\leq \frac{\log (r^s + \log K)}{\log r} = s + \frac{\log (1 + (\log K) / r^s)}{\log r}. \tag{\textasteriskcentered} \label{eq:proof-order-infimum-1}
+    \end{align*}
+    Since
+    \begin{align*}
+        0 \leq \frac{\log (1 + (\log K) / r^s)}{\log r} \leq \frac{(\log K) / r^s}{\log r} = \frac{\log K}{r^s \log r} \xrightarrow{r \to \infty} 0,
+    \end{align*}
+    by taking the limit superior as $r \to \infty$ in \eqref{eq:proof-order-infimum-1} and then letting $s \to \rho$ we obtain $\rho_f \leq \rho$.
+
+    Now suppose $0 \leq \rho_f < \infty$ and let $s > \rho_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log \log M_f(r) \leq s \log r$ and therefore $M_f(r) \leq \exp r^s$. Thus $M_f(r) = \O(\exp r^s)$, thereby $\rho \leq s$ and letting $s \to \rho_f$ yields $\rho \leq \rho_f$.
+\end{proof}
+
+\begin{remark} \label{rem:order-zero}
+    Any polynomial is of order zero. Indeed, let $Q(z) = \sum_{k=0}^n a_k z^k$ be a polynomial and $m \in \N$. Then for any $r > 1$ we have
+    $$ \exp r^{1/m} = \sum_{k=0}^\infty \frac{r^{k/m}}{k!} > \frac{r^{n}}{(mn)!} $$
+    and therefore
+    $$ M_Q(r) = \max_{\vert z \vert = r} \vert Q(z) \vert \leq \left( \sum_{k=0}^n \vert a_k \vert \right) r^n \leq \left( (mn)! \sum_{k=0}^n \vert a_k \vert \right) \exp r^{1/m}. $$
+    Since $m \in \N$ was arbitrary, \Cref{prop:order-infimum} gives $\rho_Q = 0$.
+
+    There are, however, non-polynomial functions of order zero; one may simply construct an entire function with power series coefficients of sufficiently rapid decay. Consider
+    $$ f(z) \coloneqq \sum_{k=0}^\infty \frac{z^k}{(k^2)!} $$
+    and let $m \in \N$. By the above, we have $\sum_{k=0}^{m-1} \frac{r^k}{(k^2)!} \leq K \exp r^{1/m}$ for some constant $K > 0$ depending only on $m$, holding for all $r > 1$. Thus,
+    $$ \sum_{k=0}^\infty \frac{r^k}{(k^2)!} \leq K \exp r^{1/m} + \sum_{k=m}^\infty \frac{r^k}{(km)!} \leq K \exp r^{1/m} + \sum_{k=0}^\infty \frac{r^{k/m}}{k!} = (K + 1) \exp r^{1/m} $$
+    and we obtain $\rho_f = 0$, as above.
+\end{remark}
+
+From \Cref{prop:order-infimum}, together with some rough estimates, it follows that the order of the sum or product of two entire functions is bounded above by the larger of the two:
+
+\begin{proposition} \label{prop:order-sum-product-estimate}
+    Let $f, g \in H(\C)$ be of finite order. Then it holds that:
+    \begin{enumerate}[i.]
+        \item $\rho_{f + g} \leq \max \{ \rho_f, \rho_g \}$.
+        \item $\rho_{fg} \leq \max \{ \rho_f, \rho_g \}$.
+    \end{enumerate}
+\end{proposition}
+
+For two entire functions of different, finite order, their sum has the order of the higher of the two:
+
+\begin{proposition} \label{prop:order-sum-equality}
+    Let $f, g \in H(\C)$ be of finite order. If $\rho_f < \rho_g$, then $\rho_{f + g} = \rho_g$.
+\end{proposition}
+
+\begin{proof}
+    By \Cref{prop:order-sum-product-estimate} we have 
+    \begin{equation*}
+        \rho_{f+g} \leq \max \{ \rho_f, \rho_g \} = \rho_g, \quad\textrm{and}\quad \rho_g = \rho_{f+g+(-f)} \leq \max \{ \rho_f, \rho_{f+g} \} = \rho_{f+g},
+    \end{equation*}
+    since if $\rho_f > \rho_{f+g}$ then $\rho_f > \rho_{f+g} \geq \rho_g$ would be a contradiction. Thus $\rho_{f+g} = \rho_g$, proving the assertion.
+\end{proof}
+
+It is of note that \Cref{prop:order-sum-equality} implies that the order of an entire function of finite order remains unchanged when adding a polynomial of arbitrary degree to it.
+
+There is a, perhaps surprising, connection between the order of an entire function and the order of its derivative:
+
+\begin{proposition} \label{prop:order-derivative}
+    If $f \in H(\C)$ is of finite order, then $\rho_{f'} = \rho_f$.
+\end{proposition}
+
+\begin{proof}
+    Without loss of generality we may assume $f(0) = 0$. If $f$ is a polynomial the assertion is clear. Otherwise for any $r > 0$ we have,
+    \begin{align*}
+        M_f(r) &= \max_{\vert z \vert = r} \vert f(z) \vert = \max_{\vert z \vert = r} \left\vert \int_{[0, z]} f'(\zeta) \diff \zeta \right\vert \leq \\
+        &\leq \max_{\vert z \vert = r} \left( \vert z \vert \max_{w \in \cl{B_r(0)}} \vert f'(w) \vert \right) \leq r M_{f'}(r).
+    \end{align*}
+    Thus
+    \begin{align*}
+        \frac{\log \log M_f(r)}{\log r} &\leq \frac{\log \log r M_{f'}(r)}{\log r} = \frac{\log \log M_{f'}(r)}{\log r} + \frac{\log(1 + \log r / \log M_{f'}(r))}{\log r} \leq \\
+        &\leq \frac{\log \log M_{f'}(r)}{\log r} + \frac{\log r / \log M_{f'}(r)}{\log r} = \frac{\log \log M_{f'}(r)}{\log r} + \frac{1}{\log M_{f'}(r)}
+    \end{align*}
+    and taking limits superior as $r \to \infty$ yields $\rho_f \leq \rho_{f'}$.
+
+    On the other hand, Cauchy's integral formula gives
+    \begin{align*}
+        M_{f'}(r) &= \max_{z \in \partial B_r(0)} \vert f'(z) \vert = \max_{z \in \partial B_r(0)} \left\vert \frac{1}{2\pi i} \oint_{\partial B_1(z)} \frac{f(\zeta)}{(\zeta-z)^2} \diff \zeta \right\vert \leq \\
+        &\leq \max_{\substack{z \in \partial B_r(0) \\ w \in \partial B_1(z)}} \vert f(w) \vert \leq \max_{z \in \cl{B_{r+1}(0)}} \vert f(z) \vert = M_f(r + 1).
+    \end{align*}
+    Therefore
+    \begin{align*}
+        \frac{\log \log M_{f'}(r)}{\log r} \leq \frac{\log \log M_f(r+1)}{\log (r+1)} \frac{\log (r+1)}{\log r}
+    \end{align*}
+    and, again, taking limits superior as $r \to \infty$ we get $\rho_{f'} \leq \rho_f$.
+\end{proof}
+
+For functions of finite and positive order, we can obtain a natural refinement of the concept of order:
+
+\begin{definition}
+    Let $f \in H(\C)$ be of order $0 < \rho_f < \infty$. The \emph{type} of $f$ is defined by
+    \begin{equation} \label{eq:def-type}
+        \tau_f \coloneqq \limsup_{r \to \infty} \frac{\log M_f(r)}{r^{\rho_f}}.
+    \end{equation}
+
+    If $\tau_f = 0$, then $f$ is said to be of \emph{minimal} type, if $0 < \tau_f < \infty$, of \emph{normal} type, and if $\tau_f = \infty$, of \emph{maximal} type.
+\end{definition}
+
+Once again, we have an equivalent characterization for functions of finite type:
+
+\begin{proposition} \label{prop:type-infimum}
+    Let $f \in H(\C)$ be of finite, positive order, then $f$ is of finite type if and only if
+    \begin{equation}
+        \tau \coloneqq \inf \{ t > 0 : M_f(r) = \O(\exp (t r^{\rho_f})) \textrm{ as } r \to \infty \}
+    \end{equation}
+    is finite, and in either case we have $\tau_f = \tau$.
+\end{proposition}
+
+\begin{proof}
+    Suppose $0 \leq \tau < \infty$, then for all $t > \tau$ we have $M_f(r) = \O(\exp t r^{\rho_f})$ as $r \to \infty$. Thus there exists a constant $K > 0$ such that for all sufficiently large $r > 0$ we have $M_f(r) \leq K \exp t r^{\rho_f}$. Therefore
+    \begin{align*}
+        \frac{\log M_f(r)}{r^{\rho_f}} \leq \frac{\log K + t r^{\rho_f}}{r^{\rho_f}} = \frac{\log K}{r^{\rho_f}} + t
+    \end{align*}
+    and taking limits superior as $r \to \infty$ and letting $t \to \tau$ afterwards yields $\tau_f \leq \tau$.
+
+    Now suppose $0 \leq \tau_f < \infty$ and let $t > \tau_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log M_f(r) \leq t r^{\rho_f}$ and therefore $M_f(r) \leq \exp(t r^{\rho_f})$. Thus $M_f(r) = \O(\exp (t r^{\rho_f}))$, thereby $\tau \leq t$ and letting $t \to \tau_f$ yields $\tau \leq \tau_f$.
+\end{proof}
+
+% Equivalently, $\tau_f$ can also be defined as the infimum over all $\tau > 0$ such that $M_f(r) = \O(\exp(\tau r^{\rho_f}))$ as $r \to \infty$.
+
+If $f \in H(\C)$ is of finite, positive order, then $f$ and $f'$ not only have the same order, they have the same type:
+
+\begin{proposition} \label{prop:type-derivative}
+    If $f \in H(\C)$ is of finite, positive order and finite type, then $\tau_{f'} = \tau_f$.
+\end{proposition}
+
+\begin{proof}
+    Reusing the inequalities obtained in the proof of \Cref{prop:order-derivative} we have, for all $r > 0$,
+    \begin{equation*}
+        M_f(r) \leq r M_{f'}(r), \quad \textrm{and} \quad M_{f'}(r) \leq M_f(r+1).
+    \end{equation*}
+    Therefore
+    \begin{align*}
+        \frac{\log M_f(r)}{r^{\rho_f}} &\leq \frac{\log r + \log M_{f'}(r)}{r^{\rho_f}}, \quad \textrm{and} \quad \frac{\log M_{f'}(r)}{r^{\rho_f}} \leq \frac{\log M_{f}(r+1)}{(r+1)^{\rho_f}} \frac{(r+1)^{\rho_f}}{r^{\rho_f}}
+    \end{align*}
+    and, since by \Cref{prop:order-derivative} $\rho_f = \rho_{f'}$, taking limits superior as $r \to \infty$ yields $\tau_f \leq \tau_{f'}$ and $\tau_{f'} \leq \tau_f$.
+\end{proof}
+
+\begin{example} \label{exm:order-and-type}
+    \leavevmode
+    \begin{arrowlist}
+        \item We have already seen in \Cref{rem:order-zero} that polynomials are of order zero.
+        \item For $\rho, \tau \in (0, \infty)$, the function
+        $$ f(z) \coloneqq \exp ({\tau z^\rho}) $$
+        is of order $\rho$ and type $\tau$.
+        \item The function
+        $$ f(z) \coloneqq \exp \exp z $$
+        is of infinite order. For any $m \in \N$
+        $$ M_f(r) \geq \exp \exp r > \exp (r^m / m!), $$
+        therefore $\rho_f \geq m$, and since $m$ was arbitrary it follows that $\rho_f = \infty$.
+        \item The functions defined by
+        $$ \sum_{n=2}^\infty \left( \frac{\log n}{n} \right)^n z^n, \quad \textrm{and} \quad \sum_{n=2}^\infty \left( \frac{1}{n \log n} \right)^n z^n $$
+        are of order 1 and of maximal and minimal type, respectively. This can be seen via Theorem 2.1 in Chapter 3 of Segal \cite{segal-complex-analysis}.
+        \qedhere
+    \end{arrowlist}
+\end{example}
