@@ -1,10 +1,15 @@
 \chapter{Growth and Zeros of Entire Functions}
 \label{ch:growth-zeros-entire-functions}
 
-\todo{Einleitung worum es geht.}
+Entire functions admit an interesting relationship between the asymptotic growth of their modulus and the number of their zeros. Consider a complex polynomial
+$$ p(z) = a_0 + a_1 z + \hdots + a_n z^n. $$
+The asymptotic growth of $p$ is determined by its degree $n$, which also corresponds to the number of its zeros. Thus, the higher the number of zeros, the faster the asymptotic growth of $p$. Another interesting property is that $p$ is uniquely determined by its zeros and some scaling factor, as shown by the Fundamental Theorem of Algebra. Thus, for complex polynomials, their rate of growth and their zeros are closely related.
 
-\input{chapters/growth-zeros-entire-functions/order.tex}
-\input{chapters/growth-zeros-entire-functions/type.tex}
+A function $f \in H(\C)$ can be represented as an everywhere convergent power series
+$$ f(z) = a_0 + a_1 z + \hdots + a_n z^n + \hdots, $$
+and thus the entire functions form a natural generalization of the complex polynomials. Motivated by the properties mentioned above, we want to study if similar results hold for entire functions.
+
+\input{chapters/growth-zeros-entire-functions/order-type.tex}
 \input{chapters/growth-zeros-entire-functions/zeros.tex}
 \input{chapters/growth-zeros-entire-functions/canonical-products.tex}
 \input{chapters/growth-zeros-entire-functions/hadamards-theorem.tex}

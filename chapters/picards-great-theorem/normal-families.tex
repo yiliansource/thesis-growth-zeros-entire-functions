@@ -4,7 +4,7 @@
 First, we recall a generalized form of locally uniform convergence:
 
 \begin{definition}
-    Let $G \subseteq \C$ be a domain, $f \in H(G)$ and $(f_n)_{n \in \N}$ a sequence in $H(G)$. We say that \emph{$f_n$ converges compactly in $G$ to $f$}, or \emph{$f_n$ converges compactly in $G$ to $\infty$} as $n \to \infty$, if for every compact set $K \subset G$
+    Let $G \subseteq \C$ be a domain, $f \in C(G, \C)$ and $(f_n)_{n \in \N}$ a sequence in $C(G, \C)$. We say that \emph{$f_n$ converges compactly in $G$ to $f$}, or \emph{$f_n$ converges compactly in $G$ to $\infty$} as $n \to \infty$, if for every compact set $K \subset G$
     \begin{equation}
         \lim_{n \to \infty} \sup_{z \in K} \vert f_n(z) - f(z) \vert = 0, \quad \textrm{or} \quad \lim_{n \to \infty} \inf_{z \in K} \vert f_n(z) \vert = \infty,
     \end{equation}
@@ -21,6 +21,7 @@ First, we recall a generalized form of locally uniform convergence:
 
 A well-known theorem on compact convergence is:
 
+\begin{samepage}    
 \begin{theorem}[Hurwitz] \label{thm:hurwitz}
     Let $G \subseteq \C$ be a domain, $a \in \C$ and $(f_n)_{n \in \N}$ a sequence in $H(G)$ that converges compactly to $f \in H(G)$. If for every $n \in \N$ the number of $a$-points of $f_n$ is bounded by some $m \in \N_0$, then either
     \begin{itemize}
@@ -28,6 +29,7 @@ A well-known theorem on compact convergence is:
         \item $f \equiv a$.
     \end{itemize}
 \end{theorem}
+\end{samepage}
 
 As an immediate consequence we obtain that compact convergence is, in some ways, compatible with reciprocals:
 
@@ -72,7 +74,7 @@ These two concepts are equivalent by the following well-known theorem:
     Let $G \subseteq \C$ be a domain, then a family $\F \subseteq H(G)$ is normal if and only if it is locally bounded.
 \end{theorem}
 
-The following theorem can now be interpreted as a sharpened version of the above:
+The following theorem can be interpreted as a sharpened version of the above:
 
 \begin{theorem}[Fundamental Normality Test] \label{lem:montel-sharpened}
     Let $G \subseteq \C$ be a domain, then any family $\F \subseteq H(G, \C \setminus \{ 0, 1 \})$ is $\ast$-normal in $G$.

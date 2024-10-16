@@ -1,15 +1,15 @@
 \section{Bloch's Theorem}
 \label{sec:blochs-theorem}
 
-If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. In particular, $f(G)$ contains open disks of some, potentially very small, radius. Bloch's Theorem asserts that for any $f \in H(\D) \cap C(\cl{\D}; \C)$ satisfying $f'(0) = 1$, the set $f(\D)$ always contains a disk of fixed radius.
+If $G \subseteq \C$ is a domain and $f \in H(G)$ is non-constant, then $f(G)$ is a domain as well. In particular, $f(G)$ contains open disks of some, potentially very small, radius. Bloch's Theorem asserts that for any $f \in H(\cl{\D})$ satisfying $f'(0) = 1$, the set $f(\D)$ always contains a disk of fixed radius.
 
 Note that $f(0)$ may not always be the center of such a disk; consider the sequence
 \begin{equation*}
-    f_n(z) \coloneqq \frac{1 - e^{- n z}}{n} \in H(\D) \cap C(\cl{\D}; \C), \quad n \in \N,
+    f_n(z) \coloneqq \frac{1 - e^{- n z}}{n} \in H(\cl{\D}), \quad n \in \N,
 \end{equation*}
 which satisfies $f_n(0) = 0$ and $f_n'(0) = 1$, but omits the value $1 / n$.
 
-If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open sets to open sets. We thus first observe a general criterion, not relying on the holomorphic property, for the size of disks in the image domain of such functions:
+We first observe a more general criterion, not relying on the holomorphic property, for the size of disks in the image domain of open mappings. An open mapping is a function which maps open sets to open sets.
 
 \begin{lemma} \label{lem:bloch-lemma-1}
     Let $G \subset \C$ be a bounded domain and $f \in C(\cl{G}; \C)$ such that $\restr{f}{G}$ is an open mapping. Let $a \in G$ and set $s \coloneqq d(f(a), f(\partial G))$. If $s > 0$, then $B_{s}(f(a)) \subseteq f(G)$.
@@ -59,7 +59,7 @@ If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open s
 \end{proof}
 
 \begin{theorem} \label{thm:bloch-stronger}
-    Let $f \in H(\D) \cap C(\cl{\D}; \C)$ be non-constant. Then there is a point $p \in \D$ and a constant $C_f > 0$ such that $B_{R}(f(p)) \subseteq f(\D)$, where $R \coloneqq (\frac{3}{2} - \sqrt{2}) C_f \geq (\frac{3}{2} - \sqrt{2}) \vert f'(0) \vert$.
+    Let $f \in H(\cl{\D})$ be non-constant. Then there is a point $p \in \D$ and a constant $C_f > 0$ such that $B_{R}(f(p)) \subseteq f(\D)$, where $R \coloneqq (\frac{3}{2} - \sqrt{2}) C_f \geq (\frac{3}{2} - \sqrt{2}) \vert f'(0) \vert$.
 \end{theorem}
 
 \begin{proof}
@@ -76,7 +76,7 @@ If $f$ is as before, then $f$ is an open mapping on $G$, that is $f$ maps open s
 We now immediately obtain:    
 
 \begin{theorem}[Bloch] \label{thm:bloch}
-    Let $f \in H(\D) \cap C(\cl{\D}; \C)$ and assume $f'(0) = 1$. Then $f(\D)$ contains a disk of radius $\frac{3}{2} - \sqrt{2}$.
+    Let $f \in H(\cl{\D})$ and assume $f'(0) = 1$. Then $f(\D)$ contains a disk of radius $\frac{3}{2} - \sqrt{2}$.
 \end{theorem}
 
 In the following we will denote by $\beta > 0$ any constant less than or equal to the radius in Bloch's Theorem, for example $\beta = \frac{1}{12} < \frac{3}{2} - \sqrt{2}$.
@@ -86,8 +86,8 @@ In the following we will denote by $\beta > 0$ any constant less than or equal t
 \end{corollary}
 
 \begin{proof}
-    We may assume $c = 0$, otherwise we consider $f_1(z) \coloneqq f(z+c)$. Let $0 < s < d(c, \partial G)$, then $f$ is holomorphic in and continuous on $\cl{B_s(0)} \subseteq G$, thus we have
-    $$ g(z) \coloneqq \frac{f(sz)}{sf'(0)} \in H(\D) \cap C(\cl{\D}; \C). $$
+    We may assume $c = 0$, otherwise we consider $f_1(z) \coloneqq f(z+c)$. Let $0 < s < d(c, \partial G)$, then
+    $$ g(z) \coloneqq \frac{f(sz)}{sf'(0)} \in H(\cl{\D}). $$
     Since $g'(0) = 1$, Bloch's Theorem yields a disk $B$ of radius $\beta$ with $B \subseteq g(\D)$. Then $D \coloneqq s \vert f'(0) \vert B$ is a disk of radius $\beta s \vert f'(0) \vert$ and we have
     \begin{equation*}
         D = s \vert f'(0) \vert B \subseteq s \vert f'(0) \vert g(\D) = f(B_s(0)) \subseteq f(G). \qedhere

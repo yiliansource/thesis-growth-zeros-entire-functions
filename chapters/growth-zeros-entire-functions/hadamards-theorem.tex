@@ -200,7 +200,7 @@ Borel's Theorem together with \Cref{thm:finite-non-integer-order-infinite-zeros}
     If $\rho_f$ is not an integer, then for any $w \in \C$ the function $f(z) - w$ is also of finite, non-integer order and therefore has infinitely many zeros by \Cref{thm:finite-non-integer-order-infinite-zeros}. Thus $f$ assumes all values infinitely often.
 \end{proof}
 
-Hadamard's Theorem can also be used to obtain a generalization of \Cref{thm:canonical-product-type-density} which holds for entire functions other than canonical products. This requires the following result, the proof of which relies on finding a lower bound on the modulus of arbitrary entire functions and can be found in Levin \cite{levin-distribution-of-zeros} as Theorem 12(a).
+Hadamard's Theorem can also be used to obtain a generalization of \Cref{thm:canonical-product-type-density} which holds for general entire functions of non-integer order, not just canonical products. This requires the following result, the proof of which relies on finding a lower bound on the modulus of arbitrary entire functions and can be found in Levin \cite{levin-distribution-of-zeros} as Theorem 12(a).
 
 \begin{proposition} \label{prop:order-type-product-equality}
     Let $f, g \in H(\C)$ be of finite order. If $\rho_f < \rho_g$, then it holds that $ \rho_{fg} = \rho_g $ and\footnote{This holds in the sense that if $g$ is of maximal or minimal type, then $fg$ is of maximal or minimal type respectively, and, if $g$ is of normal type, then $\tau_{fg} = \tau_g$.} $\tau_{fg} = \tau_g$.
@@ -216,4 +216,6 @@ Hadamard's Theorem can also be used to obtain a generalization of \Cref{thm:cano
     The first factor is of order zero, the second is at most of order $\lfloor \rho_f \rfloor < \rho_f$ and the last is of order $\rho_f$. Therefore, by \Cref{prop:order-type-product-equality} we have  $\tau_f = \tau_\Pi$. Since the order of $\Pi$ is not an integer and clearly $\Delta_f = \Delta_\Pi$, the assertion now follows from \Cref{thm:canonical-product-type-density}.
 \end{proof}
 
-\todo{Short recap what we achieved through this theorem.}
+In general, if $f \in H(\C)$ is of finite order with representation
+$$ f(z) = e^{Q(z)} \Pi(z), $$
+where $Q$ is a polynomial and $\Pi$ is a canonical product, the order and type of $f$ may be determined by either of the factors. However, \Cref{thm:finite-non-integer-order-equals-exponent-of-convergence,thm:entire-function-type-density} show that if $\rho_f$ is not an integer, then the growth of $f$ is determined solely by the canonical product $\Pi$, and therefore by the zeros of $f$.
