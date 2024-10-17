@@ -5,7 +5,7 @@
 We first recall a rather explicit connection between the moduli of the zeros of a holomorphic function and the modulus of the function itself:
 
 \begin{theorem}[Jensen] \label{thm:jensen}
-    Let $R > 0$, $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
+    Let $R > 0$, $f \in H(B_R(0))$ with $f(0) \neq 0$ and let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$, repeated by multiplicity, arranged in a non-decreasing sequence. Then, for $r_n < r < r_{n+1}$, we have
     \begin{equation}
         \frac{1}{2 \pi} \int_0^{2\pi} \log \vert f(r e^{i \theta}) \vert \diff \theta = \log \vert f(0) \vert + \log \frac{r^n}{r_1 \hdots r_n}.
     \end{equation}
@@ -29,7 +29,7 @@ This zero-counting function is, in some scenarios, simpler to work with than the
 \end{corollary}
 
 \begin{proof}
-    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$ arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
+    Let $r_1, r_2, \hdots$ denote the moduli of the zeros of $f$ in $B_{R}(0)$, repeated by multiplicity, arranged in a non-decreasing sequence. Then, for any $r_n < r < r_{n+1}$, we obtain
     \begin{align*}
         \log \frac{r^n}{r_1 \hdots r_n} &= \sum_{k=1}^n \log \frac{r}{r_k} = \sum_{k=1}^n \int_{r_k}^r \frac{1}{s} \diff s = \\
         &= \sum_{k=1}^n \int_0^r \1_{(r_k, \infty)}(s) \frac{1}{s} \diff s = \int_0^r \left( \sum_{k=1}^n \1_{(r_k, \infty)}(s) \right) \frac{1}{s} \diff s = \\
@@ -60,7 +60,7 @@ This gives an immediate connection between the zeros and the growth of the modul
     $$ \lambda_{\mathbf{z}} \coloneqq \inf \left\{ \lambda > 0 : \sum_{m \in M} \frac{1}{\vert z_m \vert^\lambda} < \infty \right\} $$
     is called the \emph{exponent of convergence} of the family $\mathbf{z}$.
 
-    Let $f \in H(\C)$, then the \emph{exponent of convergence of the zeros of $f$} is defined as the exponent of convergence of the non-zero roots of $f$ and is denoted $\lambda_f$. If $f$ is constant, we set $\lambda_f = 0$ by convention.
+    Let $f \in H(\C)$, then the \emph{exponent of convergence of the zeros of $f$} is defined as the exponent of convergence of the non-zero roots of $f$, repeated by multiplicity, and is denoted $\lambda_f$. If $f$ is constant, we set $\lambda_f = 0$ by convention.
 
     Furthermore, for any $a \in \C$, the \emph{exponent of convergence of the $a$-points of $f$} is defined as exponent of convergence of the zeros of $f(z) - a$ and will be denoted $\lambda_f^{(a)}$.
 \end{definition}
@@ -75,7 +75,7 @@ If $f \in H(\C)$ assumes some value $a \in \C$ only finitely often, then clearly
     We may assume $f(0) \neq 0$. If $\lambda_f = 0$ there is nothing to show. Let $\rho > \rho_f$ then
     by \Cref{lem:zeros-bounded-by-modulus} and \Cref{prop:order-infimum} we have $n_f(r) = \O(\log M_f(er))$ and $M_f(r) = \O(\exp r^\rho)$, respectively. Therefore $n_f(r) = \O(r^\rho)$, thus there exists a constant $K_1 > 0$ such that for sufficiently large $r > 0$ we have $n_f(r) \leq K_1 r^\rho$.
     
-    If $(r_j)_{j \in \N}$ denote the non-zero moduli of the zeros of $f$, arranged in non-decreasing order, then for any $m \in \N$ we have $m \leq n_f(r_m) \leq K_1 r_m^{\rho}$. Let $0 < \lambda < \lambda_f$ then this implies
+    If $(r_j)_{j \in \N}$ denote the non-zero moduli of the zeros of $f$, repeated by multiplicity, arranged in non-decreasing order, then for any $m \in \N$ we have $m \leq n_f(r_m) \leq K_1 r_m^{\rho}$. Let $0 < \lambda < \lambda_f$ then this implies
     \begin{align*}
         \left( \frac{1}{r_m} \right)^{\lambda} \leq K_2 \left( \frac{1}{m} \right)^{\lambda/\rho}.
     \end{align*}
@@ -107,7 +107,7 @@ A more precise analysis of the density of the zeros of an entire function $f$ is
 The following lemma provides great utility in further analyzing the function $n_f$.
 
 \begin{lemma} \label{lem:zeros-measure}
-    Let $f \in H(\C)$ and denote by $(r_m)_{m \in M}$ the moduli of the zeros of $f$ arranged in non-decreasing order. Then $f$ induces a unique -Stieltjes measure $\omega_f$ on $(0, \infty)$, such that, for any non-negative, measureable function $\varphi$ on $(0, \infty)$, it holds that
+    Let $f \in H(\C)$ and denote by $(r_m)_{m \in M}$ the moduli of the zeros of $f$, repeated by multiplicity, arranged in non-decreasing order. Then $f$ induces a unique Lebesgue-Stieltjes measure $\omega_f$ on $(0, \infty)$, such that, for any non-negative, measureable function $\varphi$ on $(0, \infty)$, it holds that
     \begin{equation*}
         \sum_{m \in M} \varphi(r_m) = \int_{(0, \infty)} \varphi \diff \omega_f.
     \end{equation*}

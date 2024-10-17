@@ -1,6 +1,6 @@
 \section{Canonical Products} \label{sec:canonical-products}
 
-By the Fundamental Theorem of Algebra every complex polynomial can be written as a product of linear factors involving only its roots and some scaling factor. Conversely, for a finite sequence of points $z_1, \hdots, z_n$ the polynomial $p(z) \coloneqq \prod_{k=1}^n (z - z_k)$ vanishes only at said points.
+By the Fundamental Theorem of Algebra every complex polynomial can be written as a product of linear factors involving only its zeros and some scaling factor. Conversely, for a finite sequence of points $z_1, \hdots, z_n$ the polynomial $p(z) \coloneqq \prod_{k=1}^n (z - z_k)$ vanishes only at said points.
 
 The question arises if one can construct an entire function that vanishes precisely at the points of some infinite sequence $(z_k)_{k \in \N}$ and nowhere else. Clearly the product $\prod_{k=1}^\infty (z - z_k)$ need not be convergent in the entire complex plane. This issue is solved by introducing additional exponential factors, which improve convergence without introducing new zeros. We first study sufficient conditions for convergence of infinite products of numbers and holomorphic functions.
 
@@ -58,7 +58,7 @@ The next theorem -- which is also known as the \emph{Weierstraß Product Theorem
     \begin{equation}
         \Pi(z) \coloneqq \prod_{m \in M} W\left(\frac{z}{z_m}; p_m\right)
     \end{equation}
-    is an entire function that vanishes at all $z_m, m \in M$ and nowhere else. If
+    is an entire function such that if $z_m, m \in M$ occurs in $\mathbf{z}$ exactly $n$ times, then $\Pi$ has a zero of order $n$ at $z_m$. If
     \begin{equation}
         \mu \coloneqq \min \left\{ p \in \N_0 : \sum_{m \in M} \frac{1}{\vert z_m \vert^{p+1}} < \infty \right\}
     \end{equation}
@@ -103,7 +103,7 @@ The next theorem -- which is also known as the \emph{Weierstraß Product Theorem
     will converge if $\lambda_\Pi = \mu_\Pi + 1$ and diverge if $\lambda_\Pi = \mu_\Pi$.
 \end{remark}
 
-Just as any polynomial decomposes into linear factors involving their roots by the Fundamental Theorem of Algebra, Weierstraß products allow us to obtain a similar factorization result for arbitrary entire functions, known as the \emph{Weierstraß Factorization Theorem}.
+Just as any polynomial decomposes into linear factors involving their zeros by the Fundamental Theorem of Algebra, Weierstraß products allow us to obtain a similar factorization result for arbitrary entire functions, known as the \emph{Weierstraß Factorization Theorem}.
 
 \begin{theorem}[Weierstraß] \label{thm:Weierstraß}
     Let $f \in H(\C)$ be not identically zero and let $m \in \N_0$ be the order of the zero of $f$ at the origin. Then there exists $g \in H(\C)$ such that
@@ -202,7 +202,7 @@ We wish to further estimate canonical products. To do this we first focus on the
 \end{proof}
 
 \begin{theorem} \label{thm:exponent-of-convergence-Weierstraß-product}
-    Let $\Pi \in H(\C)$ be a canonical product of finite order, then $\lambda_\Pi = \rho_\Pi$.
+    Let $\Pi \in H(\C)$ be a canonical product, then $\lambda_\Pi = \rho_\Pi$.
 \end{theorem}
 
 \begin{proof}
@@ -238,7 +238,7 @@ We wish to further estimate canonical products. To do this we first focus on the
 Just as the order of a canonical product is determined by the order of growth of its zeros, its type is (to some extent) determined by the upper density of its zeros. A peculiarity arises when considering canonical products of integral order, in which case the type may also depend on the argument of the zeros \cite{levin-distribution-of-zeros}. However, for non-integral order we can obtain the following result:
 
 \begin{theorem} \label{thm:canonical-product-type-density}
-    Let $\Pi \in H(\C)$ be a canonical product of finite order. If $\lambda_\Pi$ is not an integer, then $\Pi$ is of maximal, minimal or normal type according to whether $\Delta_\Pi$ is equal to infinity, zero, or a positive, real number.
+    Let $\Pi \in H(\C)$ be a canonical product. If $\lambda_\Pi$ is not an integer, then $\Pi$ is of maximal, minimal or normal type according to whether $\Delta_\Pi$ is equal to infinity, zero, or a positive, real number.
 \end{theorem}
 
 \begin{proof}

@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt,bibliography=totoc,listof=totoc,headinclude=true,cleardoublepage=empty,oneside]{scrbook}
+\documentclass[a4paper,11pt,bibliography=totoc,listof=totoc,headinclude=true,open=right]{scrbook}
 % Option "oneside" für einseitigen Druck. Weglassen, falls die Arbeit doppelseitig gedruckt wird
 
 \usepackage[english, ngerman]{babel}
@@ -36,6 +36,8 @@
 \addtokomafont{disposition}{\rmfamily}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{6pt}
+
+\raggedbottom
 
 \newcommand{\todo}[1]{{\color{todo} #1}}
 \renewcommand{\qedsymbol}{$\blacksquare$}

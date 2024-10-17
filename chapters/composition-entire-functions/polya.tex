@@ -17,16 +17,21 @@ Necessary conditions for the order of a composition to be finite will be given b
     Let $(r_n)_{n \in \N}$ be a convergent sequence in $S$ with limit $r \in [0, \infty)$. If $r = 0$, then $r \in S$. Otherwise we claim that $\partial B_r(0) \subseteq \cl{G}$. Let $z \in \partial B_r(0)$, and set $z_n \coloneqq r_n z / r$ for $n \in \N$. Now $\vert z_n \vert = r_n$, thus $z_n \in \partial B_{r_n}(0) \subseteq \cl{G}$ and therefore $(z_n)_{n \in \N}$ is a sequence in $\overline{G}$. Clearly $z_n \to z$ and since $\cl{G}$ is closed, we therefore have $z \in \overline{G}$. Since $z$ was arbitrary, this concludes the claim, we have $r \in S$ and thus $S$ is closed.
 \end{proof}
 
-If $G \subset \C$ is a bounded domain and $f \in H(G) \cap C(\cl{G}; \C)$ is non-constant with $f(0) = 0$, then $f(G)$ is a bounded domain with $0 \in f(G)$. This, together with \Cref{prop:existence-circle-maximal-radius}, justifies the following definition:
+\begin{samepage}
+If $G \subset \C$ is a bounded domain and $f \in H(\cl{G})$ is non-constant with $f(0) = 0$, then $f(G)$ is a bounded domain with $0 \in f(G)$. This, together with \Cref{prop:existence-circle-maximal-radius}, justifies the following definition:
+\end{samepage}
 
 \begin{definition}
-    Let $f \in H(\D) \cap C(\cl{\D}; \C)$ be non-constant with $f(0) = 0$, then we define $r_f$ as the positive maximum of the set $S$ in \eqref{eq:set-circle-maximal-radius} with $G = f(\D)$.
+    Let $f \in H(\cl{\D})$ be non-constant with $f(0) = 0$, then we define
+    \begin{equation*}
+        r_f \coloneqq \max \{ r \geq 0 : \partial B_r(0) \subseteq \cl{f(\D)} \}. \qedhere
+    \end{equation*}
 \end{definition}
 
 Bohr's Theorem now asserts that $r_f$ (almost) does not depend on $f$ itself:
 
 \begin{theorem}[Bohr] \label{thm:bohr}
-    There exists a function ${\phi : (0, 1) \to (0, \infty)}$ such that for any $\theta \in (0, 1)$ and $f \in H(\D) \cap C(\cl{\D}; \C)$ with $f(0) = 0$ and $M_f(\theta) = 1$ it holds that $r_f \geq \phi(\theta)$.
+    There exists a function ${\phi : (0, 1) \to (0, \infty)}$ such that for any $\theta \in (0, 1)$ and $f \in H(\cl{\D})$ with $f(0) = 0$ and $M_f(\theta) = 1$ it holds that $r_f \geq \phi(\theta)$.
 \end{theorem}
 
 \begin{proof}
@@ -54,7 +59,7 @@ For $g, h \in H(\C)$ the following theorem now gives necessary conditions for th
 \begin{proof}
     Without loss of generality we can assume $h(0) = 0$; otherwise we just consider $h_0(z) \coloneqq h(z) - h(0)$ and $g_0(w) \coloneqq g(w + h(0))$. Set $f \coloneqq g \circ h$ and define
     \begin{equation*}
-        k_r(z) \coloneqq \frac{h(rz)}{M_h(r / 2)} \in H(\D) \cap C(\cl{\D}; \C), \quad \textrm{for } r > 0.
+        k_r(z) \coloneqq \frac{h(rz)}{M_h(r / 2)} \in H(\cl{\D}), \quad \textrm{for } r > 0.
     \end{equation*}
     Note that by definition we have $M_{k_r}(1/2) = 1$ and $k_r(0) = 0$, thus by Bohr's Theorem there is some constant $C > 0$ and an $R > C M_h(r/2)$ such that $\partial B_{R / M_h(r/2)}(0) \subseteq k_r(\cl{\D})$ and thus $\partial B_R(0) \subseteq h(\cl{B_r(0)})$. By the maximum modulus principle, $g$ assumes its maximum modulus over $\cl{B_R(0)}$ at some $w_0 \in \partial B_R(0)$. By the above there is a $z_0 \in \cl{B_r(0)}$ with $h(z_0) = w_0$. Thus we get
     \begin{equation*}

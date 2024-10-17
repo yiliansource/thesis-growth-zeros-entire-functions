@@ -30,7 +30,7 @@ The first goal is to introduce a growth scale for the asymptotic modulus of an e
 Note that for $f \in H(\C)$ we have $0 \leq \rho_f \leq \infty$.
 
 \begin{proposition} \label{prop:order-exponential-polynomial}
-    If $Q$ is a polynomial of degree $n \in \N$, then $\exp Q$ has order $n$.
+    If $Q$ is a polynomial of degree $n \in \N_0$, then $\exp Q$ has order $n$.
 \end{proposition}
 
 \begin{proof}
@@ -46,25 +46,19 @@ Note that for $f \in H(\C)$ we have $0 \leq \rho_f \leq \infty$.
     and taking the limit superior as $r \to \infty$ yields $\rho_f = n$.
 \end{proof}
 
-% \begin{remark}\label{rem:order-exponential-polynomial}
-%     If $Q(z) = \sum_{k=0}^n a_k z^k$ is a polynomial we claim that $f(z) \coloneqq \exp {Q(z)}$ is of order $n$. Let $\varepsilon > 0$, then since $\lim_{r \to \infty}(\sum_{k=0}^n \vert a_k \vert r^k) / r^{n + \varepsilon} = 0$ there is some $r_0$ such that for all $r > r_0$ we have $(\sum_{k=0}^n \vert a_k \vert r^k) / r^{n + \varepsilon} < 1$ and thus
-%     \begin{align*}
-%         M_f(r) \leq \exp \sum_{k=0}^n \vert a_n \vert r^k \leq \exp(r^{n + \varepsilon}),
-%     \end{align*}
-%     showing $\rho_f \leq n + \varepsilon$. On the other hand, since
-% \end{remark}
-
-If the order of an entire function is finite, we have an equivalent characterization.
+We have an equivalent characterization.
 
 \begin{proposition} \label{prop:order-infimum}
-    Let $f \in H(\C)$, then $f$ is of finite order if and only if
-    \begin{equation}
-        \rho \coloneqq \inf \{ s > 0 : M_f(r) = \O(\exp r^s) \textrm{ as } r \to \infty \}
+    Let $f \in H(\C)$, then
+    \begin{equation} \label{eq:order-infimum}
+        \rho_f = \inf \{ s > 0 : M_f(r) = \O(\exp r^s) \textrm{ as } r \to \infty \},
     \end{equation}
-    is finite, and in either case we have $\rho_f = \rho$.
+    where $\inf \emptyset \coloneqq \infty$.
 \end{proposition}
 
 \begin{proof}
+    Define $\rho$ as the right-hand side of \eqref{eq:order-infimum}, then $\rho \in [0, \infty]$. We claim that if $\rho < \infty$ then $\rho_f \leq \rho$ and if $\rho_f < \infty$ then $\rho < \rho_f$. From this it follows immediately that $\rho = \infty$ if and only if $\rho_f = \infty$.
+
     Suppose $0 \leq \rho < \infty$, then for all $s > \rho$ we have $M_f(r) = \O(\exp r^s)$ as $r \to \infty$. Thus there exists a constant $K > 0$ (we may assume $K > 1$) and such that for all sufficiently large $r > 0$ we have $M_f(r) \leq K \exp r^s$. Using the fact that $\log (a+b) = \log a + \log (1 + \frac{b}{a})$ we get
     \begin{align*}
         \frac{\log \log M_f(r)}{\log r} &\leq \frac{\log (r^s + \log K)}{\log r} = s + \frac{\log (1 + (\log K) / r^s)}{\log r}. \tag{\textasteriskcentered} \label{eq:proof-order-infimum-1}
@@ -75,7 +69,7 @@ If the order of an entire function is finite, we have an equivalent characteriza
     \end{align*}
     by taking the limit superior as $r \to \infty$ in \eqref{eq:proof-order-infimum-1} and then letting $s \to \rho$ we obtain $\rho_f \leq \rho$.
 
-    Now suppose $0 \leq \rho_f < \infty$ and let $s > \rho_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log \log M_f(r) \leq s \log r$ and therefore $M_f(r) \leq \exp r^s$. Thus $M_f(r) = \O(\exp r^s)$, thereby $\rho \leq s$ and letting $s \to \rho_f$ yields $\rho \leq \rho_f$.
+    Now suppose $0 \leq \rho_f < \infty$ and let $s > \rho_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log \log M_f(r) \leq s \log r$ and therefore $M_f(r) \leq \exp r^s$. Thus $M_f(r) = \O(\exp r^s)$, thereby $\rho \leq s$ and letting $s \to \rho_f$ yields $\rho \leq \rho_f$, concluding our claim.
 \end{proof}
 
 \begin{remark} \label{rem:order-zero}
@@ -91,6 +85,16 @@ If the order of an entire function is finite, we have an equivalent characteriza
     $$ \sum_{k=0}^\infty \frac{r^k}{(k^2)!} \leq K \exp r^{1/m} + \sum_{k=m}^\infty \frac{r^k}{(km)!} \leq K \exp r^{1/m} + \sum_{k=0}^\infty \frac{r^{k/m}}{k!} = (K + 1) \exp r^{1/m} $$
     and we obtain $\rho_f = 0$, as above.
 \end{remark}
+
+\begin{samepage}
+\begin{remark}
+    If $f \in H(\C)$ then the order of $f$ can determined via the power series coefficients. Namely, if $f(z) = \sum_{n=0}^\infty a_n z^n$, then
+    \begin{equation*}
+        \rho_f = \limsup_{n \to \infty} \frac{n \log n}{\log \frac{1}{\vert a_n \vert}},
+    \end{equation*}
+    where in the case of $a_n = 0$ the entire quotient is taken to be zero. This result can be found in Segal \cite{segal-complex-analysis} as Theorem 3.2.1.
+\end{remark}
+\end{samepage}
 
 From \Cref{prop:order-infimum}, together with some rough estimates, it follows that the order of the sum or product of two entire functions is bounded above by the larger of the two:
 
@@ -116,9 +120,9 @@ For two entire functions of different, finite order, their sum has the order of 
     since if $\rho_f > \rho_{f+g}$ then $\rho_f > \rho_{f+g} \geq \rho_g$ would be a contradiction. Thus $\rho_{f+g} = \rho_g$, proving the assertion.
 \end{proof}
 
-It is of note that \Cref{prop:order-sum-equality} implies that the order of an entire function of finite order remains unchanged when adding a polynomial of arbitrary degree to it.
+\Cref{prop:order-sum-equality} implies that the order of an entire function of finite order remains unchanged when adding a polynomial of arbitrary degree to it.
 
-There is a, perhaps surprising, connection between the order of an entire function and the order of its derivative:
+There is a connection between the order of an entire function and the order of its derivative:
 
 \begin{proposition} \label{prop:order-derivative}
     If $f \in H(\C)$ is of finite order, then $\rho_{f'} = \rho_f$.
@@ -163,21 +167,23 @@ For functions of finite and positive order, we can obtain a natural refinement o
 Once again, we have an equivalent characterization for functions of finite type:
 
 \begin{proposition} \label{prop:type-infimum}
-    Let $f \in H(\C)$ be of finite, positive order, then $f$ is of finite type if and only if
-    \begin{equation}
-        \tau \coloneqq \inf \{ t > 0 : M_f(r) = \O(\exp (t r^{\rho_f})) \textrm{ as } r \to \infty \}
+    Let $f \in H(\C)$ be of finite, positive order, then
+    \begin{equation} \label{eq:type-infimum}
+        \tau_f = \inf \{ t > 0 : M_f(r) = \O(\exp (t r^{\rho_f})) \textrm{ as } r \to \infty \},
     \end{equation}
-    is finite, and in either case we have $\tau_f = \tau$.
+    where $\inf \emptyset \coloneqq \infty$.
 \end{proposition}
 
 \begin{proof}
+    We follow the same strategy as in the proof of \Cref{prop:order-infimum}: Define $\tau$ as the right-hand side of \eqref{eq:order-infimum}, then $\tau \in [0, \infty]$. We claim that if $\tau < \infty$ then $\tau_f \leq \tau$ and if $\tau_f < \infty$ then $\tau < \tau_f$. Again, from this it follows immediately that $\tau = \infty$ if and only if $\tau_f = \infty$.
+
     Suppose $0 \leq \tau < \infty$, then for all $t > \tau$ we have $M_f(r) = \O(\exp t r^{\rho_f})$ as $r \to \infty$. Thus there exists a constant $K > 0$ such that for all sufficiently large $r > 0$ we have $M_f(r) \leq K \exp t r^{\rho_f}$. Therefore
     \begin{align*}
         \frac{\log M_f(r)}{r^{\rho_f}} \leq \frac{\log K + t r^{\rho_f}}{r^{\rho_f}} = \frac{\log K}{r^{\rho_f}} + t
     \end{align*}
     and taking limits superior as $r \to \infty$ and letting $t \to \tau$ afterwards yields $\tau_f \leq \tau$.
 
-    Now suppose $0 \leq \tau_f < \infty$ and let $t > \tau_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log M_f(r) \leq t r^{\rho_f}$ and therefore $M_f(r) \leq \exp(t r^{\rho_f})$. Thus $M_f(r) = \O(\exp (t r^{\rho_f}))$, thereby $\tau \leq t$ and letting $t \to \tau_f$ yields $\tau \leq \tau_f$.
+    Now suppose $0 \leq \tau_f < \infty$ and let $t > \tau_f$. Then, by definition of the limit superior, for all sufficiently large $r > 0$ we have $ \log M_f(r) \leq t r^{\rho_f}$ and therefore $M_f(r) \leq \exp(t r^{\rho_f})$. Thus $M_f(r) = \O(\exp (t r^{\rho_f}))$, thereby $\tau \leq t$ and letting $t \to \tau_f$ yields $\tau \leq \tau_f$, concluding the claim.
 \end{proof}
 
 % Equivalently, $\tau_f$ can also be defined as the infimum over all $\tau > 0$ such that $M_f(r) = \O(\exp(\tau r^{\rho_f}))$ as $r \to \infty$.
